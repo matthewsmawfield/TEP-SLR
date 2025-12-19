@@ -1,0 +1,43 @@
+{
+  "name": "tep-gl-site",
+  "version": "0.1",
+  "description": "Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations",
+  "comment": "Package version matches manuscript version v0.1 (Tortola)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "python3 -m http.server 8000",
+    "build": "node build.js",
+    "build:dev": "npm run build && cd dist && python3 -m http.server 8350",
+    "build:markdown": "npm run build && node html-to-markdown.js",
+    "markdown": "node html-to-markdown.js",
+    "serve": "python3 -m http.server",
+    "serve:dist": "cd dist && python3 -m http.server 8351"
+  },
+  "keywords": [
+    "TEP-GL",
+    "Temporal Equivalence Principle",
+    "gravitational lensing",
+    "dark matter",
+    "modified gravity",
+    "two-metric theories",
+    "conformal coupling",
+    "cosmology"
+  ],
+  "author": "Matthew Lukin Smawfield <matthewsmawfield@gmail.com>",
+  "license": "CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthewsmawfield/TEP-GL.git"
+  },
+  "homepage": "https://matthewsmawfield.github.io/TEP-GL/",
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "live-server": "^1.2.2",
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.10"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "ScholarlyArticle",
+  "identifier": "https://doi.org/10.5281/zenodo.17982541",
+  "name": "Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations",
+  "description": "Standard gravitational lensing analysis relies on the Isochrony Axiom—the implicit assumption that the observed image represents a synchronous spatial snapshot of the source. This work demonstrates that for evolving sources, this approximation breaks down in the presence of conformal metric couplings, creating a 'temporal composite' image. This projects temporal depth onto the spatial plane, generating a Temporal Jacobian contribution that is mathematically indistinguishable from gravitational shear—a phenomenon defined here as Phantom Mass.",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Matthew Lukin",
+      "familyName": "Smawfield",
+      "@id": "https://orcid.org/0009-0003-8219-3159"
+    }
+  ],
+  "datePublished": "2025-12-19",
+  "dateModified": "2025-12-19",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "codeRepository": "https://github.com/matthewsmawfield/TEP-GL",
+  "url": "https://matthewsmawfield.github.io/TEP-GL/",
+  "keywords": [
+    "gravitational lensing",
+    "dark matter",
+    "modified gravity",
+    "cosmology",
+    "conformal coupling",
+    "two-metric theories",
+    "temporal equivalence principle",
+    "TEP-GL"
+  ]
+}

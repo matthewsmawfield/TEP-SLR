@@ -1,0 +1,24 @@
+# TEP-GL: Gravitational Lensing Analysis
+# Core stack for temporal-field lens modeling
+
+# Astronomical computing
+astropy>=5.0.0
+lenstronomy>=1.11.0
+galsim>=2.4.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Data storage
+h5py>=3.8.0
+
+# Utilities
+tqdm>=4.65.0
+pyyaml>=6.0
+

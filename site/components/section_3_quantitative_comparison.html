@@ -1,0 +1,79 @@
+<h2>3. The Phantom Mass Mechanism</h2>
+
+<h3>3.1 Deriving Temporal Shear: Multipath Temporal Divergence</h3>
+
+<p>The core insight of TEP is that standard lensing analysis mistakes <em>Multipath Temporal Divergence</em> for spatial mass. When light travels from across the universe, it passes through "time-warped regions" of space—areas where the scalar field \(\phi\) modifies the local rate of time flow. Because an extended image is formed by rays taking <em>different pathways</em> through these distortions, the arrival times diverge.</p>
+
+<p>We derive the effective shear introduced by these time delays as follows. Let the observed image position be \(\vec{\theta}\). The source position \(\vec{\beta}\) is a function of \(\vec{\theta}\) and the emission time \(t_{emit}\):</p>
+
+<div class="equation">$$\vec{\beta} = \vec{\beta}_{geom}(\vec{\theta}) + \vec{\Delta\beta}(t_{emit})$$</div>
+
+<p>where \(\vec{\beta}_{geom}\) is the standard gravitational deflection mapping. The emission time is related to the observation time \(t_{obs}\) by the total delay \(T(\vec{\theta})\):</p>
+
+<div class="equation">$$t_{emit} = t_{obs} - T(\vec{\theta}) = t_{obs} - (T_{geom}(\vec{\theta}) + \Delta \tilde{\tau}(\vec{\theta}))$$</div>
+
+<p>For a source with proper motion \(\vec{\mu}_s = \partial\vec{\beta}/\partial t\), substituting the time equation yields:</p>
+
+<div class="equation">$$\vec{\beta}(\vec{\theta}) \approx \vec{\beta}_{geom}(\vec{\theta}) - \vec{\mu}_s \cdot \Delta \tilde{\tau}(\vec{\theta})$$</div>
+
+<p>The Jacobian matrix of the lens mapping \(\mathcal{A}_{ij} = \partial \beta_i / \partial \theta_j\) becomes:</p>
+
+<div class="equation">$$\mathcal{A}_{ij} = \frac{\partial \beta_{geom,i}}{\partial \theta_j} - \mu_{s,i} \frac{\partial (\Delta \tilde{\tau})}{\partial \theta_j}$$</div>
+
+<p>The first term is the standard convergence/shear matrix \(\mathcal{A}_{GR}\). The second term is the <em>Temporal Shear Tensor</em>:</p>
+
+<div class="equation">$$\mathcal{T}_{ij} = - \mu_{s,i} \nabla_j (\Delta \tilde{\tau})$$</div>
+
+<p><strong>The "Static Source" Resolution:</strong> Even if a source has a constant luminosity profile \(I(\vec{x}, t) = I(\vec{x})\) (zero intrinsic evolution), it is moving across the sky. The term \(\vec{\mu}_{s} \cdot \nabla(\Delta \tilde{\tau})\) represents the source physically moving into a region of different time delay. The "variability" required for the effect is therefore not limited to intrinsic evolution; the proper motion of the source across the delay gradient suffices. Thus, even "static" galaxies are subject to Phantom Mass shearing if they possess transverse velocity relative to the lens.</p>
+
+<p>This tensor introduces anisotropic distortions (shear) and isotropic magnification (convergence) that depend on the source velocity \(\vec{\mu}_s\) and the delay gradient \(\nabla (\Delta \tilde{\tau})\). Crucially, unlike the gravitational shear tensor which is symmetric and curl-free (derived from a scalar potential \(\psi\)), the Temporal Shear Tensor \(\mathcal{T}_{ij}\) is constructed from the outer product of a velocity vector and a gradient vector. It generally possesses a non-zero curl if \(\nabla \times (\vec{\mu}_s (\nabla \Delta \tilde{\tau})) \neq 0\). This implies that TEP-induced lensing can produce image rotation—a "smoking gun" signature forbidden in standard scalar-potential lensing.</p>
+
+<p>This demonstrates that for an evolving source, the "shape" observed is a mixture of spatial geometry and temporal simultaneity surfaces.</p>
+
+<div class="principle">
+<h3>Box 3.1: A Minimal Toy Model Estimate</h3>
+<p>To demonstrate the order of magnitude, consider a simple spherical conformal halo profile:</p>
+<div class="equation">$$A(\phi) = 1 + \epsilon \ln(r/r_0)$$</div>
+<p>For a coupling strength \(\epsilon \approx 10^{-6}\) and a characteristic scale \(r_0 = 10\) kpc:</p>
+<ul>
+    <li><strong>Differential Delay:</strong> Across an Einstein radius (\(r_E \approx 5\) kpc), the differential proper time accumulation is \(\Delta \tilde{\tau} \sim \frac{\epsilon}{2} (L/c) \approx 1.5 \times 10^3\) years (for \(L \sim 1\) Gpc).</li>
+    <li><strong>Phantom Convergence:</strong> The resulting effective convergence \(\kappa_{eff}\) mimics an NFW profile core, with magnitude scaling as \(\kappa_{eff} \propto \epsilon \cdot (\partial I_s / \partial t)\).</li>
+</ul>
+<p>This confirms that even minute conformal variations (\(10^{-6}\)) integrated over cosmological distances produce delays sufficient to shear evolving sources.</p>
+</div>
+
+<div class="principle">
+<h3>Box 3.2: Order of Magnitude Estimate for Static Sources</h3>
+<p>To verify that proper motion alone generates sufficient shear, we calculate the magnitude of the Temporal Shear Tensor \(\mathcal{T} \approx \mu_s \nabla(\Delta \tilde{\tau})\).</p>
+<ul>
+    <li><strong>Source Velocity:</strong> Typical cluster transverse velocity \(v_s \sim 1000\) km/s at distance \(D_A \sim 1\) Gpc yields an angular proper motion \(\mu_s \approx 2 \times 10^{-4}\) arcsec/year.</li>
+    <li><strong>Delay Gradient:</strong> From the toy model (Box 3.1), a delay of \(\sim 10^3\) years varying over arcsecond scales gives \(\nabla(\Delta \tilde{\tau}) \sim 10^3\) years/arcsec.</li>
+    <li><strong>Resulting Shear:</strong> The product is dimensionless shear:
+    <div class="equation">$$\gamma_{eff} \approx (2 \times 10^{-4} \, \text{arcsec/yr}) \times (10^3 \, \text{yr/arcsec}) \approx 0.2$$</div></li>
+</ul>
+<p>This result (\(\gamma \approx 0.2\)) is of the order of unity, demonstrating that the proper motion of standard elliptical galaxies is sufficient to generate strong lensing-like distortions without intrinsic luminosity variability.</p>
+</div>
+
+<h3>3.2 Connection to Lens-Model Degeneracies</h3>
+
+<p>This mechanism parallels the <em>Source-Position Transformation (SPT)</em> (Schneider & Sluse 2013), which identifies a degeneracy class of mass models yielding identical observables but differing time delays. TEP extends this degeneracy into the metric sector itself. Rather than permuting the mass distribution \(\kappa(\vec{\theta})\) while holding the metric constant, TEP holds the baryonic mass constant and permutes the spacetime arrival surface \(\Delta \tilde{\tau}(\vec{\theta})\). Consequently, the "Phantom Mass" can be understood as a physical realization of the SPT, where the extra freedom resides in the time-transport sector rather than invisible spatial matter.</p>
+
+<h3>3.3 The Reference Envelope: Millisecond Delays</h3>
+
+<p>Under the conservative <em>Reference Envelope</em> (accepting the standard translation of GW170817 timing to propagation-speed bounds), \(\Delta \tilde{\tau}\) is small (milliseconds to seconds). In this regime:</p>
+<ul>
+    <li><strong>Static Lensing:</strong> The phantom mass effect is negligible for slowly evolving sources (galaxies). Static mass maps are unaffected.</li>
+    <li><strong>Time-Domain Lensing:</strong> The effect is dominant for fast transients. A millisecond gradient across an image plane is huge for an FRB.</li>
+</ul>
+
+<p><strong>Conclusion:</strong> In the <em>Reference Envelope</em>, TEP is a precision correction to time-domain astrophysics, not a full dark matter substitute.</p>
+
+<h3>3.4 The Critical Discriminator: Source Variability</h3>
+
+<p>The magnitude of the Phantom Mass effect depends on \(\partial I_s / \partial t\). This leads to a unique falsifiable prediction:</p>
+
+<div class="principle">
+<p><strong>The Variability Bias:</strong> The inferred "dark matter" distribution should appear to change depending on the intrinsic variability timescale of the background source population. Static sources see less phantom mass; variable sources see more.</p>
+</div>
+
+<p>This is a radical prediction that distinguishes TEP from particulate dark matter, which is expected to be passive and source-independent.</p>

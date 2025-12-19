@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+title: "Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations"
+message: "If you use this software, please cite it as below."
+type: article
+authors:
+  - family-names: "Smawfield"
+    given-names: "Matthew Lukin"
+    orcid: "https://orcid.org/0009-0003-8219-3159"
+abstract: >
+  Standard gravitational lensing analysis relies on the **Isochrony Axiom**—the implicit assumption that the observed image represents a synchronous spatial snapshot of the source. We demonstrate that for evolving sources, this approximation breaks down in the presence of conformal metric couplings, creating a "temporal composite" image. This projects temporal depth onto the spatial plane, generating a **Temporal Jacobian** contribution that is mathematically indistinguishable from gravitational shear—a phenomenon defined here as **Phantom Mass**.
+
+  It is demonstrated that **GW170817 does not constrain the conformal component** of this coupling; because photons and gravitational waves traverse the same path, conformal time dilation is common-mode and cancels in differential measurements. The widely cited speed-of-gravity constraints apply only to the disformal sector, leaving the conformal "rate of time" unconstrained to explain dark matter phenomenology. The dark sector is thus reinterpreted not as an invisible substance, but as the shadow of temporal transport.
+license: CC-BY-4.0
+version: 0.1
+date-released: 2025-12-19
+keywords:
+  - physics
+  - cosmology
+  - gravitational lensing
+  - dark matter
+  - modified gravity
+  - conformal coupling
+  - temporal equivalence principle
+  - TEP-GL
+repository-code: "https://github.com/matthewsmawfield/TEP-GL"
+url: "https://github.com/matthewsmawfield/TEP-GL"
+doi: 10.5281/zenodo.17982541
+
+preferred-citation:
+  type: article
+  title: "Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations (Tortola v0.1)"
+  authors:
+    - family-names: Smawfield
+      given-names: Matthew Lukin
+      orcid: "https://orcid.org/0009-0003-8219-3159"
+  year: 2025
+  journal: Zenodo
+  doi: 10.5281/zenodo.17982541
+  identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17982541
+    description: Pre-print DOI
+  url: "https://doi.org/10.5281/zenodo.17982541"
+  notes: "Preprint"
