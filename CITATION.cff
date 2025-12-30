@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+type: software
+title: "Global Time Echoes: Optical Validation of the Temporal Equivalence Principle via Satellite Laser Ranging"
+version: "0.1"
+doi: 10.5281/zenodo.18064582
+date-released: 2025-12-30
+url: "https://github.com/matthewsmawfield/TEP-SLR"
+repository-code: "https://github.com/matthewsmawfield/TEP-SLR"
+license: CC-BY-4.0
+authors:
+  - family-names: "Smawfield"
+    given-names: "Matthew Lukin"
+    email: matthewsmawfield@gmail.com
+    orcid: "https://orcid.org/0009-0003-8219-3159"
+keywords:
+  - "Temporal Equivalence Principle"
+  - "satellite laser ranging"
+  - "SLR"
+  - "geodesy"
+  - "LAGEOS"
+  - "ILRS"
+  - "conformal coupling"
+  - "proper time"
+abstract: "An independent, optical-domain test of the Temporal Equivalence Principle (TEP) is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2 and Etalon-1/2). This analysis constrains \"clock-artifact\" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
+
+Under strict 5-minute contemporaneous binning, distance-binned mean pass-correlations fluctuate with high variance. However, widening the overlap window to 15 minutes (thereby increasing multi-station overlap) reveals statistically significant, distance-structured inter-station correlations (Fisher-combined $\\chi^2=15.35$ with 4 d.o.f.; $p=0.0040$) under a family-wise circular-shift test.
+
+This signal is driven primarily by LAGEOS-2 ($p=0.0005$), which exhibits a strong negative correlation ($r \\approx -0.59$) in the 5,000–7,500 km distance bin, whereas LAGEOS-1 remains consistent with the null hypothesis ($p \\approx 0.93$). Although observation counts and temporal overlap are comparable, this asymmetry likely reflects a combination of orbital geometry—LAGEOS-2's prograde $52.6^\\circ$ orbit versus LAGEOS-1's retrograde $109.8^\\circ$ orbit—and small-number statistics in the critical distance bin.
+
+To validate this finding with more robust statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This confirmed a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events.
+
+The detection of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology."
+references:
+  - type: article
+    title: "Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed"
+    authors:
+      - family-names: "Smawfield"
+        given-names: "Matthew Lukin"
+    year: 2025
+    doi: 10.5281/zenodo.16921911
+    repository: "https://github.com/matthewsmawfield/TEP"

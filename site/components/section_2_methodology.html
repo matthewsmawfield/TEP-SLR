@@ -1,0 +1,25 @@
+<section id="methodology">
+    <h2>2. Methodology</h2>
+
+    <h3>2.1 The Target: LAGEOS</h3>
+    <p>The Laser Geodynamics Satellites (LAGEOS-1 and LAGEOS-2) represent excellent test masses for this investigation. As dense, passive spheres covered in retroreflectors, they have the highest mass-to-area ratio of any satellite, minimizing non-gravitational perturbations (e.g., drag, radiation pressure). Crucially, they carry no active electronics and no clocks. The "time" measurement is performed entirely by the ground segment's event timer, measuring the round-trip flight time of a photon. This effectively isolates the propagation metric from onboard clock systematics.</p>
+
+    <h3>2.2 Dataset &amp; Processing</h3>
+    <p>The complete International Laser Ranging Service (ILRS) dataset for passive geodetic satellites (LAGEOS-1/2 and Etalon-1/2) was analyzed over an 11-year period (Mar 2015 – Dec 2025), comprising 6,571,782 Normal Point observations from 47 global stations. Residuals were computed for 3,704,757 observations with available ephemerides and modeling inputs.</p>
+    
+    <p>Residuals were computed relative to high-precision SP3 orbits (ASI/GFZ). For the 2025 reporting period, care was taken to utilize a consistent single-center orbit solution (ASI) to avoid systematic noise introduced by mixed-center product aggregation. The reduction strategy proceeded in two stages:</p>
+    <ul>
+        <li><strong>Geodetic Validation:</strong> A broad 5-meter outlier rejection window retained $\approx 1.7$ million "valid" geodetic observations. The initial RMS ($\approx 2.77$ m) reflects the raw pre-fit state relative to the <em>a priori</em> orbit, preserving large-scale signal structures that are typically removed by aggressive orbital fitting.</li>
+        <li><strong>Coherence Analysis Subset:</strong> To isolate subtle timing correlations from gross interpolation and modeling errors, a strict 0.5-meter (50 cm) threshold was applied. This high-precision subset (192,561 residuals, $\approx 5.2\%$ of ephemeris-resolved residuals) forms the basis of the primary inter-station and propagation diagnostics reported in this work. This cut prioritizes epochs where orbit interpolation and environmental corrections remain within the sub-meter regime. Robustness is quantified by an explicit residual-threshold sweep (0.3, 0.5, 1.0 m) in the analysis outputs.</li>
+        <li><strong>Corrections:</strong> Standard Marini-Murray troposphere model, Shapiro delay, and Sagnac corrections were applied. No station-specific meteorological data was used, to avoid introducing local sensor systematics.</li>
+        <li><strong>Parameter Estimation Strategy:</strong> Crucially, this analysis avoids the standard practice of estimating frequent empirical accelerations or "geographically correlated" parameters, which are often used in precise orbit determination (POD) to whiten residuals. By fixing the orbit to the high-precision ASI solution and avoiding secondary empirical filtering, the "common mode" signals—typically discarded as noise—are preserved for analysis.</li>
+    </ul>
+
+    <h3>2.3 Inter-Station Metric: Contemporaneous Pass-Bin & Daily Aggregation</h3>
+    <p>For sparse SLR networks, continuous, regularly sampled inter-station time series are generally unavailable. Therefore, the primary inter-station metric used here was based on <em>contemporaneous pass bins</em>. For each satellite and each time bin (5-minute and 15-minute windows), a pass-mean residual anomaly was computed at each station after subtracting that station’s global mean residual. Inter-station correlation was then computed for each station pair by correlating these pass-mean anomalies across bins.</p>
+    <p>Statistical significance was assessed using a family-wise circular-shift permutation test across distance bins (2000 permutations). Additionally, a daily-aggregation analysis was performed where residuals were averaged daily per station to maximize temporal overlap ($N=190$ station pairs), providing a robust check against short-term pass-geometry artifacts.</p>
+    <p>As a secondary check, an irregular-sampling phase-alignment statistic was computed on the same contemporaneous pass-bin series (without interpolation) and evaluated under an analogous family-wise circular-shift null test.</p>
+
+    <h3>2.4 Spectral Diagnostic (TEP Band)</h3>
+    <p>In addition to the pass-bin spatial test, the residuals were examined in the frequency domain to quantify the concentration of power in the predicted TEP band (10–500 $\mu$Hz). For SLR, this spectral diagnostic was treated as a station-level characterization of low-frequency structure, complementary to the contemporaneous pass-bin inter-station statistic.</p>
+</section>

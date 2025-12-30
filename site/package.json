@@ -1,0 +1,41 @@
+{
+  "name": "tep-slr-site",
+  "version": "0.1.0",
+  "description": "Temporal Equivalence Principle: Independent Validation via Satellite Laser Ranging (SLR)",
+  "comment": "Package version matches manuscript version v0.1 (Mombasa)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "python3 -m http.server 8000",
+    "build": "node build.js",
+    "build:dev": "npm run build && cd dist && python3 -m http.server 8350",
+    "build:markdown": "npm run build && node html-to-markdown.js",
+    "markdown": "node html-to-markdown.js",
+    "serve": "python3 -m http.server",
+    "serve:dist": "cd dist && python3 -m http.server 8351"
+  },
+  "keywords": [
+    "Temporal Equivalence Principle",
+    "TEP-SLR",
+    "satellite laser ranging",
+    "SLR",
+    "geodesy",
+    "relativity"
+  ],
+  "author": "Matthew Lukin Smawfield <matthewsmawfield@gmail.com>",
+  "license": "CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthewsmawfield/TEP-SLR.git"
+  },
+  "homepage": "https://mlsmawfield.com/tep/slr/",
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "live-server": "^1.2.2",
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.10"
+  }
+}

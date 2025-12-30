@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+title: "Temporal Equivalence Principle: Satellite Laser Ranging (SLR)"
+message: "If you use this software, please cite it as below."
+type: article
+authors:
+  - family-names: "Smawfield"
+    given-names: "Matthew Lukin"
+    orcid: "https://orcid.org/0009-0003-8219-3159"
+abstract: >
+  This repository contains the working manuscript and analysis code for the Satellite Laser Ranging (SLR) study in the Temporal Equivalence Principle (TEP) research program.
+
+  The analysis uses 11 years (2015–2025) of ILRS SLR data from passive geodetic satellites and reports conformal-sector signatures including robust low-frequency spectral concentration in the predicted TEP band.
+license: CC-BY-4.0
+version: 0.1
+date-released: 2025-12-30
+keywords:
+  - physics
+  - geodesy
+  - satellite laser ranging
+  - relativity
+  - temporal equivalence principle
+  - TEP-SLR
+repository-code: "https://github.com/matthewsmawfield/TEP-SLR"
+url: "https://mlsmawfield.com/tep/slr/"
+doi: "10.5281/zenodo.18064582"
+
+preferred-citation:
+  type: article
+  title: "Temporal Equivalence Principle: Satellite Laser Ranging (SLR) (Mombasa v0.1)"
+  authors:
+    - family-names: Smawfield
+      given-names: Matthew Lukin
+      orcid: "https://orcid.org/0009-0003-8219-3159"
+  year: 2025
+  journal: Preprint
+  doi: "10.5281/zenodo.18064582"
+  identifiers:
+  - type: doi
+    value: "10.5281/zenodo.18064582"
+    description: Zenodo DOI
+  url: "https://mlsmawfield.com/tep/slr/"
+  notes: "Preprint (work in progress)"

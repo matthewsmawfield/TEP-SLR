@@ -1,0 +1,45 @@
+<section id="phenomenology">
+    <h2>3. Conformal Sector Assessment</h2>
+
+    <p>The analysis of the 11-year LAGEOS dataset reveals four distinct signatures consistent with TEP's conformal sector phenomenology in the optical domain, challenging clock-artifact explanations.</p>
+
+    <h3>3.1 Data Characterization: The Noise Floor</h3>
+    <p>The raw SLR residuals exhibit a broad distribution. Within the strictly filtered subset ($N=192,561$, $|\Delta\rho|<0.5$ m), the RMS is 0.29 m (288 mm). The central question is whether there exists reproducible structure in this noise floor consistent with conformal propagation effects. In standard geodetic analysis, this floor is often characterized as "flicker noise" ($1/f$) or "colored noise" (Williams et al., 2004) and is typically attributed to unmodeled station systematics. TEP predicts this colored spectrum as a physical consequence of scalar field coupling.</p>
+
+    <h3>3.2 Range-Dependent Coherence: The Propagation Signature</h3>
+    <p>To distinguish propagation effects from local station systematics, a lag-1 residual statistic was analyzed as a function of signal path length (range to satellite). Here "lag-1" denotes the correlation between successive 5-minute binned residual means, computed on station-debiased residuals and made gap-aware by excluding time gaps exceeding 450 s. This diagnostic targets sub-hour temporal structure while avoiding trivial within-pass autocorrelation.</p>
+    
+    <ul>
+        <li><strong>Shorter path ($\lesssim 6{,}500$ km):</strong> mean lag-1 $\approx -0.042$ (95% CI: −0.120 to 0.028).</li>
+        <li><strong>Longer path ($\gtrsim 8{,}000$ km):</strong> mean lag-1 $\approx -0.275$ (95% CI: −0.534 to −0.018).</li>
+    </ul>
+
+    <figure>
+        <img src="figures/slr_residual_vs_elevation_full.png" alt="Residual Coherence vs Path Length" style="max-width: 80%;">
+        <figcaption><strong>Figure 3.1:</strong> Lag-1 residual statistic as a function of signal path length (range to satellite), computed using 5-minute binned residual means with gap-aware pairing. Under a strict $|\Delta\rho|<0.5$ m filter, the long-minus-short contrast is $\Delta(\mathrm{low}-\mathrm{high})=-0.233$ (95% bootstrap CI: −0.466 to −0.010). The corresponding low/high ratio is 6.58 (95% bootstrap CI: −50.95 to 51.33), but is ill-conditioned because the short-path mean is near zero. Under a looser $|\Delta\rho|<1.0$ m filter, the contrast becomes $\Delta(\mathrm{low}-\mathrm{high})=-0.044$ (95% CI: −0.208 to 0.100) and the corresponding ratio becomes −1.31 (95% CI: −47.58 to 25.51). This threshold sensitivity motivates conservative interpretation of the path-length diagnostic as qualitative support rather than a precisely estimated amplitude.</figcaption>
+    </figure>
+
+    <p>The observed path dependence provides qualitative support for a propagation-linked component. While the magnitude of the contrast is sensitive to the outlier rejection threshold (see Figure 3.1), the sign structure remains consistent: longer paths accumulate greater decoherence. This sensitivity reflects estimator dependence and the near-zero short-path baseline; the path-length diagnostic is therefore treated conservatively as qualitative support for propagation effects, pending further robustness testing. The persistence of strong spectral concentration in the predicted TEP band (Section 3.3) provides the most significant quantitative evidence for a low-frequency, non-white process—a 14.00× enhancement that is threshold-stable and statistically robust.</p>
+
+    <h3>3.3 Spectral Concentration: Primary Quantitative Signature</h3>
+    <p>Frequency-domain analysis of the residuals reveals a significant concentration of power within the predicted TEP frequency band (10–500 $\mu$Hz). On 5-minute resampled station series, the station-averaged TEP-band mean PSD exceeds the full-spectrum mean PSD by $2.48\times$ (95% CI: 2.46–2.50; $N=46$ stations). Relative to a broadband floor defined by $f > 1$ mHz, the TEP-band mean exceeds broadband by $14.00\times$ (95% CI: 13.53–14.47; $N=46$ stations). This "spectral clumping" indicates that the signal is not white noise but a structured, low-frequency process consistent with the transit time of Earth through a scalar domain structure—matching the spectral characteristics observed in GNSS (Smawfield 2025b, 2025c, 2025d; Papers 1-3). The TEP band (10–500 $\mu$Hz) corresponds to periods of ~30 minutes to ~28 hours, consistent with Earth's motion through large-scale scalar field gradients.</p>
+
+    <h3>3.4 Inter-Station Analysis: Expected Network Limitations</h3>
+    <p>The ILRS network is sparse in time; most station pairs lack sufficient contiguous overlap to support the cross-spectral methods employed in GNSS analysis. Inter-station inference uses contemporaneous, same-satellite 5-minute bins: for each satellite and time bin, pass-mean residual anomalies are computed per station (after removing each station's global mean), and station-pair correlations are estimated across bins.</p>
+    
+    <div class="key-finding">
+        <h4>Inter-Station Pass Correlations: Statistical Evidence with Geometric Complexity</h4>
+        <p>Distance-binned mean pass-correlation estimates fluctuate with large variance under a strict 5-minute contemporaneous binning. However, when the contemporaneous overlap window is widened to 15-minute bins (increasing the number of multi-station overlap epochs), a family-wise circular-shift test yields statistically significant evidence for systematic distance-structured inter-station correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.; $p=0.0040$).</p>
+        
+        <p>This signal is driven almost entirely by LAGEOS-2 ($p=0.0005$), which exhibits a strong negative correlation ($r \approx -0.59$) in the 5,000–7,500 km distance bin. In contrast, LAGEOS-1 remains consistent with the null hypothesis ($p \approx 0.93$). While observation counts and temporal overlap are nearly identical for both satellites, this asymmetry likely reflects a combination of orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number statistics in the critical distance bin ($N=3$ pairs for LAGEOS-2 vs $N=8$ for LAGEOS-1).</p>
+
+        <p>To examine this finding with improved statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This identified a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events.</p>
+        
+        <figure>
+            <img src="figures/slr_pass_correlation_decay.png" alt="SLR Pass-Correlation vs Distance" style="max-width: 80%;">
+            <figcaption><strong>Figure 3.2:</strong> Pass-based inter-station correlation of SLR residual anomalies as a function of baseline distance. While the primary 5-minute analysis shows limited structure, widening the window to 15 minutes reveals a statistically significant signal (Fisher combined $p=0.0040$), driven largely by strong anti-correlations in LAGEOS-2 residuals at 5,000–7,500 km baselines. A complementary daily-aggregation analysis ($N=190$ pairs) identifies significant negative correlations at 500–1,000 km ($p=0.017$).</figcaption>
+        </figure>
+    </div>
+
+    <p>The range-dependent and spectral signatures (Sections 3.2-3.3) offer a technology-orthogonal line of evidence consistent with the conformal-sector phenomenology reported in GNSS Papers 1-3. More stringent inter-station tests will require denser temporal overlap and experimental configurations beyond current ILRS cadence.</p>
+</section>
