@@ -1,10 +1,10 @@
-# Global Time Echoes: Optical Validation of the Temporal Equivalence Principle via Satellite Laser Ranging
+# Global Time Echoes: Optical Validation of TEP via SLR
 
 **Author:** Matthew Lukin Smawfield  
 **Version:** v0.1 (Mombasa)  
 **Date:** First published: 30 December 2025 · Last updated: 30 December 2025  
 **DOI:** 10.5281/zenodo.18064582  
-**Generated:** 2025-12-31  
+**Generated:** 2026-01-02  
 **Paper Series:** TEP-SLR (Paper 9)
 
 ---
