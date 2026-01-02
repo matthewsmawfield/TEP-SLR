@@ -100,37 +100,6 @@ async function buildStaticSite() {
             console.log('📁 Copying results/figures/ → dist/figures/');
             copyRecursiveSync(resultsFiguresPath, distFiguresPath);
         }
-
-        // Copy logs from logs/ to dist/logs/
-        const logsPath = path.join(__dirname, '..', 'logs');
-        const distLogsPath = path.join(distDir, 'logs');
-        if (fs.existsSync(logsPath)) {
-            console.log('📁 Copying logs/ → dist/logs/');
-            copyRecursiveSync(logsPath, distLogsPath);
-        }
-
-        // Copy results/outputs/ to dist/results/outputs/ (excluding large CSVs)
-        const resultsOutputsPath = path.join(__dirname, '..', 'results', 'outputs');
-        const distResultsOutputsPath = path.join(distDir, 'results', 'outputs');
-        if (fs.existsSync(resultsOutputsPath)) {
-            console.log('📁 Copying results/outputs/ → dist/results/outputs/');
-            if (!fs.existsSync(distResultsOutputsPath)) {
-                fs.mkdirSync(distResultsOutputsPath, { recursive: true });
-            }
-            // Custom copy to exclude large CSVs
-            const files = fs.readdirSync(resultsOutputsPath);
-            for (const file of files) {
-                if (file.endsWith('.csv')) continue; // Skip large CSVs
-                const src = path.join(resultsOutputsPath, file);
-                const dest = path.join(distResultsOutputsPath, file);
-                const stat = fs.statSync(src);
-                if (stat.isDirectory()) {
-                    copyRecursiveSync(src, dest);
-                } else {
-                    fs.copyFileSync(src, dest);
-                }
-            }
-        }
         
         // Copy manifest.json for reference
         fs.copyFileSync(manifestPath, path.join(distDir, 'manifest.json'));
