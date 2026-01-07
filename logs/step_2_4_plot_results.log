@@ -1,6 +1,0 @@
-[23:58:36] [INFO] Starting Step 2.4: Plotting Results
-[23:58:36] [INFO] Plotting phase alignment for 28 station pairs
-[23:58:36] [SUCCESS] Saved /Users/matthewsmawfield/www/TEP-SLR/results/figures/slr_phase_alignment_decay.png
-[23:58:36] [INFO] Plotting pass-based correlations
-[23:58:37] [SUCCESS] Saved /Users/matthewsmawfield/www/TEP-SLR/results/figures/slr_pass_correlation_decay.png
-[23:58:37] [SUCCESS] Plotting complete
