@@ -76,6 +76,12 @@
       "file": "references.html",
       "title": "References",
       "order": 8
+    },
+    {
+      "id": "reproducibility",
+      "file": "9_reproducibility.html",
+      "title": "Data Availability & Reproducibility",
+      "order": 9
     }
   ]
 }
