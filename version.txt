@@ -1,0 +1,4 @@
+v0.2 (Mombasa) - TEP v0.7 Terminology Alignment
+
+- Adopted Temporal Topology terminology: Replaced discrete boundary language with "continuous spatial profile" for the scalar field's screening mechanism.
+- Defined Temporal Shear nomenclature: Formalized density-dependent suppression via vanishing field gradients (∇φ → 0).

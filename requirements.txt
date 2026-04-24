@@ -8,6 +8,7 @@ pandas>=2.0.0
 
 # Visualization
 matplotlib>=3.7.0
+cycler>=0.12.1
 
 # Network & Utilities
 requests>=2.31.0

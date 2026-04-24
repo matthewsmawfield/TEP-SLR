@@ -212,7 +212,7 @@ class HTMLToMarkdownConverter {
      */
     extractMetadata(html) {
         const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
-        const title = titleMatch ? titleMatch[1] : 'Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations';
+        const title = titleMatch ? titleMatch[1] : 'Global Time Echoes: Optical Validation of the Temporal Equivalence Principle via Satellite Laser Ranging';
         
         const authorMatch = html.match(/<meta[^>]*name=["']author["'][^>]*content=["']([^"']*)["']/i);
         const author = authorMatch ? authorMatch[1] : 'Matthew Lukin Smawfield';
@@ -221,13 +221,13 @@ class HTMLToMarkdownConverter {
         const version = versionMatch ? versionMatch[1]
             .replace(/<[^>]+>/g, '')
             .replace(/^Version:\s*/i, '')
-            .trim() : 'v0.3 (Tortola)';
+            .trim() : 'v0.2 (Mombasa)';
         
         const dateMatch = html.match(/<div[^>]*class=["'][^"']*date[^"']*["'][^>]*>(.*?)<\/div>/i);
-        const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : 'First published: 29 November 2025';
+        const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : 'First published: 30 December 2025';
         
-        const doiMatch = html.match(/DOI:\s*<a[^>]*href=["']([^"']*)["'][^>]*>(.*?)<\/a>/i);
-        const doi = doiMatch ? doiMatch[2] : '[DOI]';
+        const doiMatch = html.match(/DOI:\s*<a[^>]*href=["']([^"]*)["'][^>]*>(.*?)<\/a>/i);
+        const doi = doiMatch ? doiMatch[2] : '10.5281/zenodo.18064582';
         
         return { title, author, version, date, doi };
     }
@@ -285,8 +285,11 @@ class HTMLToMarkdownConverter {
             // Build the complete markdown document
             const markdown = this.buildMarkdownDocument(metadata, markdownContent);
             
-            // Write to file
-            const outputPath = path.join(__dirname, '..', 'manuscript-tep-slr.md');
+            // Generate versioned filename: 8-TEP-SLR-v0.2-Mombasa.md
+            const versionMatch = metadata.version.match(/v([\d.]+)\s*\(([^)]+)\)/);
+            const versionSlug = versionMatch ? `v${versionMatch[1]}-${versionMatch[2]}` : 'v0.2-Mombasa';
+            const outputFileName = `8-TEP-SLR-${versionSlug}.md`;
+            const outputPath = path.join(__dirname, '..', outputFileName);
             fs.writeFileSync(outputPath, markdown, 'utf8');
             
             console.log('✅ Markdown conversion complete!');
@@ -307,33 +310,18 @@ class HTMLToMarkdownConverter {
      * Build the complete markdown document with metadata
      */
     buildMarkdownDocument(metadata, content) {
-        const timestamp = new Date().toISOString().split('T')[0];
-        
         // Clean up the title to remove the author part
         const cleanTitle = metadata.title.replace(' | Matthew Lukin Smawfield', '');
         
         return `# ${cleanTitle}
-
-**Author:** ${metadata.author}  
-**Version:** ${metadata.version}  
-**Date:** ${metadata.date}  
-**DOI:** ${metadata.doi}  
-**Generated:** ${timestamp}  
-**Paper Series:** TEP-SLR (Paper 9)
+**${metadata.author}**
+${metadata.version}
+${metadata.date}
+DOI: ${metadata.doi}
 
 ---
 
 ${content}
-
----
-
-*This document was automatically generated from the TEP-SLR research site. For the interactive version with figures and enhanced formatting, visit: https://mlsmawfield.com/tep/slr/*
-
-*Related Work:*
-- [**TEP Theory**](https://doi.org/10.5281/zenodo.16921911) (Foundational framework)
-- [**TEP-GTE**](https://doi.org/10.5281/zenodo.17127229) (GNSS Validation)
-
-*Source code and data available at: https://github.com/matthewsmawfield/TEP-SLR*
 `;
     }
 }

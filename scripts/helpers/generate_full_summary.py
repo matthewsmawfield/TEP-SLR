@@ -150,7 +150,7 @@ def main():
         plt.ylim(-1000, 1000) # Zoom in to +/- 1m
         plt.xlabel("Elevation (deg)")
         plt.ylabel("Residual (mm)")
-        plt.title("SLR Residuals vs Elevation (2015-2025)\n(Sampled 50k points, Zoomed $\pm$1m)")
+        plt.title(r"SLR Residuals vs Elevation (2015-2025)\n(Sampled 50k points, Zoomed $\pm$1m)")
         plt.grid(True, alpha=0.3)
         plt.savefig(FIGURES_DIR / "slr_residual_vs_elevation_full.png", dpi=300)
         logger.success(f"Saved {FIGURES_DIR / 'slr_residual_vs_elevation_full.png'}")
