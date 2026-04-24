@@ -3,7 +3,7 @@
 TEP Logging Utilities
 ================================
 
-Standardized logging infrastructure for the TEP-GNSS-RINEX analysis pipeline.
+Standardized logging infrastructure for the TEP-SLR analysis pipeline.
 Provides color-coded console output, file logging, and custom log levels for
 consistent status reporting across all analysis steps.
 

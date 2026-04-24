@@ -45,6 +45,10 @@ python3 scripts/steps/step_2_3_mwpc_analysis.py
 echo -e "\n[Step 2.4] Generating Figures..."
 python3 scripts/steps/step_2_4_plot_results.py
 
+# Step 2.5: Enhanced Figures
+echo -e "\n[Step 2.5] Generating Enhanced Figures..."
+python3 scripts/steps/step_2_5_enhanced_figures.py
+
 # Step 3.0: Simulation
 echo -e "\n[Step 3.0] Running Anti-Echo Simulation..."
 python3 scripts/steps/step_3_0_sim_antiecho.py

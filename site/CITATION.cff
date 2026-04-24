@@ -11,7 +11,7 @@ abstract: >
 
   The analysis uses 11 years (2015–2025) of ILRS SLR data from passive geodetic satellites and reports conformal-sector signatures including robust low-frequency spectral concentration in the predicted TEP band.
 license: CC-BY-4.0
-version: 0.1
+version: 0.2
 date-released: 2025-12-30
 keywords:
   - physics
@@ -26,7 +26,7 @@ doi: "10.5281/zenodo.18064582"
 
 preferred-citation:
   type: article
-  title: "Temporal Equivalence Principle: Satellite Laser Ranging (SLR) (Mombasa v0.1)"
+  title: "Temporal Equivalence Principle: Satellite Laser Ranging (SLR) (Mombasa v0.2)"
   authors:
     - family-names: Smawfield
       given-names: Matthew Lukin
