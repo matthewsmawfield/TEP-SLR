@@ -1,5 +1,6 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "codename": "Mombasa",
-  "description": "Independent optical-domain validation of the Temporal Equivalence Principle using 11 years of Satellite Laser Ranging data from passive ILRS geodetic satellites."
+  "description": "Paper 8: Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging",
+  "date": "2026-04-29"
 }

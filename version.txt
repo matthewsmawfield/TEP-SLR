@@ -1,4 +1,7 @@
-v0.2 (Mombasa) - TEP v0.7 Terminology Alignment
+v0.3 (Mombasa) - TEP Theory Alignment and Terminology Updates
 
-- Adopted Temporal Topology terminology: Replaced discrete boundary language with "continuous spatial profile" for the scalar field's screening mechanism.
-- Defined Temporal Shear nomenclature: Formalized density-dependent suppression via vanishing field gradients (∇φ → 0).
+- Aligned conformal sector notation with TEP v0.8: updated coupling factor $A(\phi) = \exp(\beta\phi/M_{\text{Pl}})$ and proper-time relation
+- Refined constraint status language: conformal sector constraints (PPN, screening, clock-comparison) vs. disformal sector (GW170817 bounds)
+- Introduced Temporal Topology concept for spatial profile scale of scalar field
+- Standardized correlation length notation to $\lambda_T$ across manuscript
+- Updated synthesis and conclusion sections with improved pedagogical flow and theory consistency

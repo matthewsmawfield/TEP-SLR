@@ -2,7 +2,7 @@
 """
 Unified PDF Processing Script for TEP-SLR
 Compresses PDF and embeds comprehensive metadata in one operation.
-Customized for: Paper 8 - Satellite Laser Ranging (Mombasa v0.2)
+Customized for: Paper 8 - Satellite Laser Ranging (Mombasa v0.3)
 
 Usage:
     python scripts/utils/process_pdf.py <input_pdf> [--quality ebook|printer|prepress|default]
@@ -124,7 +124,7 @@ def main():
     )
     parser.add_argument(
         '--doi',
-        default='10.5281/zenodo.18064582',
+        default='10.5281/zenodo.18064581',
         help='DOI to embed in metadata'
     )
     
@@ -164,10 +164,10 @@ def main():
     print("Step 2: Embedding TEP-SLR metadata...")
     
     metadata = {
-        'Title': 'Global Time Echoes: Optical Validation of the Temporal Equivalence Principle via Satellite Laser Ranging',
+        'Title': 'Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging',
         'Author': 'Matthew Lukin Smawfield',
         'Subject': f'This study presents an independent optical-domain validation of the Temporal Equivalence Principle (TEP) using 11 years (2015–2025) of high-precision Satellite Laser Ranging (SLR) data from the International Laser Ranging Service (ILRS). Analysis of 192,561 residuals from LAGEOS-1/2 and Etalon-1/2 reveals three signatures consistent with TEP\'s conformal sector: path-length dependent coherence decay, spectral power concentration in the predicted TEP band (10–500 μHz), and frequency independence between optical and microwave domains. The results demonstrate that the distance-structured correlations previously identified in GNSS atomic clock networks (Paper 1-3) are not artifacts of microwave processing or clock systematics, but reflect a fundamental property of spacetime propagation. DOI: {args.doi}',
-        'Keywords': 'Temporal Equivalence Principle; TEP-SLR; satellite laser ranging; SLR; LAGEOS; optical validation; conformal sector; geodesy; relativity; Proper Time; Global Time Echoes; Mombasa v0.2',
+        'Keywords': 'Temporal Equivalence Principle; TEP-SLR; satellite laser ranging; SLR; LAGEOS; optical-domain consistency test; conformal sector; geodesy; relativity; Proper Time; Global Time Echoes; Mombasa v0.3',
         'Creator': 'Matthew Lukin Smawfield',
         'Producer': 'TEP-SLR Research Project',
         'Copyright': 'Creative Commons Attribution 4.0 International License (CC BY 4.0)',

@@ -1,8 +1,8 @@
 {
   "name": "tep-slr-site",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Independent optical-domain validation of the Temporal Equivalence Principle using 11 years of Satellite Laser Ranging data from passive ILRS geodetic satellites.",
-  "comment": "Package version matches manuscript version v0.2 (Mombasa)",
+  "comment": "Package version matches manuscript version v0.3 (Mombasa)",
   "main": "index.html",
   "scripts": {
     "dev": "node dev-server.js",
@@ -22,7 +22,7 @@
     "geodesy",
     "relativity"
   ],
-  "author": "Matthew Lukin Smawfield <matthewsmawfield@gmail.com>",
+  "author": "Matthew Lukin Smawfield <matthew@mlsmawfield.com>",
   "license": "CC-BY-4.0",
   "repository": {
     "type": "git",
