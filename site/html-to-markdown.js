@@ -212,7 +212,7 @@ class HTMLToMarkdownConverter {
      */
     extractMetadata(html) {
         const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
-        const title = titleMatch ? titleMatch[1] : 'Global Time Echoes: Optical Validation of the Temporal Equivalence Principle via Satellite Laser Ranging';
+        const title = titleMatch ? titleMatch[1] : 'Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging';
         
         const authorMatch = html.match(/<meta[^>]*name=["']author["'][^>]*content=["']([^"']*)["']/i);
         const author = authorMatch ? authorMatch[1] : 'Matthew Lukin Smawfield';
@@ -227,7 +227,7 @@ class HTMLToMarkdownConverter {
         const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : 'First published: 30 December 2025';
         
         const doiMatch = html.match(/DOI:\s*<a[^>]*href=["']([^"]*)["'][^>]*>(.*?)<\/a>/i);
-        const doi = doiMatch ? doiMatch[2] : '10.5281/zenodo.18064582';
+        const doi = doiMatch ? doiMatch[2] : '10.5281/zenodo.18064581';
         
         return { title, author, version, date, doi };
     }

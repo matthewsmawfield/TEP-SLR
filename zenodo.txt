@@ -6,4 +6,11 @@ This signal is driven primarily by LAGEOS-2 ($p=0.0005$), which exhibits a stron
 
 To validate this finding with more robust statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This confirmed a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events.
 
-The detection of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
+The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
+
+Website: https://mlsmawfield.com/tep/slr/
+Code Availability: https://github.com/matthewsmawfield/TEP-SLR
+
+Keywords: temporal equivalence principle – Satellite Laser Ranging – SLR – LAGEOS – atomic clocks – modified gravity – spatial correlations
+
+Open Science Statement: This work is a preprint and is open to community review, ideas, and collaboration. All materials required for full reproducibility—including data downloads, analysis scripts, code, and manuscripts—are open-source. Feedback and contributions to further test these results are welcome.

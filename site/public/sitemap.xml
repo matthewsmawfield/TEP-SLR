@@ -5,13 +5,13 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://matthewsmawfield.github.io/TEP-SLR/</loc>
-        <lastmod>2026-04-24</lastmod>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://matthewsmawfield.github.io/TEP-SLR/public/docs/8-TEP-SLR-v0.2-Mombasa.pdf</loc>
-        <lastmod>2026-04-24</lastmod>
+        <loc>https://matthewsmawfield.github.io/TEP-SLR/public/docs/8-TEP-SLR-v0.3-Mombasa.pdf</loc>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
