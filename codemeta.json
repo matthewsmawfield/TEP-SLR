@@ -1,8 +1,11 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
-  "@type": "ScholarlyArticle",
-  "identifier": "10.5281/zenodo.18064582",
-  "name": "Temporal Equivalence Principle: Satellite Laser Ranging (SLR)",
+  "@type": [
+    "ScholarlyArticle",
+    "SoftwareSourceCode"
+  ],
+  "identifier": "10.5281/zenodo.18064581",
+  "name": "Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging",
   "description": "Independent optical-domain validation of the Temporal Equivalence Principle using 11 years of Satellite Laser Ranging data from passive ILRS geodetic satellites.",
   "author": [
     {
@@ -13,8 +16,8 @@
     }
   ],
   "datePublished": "2025-12-30",
-  "dateModified": "2026-04-24",
-  "version": "0.2 (Mombasa)",
+  "dateModified": "2026-04-29",
+  "version": "0.3 (Mombasa)",
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "codeRepository": "https://github.com/matthewsmawfield/TEP-SLR",
   "url": "https://mlsmawfield.com/tep/slr/",
@@ -25,5 +28,8 @@
     "relativity",
     "temporal equivalence principle",
     "TEP-SLR"
-  ]
+  ],
+  "developmentStatus": "active",
+  "runtimePlatform": "Python",
+  "applicationCategory": "Scientific/Research"
 }
