@@ -46,7 +46,7 @@ find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
 
 # Copy built site to temp directory
 echo "📋 Copying built site..."
-cp -r "$SCRIPT_DIR/site/dist"/* .
+shopt -s dotglob; cp -r "$SCRIPT_DIR/site/dist"/* .; shopt -u dotglob
 
 # Add .nojekyll to prevent Jekyll processing
 touch .nojekyll
