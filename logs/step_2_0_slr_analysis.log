@@ -1,0 +1,4 @@
+[01:09:41] [INFO] SLR analysis input root: /Users/matthewsmawfield/www/TEP-SLR/data/slr/npt_crd_v2/allsat
+[01:09:41] [INFO] Date range: 2024-01-01 to 2024-01-02
+[01:09:41] [INFO] Files selected: 30
+[01:09:41] [SUCCESS] Step 2.0 complete. Wrote: /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_0_slr_analysis_summary.json and /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_0_slr_daily_station_summary.csv

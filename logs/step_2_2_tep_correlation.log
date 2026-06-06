@@ -1,0 +1,32 @@
+[04:05:06] [INFO] Loaded 456 residual observations from step_2_1_slr_residuals.csv
+[04:05:06] [INFO] Station biases removed for correlation analysis
+[04:05:06] [INFO] Analyzing range-residual correlation...
+[04:05:06] [INFO] Analyzing inter-station correlation...
+[04:05:07] [INFO] Analyzing temporal structure...
+[04:05:07] [INFO] Analyzing satellite geometry...
+[04:05:07] [INFO] Computing TEP predictions...
+[04:05:07] [INFO] 
+============================================================
+[04:05:07] [INFO] TEP CORRELATION ANALYSIS SUMMARY
+[04:05:07] [INFO] ============================================================
+[04:05:07] [INFO] 
+Observations: 456 across 8 stations
+[04:05:07] [INFO] Range span: 3203 km
+[04:05:07] [INFO] Coherence lengths spanned: 0.76
+[04:05:07] [INFO] 
+Inter-station pairs analyzed: 5
+[04:05:07] [INFO]   7819-1824: baseline=1511km, r=-0.900*
+[04:05:07] [INFO]   7819-7396: baseline=10427km, r=0.997*
+[04:05:07] [INFO]   7819-7090: baseline=10991km, r=0.663*
+[04:05:07] [INFO]   7396-7090: baseline=9656km, r=-0.983*
+[04:05:07] [INFO]   7090-7821: baseline=11253km, r=0.119
+[04:05:07] [INFO] 
+Mean lag-1 autocorrelation: 0.873
+[04:05:07] [INFO] 
+TEP signal expectations:
+[04:05:07] [INFO]   GNSS signal: 0.2 ns -> 6.0 cm range equivalent
+[04:05:07] [INFO]   SLR precision: 16.0 cm
+[04:05:07] [INFO]   SNR: 0.37
+[04:05:07] [INFO]   Observations needed: ~7 for detection
+[04:05:07] [INFO] 
+[SUCCESS] Results saved to /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_2_tep_correlation.json

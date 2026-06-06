@@ -1,0 +1,115 @@
+[22:15:04] [INFO] Loaded 3704757 residual observations from step_2_1_slr_residuals.csv
+[22:15:04] [INFO] Loaded station coordinates: 186 stations from SLRF2020_POS+VEL_2025.05.13.snx.gz
+[22:15:04] [INFO] Filtered 3324632 outliers (|residual| > 1.0 m). Remaining: 380125
+[22:15:04] [INFO] Stations: [np.int64(1824), np.int64(1868), np.int64(1873), np.int64(1874), np.int64(1879), np.int64(1884), np.int64(1886), np.int64(1887), np.int64(1888), np.int64(1889), np.int64(1890), np.int64(1891), np.int64(1893), np.int64(7080), np.int64(7090), np.int64(7105), np.int64(7110), np.int64(7119), np.int64(7124), np.int64(7237), np.int64(7249), np.int64(7306), np.int64(7329), np.int64(7358), np.int64(7394), np.int64(7396), np.int64(7403), np.int64(7407), np.int64(7501), np.int64(7503), np.int64(7701), np.int64(7810), np.int64(7811), np.int64(7817), np.int64(7819), np.int64(7820), np.int64(7821), np.int64(7824), np.int64(7825), np.int64(7827), np.int64(7838), np.int64(7839), np.int64(7840), np.int64(7841), np.int64(7845), np.int64(7941), np.int64(8834)]
+[22:15:04] [INFO] Satellites: ['etalon1', 'etalon2', 'lageos1', 'lageos2']
+[22:15:04] [INFO] Stations with coords: 47/47
+[22:15:04] [INFO] Analyzing pass-based correlations...
+[22:15:35] [INFO]   Found 0 pass-pair observations
+[22:15:35] [INFO]   Computed correlations for 409 station pairs
+[22:15:35] [INFO] Computing inter-station irregular-sampling phase coherence (exploratory)...
+[22:15:35] [INFO] Computing inter-station irregular-sampling phase coherence (exploratory)...
+[22:15:35] [INFO] Computing inter-station irregular-sampling phase coherence (exploratory)...
+[22:16:04] [INFO] Computing inter-station irregular-sampling phase coherence (exploratory)...
+[22:16:34] [INFO] Computing inter-station MWPC...
+[22:16:34] [WARNING] Not enough stations with sufficient data for MWPC
+[22:16:34] [INFO] Computing inter-station MWPC...
+[22:16:34] [WARNING] Not enough stations with sufficient data for MWPC
+[22:16:34] [INFO] Computing inter-station MWPC...
+[22:16:34] [INFO]   Station 7838: 3016 resampled points
+[22:16:34] [INFO]   Station 7941: 9310 resampled points
+[22:16:35] [INFO]   Station 7237: 6767 resampled points
+[22:16:35] [INFO]   Station 7845: 5287 resampled points
+[22:16:35] [INFO]   Station 7396: 1703 resampled points
+[22:16:35] [INFO]   Station 7249: 1782 resampled points
+[22:16:35] [INFO]   Station 1888: 1590 resampled points
+[22:16:35] [INFO]   Station 1889: 1939 resampled points
+[22:16:36] [INFO]   Station 7825: 8799 resampled points
+[22:16:36] [INFO]   Station 8834: 5011 resampled points
+[22:16:36] [INFO]   Station 7110: 4720 resampled points
+[22:16:36] [INFO]   Station 7105: 8184 resampled points
+[22:16:36] [INFO]   Station 1874: 1105 resampled points
+[22:16:37] [INFO]   Station 7840: 9212 resampled points
+[22:16:37] [INFO]   Station 7821: 4652 resampled points
+[22:16:37] [INFO]   Station 7701: 554 resampled points
+[22:16:37] [INFO]   Station 7811: 1565 resampled points
+[22:16:37] [INFO]   Station 7839: 4021 resampled points
+[22:16:37] [INFO]   Station 7090: 19657 resampled points
+[22:16:38] [INFO]   Station 1873: 1484 resampled points
+[22:16:38] [INFO]   Station 1893: 1977 resampled points
+[22:16:38] [INFO]   Station 1891: 1658 resampled points
+[22:16:38] [INFO]   Station 7501: 2650 resampled points
+[22:16:38] [INFO]   Station 7503: 832 resampled points
+[22:16:39] [INFO]   Station 7119: 2929 resampled points
+[22:16:39] [INFO]   Station 7841: 5250 resampled points
+[22:16:39] [INFO]   Station 1890: 2144 resampled points
+[22:16:39] [INFO]   Station 7819: 1824 resampled points
+[22:16:39] [INFO]   Station 7394: 419 resampled points
+[22:16:39] [INFO]   Station 7827: 2704 resampled points
+[22:16:40] [INFO]   Station 7124: 1044 resampled points
+[22:16:40] [INFO]   Station 7403: 687 resampled points
+[22:16:40] [INFO]   Station 1884: 1338 resampled points
+[22:16:40] [INFO]   Station 7306: 434 resampled points
+[22:16:40] [INFO]   Station 1824: 692 resampled points
+[22:16:40] [INFO]   Station 7810: 9933 resampled points
+[22:16:41] [INFO]   Station 7817: 654 resampled points
+[22:16:41] [INFO]   Station 7824: 318 resampled points
+[22:16:41] [INFO]   Station 7329: 188 resampled points
+[22:16:41] [INFO]   Station 7080: 92 resampled points
+[22:16:41] [INFO]   Station 1868: 763 resampled points
+[22:16:41] [INFO]   Station 1886: 893 resampled points
+[22:16:41] [INFO]   Station 1887: 1113 resampled points
+[22:16:41] [INFO]   Station 1879: 1108 resampled points
+[22:16:41] [INFO]   Station 7407: 428 resampled points
+[22:16:41] [INFO]   Station 7358: 220 resampled points
+[22:20:25] [INFO]   Computed MWPC for 0 station pairs
+[22:20:32] [INFO] Computing inter-station MWPC...
+[22:20:33] [INFO]   Station 7090: 23477 resampled points
+[22:20:33] [INFO]   Station 7845: 5787 resampled points
+[22:20:33] [INFO]   Station 7941: 10023 resampled points
+[22:20:33] [INFO]   Station 7840: 8857 resampled points
+[22:20:33] [INFO]   Station 7396: 1650 resampled points
+[22:20:34] [INFO]   Station 7825: 9604 resampled points
+[22:20:34] [INFO]   Station 8834: 5479 resampled points
+[22:20:38] [INFO]   Station 7839: 3817 resampled points
+[22:20:38] [INFO]   Station 7821: 5053 resampled points
+[22:20:39] [INFO]   Station 7501: 3348 resampled points
+[22:20:39] [INFO]   Station 7119: 3984 resampled points
+[22:20:39] [INFO]   Station 1889: 1583 resampled points
+[22:20:39] [INFO]   Station 1891: 1152 resampled points
+[22:20:39] [INFO]   Station 7503: 801 resampled points
+[22:20:40] [INFO]   Station 7105: 7563 resampled points
+[22:20:40] [INFO]   Station 7237: 6426 resampled points
+[22:20:40] [INFO]   Station 7701: 452 resampled points
+[22:20:40] [INFO]   Station 7110: 4178 resampled points
+[22:20:40] [INFO]   Station 7841: 3817 resampled points
+[22:20:41] [INFO]   Station 7124: 1011 resampled points
+[22:20:41] [INFO]   Station 7394: 500 resampled points
+[22:20:41] [INFO]   Station 1893: 1518 resampled points
+[22:20:41] [INFO]   Station 1888: 913 resampled points
+[22:20:44] [INFO]   Station 7827: 2282 resampled points
+[22:20:44] [INFO]   Station 7249: 1497 resampled points
+[22:20:44] [INFO]   Station 1890: 1278 resampled points
+[22:20:45] [INFO]   Station 7811: 1273 resampled points
+[22:20:45] [INFO]   Station 7819: 1740 resampled points
+[22:20:45] [INFO]   Station 7838: 3570 resampled points
+[22:20:45] [INFO]   Station 1873: 1604 resampled points
+[22:20:46] [INFO]   Station 1884: 1006 resampled points
+[22:20:46] [INFO]   Station 7403: 508 resampled points
+[22:20:46] [INFO]   Station 1824: 662 resampled points
+[22:20:46] [INFO]   Station 7306: 384 resampled points
+[22:20:46] [INFO]   Station 1874: 877 resampled points
+[22:20:46] [INFO]   Station 7810: 8252 resampled points
+[22:20:46] [INFO]   Station 7817: 565 resampled points
+[22:20:47] [INFO]   Station 7824: 244 resampled points
+[22:20:47] [INFO]   Station 7329: 129 resampled points
+[22:20:47] [INFO]   Station 1887: 1079 resampled points
+[22:20:47] [INFO]   Station 7080: 103 resampled points
+[22:20:47] [INFO]   Station 1868: 660 resampled points
+[22:20:47] [INFO]   Station 1879: 679 resampled points
+[22:20:47] [INFO]   Station 7407: 596 resampled points
+[22:20:47] [INFO]   Station 1886: 894 resampled points
+[22:20:47] [INFO]   Station 7358: 243 resampled points
+[22:24:06] [INFO]   Computed MWPC for 0 station pairs
+[22:24:06] [INFO] Analyzing range-dependent coherence...
+[22:24:10] [INFO] Analyzing temporal coherence...

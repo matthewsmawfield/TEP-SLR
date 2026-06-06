@@ -1,0 +1,52 @@
+[05:47:02] [INFO] Loaded 12989 residual observations from step_2_1_slr_residuals.csv
+[05:47:02] [INFO] Stations: [np.int64(1824), np.int64(1873), np.int64(1874), np.int64(1884), np.int64(1888), np.int64(1889), np.int64(1890), np.int64(1891), np.int64(1893), np.int64(7090), np.int64(7105), np.int64(7110), np.int64(7119), np.int64(7237), np.int64(7249), np.int64(7396), np.int64(7501), np.int64(7701), np.int64(7810), np.int64(7811), np.int64(7819), np.int64(7821), np.int64(7825), np.int64(7827), np.int64(7838), np.int64(7839), np.int64(7840), np.int64(7841), np.int64(7845), np.int64(7941), np.int64(8834)]
+[05:47:02] [INFO] Satellites: ['lageos1', 'lageos2']
+[05:47:02] [INFO] Analyzing pass-based correlations...
+[05:47:02] [INFO]   Found 139 pass-pair observations
+[05:47:02] [INFO]   Computed correlations for 14 station pairs
+[05:47:02] [INFO] Computing inter-station MWPC...
+[05:47:02] [INFO]   Station 7819: 323 resampled points
+[05:47:02] [INFO]   Station 1824: 87 resampled points
+[05:47:02] [INFO]   Station 7396: 121 resampled points
+[05:47:02] [INFO]   Station 7237: 381 resampled points
+[05:47:02] [INFO]   Station 7090: 320 resampled points
+[05:47:02] [INFO]   Station 7821: 240 resampled points
+[05:47:02] [INFO]   Computed MWPC for 15 station pairs
+[05:47:02] [INFO] Analyzing range-dependent coherence...
+[05:47:02] [INFO] Analyzing temporal coherence...
+[05:47:02] [INFO] 
+======================================================================
+[05:47:02] [INFO] MAGNITUDE-WEIGHTED PHASE CORRELATION ANALYSIS
+[05:47:02] [INFO] ======================================================================
+[05:47:02] [INFO] 
+Methodology: Magnitude-Weighted Phase Correlation (TEP-GNSS-RINEX)
+[05:47:02] [INFO] TEP coherence length (GNSS): 4200.0 km
+[05:47:02] [INFO] TEP frequency band: 10-500 µHz
+[05:47:02] [INFO] 
+Inter-station pairs analyzed: 15
+[05:47:02] [INFO]   GRZL-SHIL: baseline=384km, coh=0.104, phase_align=0.688
+[05:47:02] [INFO]   GRZL-MATL: baseline=12434km, coh=0.141, phase_align=0.323
+[05:47:02] [INFO]   GRZL-CHAL: baseline=9469km, coh=0.168, phase_align=-0.144
+[05:47:02] [INFO]   GRZL-YARL: baseline=13034km, coh=0.233, phase_align=0.983
+[05:47:02] [INFO]   GRZL-ZIML: baseline=683km, coh=0.232, phase_align=0.676
+[05:47:02] [INFO]   SHIL-MATL: baseline=12720km, coh=0.000, phase_align=-0.695
+[05:47:02] [INFO]   SHIL-CHAL: baseline=9545km, coh=0.091, phase_align=-0.889
+[05:47:02] [INFO]   SHIL-YARL: baseline=13151km, coh=0.038, phase_align=-0.856
+[05:47:02] [INFO]   SHIL-ZIML: baseline=922km, coh=0.136, phase_align=-0.283
+[05:47:02] [INFO]   MATL-CHAL: baseline=5031km, coh=0.115, phase_align=0.499
+[05:47:02] [INFO]   MATL-YARL: baseline=10959km, coh=0.074, phase_align=0.875
+[05:47:02] [INFO]   MATL-ZIML: baseline=11797km, coh=0.337, phase_align=0.950
+[05:47:02] [INFO]   CHAL-YARL: baseline=15984km, coh=0.269, phase_align=-0.821
+[05:47:02] [INFO]   CHAL-ZIML: baseline=8811km, coh=0.193, phase_align=0.696
+[05:47:02] [INFO]   YARL-ZIML: baseline=13503km, coh=0.280, phase_align=-0.549
+[05:47:02] [INFO] 
+Fitted coherence length: 100 km
+[05:47:02] [INFO]   (GNSS prediction: 4200.0 km)
+[05:47:02] [INFO] 
+Fitted phase alignment λ: 17862 km
+[05:47:02] [INFO] 
+Consistency with TEP-GNSS:
+[05:47:02] [INFO]   phase_alignment_sigma_difference: 0.07278000139071128
+[05:47:02] [INFO]   phase_alignment_consistent_2sigma: True
+[05:47:02] [INFO] 
+[SUCCESS] Results saved to /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_3_mwpc_analysis.json

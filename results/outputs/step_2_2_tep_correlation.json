@@ -1,0 +1,185 @@
+{
+  "analysis_timestamp": "2025-12-26T01:05:06.956161+00:00",
+  "input_file": "/Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv",
+  "n_observations": 456,
+  "n_stations": 8,
+  "n_satellites": 2,
+  "tep_coherence_length_km": 4200.0,
+  "range_residual": {
+    "range_residual_correlation": {
+      "pearson_r": -0.43850949514611637,
+      "p_value": 7.485143549706498e-23,
+      "significant": "True"
+    },
+    "range_binned_stats": [
+      {
+        "range_km": 6152.77742924313,
+        "n_obs": 98,
+        "residual_mean_mm": -3550.91755103548,
+        "residual_std_mm": 1584.3614843664134
+      },
+      {
+        "range_km": 6735.863878710464,
+        "n_obs": 176,
+        "residual_mean_mm": -4232.4921583217065,
+        "residual_std_mm": 1287.3650773352247
+      },
+      {
+        "range_km": 7315.717003577091,
+        "n_obs": 83,
+        "residual_mean_mm": -4054.5218978413795,
+        "residual_std_mm": 1183.662420756593
+      },
+      {
+        "range_km": 7920.596114924951,
+        "n_obs": 47,
+        "residual_mean_mm": -5503.737705462473,
+        "residual_std_mm": 614.6890750570241
+      },
+      {
+        "range_km": 8668.93564868838,
+        "n_obs": 50,
+        "residual_mean_mm": -5665.804530996829,
+        "residual_std_mm": 787.8704624158453
+      }
+    ]
+  },
+  "interstation": {
+    "pairs": [
+      {
+        "station_1": 7819,
+        "station_2": 1824,
+        "baseline_km": 1511.3057841334096,
+        "n_matched": 8,
+        "correlation": -0.9004768823575144,
+        "p_value": 0.0022841166624942423
+      },
+      {
+        "station_1": 7819,
+        "station_2": 7396,
+        "baseline_km": 10427.024744742048,
+        "n_matched": 7,
+        "correlation": 0.9969381629671259,
+        "p_value": 9.947095472556263e-07
+      },
+      {
+        "station_1": 7819,
+        "station_2": 7090,
+        "baseline_km": 10990.50544864425,
+        "n_matched": 10,
+        "correlation": 0.6630744146572067,
+        "p_value": 0.03663009937339476
+      },
+      {
+        "station_1": 7396,
+        "station_2": 7090,
+        "baseline_km": 9656.458875470373,
+        "n_matched": 6,
+        "correlation": -0.9826173301602452,
+        "p_value": 0.0004506096666197278
+      },
+      {
+        "station_1": 7090,
+        "station_2": 7821,
+        "baseline_km": 11253.407203921566,
+        "n_matched": 16,
+        "correlation": 0.11872187176664473,
+        "p_value": 0.6614441675564249
+      }
+    ],
+    "baseline_correlation": [
+      {
+        "baseline_km": 1511.3057841334096,
+        "correlation": -0.9004768823575144
+      },
+      {
+        "baseline_km": 10427.024744742048,
+        "correlation": 0.9969381629671259
+      },
+      {
+        "baseline_km": 10990.50544864425,
+        "correlation": 0.6630744146572067
+      },
+      {
+        "baseline_km": 9656.458875470373,
+        "correlation": -0.9826173301602452
+      },
+      {
+        "baseline_km": 11253.407203921566,
+        "correlation": 0.11872187176664473
+      }
+    ],
+    "tep_fit": {
+      "lambda_km": 3178.8327598006713,
+      "amplitude": -0.9999999999999531,
+      "lambda_uncertainty_km": 14173.241672403927,
+      "predicted_lambda_km": 4200.0,
+      "consistent_with_tep": "True"
+    }
+  },
+  "temporal": {
+    "station_lag1_autocorr": {
+      "7819": 0.8069644880785737,
+      "7396": 0.9492521094561098,
+      "7237": 0.8615555578287644,
+      "7090": 0.7903676027270334,
+      "7821": 0.956795400726648
+    },
+    "mean_autocorr": 0.8729870317634258,
+    "pass_statistics": {
+      "n_passes": 50,
+      "within_pass_std_mean_cm": 18.01880763468456,
+      "between_pass_std_cm": 141.93140985663877,
+      "variance_ratio": 62.044735269277474
+    }
+  },
+  "satellite_geometry": {
+    "lageos1": {
+      "n_obs": 262,
+      "mean_range_km": 7239.293407253053,
+      "residual_mean_m": -4.186732619954628,
+      "residual_std_m": 1.5612649459421137,
+      "residual_rms_cm": 446.73229839822255
+    },
+    "lageos2": {
+      "n_obs": 194,
+      "mean_range_km": 6784.858609593645,
+      "residual_mean_m": -4.562194633460844,
+      "residual_std_m": 1.1771821158353717,
+      "residual_rms_cm": 471.08634586792346
+    },
+    "cross_satellite": {
+      "7819": {
+        "sat1": "lageos1",
+        "sat2": "lageos2",
+        "mean_diff_m": -0.9789673942253563
+      },
+      "7396": {
+        "sat1": "lageos1",
+        "sat2": "lageos2",
+        "mean_diff_m": -1.056132848452156
+      },
+      "7090": {
+        "sat1": "lageos1",
+        "sat2": "lageos2",
+        "mean_diff_m": -0.19126228281498303
+      }
+    }
+  },
+  "tep_predictions": {
+    "range_statistics": {
+      "min_km": 5776.950554904116,
+      "max_km": 8980.260259739787,
+      "mean_km": 7045.959304740059,
+      "range_span_km": 3203.3097048356713,
+      "coherence_lengths_spanned": 0.762692786865636
+    },
+    "tep_signal_expectations": {
+      "gnss_signal_ns": 0.2,
+      "equivalent_range_cm": 5.9958491600000015,
+      "slr_precision_cm": 16.0,
+      "signal_to_noise": 0.3747405725000001,
+      "observations_needed_for_detection": 7
+    }
+  }
+}

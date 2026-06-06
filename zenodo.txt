@@ -1,0 +1,23 @@
+Standard gravitational lensing analysis relies on the Isochrony Axiom—the implicit assumption that the observed image represents a synchronous spatial snapshot of the source. We demonstrate that for evolving sources, this approximation breaks down in the presence of conformal metric couplings, creating a "temporal composite" image. This projects temporal depth onto the spatial plane, generating a Temporal Jacobian contribution that is mathematically indistinguishable from gravitational shear—a phenomenon defined here as Phantom Mass.
+
+It is demonstrated that GW170817 does not constrain the conformal component of this coupling; because photons and gravitational waves traverse the same path, conformal time dilation is common-mode and cancels in differential measurements. While GW170817 constrains disformal propagation speeds, it leaves the conformal "rate of time" unconstrained. We demonstrate that conformal gradients can reproduce specific aspects of dark matter phenomenology—particularly coherent lensing shear and time-domain signatures—subject to Vainshtein screening constraints that ensure consistency with Solar System tests. The dark sector is thus reinterpreted not as an invisible substance, but as the shadow of temporal transport.
+
+Key Innovations:
+1. **The Isochrony Axiom**: Identifies the assumption of simultaneity as the source of the "dark matter" inference.
+2. **Temporal Shear Tensor**: Derives a new observable with **non-zero curl**, predicting image rotation forbidden in standard lensing.
+3. **Chronometric Lensing**: Proposes a new observational domain focused on millisecond-scale arrival-time residuals.
+4. **Variability Bias**: Predicts that inferred dark matter mass correlates with source variability (a falsifiable "smoking gun").
+5. **Convergence of Evidence**: Demonstrates that existing cosmological tensions (S₈, H₀, flux ratio anomalies) converge on TEP-GL phenomenology.
+
+Preliminary Observational Support:
+- FRB 20190520B exhibits a DM Excess (~900 pc cm⁻³) consistent with achromatic temporal delay.
+- FRB 20190308C identified as a lensed candidate suitable for temporal shear measurement.
+- Multiple FRBs (20181117C, 20210912B, 20200405A, 20201124A) show millisecond-scale residuals matching TEP-GL predictions.
+
+This work provides a rigorous, falsifiable framework where dark matter is modeled as a gauge-dependent artifact of unmodeled time dilation. The "Screening Cliff" objection is addressed via Vainshtein screening, which is shown to be over-efficient rather than fine-tuned.
+
+Related Work:
+- TEP Theory: Smawfield, M. L. (2025). Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed (v0.6 (Jakarta)). Zenodo. https://doi.org/10.5281/zenodo.16921911
+
+Website: https://matthewsmawfield.github.io/TEP-GL/
+Code Availability: https://github.com/matthewsmawfield/TEP-GL

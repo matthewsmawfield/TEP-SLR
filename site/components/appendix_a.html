@@ -1,0 +1,17 @@
+<h2>Appendix A: Mathematical Derivations</h2>
+
+<h3>A.1 Proof of Null Cone Invariance in the Conformal Limit</h3>
+
+<p><strong>Proposition:</strong> If two metrics are conformally related by \(\tilde{g}_{\mu\nu} = A(\phi) g_{\mu\nu}\), they share the same null geodesics as unparameterized curves.</p>
+
+<p><strong>Proof:</strong><br>
+Let \(k^\mu = dx^\mu / d\lambda\) be a null vector in \(g_{\mu\nu}\), satisfying \(g_{\mu\nu}k^\mu k^\nu = 0\) and the geodesic equation \(k^\nu \nabla_\nu k^\mu = 0\) (where \(\nabla\) is the Levi-Civita connection of \(g\)).<br>
+In the metric \(\tilde{g}_{\mu\nu}\), the null condition holds immediately:</p>
+<div class="equation">$$\tilde{g}_{\mu\nu} k^\mu k^\nu = A g_{\mu\nu} k^\mu k^\nu = 0$$</div>
+<p>The connection coefficients \(\tilde{\Gamma}^\lambda_{\mu\nu}\) for \(\tilde{g}\) are related to \(\Gamma^\lambda_{\mu\nu}\) by:</p>
+<div class="equation">$$\tilde{\Gamma}^\lambda_{\mu\nu} = \Gamma^\lambda_{\mu\nu} + \frac{1}{2}(\delta^\lambda_\mu \partial_\nu \ln A + \delta^\lambda_\nu \partial_\mu \ln A - g_{\mu\nu} g^{\lambda\sigma} \partial_\sigma \ln A)$$</div>
+<p>Substituting this into the geodesic equation for \(\tilde{g}\):</p>
+<div class="equation">$$k^\nu \tilde{\nabla}_\nu k^\mu = k^\nu \nabla_\nu k^\mu + \frac{1}{2}(2 k^\mu k^\nu \partial_\nu \ln A - g_{\nu\sigma} k^\nu k^\sigma \dots)$$</div>
+<p>Since \(k\) is null (\(g_{\nu\sigma}k^\nu k^\sigma = 0\)) and \(k^\nu \nabla_\nu k^\mu = 0\), this yields:</p>
+<div class="equation">$$k^\nu \tilde{\nabla}_\nu k^\mu = (k^\nu \partial_\nu \ln A) k^\mu$$</div>
+<p>This is the geodesic equation with a non-affine parameterization (\(Dk/d\lambda \propto k\)). Thus, the curve is a geodesic of \(\tilde{g}\), differing only by the parameterization (the clock rate). \(\square\)</p>

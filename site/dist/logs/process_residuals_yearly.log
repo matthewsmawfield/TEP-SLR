@@ -1,0 +1,52 @@
+[23:07:22] [INFO] ============================================================
+[23:07:22] [INFO] SLR Residuals Year-by-Year Processing
+[23:07:22] [INFO] ============================================================
+[23:07:22] [INFO] Years to process: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+[23:07:22] [INFO] Output directory: /Users/matthewsmawfield/www/TEP-SLR/results/outputs/residuals_yearly
+[23:07:22] [INFO] Processing 2016
+[23:08:35] [SUCCESS] Saved residuals_2016.csv (81.2 MB)
+[23:08:35] [INFO] Completed 2016 in 73.0s
+[23:08:35] [INFO] Processing 2017
+[23:10:04] [SUCCESS] Saved residuals_2017.csv (110.5 MB)
+[23:10:04] [INFO] Completed 2017 in 89.1s
+[23:10:04] [INFO] Processing 2018
+[23:11:31] [SUCCESS] Saved residuals_2018.csv (108.9 MB)
+[23:11:31] [INFO] Completed 2018 in 86.7s
+[23:11:31] [INFO] Processing 2019
+[23:13:35] [SUCCESS] Saved residuals_2019.csv (147.1 MB)
+[23:13:35] [INFO] Completed 2019 in 124.5s
+[23:13:35] [INFO] Processing 2020
+[23:15:16] [SUCCESS] Saved residuals_2020.csv (106.7 MB)
+[23:15:16] [INFO] Completed 2020 in 100.9s
+[23:15:16] [INFO] Processing 2021
+[23:16:31] [SUCCESS] Saved residuals_2021.csv (89.8 MB)
+[23:16:31] [INFO] Completed 2021 in 75.1s
+[23:16:31] [INFO] Processing 2022
+[23:17:16] [SUCCESS] Saved residuals_2022.csv (35.6 MB)
+[23:17:16] [INFO] Completed 2022 in 44.7s
+[23:17:16] [INFO] Processing 2023
+[23:18:34] [SUCCESS] Saved residuals_2023.csv (88.0 MB)
+[23:18:34] [INFO] Completed 2023 in 78.5s
+[23:18:34] [INFO] Processing 2024
+[23:19:53] [SUCCESS] Saved residuals_2024.csv (85.4 MB)
+[23:19:53] [INFO] Completed 2024 in 78.1s
+[23:19:53] [INFO] Processing 2025
+[23:21:09] [SUCCESS] Saved residuals_2025.csv (92.2 MB)
+[23:21:09] [INFO] Completed 2025 in 76.9s
+[23:21:09] [INFO] Merging yearly CSVs
+[23:21:10] [INFO] Found 10 yearly files
+[23:21:10] [INFO] Merging to step_2_1_slr_residuals.csv...
+[23:21:10] [PROCESS] Reading residuals_2016.csv...
+[23:21:12] [PROCESS] Reading residuals_2017.csv...
+[23:21:15] [PROCESS] Reading residuals_2018.csv...
+[23:21:18] [PROCESS] Reading residuals_2019.csv...
+[23:21:21] [PROCESS] Reading residuals_2020.csv...
+[23:21:24] [PROCESS] Reading residuals_2021.csv...
+[23:21:27] [PROCESS] Reading residuals_2022.csv...
+[23:21:28] [PROCESS] Reading residuals_2023.csv...
+[23:21:30] [PROCESS] Reading residuals_2024.csv...
+[23:21:32] [PROCESS] Reading residuals_2025.csv...
+[23:21:35] [SUCCESS] Master CSV created: 925.2 MB, 3,502,325 rows
+[23:21:35] [INFO] Verifying merged data...
+[23:21:35] [INFO] Master file exists and is populated.
+[23:21:35] [SUCCESS] All residuals processed and merged

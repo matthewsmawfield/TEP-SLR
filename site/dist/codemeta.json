@@ -1,0 +1,29 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "ScholarlyArticle",
+  "identifier": "10.5281/zenodo.18064582",
+  "name": "Temporal Equivalence Principle: Satellite Laser Ranging (SLR)",
+  "description": "Satellite Laser Ranging (SLR) analysis within the Temporal Equivalence Principle (TEP) research program.",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Matthew Lukin",
+      "familyName": "Smawfield",
+      "@id": "https://orcid.org/0009-0003-8219-3159"
+    }
+  ],
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30",
+  "version": "0.1 (Mombasa)",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "codeRepository": "https://github.com/matthewsmawfield/TEP-SLR",
+  "url": "https://mlsmawfield.com/tep/slr/",
+  "keywords": [
+    "satellite laser ranging",
+    "SLR",
+    "geodesy",
+    "relativity",
+    "temporal equivalence principle",
+    "TEP-SLR"
+  ]
+}

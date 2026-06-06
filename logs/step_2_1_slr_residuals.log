@@ -1,0 +1,12 @@
+[05:46:43] [INFO] NP2 files selected: 765
+[05:46:50] [INFO] Stations loaded from SLRF2020: 186
+[05:46:50] [INFO] Station code mapping built: 331 entries
+[05:46:52] [INFO] Satellite filter applied: ['lageos1', 'lageos2'] -> 26299/437249 observations retained
+[05:46:52] [INFO] Fetching SP3 precise orbit files for 2 satellites in parallel...
+[05:46:52] [INFO] SP3 auto-detected satellite ID: L51
+[05:46:52] [INFO] SP3 auto-detected satellite ID: L52
+[05:46:52] [INFO] SP3 orbit found (cached): ilrsb.orb.lageos2.240106.v81.sp3.gz (covers 2023-12-31 to 2024-01-06)
+[05:46:52] [INFO] SP3 orbit found (cached): ilrsb.orb.lageos1.240106.v81.sp3.gz (covers 2023-12-31 to 2024-01-06)
+[05:46:52] [INFO] SP3 loaded: lageos2 (ID=L52) -> ilrsb.orb.lageos2.240106.v81.sp3.gz
+[05:46:52] [INFO] SP3 loaded: lageos1 (ID=L51) -> ilrsb.orb.lageos1.240106.v81.sp3.gz
+[05:46:54] [SUCCESS] Step 2.1 complete. Wrote: /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv and /Users/matthewsmawfield/www/TEP-SLR/results/outputs/step_2_1_slr_residuals_summary.json

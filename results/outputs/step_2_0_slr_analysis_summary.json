@@ -1,0 +1,54 @@
+{
+  "spec": {
+    "data_type": "npt",
+    "crd_version": "crd_v2",
+    "source": "allsat",
+    "satellite": null
+  },
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2024-01-02"
+  },
+  "counts": {
+    "files": 30,
+    "observations_11": 12876,
+    "stations": 7,
+    "satellites": 91
+  },
+  "top_stations_by_obs": {
+    "std": 4217,
+    "new": 3957,
+    "0902": 3002,
+    "shao": 682,
+    "JFNL": 660,
+    "cfg1": 212,
+    "sys1": 146
+  },
+  "top_satellites_by_obs": {
+    "sentinel6a": 1006,
+    "ajisai": 895,
+    "beaconc": 848,
+    "jason3": 785,
+    "swarmb": 626,
+    "paz": 568,
+    "starlette": 502,
+    "cryosat2": 419,
+    "swot": 406,
+    "kompsat5": 401,
+    "terrasarx": 397,
+    "lares": 376,
+    "hy2d": 355,
+    "lageos1": 348,
+    "stella": 338,
+    "sentinel3a": 334,
+    "tandemx": 318,
+    "icesat2": 300,
+    "gracefo1": 284,
+    "saral": 283,
+    "geoik2": 260,
+    "gracefo2": 254,
+    "lageos2": 242,
+    "lares2": 241,
+    "larets": 214
+  }
+}
