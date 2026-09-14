@@ -6,27 +6,25 @@
 ![TEP-SLR: Satellite Laser Ranging](site/public/twitter-image.jpg)
 
 **Author:** Matthew Lukin Smawfield  
-**Version:** v0.3 (Mombasa)  
-**Date:** 30 December 2025 · Last updated: 29 April 2026  
+**Version:** v0.4 (Mombasa)  
+**First published:** 30 December 2025 · **Last updated:** 14 September 2026
 **Status:** Preprint  
 **DOI:** [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581)  
 **Website:** [https://mlsmawfield.com/tep/slr/](https://mlsmawfield.com/tep/slr/)
 
 ## Abstract
 
-An independent, optical-domain test of the Temporal Equivalence Principle (TEP) is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2 and Etalon-1/2). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
+An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
 
-Under strict 5-minute contemporaneous binning, distance-binned mean pass-correlations fluctuate with high variance. However, widening the overlap window to 15 minutes (thereby increasing multi-station overlap) reveals statistically significant, distance-structured inter-station correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.; $p=0.0040$) under a family-wise circular-shift test.
+Frequency-domain analysis reveals a significant concentration of power within the predicted TEP band (10–500 μHz): the station-averaged TEP-band mean PSD exceeds the broadband floor (f>1 mHz) by 14.12× (95% CI: 13.55–14.67; N=46 stations), a result stable across residual thresholds (14.86× at 0.3 m; 11.91× at 1.0 m). A range-dependent lag-1 coherence diagnostic shows that longer signal paths (≳8,000 km) accumulate greater decoherence than shorter paths (≲6,500 km), with the long-minus-short contrast Δ=−0.208 (95% CI: −0.418 to 0.000) at the 0.5 m threshold.
 
-This signal is driven primarily by LAGEOS-2 ($p=0.0005$), which exhibits a strong negative correlation ($r \approx -0.59$) in the 5,000–7,500 km distance bin, whereas LAGEOS-1 remains consistent with the null hypothesis ($p \approx 0.93$). Although observation counts and temporal overlap are comparable, this asymmetry likely reflects a combination of orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number statistics in the critical distance bin.
-
-To validate this finding with more robust statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This confirmed a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events.
+Inter-station pass-correlation analysis under 15-minute contemporaneous binning yields a nominally significant Fisher-combined result (χ²=16.45, 4 d.o.f.; p=0.0025). However, this signal concentrates in three LAGEOS-2 station pairs at 5,000–7,500 km, one of which contributes a correlation of r=−0.910 from only three passes (p=0.273, not individually significant). When restricted to pairs with ≥10 passes, both satellites converge to near-zero mean correlation. A daily-aggregation analysis (N=190 pairs) yields p_FWER=0.020, reaching conventional significance, with the most negative correlation at 3000–5000 km baselines (r̄=−0.074). The spectral concentration, range-dependent coherence, and daily-aggregation signal provide three independent lines of evidence for a structured, low-frequency process; the pass-correlation test remains limited by network sparsity (median 7 passes per pair).
 
 The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
 
 ## Key Findings
 
-Analysis of 11 years of SLR data from passive ILRS satellites detects statistically significant distance-structured correlations (Fisher χ² = 15.35, p = 0.0040). The signal is driven primarily by LAGEOS-2 (prograde orbit, p = 0.0005), while LAGEOS-1 (retrograde orbit) shows null results—an asymmetry consistent with velocity-dependent effects. Daily aggregation confirms a persistent correlation at 500–1,000 km (p = 0.017). Critically, SLR uses passive retroreflectors with no active clocks or electronics, eliminating receiver artifacts as an explanation. This technology-orthogonal confirmation in the optical domain strengthens the case that GNSS findings reflect genuine physical phenomena rather than instrumentation effects.
+Analysis of 11 years of SLR data from passive ILRS satellites detects a spectral concentration of 14.12× in the TEP band (95% CI: 13.55–14.67), a range-dependent lag-1 coherence contrast of Δ=−0.208 at the 0.5 m threshold, and a statistically significant daily-aggregation signal (p_FWER=0.020) with the most negative correlation at 3000–5000 km baselines. A nominally significant pass-correlation result (Fisher χ²=16.45, p=0.0025) rests on three LAGEOS-2 pairs and is not robust to sample-size restrictions. Critically, SLR uses passive retroreflectors with no active clocks or electronics, eliminating receiver artifacts as an explanation. This technology-orthogonal confirmation in the optical domain strengthens the case that GNSS findings reflect genuine physical phenomena rather than instrumentation effects.
 
 ---
 
@@ -41,14 +39,14 @@ Analysis of 11 years of SLR data from passive ILRS satellites detects statistica
 | **Paper 4** | [TEP-GL](https://github.com/matthewsmawfield/TEP-GL) | Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations | [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) |
 | **Paper 5** | [TEP-GTE](https://github.com/matthewsmawfield/TEP-GTE) | Global Time Echoes: Empirical Synthesis | [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) |
 | **Paper 6** | [TEP-UCD](https://github.com/matthewsmawfield/TEP-UCD) | Universal Critical Density: Cross-Scale Consistency of ρ_T | [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) |
-| **Paper 7** | [TEP-RBH](https://github.com/matthewsmawfield/TEP-RBH) | The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate | [10.5281/zenodo.18059251](https://doi.org/10.5281/zenodo.18059251) |
+| **Paper 7** | [TEP-RBH](https://github.com/matthewsmawfield/TEP-RBH) | The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate | [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) |
 | **Paper 8** | **TEP-SLR** (This repo) | Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging | [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) |
 | **Paper 9** | [TEP-EXP](https://github.com/matthewsmawfield/TEP-EXP) | What Do Precision Tests of General Relativity Actually Measure? | [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) |
 | **Paper 10** | [TEP-COS](https://github.com/matthewsmawfield/TEP-COS) | The Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars | [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) |
 | **Paper 11** | [TEP-H0](https://github.com/matthewsmawfield/TEP-H0) | The Cepheid Bias: Resolving the Hubble Tension | [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) |
 | **Paper 12** | [TEP-JWST](https://github.com/matthewsmawfield/TEP-JWST) | The Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies | [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) |
 | **Paper 13** | [TEP-WB](https://github.com/matthewsmawfield/TEP-WB) | The Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries | [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) |
-| **Paper 15** | [TEP-EFA](https://github.com/matthewsmawfield/TEP-EFA) | Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
+| **Paper 15** | [TEP-EFA](https://github.com/matthewsmawfield/TEP-EFA) | Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly | [10.5281/zenodo.19454862](https://doi.org/10.5281/zenodo.19454862) |
 | **Paper 16** | [TEP-J0437](https://github.com/matthewsmawfield/TEP-J0437) | Synchronization Holonomy in Pulsar Scintillation | [10.5281/zenodo.19454620](https://doi.org/10.5281/zenodo.19454620) |
 | **Paper 17** | [TEP-LLR](https://github.com/matthewsmawfield/TEP-LLR) | Lunar Laser Ranging and the Nordtvedt Effect | [10.5281/zenodo.19446029](https://doi.org/10.5281/zenodo.19446029) |
 
@@ -160,7 +158,7 @@ If you use this code or data, please cite:
   journal={Zenodo},
   year={2025},
   doi={10.5281/zenodo.18064581},
-  note={v0.3 (Mombasa)}
+  note={v0.4 (Mombasa)}
 }
 ```
 

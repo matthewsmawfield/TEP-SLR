@@ -1,0 +1,10 @@
+[06:30:12] [INFO] Reading merged dataset: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv
+[06:30:22] [INFO] Loaded 4,647,088 observations.
+[06:30:22] [INFO] Excluded 2,817,796 outliers (> 5m). Valid stats based on 1,829,292 obs.
+[06:30:22] [PROCESS] Computing station statistics...
+[06:30:22] [PROCESS] Computing satellite statistics...
+[06:30:22] [INFO] Saving summary to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals_summary.json
+[06:30:22] [PROCESS] Generating diagnostic plots for full dataset...
+[06:30:23] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_residual_histogram_full.png
+[06:30:23] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_residual_vs_elevation_full.png
+[06:30:23] [SUCCESS] Summary generation complete.

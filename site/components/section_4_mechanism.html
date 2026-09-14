@@ -7,7 +7,7 @@
     <p>The TEP bi-metric geometry $\tilde{g}_{\mu\nu} = A^2(\phi) g_{\mu\nu} + B(\phi) \nabla_\mu\phi \nabla_\nu\phi$ contains two physically distinct coupling mechanisms:</p>
 
     <ul>
-        <li><strong>Conformal Coupling $A(\phi)$:</strong> Modulates clock rates universally. Creates spatial correlations in timing residuals with length scale $\lambda \sim m_\phi^{-1}$. <em>This is the sector probed in GNSS and SLR analyses.</em></li>
+        <li><strong>Conformal Coupling $A(\phi)$:</strong> Modulates clock rates universally. Creates spatial correlations in timing residuals with the TEP saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth. <em>This is the sector probed in GNSS and SLR analyses.</em></li>
         
         <li><strong>Disformal Coupling $B(\phi)$:</strong> Tilts photon light cones in directions transverse to $\nabla\phi$. Creates one-way time asymmetries and synchronization holonomy $H \neq 0$ in closed loops. <em>This requires closed-loop time transfer to test.</em></li>
     </ul>
@@ -34,7 +34,24 @@
     </ul>
 
     <h3>4.3 Experimental Design Considerations</h3>
-    <p>Monte Carlo simulations (see supplementary materials) demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.</p>
+    <p>Monte Carlo simulations demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.</p>
+
+    <figure>
+        <img
+            src="figures/sim_antiecho_proof.png"
+            alt="Anti-Echo Simulation: Sign Inversion in Dynamic Orbit Fit Residuals"
+            style="max-width: 80%"
+        />
+        <figcaption>
+            <strong>Figure 4.1:</strong> Monte Carlo simulation of the
+            Anti-Echo mechanism. A spatially correlated TEP delay field
+            ($\lambda = 4{,}200$ km, 50 stations, 100 realizations) is
+            processed through a dynamic orbit-fit estimator that absorbs the
+            monopole component. The resulting post-fit residual correlations
+            exhibit sign inversion at regional baselines, consistent with the
+            predicted anti-echo signature of the disformal sector.
+        </figcaption>
+    </figure>
 
     <h3>4.4 Experimental Requirements for Testing the Anti-Echo</h3>
     <p>Detecting the "Anti-Echo" in real SLR data requires:</p>

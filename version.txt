@@ -1,7 +1,10 @@
-v0.3 (Mombasa) - TEP Theory Alignment and Terminology Updates
+v0.4 (Mombasa) — 14 September 2026 — Frequency-domain analysis, AR(1) null test, and pressure control
 
-- Aligned conformal sector notation with TEP v0.8: updated coupling factor $A(\phi) = \exp(\beta\phi/M_{\text{Pl}})$ and proper-time relation
-- Refined constraint status language: conformal sector constraints (PPN, screening, clock-comparison) vs. disformal sector (GW170817 bounds)
-- Introduced Temporal Topology concept for spatial profile scale of scalar field
-- Standardized correlation length notation to $\lambda_T$ across manuscript
-- Updated synthesis and conclusion sections with improved pedagogical flow and theory consistency
+- Added LARES satellite to analysis catalog (LAGEOS-1/2, Etalon-1/2, and LARES)
+- Added frequency-domain analysis: TEP-band mean PSD exceeds broadband floor by 14.12× (95% CI: 13.55–14.67; N=46 stations)
+- Added station-specific AR(1) red-noise null test: 500 surrogates per station, 35/46 reject null (Fisher p≈10⁻¹⁵⁴, binomial p≈2×10⁻³⁶)
+- Added NCEP/NCAR Reanalysis surface pressure control: 4/34 significant (binomial p=0.088), pressure effect 12% of residual RMS
+- Added range-dependent lag-1 coherence diagnostic: longer paths (≳8,000 km) show greater decoherence than shorter paths (≲6,500 km)
+- Updated pass-correlation analysis: Fisher χ²=16.45 (p=0.0025), signal concentrates in three LAGEOS-2 pairs
+- Added daily-aggregation analysis: N=190 pairs, p_FWER=0.020, most negative correlation at 3000–5000 km baselines
+- Updated runtime estimate to 2–4 hours (including data download)

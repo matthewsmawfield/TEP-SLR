@@ -137,12 +137,16 @@ def plot_enhanced_phase_alignment():
     
     with open(json_path) as f:
         data = json.load(f)
-    
-    pairs = data['interstation_mwpc'].get('pairs', [])
+
+    # The inter-station phase alignment pairs are stored under
+    # interstation_irregular_phase (the irregular-sampling MWPC method).
+    # Fall back to interstation_mwpc for older runs that populated it.
+    src = data.get('interstation_irregular_phase') or data.get('interstation_mwpc') or {}
+    pairs = src.get('pairs', [])
     if not pairs:
         logger.error("No station pairs found in MWPC data")
         return False
-    
+
     df_pairs = pd.DataFrame(pairs)
     logger.info(f"Loaded {len(df_pairs)} station pairs")
     
@@ -175,7 +179,7 @@ def plot_enhanced_phase_alignment():
                 capsize=5, capthick=2, label='Binned mean ± SE', zorder=4)
     
     # 4. Plot fit curves
-    fit = data['interstation_mwpc'].get('fit_results', {}).get('phase_alignment')
+    fit = src.get('fit_results', {}).get('phase_alignment')
     if fit:
         dist_range = np.linspace(0, 18000, 200)
         y_fit = exponential_decay(dist_range, fit['amplitude'], fit['lambda_km'], fit['offset'])
@@ -233,20 +237,23 @@ def plot_elevation_coherence():
         return False
     
     df_rc = pd.DataFrame(range_coherence)
+    # The MWPC analysis stores the per-bin autocorrelation as
+    # "autocorrelation_mean"; older runs used "autocorrelation". Drop bins
+    # where the autocorrelation could not be computed (null/NaN).
+    if 'autocorrelation_mean' in df_rc.columns and 'autocorrelation' not in df_rc.columns:
+        df_rc = df_rc.rename(columns={'autocorrelation_mean': 'autocorrelation'})
+    df_rc = df_rc.dropna(subset=['autocorrelation']).reset_index(drop=True)
     logger.info(f"Loaded {len(df_rc)} range bins from MWPC analysis")
     
     # Convert range to approximate elevation angle
     # For LAGEOS at ~12,270 km altitude, range varies from ~6000 km (zenith) to ~13000 km (horizon)
-    # Approximate: elevation ≈ arcsin((h + R_earth) / range) where h=12270km, R=6371km
+    # Using spherical geometry: elevation from range and satellite altitude
     LAGEOS_ALT = 12270  # km
     R_EARTH = 6371  # km
     df_rc['elevation_approx'] = np.degrees(np.arcsin(
         np.clip((LAGEOS_ALT + R_EARTH - df_rc['range_km']) / (2 * LAGEOS_ALT), -1, 1)
     ))
-    # Simpler approximation: map range linearly to elevation
-    # 6000 km → ~90°, 9000 km → ~10°
-    df_rc['elevation_approx'] = 90 - (df_rc['range_km'] - 6000) / (9000 - 6000) * 80
-    df_rc['elevation_approx'] = df_rc['elevation_approx'].clip(10, 90)
+    df_rc['elevation_approx'] = df_rc['elevation_approx'].clip(0, 90)
     
     # Create figure with dual x-axis (elevation and range)
     fig, ax1 = plt.subplots(figsize=(10, 6))

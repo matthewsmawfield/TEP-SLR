@@ -1,0 +1,731 @@
+============================================================
+TEP-SLR Analysis Pipeline (2015-01-01 to 2025-12-31)
+============================================================
+[+] SLR observation data found for full date range.
+
+[Step 2.1] Processing Residuals (2015-2025)...
+[0;37m[05:28:54] [INFO] ============================================================[0m
+[0;37m[05:28:54] [INFO] SLR Residuals Year-by-Year Processing[0m
+[0;37m[05:28:54] [INFO] ============================================================[0m
+[0;37m[05:28:54] [INFO] Years to process: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025][0m
+[0;37m[05:28:54] [INFO] Output directory: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/residuals_yearly[0m
+[0;37m[05:28:54] [INFO] Processing 2015[0m
+[0;37m[05:28:55] [INFO] Found 0 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd_v2/allsat[0m
+[0;37m[05:28:56] [INFO] Found 8575 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd/allsat[0m
+[0;37m[05:28:56] [INFO] NP2 files selected: 8575[0m
+[0;37m[05:28:59] [INFO] Stations loaded from SLRF2020: 186[0m
+[0;37m[05:28:59] [INFO] Station code mapping built: 331 entries[0m
+[0;37m[05:29:23] [INFO] Satellite filter applied: ['lageos1', 'lageos2', 'etalon1', 'etalon2', 'lares'] -> 506595/3233051 observations retained[0m
+[0;37m[05:29:23] [INFO] Fetching SP3 precise orbit files for 5 satellites in parallel...[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:29:23] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:29:23] [INFO] SP3 orbit found (cached): jcet.orb.lageos1.150328.v70.sp3.gz (covers 2015-03-22 to 2015-03-28)[0m
+[0;37m[05:29:23] [INFO] SP3 loaded: lageos1 (ID=L51) -> jcet.orb.lageos1.150328.v70.sp3.gz[0m
+[0;37m[05:31:51] [INFO] SP3 downloaded 1 weekly files for etalon1[0m
+[0;37m[05:31:51] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:31:51] [INFO] SP3 orbit found: jcet.orb.etalon1.150328.v70.sp3.gz (covers 2015-03-22 to 2015-03-28)[0m
+[0;37m[05:31:51] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:31:51] [INFO] SP3 loaded: etalon1 (ID=None) -> jcet.orb.etalon1.150328.v70.sp3.gz[0m
+[0;37m[05:32:03] [INFO] SP3 downloaded 1 weekly files for etalon2[0m
+[0;37m[05:32:03] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:32:03] [INFO] SP3 orbit found: jcet.orb.etalon2.150328.v70.sp3.gz (covers 2015-03-22 to 2015-03-28)[0m
+[0;37m[05:32:03] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:32:03] [INFO] SP3 loaded: etalon2 (ID=None) -> jcet.orb.etalon2.150328.v70.sp3.gz[0m
+[1;33m[05:32:03] [WARNING] No SP3 orbit found for lares covering 2015-01-01 to 2015-12-31[0m
+[1;33m[05:32:03] [WARNING] SP3 orbit not found for lares[0m
+[0;37m[05:32:05] [INFO] SP3 downloaded 1 weekly files for lageos2[0m
+[0;37m[05:32:05] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:05] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:05] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:05] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:05] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:05] [INFO] SP3 orbit found: jcet.orb.lageos2.150328.v70.sp3.gz (covers 2015-03-22 to 2015-03-28)[0m
+[0;37m[05:32:05] [INFO] SP3 loaded: lageos2 (ID=L52) -> jcet.orb.lageos2.150328.v70.sp3.gz[0m
+[1;32m[05:32:25] [SUCCESS] Step 2.1 complete. Wrote: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv and /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals_summary.json[0m
+[1;32m[05:32:25] [SUCCESS] Saved residuals_2015.csv (16.8 MB)[0m
+[0;37m[05:32:25] [INFO] Completed 2015 in 211.3s[0m
+[0;37m[05:32:25] [INFO] Processing 2016[0m
+[0;37m[05:32:26] [INFO] Found 0 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd_v2/allsat[0m
+[0;37m[05:32:27] [INFO] Found 8512 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd/allsat[0m
+[0;37m[05:32:27] [INFO] NP2 files selected: 8512[0m
+[0;37m[05:32:30] [INFO] Stations loaded from SLRF2020: 186[0m
+[0;37m[05:32:30] [INFO] Station code mapping built: 331 entries[0m
+[0;37m[05:32:58] [INFO] Satellite filter applied: ['lageos1', 'lageos2', 'etalon1', 'etalon2', 'lares'] -> 532955/3610261 observations retained[0m
+[0;37m[05:32:58] [INFO] Fetching SP3 precise orbit files for 5 satellites in parallel...[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:32:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:37] [INFO] SP3 downloaded 47 weekly files for etalon2[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 orbit: merging 46 files for etalon2[0m
+[0;37m[05:34:37] [INFO]   asi.orb.etalon2.160220.v36.sp3.gz (covers 2016-02-14 to 2016-02-21)[0m
+[0;37m[05:34:37] [INFO]   ilrsa.orb.etalon2.160227.v35.sp3.gz (covers 2016-02-21 to 2016-02-27)[0m
+[0;37m[05:34:37] [INFO]   ilrsb.orb.etalon2.160305.v35.sp3.gz (covers 2016-02-28 to 2016-03-05)[0m
+[0;37m[05:34:37] [INFO]   ilrsb.orb.etalon2.160312.v35.sp3.gz (covers 2016-03-06 to 2016-03-12)[0m
+[0;37m[05:34:37] [INFO]   ilrsb.orb.etalon2.160319.v35.sp3.gz (covers 2016-03-13 to 2016-03-19)[0m
+[0;37m[05:34:37] [INFO]   ... and 41 more[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:34:37] [INFO] SP3 merged: 30912 epochs from 2016-02-14 to 2016-12-31[0m
+[0;37m[05:34:37] [INFO] SP3 loaded (merged): etalon2 (ID=None) -> merged_etalon2_20160101_20161231.pkl[0m
+[0;37m[05:34:38] [INFO] SP3 downloaded 47 weekly files for etalon1[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:38] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 orbit: merging 46 files for etalon1[0m
+[0;37m[05:34:39] [INFO]   asi.orb.etalon1.160220.v36.sp3.gz (covers 2016-02-14 to 2016-02-21)[0m
+[0;37m[05:34:39] [INFO]   asi.orb.etalon1.160227.v36.sp3.gz (covers 2016-02-21 to 2016-02-28)[0m
+[0;37m[05:34:39] [INFO]   ilrsb.orb.etalon1.160305.v35.sp3.gz (covers 2016-02-28 to 2016-03-05)[0m
+[0;37m[05:34:39] [INFO]   ilrsb.orb.etalon1.160312.v35.sp3.gz (covers 2016-03-06 to 2016-03-12)[0m
+[0;37m[05:34:39] [INFO]   ilrsb.orb.etalon1.160319.v35.sp3.gz (covers 2016-03-13 to 2016-03-19)[0m
+[0;37m[05:34:39] [INFO]   ... and 41 more[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:34:39] [INFO] SP3 merged: 30912 epochs from 2016-02-14 to 2016-12-31[0m
+[0;37m[05:34:39] [INFO] SP3 loaded (merged): etalon1 (ID=None) -> merged_etalon1_20160101_20161231.pkl[0m
+[0;37m[05:34:53] [INFO] SP3 downloaded 47 weekly files for lageos2[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:53] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 downloaded 47 weekly files for lageos1[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:54] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 orbit: merging 46 files for lageos2[0m
+[0;37m[05:34:55] [INFO]   asi.orb.lageos2.160220.v36.sp3.gz (covers 2016-02-14 to 2016-02-21)[0m
+[0;37m[05:34:55] [INFO]   asi.orb.lageos2.160227.v36.sp3.gz (covers 2016-02-21 to 2016-02-28)[0m
+[0;37m[05:34:55] [INFO]   ilrsb.orb.lageos2.160305.v35.sp3.gz (covers 2016-02-28 to 2016-03-05)[0m
+[0;37m[05:34:55] [INFO]   ilrsb.orb.lageos2.160312.v35.sp3.gz (covers 2016-03-06 to 2016-03-12)[0m
+[0;37m[05:34:55] [INFO]   ilrsb.orb.lageos2.160319.v35.sp3.gz (covers 2016-03-13 to 2016-03-19)[0m
+[0;37m[05:34:55] [INFO]   ... and 41 more[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:55] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:56] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:57] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 merged: 231840 epochs from 2016-02-14 to 2016-12-31[0m
+[0;37m[05:34:58] [INFO] SP3 loaded (merged): lageos2 (ID=L52) -> merged_lageos2_20160101_20161231.pkl[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 orbit: merging 46 files for lageos1[0m
+[0;37m[05:34:58] [INFO]   asi.orb.lageos1.160220.v36.sp3.gz (covers 2016-02-14 to 2016-02-21)[0m
+[0;37m[05:34:58] [INFO]   asi.orb.lageos1.160227.v36.sp3.gz (covers 2016-02-21 to 2016-02-28)[0m
+[0;37m[05:34:58] [INFO]   ilrsb.orb.lageos1.160305.v35.sp3.gz (covers 2016-02-28 to 2016-03-05)[0m
+[0;37m[05:34:58] [INFO]   ilrsb.orb.lageos1.160312.v35.sp3.gz (covers 2016-03-06 to 2016-03-12)[0m
+[0;37m[05:34:58] [INFO]   ilrsb.orb.lageos1.160319.v35.sp3.gz (covers 2016-03-13 to 2016-03-19)[0m
+[0;37m[05:34:58] [INFO]   ... and 41 more[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:58] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:34:59] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:35:00] [INFO] SP3 merged: 231840 epochs from 2016-02-14 to 2016-12-31[0m
+[0;37m[05:35:00] [INFO] SP3 loaded (merged): lageos1 (ID=L51) -> merged_lageos1_20160101_20161231.pkl[0m
+[1;33m[05:37:13] [WARNING] No SP3 orbit found for lares covering 2016-01-01 to 2016-12-31[0m
+[1;33m[05:37:13] [WARNING] SP3 orbit not found for lares[0m
+[1;32m[05:37:50] [SUCCESS] Step 2.1 complete. Wrote: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv and /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals_summary.json[0m
+[1;32m[05:37:50] [SUCCESS] Saved residuals_2016.csv (85.3 MB)[0m
+[0;37m[05:37:50] [INFO] Completed 2016 in 325.2s[0m
+[0;37m[05:37:50] [INFO] Processing 2017[0m
+[0;37m[05:37:51] [INFO] Found 0 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd_v2/allsat[0m
+[0;37m[05:37:52] [INFO] Found 8996 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd/allsat[0m
+[0;37m[05:37:52] [INFO] NP2 files selected: 8996[0m
+[0;37m[05:37:56] [INFO] Stations loaded from SLRF2020: 186[0m
+[0;37m[05:37:56] [INFO] Station code mapping built: 331 entries[0m
+[0;37m[05:38:32] [INFO] Satellite filter applied: ['lageos1', 'lageos2', 'etalon1', 'etalon2', 'lares'] -> 658181/4607333 observations retained[0m
+[0;37m[05:38:32] [INFO] Fetching SP3 precise orbit files for 5 satellites in parallel...[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:32] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 orbit found (cached): ilrsa.orb.etalon1.170107.v36.sp3.gz (covers 2017-01-01 to 2017-01-07)[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L53[0m
+[0;37m[05:38:33] [INFO] SP3 loaded: etalon1 (ID=None) -> ilrsa.orb.etalon1.170107.v36.sp3.gz[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 orbit found (cached): ilrsa.orb.etalon2.170107.v36.sp3.gz (covers 2017-01-01 to 2017-01-07)[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L54[0m
+[0;37m[05:38:33] [INFO] SP3 loaded: etalon2 (ID=None) -> ilrsa.orb.etalon2.170107.v36.sp3.gz[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:33] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:34] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:35] [INFO] SP3 auto-detected satellite ID: L52[0m
+[0;37m[05:38:35] [INFO] SP3 auto-detected satellite ID: L51[0m
+[0;37m[05:38:35] [INFO] SP3 orbit found (cached): ilrsa.orb.lageos2.170107.v36.sp3.gz (covers 2017-01-01 to 2017-01-07)[0m
+[0;37m[05:38:35] [INFO] SP3 orbit found (cached): ilrsa.orb.lageos1.170107.v36.sp3.gz (covers 2017-01-01 to 2017-01-07)[0m
+[0;37m[05:38:35] [INFO] SP3 loaded: lageos2 (ID=L52) -> ilrsa.orb.lageos2.170107.v36.sp3.gz[0m
+[0;37m[05:38:35] [INFO] SP3 loaded: lageos1 (ID=L51) -> ilrsa.orb.lageos1.170107.v36.sp3.gz[0m
+[1;33m[05:40:48] [WARNING] No SP3 orbit found for lares covering 2017-01-01 to 2017-12-31[0m
+[1;33m[05:40:48] [WARNING] SP3 orbit not found for lares[0m
+[1;32m[05:41:13] [SUCCESS] Step 2.1 complete. Wrote: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv and /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals_summary.json[0m
+[1;32m[05:41:13] [SUCCESS] Saved residuals_2017.csv (7.0 MB)[0m
+[0;37m[05:41:13] [INFO] Completed 2017 in 203.0s[0m
+[0;37m[05:41:13] [INFO] Processing 2018[0m
+[0;37m[05:41:14] [INFO] Found 0 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd_v2/allsat[0m
+[0;37m[05:41:15] [INFO] Found 9079 files in /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/data/slr/npt_crd/allsat[0m
+[0;37m[05:41:15] [INFO] NP2 files selected: 9079[0m
+[0;37m[05:41:19] [INFO] Stations loaded from SLRF2020: 186[0m
+[0;37m[05:41:19] [INFO] Station code mapping built: 331 entries[0m

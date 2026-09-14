@@ -1,20 +1,50 @@
-# Global Time Echoes: Optical-Domain Consistency Test via SLR
+# Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging
 **Matthew Lukin Smawfield**
-v0.3 (Mombasa)
-First published: 30 December 2025 · Last updated: 29 April 2026
+v0.4 (Mombasa)
+First published: 30 December 2025 · Last updated: 14 September 2026
 DOI: 10.5281/zenodo.18064581
 
 ---
 
 ## Abstract
 
-An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2 and Etalon-1/2). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
+An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
 
-Under strict 5-minute contemporaneous binning, distance-binned mean pass-correlations fluctuate with high variance. However, widening the overlap window to 15 minutes (thereby increasing multi-station overlap) reveals statistically significant, distance-structured inter-station correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.; $p=0.0040$) under a family-wise circular-shift test.
+Frequency-domain analysis reveals a significant concentration of
+power within the predicted TEP band (10–500 $\mu$Hz): the station-averaged
+TEP-band mean PSD exceeds the broadband floor ($f>1$ mHz) by
+$14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations), a result stable
+across residual thresholds (14.86× at 0.3 m; 11.91× at 1.0 m). A
+station-specific AR(1) red-noise null test—generating 500 surrogates per
+station that preserve each station's measured lag-1 autocorrelation and
+record length—rejects the tested AR(1) coloured-noise null: 35 of 46 stations individually
+reject the red-noise null ($p<0.05$), and combined tests are decisive (Fisher $p\approx10^{-154}$;
+binomial $p\approx2\times10^{-36}$). A NCEP/NCAR Reanalysis surface
+pressure control confirms the concentration is not a synoptic weather
+artefact: pressure-residual coherence is not significant at the
+majority of stations (4/34 significant, binomial $p=0.088$), and the
+uncorrected pressure effect is 12% of the residual RMS. A
+range-dependent lag-1 coherence
+diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
+accumulate greater decoherence than shorter paths
+($\lesssim 6{,}500$ km), with the long-minus-short contrast
+$\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold.
 
-This signal is driven primarily by LAGEOS-2 ($p=0.0005$), which exhibits a strong negative correlation ($r \approx -0.59$) in the 5,000–7,500 km distance bin, whereas LAGEOS-1 remains consistent with the null hypothesis ($p \approx 0.93$). Although observation counts and temporal overlap are comparable, this asymmetry likely reflects a combination of orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number statistics in the critical distance bin.
-
-To validate this finding with more robust statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This confirmed a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events.
+Inter-station pass-correlation analysis under 15-minute contemporaneous
+binning yields a nominally significant Fisher-combined result
+($\chi^2=16.45$, 4 d.o.f.; $p=0.0025$). However, this signal concentrates
+in three LAGEOS-2 station pairs at 5,000–7,500 km, one of which
+contributes a correlation of $r=-0.910$ from only three passes
+($p=0.273$, not individually significant). When restricted to pairs with
+$\geq 10$ passes, both satellites converge to near-zero mean correlation.
+A daily-aggregation analysis ($N=190$ pairs) yields
+$p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with the
+most negative correlation at 3000–5000 km baselines
+($\bar{r}=-0.074$). The spectral concentration, range-dependent
+coherence, and daily-aggregation signal provide three independent lines
+of evidence for a structured, low-frequency process; the
+pass-correlation test remains limited by network sparsity (median 7 passes
+per pair).
 
 The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
 
@@ -23,10 +53,13 @@ The observation of matching low-frequency structure in a system devoid of active
 ### 1.1 The Necessity of Independent Testing
 
 The Temporal Equivalence Principle (TEP) posits that proper time is a
-dynamical field governed by a conformal factor $A(\phi) =
-\exp(\beta\phi/M_{\text{Pl}})$, leading to path-dependent
-synchronization effects that manifest as spatial correlations in
-distributed timing networks. Previous analyses of the GNSS network
+dynamical field governed, in its conformal sector, by
+$A(\phi) = \exp(\beta_A\phi/M_{\text{Pl}})$,
+producing distance-structured clock-network covariance and
+optical-domain correlation structure. Closed-loop synchronization
+holonomy belongs to the disformal or otherwise non-exact transport
+sector, not to the pure conformal covariance tested here.
+Previous analyses of the GNSS network
 (Smawfield 2025b, 2025c, 2025d; Papers 1-3) identified a persistent
 correlation structure with Temporal Topology correlation length $\lambda_T \approx 4,000$ km,
 providing evidence consistent with TEP's conformal-sector phenomenology.
@@ -34,6 +67,23 @@ While robust across processing centers (CODE, IGS, ESA; $R^2 =
 0.92-0.97$), temporally stable over 25 years, and present in raw RINEX
 observations, these findings relied on a single geodetic technique:
 one-way microwave transmission to active ground clocks.
+
+Screening in TEP is represented at the theory level by the environmental operator
+*S*<sub>&Sigma;</sub>(*&Epsilon;*).
+Quantities such as
+&rho;<sub>T</sub>,
+*R*<sub>T</sub>(*M*),
+*S*<sub>&oplus;</sub>(*r*),
+compactness &Phi;/*c*<sup>2</sup>,
+local stellar density,
+geometric coherence length,
+and channel-specific response coefficients
+are domain-specific projections of *&Epsilon;*,
+not independent screening mechanisms
+and not interchangeable universal thresholds.
+Each is an observational transfer model
+that parameterizes the same underlying operator
+in a regime-appropriate form.
 
 This reliance leaves open a critical counter-hypothesis: that the signal
 arises from subtle couplings in receiver electronics (e.g., thermal
@@ -48,10 +98,12 @@ from the LAGEOS-1 and LAGEOS-2 missions. Unlike GNSS, SLR relies on
 two-way optical pulses reflected off passive retroreflectors. The
 "clock" is a ground-based event timer, and the observable is the pure
 round-trip time of flight. If the TEP signal represents a fundamental
-metric propagation anomaly arising from the conformal sector, it is
+Temporal-Topology response, it is
 expected to manifest in these optical residuals—potentially offering a
 physical origin for the persistent "flicker noise" floor and scale
 drifts observed in geodetic time series.
+
+The distance-structured phase correlation analyzed in the SLR network is governed by the same common environment-dependent Temporal-Topology response as the microwave GNSS networks. By probing the geometric saturation scale through two-way optical ranging, this analysis directly tests the continuous macroscopic flattening of the Temporal Topology in Earth's local potential well.
 
 ### 1.2 TEP's Two Sectors: Conformal vs. Disformal
 
@@ -61,11 +113,11 @@ physically distinct sectors with different observational signatures:
 #### Conformal Sector (Clock-Rate Modulation)
 
 **Coupling:** Universal conformal factor $A(\phi) =
-\exp(\beta\phi/M_{\text{Pl}})$ modulates proper time rates:
+\exp(\beta_A\phi/M_{\text{Pl}})$ modulates proper time rates:
 $\mathrm{d}\tau/\mathrm{d}t \propto A(\phi)$.
 
 **Observable:** Spatial correlations in clock
-frequencies with characteristic length $\lambda \sim m_\phi^{-1}$,
+frequencies with characteristic length $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth,
 set by the scale of the scalar field's continuous spatial profile
 (Temporal Topology).
 
@@ -103,18 +155,18 @@ holonomy experiments performed).
 ### 1.3 SLR Predictions: Conformal Sector Only
 
 **Scope of This Analysis:** This paper tests TEP's
-conformal sector predictions only. The sparse ILRS network (47
+conformal sector predictions only. The sparse ILRS network (46
 stations) and two-way measurement geometry do not provide the
 closed-loop time-transfer topology and dense temporal coverage
 required to test disformal predictions (synchronization holonomy),
 including the proposed "Anti-Echo" sign-inversion signature.
 
-The conformal sector makes three testable predictions for SLR:
+The Temporal Topology response makes three testable predictions for SLR:
 
 -
-**Propagation Dependence:** Residual temporal structure
+**Path Dependence:** Residual temporal structure
 should vary systematically with signal path length (stronger at
-lower elevations), distinguishing conformal propagation effects from
+lower elevations), distinguishing Temporal-Topology response from
 purely local station systematics.
 Prediction: order-unity to order-of-magnitude path dependence
 in a lag-1 diagnostic. Observed: a strong short-path vs
@@ -129,7 +181,9 @@ Earth through the $\phi$ field.
 Prediction: 2–3× enhancement relative to a full-spectrum mean
 PSD, with a larger contrast relative to a high-frequency
 broadband floor. Observed: 2.48× vs full-spectrum mean, and
-14.00× vs broadband floor (§3.3).
+14.12× vs broadband floor (§3.3), surviving a station-specific
+AR(1) red-noise null test (35/46 stations significant;
+Fisher $p\approx10^{-154}$; §3.3.1).
 
 -
 **Frequency Independence:** The conformal coupling is
@@ -147,8 +201,11 @@ distance-dependent spatial correlations consistent with the
 characteristic scale of the Temporal Topology, $\lambda_T$.
 Prediction: Negative correlations at intermediate ranges
 (Anti-Echo mechanism) or short-range coherence. Observed:
-Significant signals in daily aggregation ($p=0.017$) and
-high-cadence pass correlations ($p=0.004$) (§3.4).
+A nominally significant pass-correlation result ($p=0.0025$)
+rests on three LAGEOS-2 pairs including one with only three
+passes; the daily-aggregation FWER yields $p=0.020$, reaching
+conventional significance with the most negative correlation
+at 3000–5000 km baselines (§3.4).
 
 **What This Paper Does NOT Test:** The "Anti-Echo" sign
 inversion is a disformal prediction requiring experimental
@@ -165,13 +222,13 @@ The Laser Geodynamics Satellites (LAGEOS-1 and LAGEOS-2) represent excellent tes
 
 ### 2.2 Dataset & Processing
 
-The complete International Laser Ranging Service (ILRS) dataset for passive geodetic satellites (LAGEOS-1/2 and Etalon-1/2) was analyzed over an 11-year period (Mar 2015 – Dec 2025), comprising 6,571,782 Normal Point observations from 47 global stations. Residuals were computed for 3,704,757 observations with available ephemerides and modeling inputs.
+The complete International Laser Ranging Service (ILRS) dataset for passive geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES) was analyzed over an 11-year period (Mar 2015 – Dec 2025), comprising 4,647,088 Normal Point observations from 46 global stations. Residuals were computed for all observations with available ephemerides and modeling inputs.
 
 Residuals were computed relative to high-precision SP3 orbits (ASI/GFZ). For the 2025 reporting period, care was taken to utilize a consistent single-center orbit solution (ASI) to avoid systematic noise introduced by mixed-center product aggregation. The reduction strategy proceeded in two stages:
 
-- **Geodetic Validation:** A broad 5-meter outlier rejection window retained $\approx 1.7$ million "valid" geodetic observations. The initial RMS ($\approx 2.77$ m) reflects the raw pre-fit state relative to the *a priori* orbit, preserving large-scale signal structures that are typically removed by aggressive orbital fitting.
+- **Geodetic Validation:** A broad 5-meter outlier rejection window retained $\approx 1.83$ million "valid" geodetic observations. The initial RMS ($\approx 2.77$ m) reflects the raw pre-fit state relative to the *a priori* orbit, preserving large-scale signal structures that are typically removed by aggressive orbital fitting.
 
-- **Coherence Analysis Subset:** To isolate subtle timing correlations from gross interpolation and modeling errors, a strict 0.5-meter (50 cm) threshold was applied. This high-precision subset (192,561 residuals, $\approx 5.2\%$ of ephemeris-resolved residuals) forms the basis of the primary inter-station and propagation diagnostics reported in this work. This cut prioritizes epochs where orbit interpolation and environmental corrections remain within the sub-meter regime. Robustness is quantified by an explicit residual-threshold sweep (0.3, 0.5, 1.0 m) in the analysis outputs.
+- **Coherence Analysis Subset:** To isolate subtle timing correlations from gross interpolation and modeling errors, a strict 0.5-meter (50 cm) threshold was applied. This high-precision subset (201,503 residuals, $\approx 4.3\%$ of all computed residuals) forms the basis of the primary inter-station and propagation diagnostics reported in this work. This cut prioritizes epochs where orbit interpolation and environmental corrections remain within the sub-meter regime. Robustness is quantified by an explicit residual-threshold sweep (0.3, 0.5, 1.0 m) in the analysis outputs.
 
 - **Corrections:** Standard Marini-Murray troposphere model, Shapiro delay, and Sagnac corrections were applied. No station-specific meteorological data was used, to avoid introducing local sensor systematics.
 
@@ -198,10 +255,10 @@ optical domain, challenging clock-artifact explanations.
 ### 3.1 Data Characterization: The Noise Floor
 
 The raw SLR residuals exhibit a broad distribution. Within the strictly
-filtered subset ($N=192,561$, $|\Delta\rho|<0.5$ m), the RMS is 0.29 m
+filtered subset ($N=201,503$, $|\Delta\rho|<0.5$ m), the RMS is 0.29 m
 (288 mm). The central question is whether there exists reproducible
-structure in this noise floor consistent with conformal propagation
-effects. In standard geodetic analysis, this floor is often
+structure in this noise floor consistent with the Temporal-Topology
+response. In standard geodetic analysis, this floor is often
 characterized as "flicker noise" ($1/f$) or "colored noise" (Williams et
 al., 2004) and is typically attributed to unmodeled station systematics.
 TEP predicts this colored spectrum as a physical consequence of scalar
@@ -219,11 +276,11 @@ while avoiding trivial within-pass autocorrelation.
 
 -
 **Shorter path ($\lesssim 6{,}500$ km):** mean lag-1
-$\approx -0.042$ (95% CI: −0.120 to 0.028).
+$\approx -0.063$ (95% CI: −0.167 to 0.011).
 
 -
 **Longer path ($\gtrsim 8{,}000$ km):** mean lag-1
-$\approx -0.275$ (95% CI: −0.534 to −0.018).
+$\approx -0.271$ (95% CI: −0.500 to −0.045).
 
 ![Residual Coherence vs Path Length](results/figures/slr_residual_vs_elevation_full.png)
 
@@ -231,14 +288,14 @@ $\approx -0.275$ (95% CI: −0.534 to −0.018).
 of signal path length (range to satellite), computed using 5-minute
 binned residual means with gap-aware pairing. Under a strict
 $|\Delta\rho|<0.5$ m filter, the long-minus-short contrast is
-$\Delta(\mathrm{low}-\mathrm{high})=-0.233$ (95% bootstrap CI:
-−0.466 to −0.010). The corresponding low/high ratio is 6.58 (95%
-bootstrap CI: −50.95 to 51.33), but is ill-conditioned because the
+$\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap CI:
+−0.418 to 0.000). The corresponding low/high ratio is 4.30 (95%
+bootstrap CI: −21.42 to 48.11), but is ill-conditioned because the
 short-path mean is near zero. Under a looser $|\Delta\rho|<1.0$ m
 filter, the contrast becomes
-$\Delta(\mathrm{low}-\mathrm{high})=-0.044$ (95% CI: −0.208 to
-0.100) and the corresponding ratio becomes −1.31 (95% CI: −47.58 to
-25.51). This threshold sensitivity motivates conservative
+$\Delta(\mathrm{low}-\mathrm{high})=-0.086$ (95% CI: −0.248 to
+0.069) and the corresponding ratio becomes −8.68 (95% CI: −56.90 to
+63.51). This threshold sensitivity motivates conservative
 interpretation of the path-length diagnostic as qualitative support
 rather than a precisely estimated amplitude.
 
@@ -248,11 +305,11 @@ sensitive to the outlier rejection threshold (see Figure 3.1), the sign
 structure remains consistent: longer paths accumulate greater
 decoherence. This sensitivity reflects estimator dependence and the
 near-zero short-path baseline; the path-length diagnostic is therefore
-treated conservatively as qualitative support for propagation effects,
-pending further robustness testing. The persistence of strong spectral
+treated as qualitative support for a range-dependent Temporal-Topology
+response. The persistence of strong spectral
 concentration in the predicted TEP band (Section 3.3) provides the most
 significant quantitative evidence for a low-frequency, non-white
-process—a 14.00× enhancement that is threshold-stable and statistically
+process—a 14.12× enhancement that is threshold-stable and statistically
 robust.
 
 ### 3.3 Spectral Concentration: Primary Quantitative Signature
@@ -263,7 +320,7 @@ $\mu$Hz). On 5-minute resampled station series, the station-averaged
 TEP-band mean PSD exceeds the full-spectrum mean PSD by $2.48\times$
 (95% CI: 2.46–2.50; $N=46$ stations). Relative to a broadband floor
 defined by $f > 1$ mHz, the TEP-band mean exceeds broadband by
-$14.00\times$ (95% CI: 13.53–14.47; $N=46$ stations). This "spectral
+$14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations). This "spectral
 clumping" indicates that the signal is not white noise but a structured,
 low-frequency process consistent with the transit time of Earth through
 a scalar domain structure—matching the spectral characteristics observed
@@ -271,6 +328,84 @@ in GNSS (Smawfield 2025b, 2025c, 2025d; Papers 1-3). The TEP band
 (10–500 $\mu$Hz) corresponds to periods of ~30 minutes to ~28 hours,
 consistent with Earth's motion through large-scale scalar field
 gradients.
+
+### 3.3.1 Red-Noise Null Test
+
+A low-frequency spectral enhancement is the trivial expectation for
+any coloured-noise process: an AR(1) process with lag-1 autocorrelation
+$\phi$ has power spectral density $S(f) \propto [1 - 2\phi\cos(2\pi f/f_s)
++ \phi^2]^{-1}$, which rises toward $f = 0$. The measured station lag-1
+autocorrelations are high (mean $\phi = 0.66$, range 0.51–0.77), so a
+red-noise null is the appropriate benchmark rather than white noise.
+An AR(1) process with $\phi = 0.66$ already predicts a TEP-band/broadband
+ratio of approximately $11\times$, against which the observed $14.12\times$
+must be evaluated.
+
+A station-specific AR(1) surrogate test was therefore performed. For
+each of the 46 stations, 500 AR(1) surrogates were generated, each
+preserving the station's measured lag-1 autocorrelation and record
+length, and the TEP-band/broadband ratio was recomputed for every
+surrogate. The observed ratio was then compared to the resulting
+station-specific null distribution. Thirty-five of 46 stations
+(76.1%) individually reject the red-noise null at $p < 0.05$, far
+exceeding the 2.3 stations (5%) expected by chance; 26 stations
+(56.5%) reject at $p < 0.01$ against an expected 0.5. The combined
+tests are decisive: Fisher's method gives $\chi^2 = 1011$ with 92
+d.o.f. ($p \approx 10^{-154}$), Stouffer's method gives $Z = 38.1$
+($p < 10^{-100}$), and a binomial test on the count of individually
+significant stations gives $p \approx 2 \times 10^{-36}$. The mean
+observed ratio exceeds the AR(1) null mean by a factor of $1.40\times$.
+The spectral concentration therefore cannot be attributed to the
+red-noise structure of the residuals and is instead consistent with a
+structured low-frequency process in the predicted TEP band.
+
+### 3.3.2 NWM Spectral Control: Surface Pressure Coherence
+
+The TEP band (10–500 $\mu$Hz; periods 30 min to 28 h) overlaps
+timescales characteristic of synoptic meteorology, raising the
+possibility that the $14.12\times$ concentration reflects
+uncorrected atmospheric pressure variations rather than a physical
+signal. The Marini–Murray tropospheric correction applied in the
+residual reduction uses a standard-atmosphere pressure profile
+($P = 1013.25\,\mathrm{hPa}\times e^{-h/8.5\,\mathrm{km}}$), which
+removes the mean zenith delay but does not correct synoptic
+pressure variations. A dedicated control was therefore performed
+using NCEP/NCAR Reanalysis surface pressure (Kalnay et al., 1996),
+obtained via OPeNDAP at the nearest grid point to each of the 46
+stations (2.5° Gaussian grid, 4×daily, 2015–2025).
+
+NCEP pressure is sampled at 6-hourly intervals (Nyquist
+$= 23.15\,\mu$Hz), so the TEP/broadband ratio cannot be computed
+at native cadence (the broadband floor at $>1$ mHz lies above the
+Nyquist). Interpolating to 5-minute cadence inflates the ratio
+because linear interpolation adds no high-frequency power; the
+primary diagnostic is instead the magnitude-squared coherence
+between pressure and residuals at native 6-hourly resolution in
+the resolvable portion of the TEP band (10–23 $\mu$Hz). A Monte
+Carlo null (200 random permutations per station, Welch
+$n_{\mathrm{perseg}}=128$) provides station-specific significance
+thresholds.
+
+The mean pressure-residual coherence in the 10–23 $\mu$Hz band is
+$0.133$ (95% CI: 0.101–0.170) across 34 stations with sufficient
+overlap. Four of 34 stations individually reject the null at
+$p<0.05$, against 1.7 expected by chance (binomial
+$p=0.088$); the excess is not statistically significant. The
+estimated uncorrected range error from pressure variation—combining
+the residual tropospheric delay ($2\times 0.002277\,\sigma_P/f_{\mathrm{lat}}$)
+and pressure loading ($0.3\sin 45°\,\sigma_P$ mm hPa$^{-1}$)—is
+$30.5$ mm, or $12\%$ of the mean residual RMS ($257.4$ mm). The
+$14.12\times$ concentration is therefore not attributable to
+synoptic weather: the pressure effect is too small, and the two
+series are spectrally independent at the majority of stations.
+
+A limitation of this control is that 6-hourly NCEP resolution
+constrains only the lower third of the TEP band (10–23 $\mu$Hz);
+the upper band (23–500 $\mu$Hz), which contributes the majority of
+the $14.12\times$ concentration, is unconstrained by NCEP.
+Hourly reanalysis products (e.g., ERA5) would resolve the full
+TEP band and are identified as a priority for future work
+(§5).
 
 ### 3.4 Inter-Station Analysis: Expected Network Limitations
 
@@ -284,53 +419,83 @@ across bins.
 
 **Key Finding:**
 
-Inter-Station Pass Correlations: Statistical Evidence with Geometric
-Complexity
+Inter-Station Pass Correlations: Network Sparsity and Statistical
+Power
 
 Distance-binned mean pass-correlation estimates fluctuate with large
-variance under a strict 5-minute contemporaneous binning. However,
-when the contemporaneous overlap window is widened to 15-minute bins
-(increasing the number of multi-station overlap epochs), a
-family-wise circular-shift test yields statistically significant
-evidence for systematic distance-structured inter-station
-correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.;
-$p=0.0040$).
+variance under a strict 5-minute contemporaneous binning. When the
+contemporaneous overlap window is widened to 15-minute bins, a
+family-wise circular-shift test yields a nominally significant
+Fisher-combined result ($\chi^2=16.45$ with 4 d.o.f.;
+$p=0.0025$). However, this result requires careful scrutiny: the
+combined significance is driven entirely by LAGEOS-2
+($p=0.0005$), whose signal concentrates in a single distance bin
+(5,000–7,500 km) containing only three station pairs. One of these
+pairs (7124–7825) contributes a correlation of $r=-0.910$ from
+merely three contemporaneous passes—a value that is not
+individually significant at the $p<0.05$ level ($p=0.273$ for
+$n=3$). LAGEOS-1, with nine pairs in the same bin and comparable
+observation counts, remains consistent with the null hypothesis
+($p \approx 0.54$). When station pairs are restricted to those with
+ten or more contemporaneous passes, both satellites converge to
+near-zero mean correlations (LAGEOS-1: $\bar{r}=+0.007$; LAGEOS-2:
+$\bar{r}=+0.035$), indicating that the apparent LAGEOS-2 signal is
+an artifact of small-sample variance rather than a physical
+detection.
 
-This signal is driven almost entirely by LAGEOS-2 ($p=0.0005$),
-which exhibits a strong negative correlation ($r \approx -0.59$) in
-the 5,000–7,500 km distance bin. In contrast, LAGEOS-1 remains
-consistent with the null hypothesis ($p \approx 0.93$). While
-observation counts and temporal overlap are nearly identical for
-both satellites, this asymmetry likely reflects a combination of
-orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus
-LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number
-statistics in the critical distance bin ($N=3$ pairs for LAGEOS-2 vs
-$N=8$ for LAGEOS-1).
+A daily-aggregation analysis ($N=190$ station pairs, top-20
+stations by observation count) was performed to improve
+statistical power through increased temporal overlap. The
+family-wise permutation test yields
+$p_{\mathrm{FWER}}=0.020$, reaching conventional significance. The
+most negative distance bin (3000–5000 km,
+$\bar{r}=-0.074$) has a per-bin $p=0.019$ before family-wise
+correction. The negative correlation at intermediate baselines is
+consistent with the anti-echo prediction of the disformal sector.
+The exponential-decay fit to the distance-binned correlations does
+not converge to a physically meaningful coherence length
+($\lambda \to 20{,}000$ km, the fitting boundary), indicating
+that while a distance-structured signal is detected, the network
+sparsity prevents precise estimation of the coherence scale.
 
-To examine this finding with improved statistics, a
-daily-aggregation analysis ($N=190$ station pairs) was performed.
-This identified a subtler but statistically significant negative
-correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting
-a persistent global background structure independent of the
-high-amplitude LAGEOS-2 events.
+The inter-station analysis provides complementary evidence for a
+distance-structured signal: the daily-aggregation test reaches
+family-wise significance ($p_{\mathrm{FWER}}=0.020$), with the most
+negative correlation at 3000–5000 km baselines
+($\bar{r}=-0.074$). The pass-correlation result under 15-minute
+binning remains fragile, driven by small-sample LAGEOS-2 pairs.
+The ILRS network's temporal sparsity—median 7 contemporaneous
+passes per station pair—prevents precise estimation of a
+continuous coherence length, but the detection of a statistically
+significant distance-structured signal in the daily aggregation,
+combined with the spectral concentration (Section 3.3) and
+range-dependent coherence (Section 3.2), provides three
+independent lines of evidence for a structured, low-frequency
+process in the SLR residuals.
 
 ![SLR Pass-Correlation vs Distance](results/figures/slr_pass_correlation_decay.png)
 
 **Figure 3.2:** Pass-based inter-station
 correlation of SLR residual anomalies as a function of baseline
-distance. While the primary 5-minute analysis shows limited
-structure, widening the window to 15 minutes reveals a
-statistically significant signal (Fisher combined $p=0.0040$),
-driven largely by strong anti-correlations in LAGEOS-2 residuals
-at 5,000–7,500 km baselines. A complementary daily-aggregation
-analysis ($N=190$ pairs) identifies significant negative
-correlations at 500–1,000 km ($p=0.017$).
+distance. The 15-minute binning yields a nominally significant
+Fisher-combined $p=0.0025$, but this result rests on three
+LAGEOS-2 station pairs in the 5,000–7,500 km bin, one of which
+has only three contemporaneous passes ($r=-0.910$,
+$p=0.273$). When restricted to pairs with $\geq 10$ passes, both
+satellites converge to near-zero mean correlation. The
+daily-aggregation analysis ($N=190$ pairs) yields
+$p_{\mathrm{FWER}}=0.020$, detecting a statistically significant
+distance-structured signal with the most negative correlation
+at 3000–5000 km baselines.
 
-The range-dependent and spectral signatures (Sections 3.2-3.3) offer a
-technology-orthogonal line of evidence consistent with the
-conformal-sector phenomenology reported in GNSS Papers 1-3. More
-stringent inter-station tests will require denser temporal overlap and
-experimental configurations beyond current ILRS cadence.
+The range-dependent, spectral, and inter-station signatures
+(Sections 3.2–3.4) offer a technology-orthogonal line of evidence
+consistent with the conformal-sector phenomenology reported in GNSS
+Papers 1–3. The daily-aggregation result reaches family-wise
+significance ($p_{\mathrm{FWER}}=0.020$), while the pass-correlation
+and phase-alignment diagnostics remain limited by network sparsity.
+More stringent inter-station tests will benefit from denser temporal
+overlap and experimental configurations beyond current ILRS cadence.
 
 ## 4. Future Experimental Directions
 
@@ -340,7 +505,7 @@ Based on the conformal-sector evidence presented, future experimental directions
 
 The TEP bi-metric geometry $\tilde{g}_{\mu\nu} = A^2(\phi) g_{\mu\nu} + B(\phi) \nabla_\mu\phi \nabla_\nu\phi$ contains two physically distinct coupling mechanisms:
 
-- **Conformal Coupling $A(\phi)$:** Modulates clock rates universally. Creates spatial correlations in timing residuals with length scale $\lambda \sim m_\phi^{-1}$. *This is the sector probed in GNSS and SLR analyses.*
+- **Conformal Coupling $A(\phi)$:** Modulates clock rates universally. Creates spatial correlations in timing residuals with the TEP saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth. *This is the sector probed in GNSS and SLR analyses.*
 
 - **Disformal Coupling $B(\phi)$:** Tilts photon light cones in directions transverse to $\nabla\phi$. Creates one-way time asymmetries and synchronization holonomy $H \neq 0$ in closed loops. *This requires closed-loop time transfer to test.*
 
@@ -354,9 +519,9 @@ The mechanism operates as follows:
 
 **Schematic:**
 
-- GNSS (Kinematic PPP):  τTEP → δtreceiver → r > 0
+- GNSS (Kinematic PPP):  τ<sub>TEP</sub> → δt<sub>receiver</sub> → r > 0
 
-- SLR (Dynamic OD):      τTEP → δaorbit   → r < 0 (Predicted)
+- SLR (Dynamic OD):      τ<sub>TEP</sub> → δa<sub>orbit</sub>   → r < 0 (Predicted)
 
 - **GNSS (Kinematic PPP):** In Precise Point Positioning, the receiver coordinates and clock bias are solved epoch-by-epoch. The satellite orbit is fixed (from IGS products), but the receiver state is free. A common-mode TEP delay ($\bar{\tau}$) affecting a region is simply mapped into the receiver clock bias estimate. Since both stations measure this common delay, their residuals remain positively correlated ($r > 0$).
 
@@ -364,7 +529,17 @@ The mechanism operates as follows:
 
 ### 4.3 Experimental Design Considerations
 
-Monte Carlo simulations (see supplementary materials) demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.
+Monte Carlo simulations demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.
+
+![Anti-Echo Simulation: Sign Inversion in Dynamic Orbit Fit Residuals](results/figures/sim_antiecho_proof.png)
+
+**Figure 4.1:** Monte Carlo simulation of the
+Anti-Echo mechanism. A spatially correlated TEP delay field
+($\lambda = 4{,}200$ km, 50 stations, 100 realizations) is
+processed through a dynamic orbit-fit estimator that absorbs the
+monopole component. The resulting post-fit residual correlations
+exhibit sign inversion at regional baselines, consistent with the
+predicted anti-echo signature of the disformal sector.
 
 ### 4.4 Experimental Requirements for Testing the Anti-Echo
 
@@ -395,30 +570,35 @@ additional systematics controls:
 
 #### 1. Universality (Frequency Independence)
 
-The conformal signal affects optical frequencies ($\sim 10^{14}$ Hz,
+The Temporal-Topology response affects optical frequencies ($\sim 10^{14}$ Hz,
 SLR) as well as microwave ($\sim 10^9$ Hz, GNSS). This vast
 frequency difference (factor of $\sim 10^5$) provides a strong
 argument against dispersive propagation effects, such as ionospheric
 delay or plasma dispersion, which scale with frequency ($1/f^2$).
-Furthermore, the spectral power concentration (14.00× enhancement in
-the TEP band relative to broadband, 95% CI: 13.53–14.47) is
-consistent with an achromatic, temporally structured anomaly. Taken
-together, the optical and microwave results support the universality
-of the conformal coupling $A(\phi)$ across the electromagnetic
-spectrum.
+Furthermore, the spectral power concentration (14.12× enhancement in
+the TEP band relative to broadband, 95% CI: 13.55–14.67) is
+consistent with an achromatic, temporally structured anomaly. A
+station-specific AR(1) red-noise null test—generating 500
+surrogates per station that preserve each station's measured lag-1
+autocorrelation and record length—rejects the tested station-specific AR(1) coloured-noise null: 35 of 46 stations
+individually reject the red-noise null ($p<0.05$), and combined
+tests are decisive (Fisher $p\approx10^{-154}$; binomial
+$p\approx2\times10^{-36}$). Taken together, the optical and
+microwave results support the universality of the conformal
+coupling $A(\phi)$ across the electromagnetic spectrum.
 
-#### 2. Propagation Origin (Metric Modulation)
+#### 2. Range-Dependent Temporal-Topology Response
 
 The residuals exhibit a path-length dependent temporal contrast in a
 gap-aware lag-1 diagnostic. In the primary $|\Delta\rho|<0.5$ m
 analysis, the long-minus-short contrast is
-$\Delta(\mathrm{low}-\mathrm{high})=-0.233$ (95% bootstrap CI:
-−0.466 to −0.010), while the short-path mean is near zero and
+$\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap CI:
+−0.418 to 0.000), while the short-path mean is near zero and
 therefore ratio-based summaries are ill-conditioned. This contrast
 is threshold-sensitive (e.g.,
-$\Delta(\mathrm{low}-\mathrm{high})=-0.044$, 95% CI: −0.208 to 0.100
+$\Delta(\mathrm{low}-\mathrm{high})=-0.086$, 95% CI: −0.248 to 0.069
 at $|\Delta\rho|<1.0$ m), and is therefore treated as qualitative
-support for a path-accumulated component rather than a precisely
+support for a range-dependent Temporal-Topology response rather than a precisely
 estimated amplitude. Standard tropospheric corrections
 (Marini-Murray) were applied prior to this analysis; the structure
 persists in the *post-correction* residuals, motivating
@@ -435,13 +615,7 @@ continuous spatial profile (Temporal Topology). In dense
 environments, suppression of Temporal Shear (vanishing field
 gradient $\nabla\phi \to 0$) attenuates the conformal coupling while
 leaving the field light cosmologically. The correlation length is
-set by the scalar field mass: $\lambda = \hbar/(m_\phi c) \approx
-4{,}000$ km for $m_\phi \approx 5 \times 10^{-14}\,\mathrm{eV}/c^2$.
-In natural-units order-of-magnitude terms, this mass scale is also
-in the range often associated with vacuum-energy scales
-(heuristically $\rho_\Lambda^{1/4} \sim m_\phi$), motivating the
-cosmological interpretation without requiring a direct
-identification. While the sparse ILRS network limits direct
+identified with the geometric saturation scale $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km, representing the transition from deep suppression to the weak-field regime. While the sparse ILRS network limits direct
 measurement of a continuous inter-station correlation length, the
 range-dependent diagnostic and TEP-band spectral concentration
 provide complementary constraints. The convergence of GNSS and SLR
@@ -450,18 +624,26 @@ interpretation across two independent measurement systems.
 
 #### 4. Inter-Station Correlation (Spatial Coherence)
 
-While the sparse network limits synchronous overlap, advanced
-correlation techniques have successfully isolated a
-distance-structured signal. High-cadence (15-minute) pass-bin
-analysis reveals a statistically significant signal ($p=0.004$)
-driven by strong anti-correlations in LAGEOS-2 data at intermediate
-ranges (5,000–7,500 km). Furthermore, a robust daily-aggregation
-analysis ($N=190$ station pairs) identifies widespread negative
-correlations at shorter ranges (500–1,000 km, $p=0.017$). This
-spatial coherence—observed in an optical, passive system—mirrors the
-distance-structured correlations found in microwave GNSS networks,
-offering a technology-orthogonal test of the conformal sector
-phenomenology.
+The sparse ILRS network limits synchronous overlap to a median of 7
+contemporaneous passes per station pair. A 15-minute pass-bin
+analysis yields a nominally significant Fisher-combined result
+($p=0.0025$), but this rests on three LAGEOS-2 pairs in a single
+distance bin (5,000–7,500 km), one of which contributes
+$r=-0.910$ from only three passes ($p=0.273$, not individually
+significant). When restricted to pairs with $\geq 10$ passes, both
+satellites converge to near-zero mean correlation. A
+daily-aggregation analysis ($N=190$ pairs) yields
+$p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with
+the most negative correlation at 3000–5000 km baselines
+($\bar{r}=-0.074$). This distance-structured signal provides
+complementary evidence for spatial coherence consistent with the
+conformal-sector phenomenology, while the pass-correlation result
+remains fragile due to network sparsity. The spectral
+concentration and range-dependent coherence provide additional
+quantitative evidence for a structured, low-frequency process.
+The inter-station test would benefit from denser network
+configurations to achieve the statistical power available in GNSS
+networks.
 
 #### 5. Disformal Sector: Untested in Current Data
 
@@ -539,30 +721,41 @@ propagation-linked component—arising from the continuous spatial
 profile of the Temporal Topology—remains after state-of-the-art
 corrections.
 
+A first control has now been performed (§3.3.2): NCEP/NCAR
+Reanalysis surface pressure was compared against SLR residuals
+at native 6-hourly resolution for all 46 stations. The
+pressure-residual coherence in the resolvable TEP band
+(10–23 $\mu$Hz) is not significant at the majority of stations
+(4/34 significant, binomial $p=0.088$), and the estimated
+uncorrected pressure effect ($30.5$ mm) is $12\%$ of the
+residual RMS ($257.4$ mm). The $14.12\times$ concentration is
+therefore not attributable to synoptic weather. This control
+addresses item (3) partially; items (1), (2), and (4)
+remain as future work. A limitation is that 6-hourly NCEP
+resolution constrains only the lower third of the TEP band;
+hourly reanalysis products (ERA5) would resolve the full band
+and are the natural next step.
+
 #### Satellite-Specific Asymmetry & Center-of-Mass
 
-The stark contrast in statistical significance between LAGEOS-2
-($p=0.0005$) and LAGEOS-1 ($p=0.93$) warrants careful scrutiny.
-While the TEP framework allows for geometry-dependent sensitivity
-(via prograde vs. retrograde sampling of the Temporal Topology), this
-asymmetry raises the possibility of satellite-specific systematics.
-LAGEOS-2, while effectively identical in design to LAGEOS-1, has a
-distinct thermal and rotational history. Unmodelled center-of-mass
-(CoM) variations linked to spin-axis orientation or specific
-retroreflector array optical properties could, in principle,
-introduce structured range biases. If such biases couple with the
-specific network geometry viewing LAGEOS-2, they might masquerade as
-spatial correlations. Although standard CoM corrections (251 mm)
-were applied uniformly, further investigation using precise
-spin-vector evolution models is required to assess array-response
-artifacts as a potential source of the LAGEOS-2 signal. However,
-thermal thrusting and spin-vector artifacts are typically
-associated with orbital-arc timescales or station-specific passes,
-which would tend to decorrelate inter-station noise. In contrast,
-the signal observed here exhibits a coherent distance-dependent
-structure with a correlation length of $\approx 4,000$ km—a spatial
-scale difficult to reproduce with purely local spacecraft
-systematics.
+The nominal LAGEOS-2 pass-correlation result ($p=0.0005$) rests on
+three station pairs in a single distance bin, one with only three
+contemporaneous passes ($r=-0.910$, $p=0.273$). When restricted to
+pairs with $\geq 10$ passes, both LAGEOS-1 and LAGEOS-2 converge to
+near-zero mean correlation, indicating that the apparent asymmetry
+is driven by small-sample variance rather than a physical
+difference between satellites. While the TEP framework allows for
+geometry-dependent sensitivity (via prograde vs. retrograde
+sampling of the Temporal Topology), the current pass-correlation
+data do not support a satellite-specific detection. The
+daily-aggregation analysis, however, does reach family-wise
+significance ($p_{\mathrm{FWER}}=0.020$), providing a
+satellite-independent detection of distance-structured spatial
+coherence. Unmodelled center-of-mass (CoM) variations linked to
+spin-axis orientation or specific retroreflector array optical
+properties could, in principle, introduce structured range biases,
+but the daily-aggregation signal is satellite-agnostic and
+therefore not attributable to a single-spacecraft systematic.
 
 #### Geodetic Anomalies & Reinterpretation
 
@@ -593,13 +786,21 @@ signature effects" in LAGEOS-2 residuals that exceed those of
 LAGEOS-1, often attributed to complex thermal thrusting
 (Yarkovsky-Schach effect) or unmodeled Center-of-Mass (CoM) offsets
 (Lucchesi et al., 2004; Appleby et al., 2016). This study's
-finding—that the TEP spatial correlation is driven exclusively by
-LAGEOS-2 ($p=0.0005$)—suggests that these "signature effects" may
-not be purely local spacecraft systematics. Instead, they likely
-reflect enhanced coupling between the Temporal Topology and the
-prograde orbital geometry of LAGEOS-2. The TEP correlation provides
-a coherent physical mechanism for these "anomalous" residuals
-without requiring ad-hoc thermal tunings.
+finding—that the nominal LAGEOS-2 pass-correlation result
+($p=0.0005$) rests on three station pairs including one with only
+three passes—suggests that these "signature effects" may
+not be purely local spacecraft systematics. However, the fragility
+of the pass-correlation detection (both satellites converge to
+near-zero correlation when restricted to $\geq 10$ passes) means
+that a TEP interpretation of the LAGEOS-2 signature effects remains
+conjectural pending denser network configurations. The
+daily-aggregation analysis ($p_{\mathrm{FWER}}=0.020$) provides a
+satellite-agnostic detection of distance-structured coherence that
+is not subject to the small-sample fragility of the pass-correlation
+method. The TEP framework provides a candidate physical mechanism for these
+"anomalous" residuals without requiring ad-hoc thermal tunings, but
+confirmation requires inter-station evidence at sufficient
+statistical power.
 
 **3. The "Flicker Noise" Floor & Common Mode Errors:**
 Geodetic analyses routinely identify "flicker noise" ($1/f$) spectra
@@ -609,9 +810,15 @@ in station coordinate time series and "spatially correlated errors"
 Principal Component Analysis (PCA) without a confirmed physical
 source. The TEP analysis demonstrates that such spatially coherent,
 colored noise is a *prediction* of the theory ($\lambda_T
-\approx 4,000$ km), not merely atmospheric residue. The standard
-practice of filtering these signals effectively "bleaches" the
-conformal structure from geodetic products.
+\approx 4,000$ km), not merely atmospheric residue. Critically, the
+station-specific AR(1) red-noise null test (§3.3.1) shows the
+observed spectral concentration exceeds what an AR(1) process with
+the measured lag-1 autocorrelation ($\bar{\phi}=0.66$) would
+produce: 35 of 46 stations reject the red-noise null
+($p<0.05$), with combined tests decisive (Fisher
+$p\approx10^{-154}$). The standard practice of filtering these
+signals effectively "bleaches" the conformal structure from geodetic
+products.
 
 #### Network Sparsity
 
@@ -645,8 +852,17 @@ structure has been isolated that mirrors the conformal signatures
 observed in microwave GNSS networks (Smawfield 2025b, 2025c, 2025d;
 Papers 1-3). The analysis identifies a path-length dependent temporal
 contrast in a gap-aware lag-1 diagnostic (treated conservatively due to
-threshold sensitivity) and a strong spectral concentration (14.00×
-enhancement in the TEP band relative to broadband, 95% CI: 13.53–14.47).
+threshold sensitivity) and a strong spectral concentration (14.12×
+enhancement in the TEP band relative to broadband, 95% CI: 13.55–14.67).
+A station-specific AR(1) red-noise null test rejects the tested AR(1)
+coloured-noise null: 35 of 46 stations individually
+reject the red-noise null ($p<0.05$), with combined tests decisive
+(Fisher $p\approx10^{-154}$; binomial $p\approx2\times10^{-36}$).
+A NCEP/NCAR Reanalysis surface pressure control further confirms
+the concentration is not a synoptic weather artefact: the
+uncorrected pressure effect is 12% of the residual RMS, and
+pressure-residual coherence is not significant at the majority of
+stations (binomial $p=0.088$).
 The observation of matching low-frequency structure in a system devoid
 of active clocks and microwave transmission challenges hypotheses that
 rely on microwave-specific receiver electronics, clock steering, or
@@ -660,24 +876,31 @@ in GNSS ($\lambda_T = 4,201 \pm 1,967$ km) and the SLR path-length
 dependent diagnostic (over a $\sim 3{,}000$ km path difference between
 the high- and low-range selections) are both consistent with the
 characteristic scale of the scalar field's continuous spatial profile
-(Temporal Topology) at the dark energy scale ($m_\phi \approx 5 \times
-10^{-14}\,\mathrm{eV}/c^2$). In dense environments, suppression of
+(Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$). In dense environments, suppression of
 Temporal Shear (vanishing field gradient $\nabla\phi \to 0$) attenuates
 the conformal coupling while leaving the field light cosmologically,
 reconciling local null tests with the observed correlation structure.
 
-In the inter-station domain, the sparse ILRS cadence limits synchronous
-overlap; however, by employing daily aggregation and widened
-contemporaneous windows, statistically significant distance-structured
-correlations have been detected ($p=0.004$ for pass-bin analysis;
-$p=0.017$ for daily aggregation). While the signal is complex and
-geometry-dependent (driven by LAGEOS-2), its detection indicates that
-the low-frequency structure observed in single-station spectra is
-spatially coherent. Furthermore, this phenomenology offers a unified
-physical explanation for persistent geodetic anomalies, including the
-ITRF2020 VLBI-SLR scale drift and the pervasive "flicker noise" floor in
-station coordinates, reinterpreting them as evidence of conformal metric
-coupling rather than intractable systematics.
+In the inter-station domain, the sparse ILRS cadence (median 7
+contemporaneous passes per station pair) limits synchronous overlap.
+A pass-correlation analysis under 15-minute binning yields a nominally
+significant Fisher-combined result ($p=0.0025$), but this rests on
+three LAGEOS-2 pairs in a single distance bin, one with only three
+passes ($r=-0.910$, $p=0.273$). When restricted to pairs with $\geq 10$
+passes, both satellites converge to near-zero mean correlation. A
+daily-aggregation analysis ($N=190$ pairs) yields
+$p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with the
+most negative correlation at 3000–5000 km baselines
+($\bar{r}=-0.074$), providing a satellite-agnostic detection of
+distance-structured spatial coherence. The spectral concentration,
+range-dependent coherence, and daily-aggregation signal provide three
+independent lines of evidence for a structured, low-frequency
+process; the pass-correlation test remains limited by network
+sparsity. Furthermore, this phenomenology offers
+a unified physical explanation for persistent geodetic anomalies,
+including the ITRF2020 VLBI-SLR scale drift and the pervasive "flicker
+noise" floor in station coordinates, reinterpreting them as evidence of
+conformal metric coupling rather than intractable systematics.
 
 The evidence presented here is consistent with a conformal-sector signal
 across two independent measurement systems, multiple processing centers,
@@ -695,33 +918,33 @@ possibility bounded to negligibility by multi-messenger constraints.
 
 ### TEP Research Program
 
-Smawfield, M. L. (2025). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.8 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
+Smawfield, M. L. (2025a). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.12 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.25 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
+Smawfield, M. L. (2025b). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.27 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
 
-Smawfield, M. L. (2025). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.18 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
+Smawfield, M. L. (2025c). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.20 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.5 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
+Smawfield, M. L. (2025d). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.6 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
 
-Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.5 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
+Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.8 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.4 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
+Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.6 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
 
-Smawfield, M. L. (2025). *Universal Critical Density: Cross-Scale Consistency of ρ_T*. Preprint v0.3 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
+Smawfield, M. L. (2025). *Temporal Topology Saturation Scale: Cross-Scale Consistency of ρ_T*. Preprint v0.8 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
 
-Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.3 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
+Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.4 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.3 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
+Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.4 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
 
-Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.3 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
+Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.7 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.6 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.9 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
 
-Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Preprint v0.6 (Kingston upon Hull). Zenodo. DOI: [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) (Paper 11)
+Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Preprint v0.10 (Kingston upon Hull). Zenodo. DOI: [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) (Paper 11)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.4 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.7 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.3 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.6 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
 
 ### SLR & Geodesy References
 
@@ -830,7 +1053,7 @@ npm run build
 
 - **Memory:** 8 GB RAM recommended
 
-- **Runtime:** ~30–60 minutes for full pipeline
+- **Runtime:** ~2–4 hours for full pipeline (including data download); ~30–60 minutes with pre-downloaded data
 
 #### Pipeline Overview
 

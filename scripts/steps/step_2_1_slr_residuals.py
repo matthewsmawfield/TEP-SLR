@@ -283,6 +283,7 @@ def iter_crd_observations(np2_path: Path) -> Iterable[CRDObs]:
             if tag == "h2" and len(parts) >= 3:
                 # H2 <station_name> <cdp_pad_id> ...
                 current_station = parts[1]
+                last_elev_deg = None  # reset for new station
                 try:
                     current_station_cdp = str(int(parts[2]))
                 except Exception:
@@ -295,6 +296,7 @@ def iter_crd_observations(np2_path: Path) -> Iterable[CRDObs]:
 
             if tag == "h4" and len(parts) >= 5:
                 # h4 1 YYYY MM DD HH MM SS YYYY MM DD HH MM SS ...
+                last_elev_deg = None  # reset for new session
                 try:
                     y = int(parts[2])
                     m = int(parts[3])
@@ -1293,10 +1295,60 @@ def select_sp3_file_for_satellite(session: requests.Session, sat: str, start_dat
     sat_lower = sat.lower()
     sat_cache = cache_dir / sat_lower
     
-    # Collect all SP3 files that overlap with the date range
+    # Check for a previously-merged pickle file covering this exact date range.
+    # This is the fast path for re-runs: the merged file was created by a prior
+    # download+merge pass and covers the full requested window.
+    merged_pkl = sat_cache / f"merged_{sat_lower}_{start_date.strftime('%Y%m%d')}_{end_date.strftime('%Y%m%d')}.pkl"
+    if merged_pkl.exists():
+        logger.info(f"SP3 merged cache hit: {merged_pkl.name}")
+        return merged_pkl
+
+    # Download SP3 files for ALL weeks overlapping the date range
+    # SP3 files are organized by week (Saturday YYMMDD), each covering ~7 days.
+    # For a full year, we need ~52 weekly files merged together.
+    download_count = 0
+    # Iterate week-by-week from 14 days before start to 7 days after end
+    total_days = (end_date - start_date).days + 1
+    scan_start = start_date - timedelta(days=14)
+    scan_end = end_date + timedelta(days=7)
+    current = scan_start
+    while current <= scan_end:
+        # Find the Saturday that starts the week containing current
+        days_since_saturday = (current.weekday() - 5) % 7
+        saturday = current - timedelta(days=days_since_saturday)
+        week_str = saturday.strftime("%y%m%d")
+        week_dir = sat_cache / week_str
+
+        # Skip if we already have files for this week in cache
+        existing = list(week_dir.glob("*.sp3*")) if week_dir.exists() else []
+        if not existing:
+            remote_dir = f"{base}/{sat_lower}/{week_str}/"
+            try:
+                files = list_remote_files(session, remote_dir)
+                sp3_files = [f for f in files if '.sp3' in f.lower()]
+                if not sp3_files:
+                    current = saturday + timedelta(days=7)
+                    continue
+                ilrs_files = [f for f in sp3_files if 'ilrsa' in f.lower() or 'ilrsb' in f.lower()]
+                chosen = sorted(ilrs_files)[-1] if ilrs_files else sorted(sp3_files)[-1]
+                url = remote_dir.rstrip("/") + "/" + chosen
+                dest = cache_dir / sat_lower / week_str / chosen
+                try:
+                    download_file(session, url, dest)
+                    download_count += 1
+                except Exception as e:
+                    logger.debug(f"Failed to download SP3 {chosen}: {type(e).__name__}: {e}")
+            except Exception:
+                pass
+
+        # Move to next week
+        current = saturday + timedelta(days=7)
+
+    if download_count > 0:
+        logger.info(f"SP3 downloaded {download_count} weekly files for {sat}")
+
+    # Re-check cache after downloading - collect all overlapping files and merge
     overlapping_files = []
-    
-    # First check local cache for existing SP3 files that cover the date range
     if sat_cache.exists():
         for week_dir in sorted(sat_cache.iterdir()):
             if not week_dir.is_dir():
@@ -1304,123 +1356,76 @@ def select_sp3_file_for_satellite(session: requests.Session, sat: str, start_dat
             sp3_files = list(week_dir.glob("*.sp3*"))
             if not sp3_files:
                 continue
-            
-            # Prefer ILRS combined solutions
+            # Skip merged/pkl files in this pass
+            sp3_files = [f for f in sp3_files if not f.name.startswith('merged_')]
+            if not sp3_files:
+                continue
             ilrs_files = [f for f in sp3_files if 'ilrsa' in f.name.lower() or 'ilrsb' in f.name.lower()]
             chosen = sorted(ilrs_files)[-1] if ilrs_files else sorted(sp3_files)[-1]
-            
             try:
                 test_eph = parse_sp3_positions(chosen, sat_id=None)
                 if len(test_eph.epochs) == 0:
                     continue
-                
                 file_start = datetime.fromtimestamp(test_eph.epochs[0], tz=timezone.utc)
                 file_end = datetime.fromtimestamp(test_eph.epochs[-1], tz=timezone.utc)
-                
-                # Accept file if it overlaps with observation period
                 if file_end >= start_date and file_start <= end_date:
                     overlapping_files.append((chosen, file_start, file_end))
             except Exception:
                 continue
-    
-    # If we found overlapping files, merge them if needed
+
     if overlapping_files:
         if len(overlapping_files) == 1:
             chosen = overlapping_files[0][0]
-            logger.info(f"SP3 orbit found (cached): {chosen.name} (covers {overlapping_files[0][1].date()} to {overlapping_files[0][2].date()})")
+            logger.info(f"SP3 orbit found: {chosen.name} (covers {overlapping_files[0][1].date()} to {overlapping_files[0][2].date()})")
             return chosen
         else:
-            # Multiple files - merge them
             logger.info(f"SP3 orbit: merging {len(overlapping_files)} files for {sat}")
-            for f, s, e in overlapping_files:
+            for f, s, e in overlapping_files[:5]:
                 logger.info(f"  {f.name} (covers {s.date()} to {e.date()})")
-            
-            # Merge ephemerides
+            if len(overlapping_files) > 5:
+                logger.info(f"  ... and {len(overlapping_files) - 5} more")
+
             merged_epochs = []
             merged_pos = []
-            
             for sp3_file, _, _ in sorted(overlapping_files, key=lambda x: x[1]):
-                eph = parse_sp3_positions(sp3_file, sat_id=None)
-                merged_epochs.extend(eph.epochs.tolist())
-                merged_pos.extend(eph.pos_m.tolist())
-            
-            # Sort by epoch and remove duplicates
+                try:
+                    eph = parse_sp3_positions(sp3_file, sat_id=None)
+                    merged_epochs.extend(eph.epochs.tolist())
+                    merged_pos.extend(eph.pos_m.tolist())
+                except Exception as e:
+                    logger.debug(f"Skipping {sp3_file.name}: {type(e).__name__}: {e}")
+                    continue
+
+            if not merged_epochs:
+                logger.warning(f"No SP3 orbit found for {sat} covering {start_date.date()} to {end_date.date()} (merge failed)")
+                return None
+
             combined = list(zip(merged_epochs, merged_pos))
             combined.sort(key=lambda x: x[0])
-            
-            # Remove duplicate epochs (keep first occurrence)
             seen_epochs = set()
             unique_combined = []
             for epoch, pos in combined:
                 if epoch not in seen_epochs:
                     seen_epochs.add(epoch)
                     unique_combined.append((epoch, pos))
-            
             merged_epochs = [x[0] for x in unique_combined]
             merged_pos = [x[1] for x in unique_combined]
-            
-            # Create merged ephemeris
+
             merged_eph = SatelliteEphemeris(
                 epochs=np.array(merged_epochs),
                 pos_m=np.array(merged_pos),
                 source='sp3',
                 vel_m_per_s=None
             )
-            
-            # Cache the merged ephemeris as a temporary file
+
             merged_path = sat_cache / f"merged_{sat_lower}_{start_date.strftime('%Y%m%d')}_{end_date.strftime('%Y%m%d')}.sp3"
-            # Store as pickle for fast reload
             import pickle
             with open(merged_path.with_suffix('.pkl'), 'wb') as f:
                 pickle.dump(merged_eph, f)
-            
+
             logger.info(f"SP3 merged: {len(merged_epochs)} epochs from {datetime.fromtimestamp(merged_epochs[0], tz=timezone.utc).date()} to {datetime.fromtimestamp(merged_epochs[-1], tz=timezone.utc).date()}")
             return merged_path.with_suffix('.pkl')
-    
-    # Not in cache - try downloading from CDDIS
-    # Try weeks from 14 days before to 7 days after start date
-    for days_offset in range(-14, 8):
-        check_date = start_date + timedelta(days=days_offset)
-        # Find the Saturday that starts the week containing check_date
-        days_since_saturday = (check_date.weekday() - 5) % 7
-        saturday = check_date - timedelta(days=days_since_saturday)
-        
-        week_str = saturday.strftime("%y%m%d")
-        remote_dir = f"{base}/{sat_lower}/{week_str}/"
-        
-        try:
-            files = list_remote_files(session, remote_dir)
-            sp3_files = [f for f in files if '.sp3' in f.lower()]
-            if not sp3_files:
-                continue
-            
-            ilrs_files = [f for f in sp3_files if 'ilrsa' in f.lower() or 'ilrsb' in f.lower()]
-            chosen = sorted(ilrs_files)[-1] if ilrs_files else sorted(sp3_files)[-1]
-            
-            url = remote_dir.rstrip("/") + "/" + chosen
-            dest = cache_dir / sat_lower / week_str / chosen
-            
-            try:
-                downloaded_file = download_file(session, url, dest)
-                
-                test_eph = parse_sp3_positions(downloaded_file, sat_id=None)
-                if len(test_eph.epochs) == 0:
-                    continue
-                
-                file_start = datetime.fromtimestamp(test_eph.epochs[0], tz=timezone.utc)
-                file_end = datetime.fromtimestamp(test_eph.epochs[-1], tz=timezone.utc)
-                
-                # Accept file if it overlaps with observation period
-                if file_end >= start_date and file_start <= end_date:
-                    logger.info(f"SP3 orbit found: {chosen} (covers {file_start.date()} to {file_end.date()})")
-                    return downloaded_file
-            except Exception as e:
-                logger.debug(f"Failed to verify SP3 {chosen}: {type(e).__name__}: {e}")
-                continue
-            
-        except Exception:
-            continue
-    
+
     logger.warning(f"No SP3 orbit found for {sat} covering {start_date.date()} to {end_date.date()}")
     return None
 

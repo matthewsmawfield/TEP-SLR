@@ -1,0 +1,864 @@
+{
+  "analysis": "NWM Spectral Control for TEP-Band Spectral Concentration",
+  "data_source": "NCEP/NCAR Reanalysis (NOAA PSL, OPeNDAP, no registration)",
+  "ncep_reference": "Kalnay et al. (1996), Bull. Am. Meteorol. Soc., 77, 437-470",
+  "parameters": {
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "n_stations": 46,
+    "ncep_grid": "2.5 deg Gaussian, 73x144, 4x daily (6-hourly)",
+    "tep_band_hz": [
+      1e-05,
+      0.0005
+    ],
+    "broadband_min_hz": 0.001,
+    "residual_fs_hz": 0.0033333333333333335,
+    "ncep_fs_hz": 4.6296296296296294e-05,
+    "ncep_nyquist_hz": 2.3148148148148147e-05,
+    "residual_filter_m": 0.5,
+    "nperseg_native": 128,
+    "n_mc_trials": 200,
+    "note": "NCEP pressure is 6-hourly (Nyquist=23.15 uHz). The TEP/broadband ratio cannot be computed at native resolution (broadband floor >1 mHz is above Nyquist). Interpolating to 5-min inflates the ratio because interpolation adds no high-frequency power. Primary diagnostic is coherence at native 6-hourly resolution in the 10-23 uHz band, assessed against a Monte Carlo null (200 random permutations per station). Secondary is pressure-to-range amplitude vs residual RMS. Pressure loading uses 0.3*sin(45\u00b0) mm/hPa (range projection of vertical displacement)."
+  },
+  "residual_spectral_ratio": {
+    "summary": {
+      "mean": 14.116294073289065,
+      "ci95": [
+        13.520464539835132,
+        14.636641495755745
+      ],
+      "median": 14.288100160315086,
+      "std": 1.9214058131457235,
+      "n": 46
+    },
+    "reference": "step_2_3_mwpc_analysis.json -> temporal_coherence.spectral_concentration",
+    "headline_value": 14.116294073289065,
+    "headline_ci95": [
+      13.54605317301036,
+      14.669118719405843
+    ]
+  },
+  "pressure_residual_coherence_native": {
+    "summary": {
+      "mean": 0.13327687370657468,
+      "ci95": [
+        0.1008817466902753,
+        0.16993968744844318
+      ],
+      "median": 0.11047032338681805,
+      "std": 0.10479732694019245,
+      "n": 34
+    },
+    "description": "Mean magnitude-squared coherence between NCEP surface pressure and SLR residuals at native 6-hourly resolution in the 10-23 uHz band (below the 6-hourly Nyquist). Both series are real data at the same cadence. Significance assessed via Monte Carlo null (200 random permutations)."
+  },
+  "coherence_significance": {
+    "n_significant": 4,
+    "n_total": 34,
+    "n_expected_null": 1.7000000000000002,
+    "binomial_p": 0.08812867526482387,
+    "fisher_p": 0.00035779816952974386,
+    "description": "Binomial test: are there more significant stations than expected by chance (5% of n_total)? Fisher's method: combined p-value across all stations."
+  },
+  "pressure_range_amplitude": {
+    "summary": {
+      "mean": 30.531215062845618,
+      "ci95": [
+        27.13999184450372,
+        33.60399246735594
+      ],
+      "median": 29.719467141953313,
+      "std": 9.692313063401715,
+      "n": 34
+    },
+    "residual_std_summary": {
+      "mean": 257.35310416048185,
+      "ci95": [
+        253.54029168215447,
+        260.7013189201616
+      ],
+      "median": 257.72206717479736,
+      "std": 10.319805791733716,
+      "n": 34
+    },
+    "pressure_to_residual_ratio": {
+      "mean": 0.1186890405611473,
+      "ci95": [
+        0.10588869162645513,
+        0.1306484458962119
+      ],
+      "median": 0.11643773772854951,
+      "std": 0.03681525859057435,
+      "n": 34
+    },
+    "description": "Estimated uncorrected range error from surface pressure variation: tropospheric delay (Marini-Murray with standard atmosphere leaves pressure variations uncorrected) plus pressure loading (0.3*sin(45\u00b0) mm/hPa, range projection of vertical displacement). Compared to residual RMS."
+  },
+  "pressure_psd_overlap": {
+    "summary": {
+      "mean": 1.1246881783236986,
+      "ci95": [
+        1.0839901230782567,
+        1.1674217780263259
+      ],
+      "median": 1.068439109424847,
+      "std": 0.14426487900874713,
+      "n": 46
+    },
+    "description": "PSD ratio (10-23 uHz / high-freq) for NCEP pressure at native 6-hourly resolution."
+  },
+  "per_station_comparison": [
+    {
+      "station": 1873,
+      "residual_ratio": 15.348227195948681,
+      "coherence_native": 0.12499189669595875,
+      "null_mean": 0.1480549516906599,
+      "null_95": 0.19631066275568018,
+      "p_value": 0.835,
+      "significant": false,
+      "pressure_effect_mm": 30.479079433635544,
+      "residual_std_mm": 266.21214160943185,
+      "pressure_to_residual_ratio": 0.11449169541768066
+    },
+    {
+      "station": 1874,
+      "residual_ratio": 12.843906776028913,
+      "coherence_native": 0.3193269837872723,
+      "null_mean": 0.33534432223858796,
+      "null_95": 0.4113489017509548,
+      "p_value": 0.665,
+      "significant": false,
+      "pressure_effect_mm": 39.43365779031824,
+      "residual_std_mm": 248.76471266444366,
+      "pressure_to_residual_ratio": 0.15851789173776398
+    },
+    {
+      "station": 1879,
+      "residual_ratio": 16.433617194354085,
+      "coherence_native": 0.26073700674872696,
+      "null_mean": 0.3391676971800356,
+      "null_95": 0.4216073927110989,
+      "p_value": 0.955,
+      "significant": false,
+      "pressure_effect_mm": 52.720942985896144,
+      "residual_std_mm": 276.7739793527876,
+      "pressure_to_residual_ratio": 0.1904837409541879
+    },
+    {
+      "station": 1884,
+      "residual_ratio": 12.679586591690516,
+      "coherence_native": 0.23629886969611344,
+      "null_mean": 0.25436801702105627,
+      "null_95": 0.3156336388641579,
+      "p_value": 0.67,
+      "significant": false,
+      "pressure_effect_mm": 41.98855977124297,
+      "residual_std_mm": 263.04514017129776,
+      "pressure_to_residual_ratio": 0.15962492119755406
+    },
+    {
+      "station": 1886,
+      "residual_ratio": 14.489489215159866,
+      "coherence_native": 0.3732102153077365,
+      "null_mean": 0.34107690257755197,
+      "null_95": 0.41963533025466526,
+      "p_value": 0.27,
+      "significant": false,
+      "pressure_effect_mm": 17.04045426304126,
+      "residual_std_mm": 268.8888531740596,
+      "pressure_to_residual_ratio": 0.06337359865196969
+    },
+    {
+      "station": 1887,
+      "residual_ratio": 15.98936463980576,
+      "coherence_native": 0.231796758333052,
+      "null_mean": 0.2552844427758624,
+      "null_95": 0.3149503869830769,
+      "p_value": 0.69,
+      "significant": false,
+      "pressure_effect_mm": 46.623471487945864,
+      "residual_std_mm": 270.77689600667486,
+      "pressure_to_residual_ratio": 0.1721840828207018
+    },
+    {
+      "station": 1888,
+      "residual_ratio": 14.734095647849287,
+      "coherence_native": 0.16169742615248625,
+      "null_mean": 0.2060697953676193,
+      "null_95": 0.2513988572894184,
+      "p_value": 0.925,
+      "significant": false,
+      "pressure_effect_mm": 40.210166849198636,
+      "residual_std_mm": 267.6773340533983,
+      "pressure_to_residual_ratio": 0.15021879604186886
+    },
+    {
+      "station": 1889,
+      "residual_ratio": 13.796719340028956,
+      "coherence_native": 0.1124805278442153,
+      "null_mean": 0.1291658054258468,
+      "null_95": 0.17000166023469954,
+      "p_value": 0.75,
+      "significant": false,
+      "pressure_effect_mm": 27.831971940852487,
+      "residual_std_mm": 258.03850192088066,
+      "pressure_to_residual_ratio": 0.10785976408042502
+    },
+    {
+      "station": 1890,
+      "residual_ratio": 14.615650006373194,
+      "coherence_native": 0.20735555451995336,
+      "null_mean": 0.12649407226981182,
+      "null_95": 0.16581666584730914,
+      "p_value": 0.0,
+      "significant": true,
+      "pressure_effect_mm": 29.182366482247915,
+      "residual_std_mm": 264.08593980351145,
+      "pressure_to_residual_ratio": 0.11050329488938543
+    },
+    {
+      "station": 1891,
+      "residual_ratio": 14.576226530826231,
+      "coherence_native": 0.1409519299787238,
+      "null_mean": 0.1746533842117914,
+      "null_95": 0.22695945094349612,
+      "p_value": 0.885,
+      "significant": false,
+      "pressure_effect_mm": 32.95792470427616,
+      "residual_std_mm": 258.72652565283437,
+      "pressure_to_residual_ratio": 0.12738517869829827
+    },
+    {
+      "station": 1893,
+      "residual_ratio": 13.318322707999275,
+      "coherence_native": 0.11854441727305191,
+      "null_mean": 0.12782486634563794,
+      "null_95": 0.1670871129531273,
+      "p_value": 0.64,
+      "significant": false,
+      "pressure_effect_mm": 31.750410422308768,
+      "residual_std_mm": 266.9880213735806,
+      "pressure_to_residual_ratio": 0.11892073007231396
+    },
+    {
+      "station": 7090,
+      "residual_ratio": 14.850059537464995,
+      "coherence_native": 0.009661508431207368,
+      "null_mean": 0.012065601746987946,
+      "null_95": 0.01618053651747248,
+      "p_value": 0.83,
+      "significant": false,
+      "pressure_effect_mm": 25.70414016624498,
+      "residual_std_mm": 246.0177663222056,
+      "pressure_to_residual_ratio": 0.10448082896818384
+    },
+    {
+      "station": 7105,
+      "residual_ratio": 12.245782771054394,
+      "coherence_native": 0.03045310944606592,
+      "null_mean": 0.03312435774320705,
+      "null_95": 0.04572828124120289,
+      "p_value": 0.63,
+      "significant": false,
+      "pressure_effect_mm": 26.80852473166352,
+      "residual_std_mm": 237.2525201449855,
+      "pressure_to_residual_ratio": 0.11299574274397918
+    },
+    {
+      "station": 7110,
+      "residual_ratio": 13.564722184910392,
+      "coherence_native": 0.04658680700696905,
+      "null_mean": 0.0518154628250266,
+      "null_95": 0.06666327687001845,
+      "p_value": 0.72,
+      "significant": false,
+      "pressure_effect_mm": 20.227641479633792,
+      "residual_std_mm": 254.07109899953016,
+      "pressure_to_residual_ratio": 0.07961409841294542
+    },
+    {
+      "station": 7119,
+      "residual_ratio": 14.114869465803444,
+      "coherence_native": 0.05800777485945311,
+      "null_mean": 0.06800853603931899,
+      "null_95": 0.08836012580658864,
+      "p_value": 0.815,
+      "significant": false,
+      "pressure_effect_mm": 16.22757816946303,
+      "residual_std_mm": 254.06560034895753,
+      "pressure_to_residual_ratio": 0.06387160696754914
+    },
+    {
+      "station": 7124,
+      "residual_ratio": 15.415902722945184,
+      "coherence_native": 0.34173617852499827,
+      "null_mean": 0.3421287922049999,
+      "null_95": 0.4245197102143666,
+      "p_value": 0.475,
+      "significant": false,
+      "pressure_effect_mm": 11.428564686365823,
+      "residual_std_mm": 266.94816875375915,
+      "pressure_to_residual_ratio": 0.04281192390163151
+    },
+    {
+      "station": 7237,
+      "residual_ratio": 14.211657628250983,
+      "coherence_native": 0.03932169189773943,
+      "null_mean": 0.03631105435561132,
+      "null_95": 0.048109106392852964,
+      "p_value": 0.31,
+      "significant": false,
+      "pressure_effect_mm": 41.21261611610092,
+      "residual_std_mm": 257.40563242871406,
+      "pressure_to_residual_ratio": 0.16010767024499492
+    },
+    {
+      "station": 7249,
+      "residual_ratio": 16.079787431886537,
+      "coherence_native": 0.17312938635583403,
+      "null_mean": 0.14938218376883225,
+      "null_95": 0.18939478942448598,
+      "p_value": 0.16,
+      "significant": false,
+      "pressure_effect_mm": 28.98974930812406,
+      "residual_std_mm": 262.2276628824084,
+      "pressure_to_residual_ratio": 0.11055183495695504
+    },
+    {
+      "station": 7396,
+      "residual_ratio": 14.44315377951081,
+      "coherence_native": 0.1589760518292192,
+      "null_mean": 0.14706142852995627,
+      "null_95": 0.18647304887328242,
+      "p_value": 0.29,
+      "significant": false,
+      "pressure_effect_mm": 44.19206119029684,
+      "residual_std_mm": 251.45309903951048,
+      "pressure_to_residual_ratio": 0.17574673511322683
+    },
+    {
+      "station": 7501,
+      "residual_ratio": 15.831272131834885,
+      "coherence_native": 0.10846011892942078,
+      "null_mean": 0.08672845992825522,
+      "null_95": 0.1122722745743986,
+      "p_value": 0.08,
+      "significant": false,
+      "pressure_effect_mm": 16.99754723446762,
+      "residual_std_mm": 262.7814671320087,
+      "pressure_to_residual_ratio": 0.06468320395642238
+    },
+    {
+      "station": 7503,
+      "residual_ratio": 12.125715767044769,
+      "coherence_native": 0.3491943359685763,
+      "null_mean": 0.34326741390635473,
+      "null_95": 0.42099884300552065,
+      "p_value": 0.415,
+      "significant": false,
+      "pressure_effect_mm": 17.764379351679437,
+      "residual_std_mm": 268.88620000624246,
+      "pressure_to_residual_ratio": 0.0660665342857574
+    },
+    {
+      "station": 7810,
+      "residual_ratio": 13.955450785044215,
+      "coherence_native": 0.027880433943553096,
+      "null_mean": 0.030216025594187186,
+      "null_95": 0.039496257351188495,
+      "p_value": 0.645,
+      "significant": false,
+      "pressure_effect_mm": 25.697731450167378,
+      "residual_std_mm": 238.62437089009293,
+      "pressure_to_residual_ratio": 0.10769114384382555
+    },
+    {
+      "station": 7811,
+      "residual_ratio": 11.176300451473825,
+      "coherence_native": 0.2402138203091133,
+      "null_mean": 0.17476441754483596,
+      "null_95": 0.22257309553778545,
+      "p_value": 0.02,
+      "significant": true,
+      "pressure_effect_mm": 37.325235937638276,
+      "residual_std_mm": 252.58460047339088,
+      "pressure_to_residual_ratio": 0.14777320496848892
+    },
+    {
+      "station": 7819,
+      "residual_ratio": 14.364542692379189,
+      "coherence_native": 0.1635288430944042,
+      "null_mean": 0.11415220269703076,
+      "null_95": 0.1451037094313912,
+      "p_value": 0.005,
+      "significant": true,
+      "pressure_effect_mm": 13.909513538926639,
+      "residual_std_mm": 257.380271455181,
+      "pressure_to_residual_ratio": 0.05404265626220997
+    },
+    {
+      "station": 7821,
+      "residual_ratio": 13.627966328473324,
+      "coherence_native": 0.06302968738000375,
+      "null_mean": 0.04977840021801663,
+      "null_95": 0.06604431000120312,
+      "p_value": 0.1,
+      "significant": false,
+      "pressure_effect_mm": 36.77826390737759,
+      "residual_std_mm": 243.84409872510284,
+      "pressure_to_residual_ratio": 0.15082695910898175
+    },
+    {
+      "station": 7825,
+      "residual_ratio": 12.398065657771776,
+      "coherence_native": 0.02433473799614196,
+      "null_mean": 0.024427729655621504,
+      "null_95": 0.03285103408093815,
+      "p_value": 0.485,
+      "significant": false,
+      "pressure_effect_mm": 29.99711410469287,
+      "residual_std_mm": 246.88663614940407,
+      "pressure_to_residual_ratio": 0.12150157081220078
+    },
+    {
+      "station": 7827,
+      "residual_ratio": 17.35352903500319,
+      "coherence_native": 0.07351623472582755,
+      "null_mean": 0.09545619133541418,
+      "null_95": 0.12330353789866419,
+      "p_value": 0.91,
+      "significant": false,
+      "pressure_effect_mm": 31.671068073813714,
+      "residual_std_mm": 275.8803968182615,
+      "pressure_to_residual_ratio": 0.11479999463201183
+    },
+    {
+      "station": 7838,
+      "residual_ratio": 12.57171560481465,
+      "coherence_native": 0.07678976595124667,
+      "null_mean": 0.07529758198269389,
+      "null_95": 0.09989766745306211,
+      "p_value": 0.41,
+      "significant": false,
+      "pressure_effect_mm": 28.999822239928626,
+      "residual_std_mm": 245.60410033720655,
+      "pressure_to_residual_ratio": 0.1180754808250872
+    },
+    {
+      "station": 7839,
+      "residual_ratio": 15.686216839871983,
+      "coherence_native": 0.055916784532156316,
+      "null_mean": 0.06215270042905643,
+      "null_95": 0.07964109618791254,
+      "p_value": 0.68,
+      "significant": false,
+      "pressure_effect_mm": 29.441820179213757,
+      "residual_std_mm": 260.4668001324022,
+      "pressure_to_residual_ratio": 0.11303482886973577
+    },
+    {
+      "station": 7840,
+      "residual_ratio": 14.689248079107458,
+      "coherence_native": 0.031683545512623465,
+      "null_mean": 0.027876205330859948,
+      "null_95": 0.03620180867093394,
+      "p_value": 0.23,
+      "significant": false,
+      "pressure_effect_mm": 40.06679496471114,
+      "residual_std_mm": 248.86522886944138,
+      "pressure_to_residual_ratio": 0.160997963221816
+    },
+    {
+      "station": 7841,
+      "residual_ratio": 13.818538416852949,
+      "coherence_native": 0.04548304602890753,
+      "null_mean": 0.050833150109951986,
+      "null_95": 0.06599422178179219,
+      "p_value": 0.705,
+      "significant": false,
+      "pressure_effect_mm": 38.10852613405339,
+      "residual_std_mm": 260.7358062081659,
+      "pressure_to_residual_ratio": 0.14615762479369004
+    },
+    {
+      "station": 7845,
+      "residual_ratio": 14.110554824232224,
+      "coherence_native": 0.0626942054431534,
+      "null_mean": 0.04508008530169471,
+      "null_95": 0.0585271711282723,
+      "p_value": 0.015,
+      "significant": true,
+      "pressure_effect_mm": 28.16349589082858,
+      "residual_std_mm": 238.09120396761946,
+      "pressure_to_residual_ratio": 0.11828868694644777
+    },
+    {
+      "station": 7941,
+      "residual_ratio": 14.027690034146696,
+      "coherence_native": 0.02361894701118059,
+      "null_mean": 0.024713368987151655,
+      "null_95": 0.03218338787118825,
+      "p_value": 0.57,
+      "significant": false,
+      "pressure_effect_mm": 25.211708107197293,
+      "residual_std_mm": 252.83312793915425,
+      "pressure_to_residual_ratio": 0.09971679072555965
+    },
+    {
+      "station": 8834,
+      "residual_ratio": 14.492352376470672,
+      "coherence_native": 0.03980510450845206,
+      "null_mean": 0.04437887239441996,
+      "null_95": 0.057041169656453006,
+      "p_value": 0.675,
+      "significant": false,
+      "pressure_effect_mm": 32.91840904319786,
+      "residual_std_mm": 257.12163764973695,
+      "pressure_to_residual_ratio": 0.1280265999551576
+    }
+  ],
+  "per_station_pressure_stats": {
+    "1824": {
+      "pressure_mean_hpa": 1002.4600423096068,
+      "pressure_std_hpa": 8.280834195948396,
+      "psd_overlap_tep": 20531.28346475673,
+      "psd_high_freq": 16329.202974901022,
+      "ratio_overlap": 1.2573353087909165
+    },
+    "1868": {
+      "pressure_mean_hpa": 950.0669549527128,
+      "pressure_std_hpa": 6.697763234127471,
+      "psd_overlap_tep": 28969.56752761284,
+      "psd_high_freq": 25585.41073105786,
+      "ratio_overlap": 1.1322690040870436
+    },
+    "1873": {
+      "pressure_mean_hpa": 1018.8554442508712,
+      "pressure_std_hpa": 7.168101226155029,
+      "psd_overlap_tep": 21634.485292704525,
+      "psd_high_freq": 18110.676504191204,
+      "ratio_overlap": 1.1945707984844098
+    },
+    "1874": {
+      "pressure_mean_hpa": 1001.327600796416,
+      "pressure_std_hpa": 9.967981331978075,
+      "psd_overlap_tep": 24720.662478455197,
+      "psd_high_freq": 17726.15765713656,
+      "ratio_overlap": 1.394586630481798
+    },
+    "1879": {
+      "pressure_mean_hpa": 1009.4464970134395,
+      "pressure_std_hpa": 11.126025444157401,
+      "psd_overlap_tep": 46817.41920608909,
+      "psd_high_freq": 35665.00899695333,
+      "ratio_overlap": 1.312698931607965
+    },
+    "1884": {
+      "pressure_mean_hpa": 1003.2001617720259,
+      "pressure_std_hpa": 10.691296066036132,
+      "psd_overlap_tep": 27018.21192400498,
+      "psd_high_freq": 18434.263561487096,
+      "ratio_overlap": 1.4656518191728303
+    },
+    "1886": {
+      "pressure_mean_hpa": 873.1107889497263,
+      "pressure_std_hpa": 4.298021159587302,
+      "psd_overlap_tep": 18896.394279660773,
+      "psd_high_freq": 18454.93851603019,
+      "ratio_overlap": 1.0239207387901688
+    },
+    "1887": {
+      "pressure_mean_hpa": 1019.4037083125933,
+      "pressure_std_hpa": 9.772118212644944,
+      "psd_overlap_tep": 52597.16392959656,
+      "psd_high_freq": 52439.324486860576,
+      "ratio_overlap": 1.0030099442409013
+    },
+    "1888": {
+      "pressure_mean_hpa": 1013.1478036336486,
+      "pressure_std_hpa": 11.479343781454975,
+      "psd_overlap_tep": 29184.189297651857,
+      "psd_high_freq": 20369.65448799929,
+      "ratio_overlap": 1.4327287345421404
+    },
+    "1889": {
+      "pressure_mean_hpa": 966.0219201095073,
+      "pressure_std_hpa": 5.895781174798957,
+      "psd_overlap_tep": 19276.67845864422,
+      "psd_high_freq": 16804.78392783995,
+      "ratio_overlap": 1.1470946928814216
+    },
+    "1890": {
+      "pressure_mean_hpa": 880.9818317570931,
+      "pressure_std_hpa": 6.78091915149715,
+      "psd_overlap_tep": 34431.08031394915,
+      "psd_high_freq": 29167.71644981935,
+      "ratio_overlap": 1.1804516947079138
+    },
+    "1891": {
+      "pressure_mean_hpa": 943.6760764061721,
+      "pressure_std_hpa": 8.710661022083709,
+      "psd_overlap_tep": 40160.203263768235,
+      "psd_high_freq": 33947.97127556905,
+      "ratio_overlap": 1.1829927313703683
+    },
+    "1893": {
+      "pressure_mean_hpa": 1018.8554442508712,
+      "pressure_std_hpa": 7.168101226155029,
+      "psd_overlap_tep": 21634.485292704525,
+      "psd_high_freq": 18110.676504191204,
+      "ratio_overlap": 1.1945707984844098
+    },
+    "7080": {
+      "pressure_mean_hpa": 957.2456259333001,
+      "pressure_std_hpa": 5.318029995945346,
+      "psd_overlap_tep": 122181.66852660751,
+      "psd_high_freq": 125873.36982066595,
+      "ratio_overlap": 0.9706713080032887
+    },
+    "7090": {
+      "pressure_mean_hpa": 1004.4877364360378,
+      "pressure_std_hpa": 5.663660505958233,
+      "psd_overlap_tep": 29445.876748127524,
+      "psd_high_freq": 28712.02945734175,
+      "ratio_overlap": 1.0255588791407473
+    },
+    "7105": {
+      "pressure_mean_hpa": 968.5175398208064,
+      "pressure_std_hpa": 6.294675596200796,
+      "psd_overlap_tep": 28225.19504551143,
+      "psd_high_freq": 27734.394471184467,
+      "ratio_overlap": 1.0176964589883835
+    },
+    "7110": {
+      "pressure_mean_hpa": 909.0124128919861,
+      "pressure_std_hpa": 4.74404616007191,
+      "psd_overlap_tep": 84643.19577080381,
+      "psd_high_freq": 87427.24702841972,
+      "ratio_overlap": 0.9681557940774356
+    },
+    "7119": {
+      "pressure_mean_hpa": 961.9460739173718,
+      "pressure_std_hpa": 3.503180595150862,
+      "psd_overlap_tep": 196127.81645640943,
+      "psd_high_freq": 205197.7792146721,
+      "ratio_overlap": 0.955798923394907
+    },
+    "7124": {
+      "pressure_mean_hpa": 1017.9263750622201,
+      "pressure_std_hpa": 2.761520842319277,
+      "psd_overlap_tep": 59126.23798049038,
+      "psd_high_freq": 61102.91574940087,
+      "ratio_overlap": 0.9676500254584026
+    },
+    "7237": {
+      "pressure_mean_hpa": 999.2680002488801,
+      "pressure_std_hpa": 9.729169054743009,
+      "psd_overlap_tep": 36025.85744915166,
+      "psd_high_freq": 28964.47311276681,
+      "ratio_overlap": 1.2437946759429355
+    },
+    "7249": {
+      "pressure_mean_hpa": 907.1420482827277,
+      "pressure_std_hpa": 6.484389896526311,
+      "psd_overlap_tep": 31430.39056958937,
+      "psd_high_freq": 28694.7009885888,
+      "ratio_overlap": 1.0953377971106404
+    },
+    "7306": {
+      "pressure_mean_hpa": 988.4790816326531,
+      "pressure_std_hpa": 6.478134660052548,
+      "psd_overlap_tep": 56425.075956386965,
+      "psd_high_freq": 54247.08273415101,
+      "ratio_overlap": 1.040149499520733
+    },
+    "7329": {
+      "pressure_mean_hpa": 902.237506222001,
+      "pressure_std_hpa": 6.4356832092963705,
+      "psd_overlap_tep": 44689.63109522505,
+      "psd_high_freq": 41788.820175350294,
+      "ratio_overlap": 1.0694159564137644
+    },
+    "7358": {
+      "pressure_mean_hpa": 1014.8299091587855,
+      "pressure_std_hpa": 6.712386178904218,
+      "psd_overlap_tep": 35850.214657176904,
+      "psd_high_freq": 36755.37353927681,
+      "ratio_overlap": 0.9753734272042522
+    },
+    "7394": {
+      "pressure_mean_hpa": 993.8007155301144,
+      "pressure_std_hpa": 7.544421632619984,
+      "psd_overlap_tep": 37215.215528292916,
+      "psd_high_freq": 33779.497959049026,
+      "ratio_overlap": 1.101710143040285
+    },
+    "7396": {
+      "pressure_mean_hpa": 1008.3644785963165,
+      "pressure_std_hpa": 9.372352026339998,
+      "psd_overlap_tep": 40273.33028942606,
+      "psd_high_freq": 37728.106844286034,
+      "ratio_overlap": 1.06746226243593
+    },
+    "7403": {
+      "pressure_mean_hpa": 1017.9263750622201,
+      "pressure_std_hpa": 2.761520842319277,
+      "psd_overlap_tep": 59126.23798049038,
+      "psd_high_freq": 61102.91574940087,
+      "ratio_overlap": 0.9676500254584026
+    },
+    "7407": {
+      "pressure_mean_hpa": 1012.4291002986561,
+      "pressure_std_hpa": 2.670451103458567,
+      "psd_overlap_tep": 76072.8584770005,
+      "psd_high_freq": 78367.74289051165,
+      "ratio_overlap": 0.9707164666370784
+    },
+    "7501": {
+      "pressure_mean_hpa": 875.3934420109506,
+      "pressure_std_hpa": 3.860279315731898,
+      "psd_overlap_tep": 56416.641236912226,
+      "psd_high_freq": 53007.10314456919,
+      "ratio_overlap": 1.0643222868271827
+    },
+    "7503": {
+      "pressure_mean_hpa": 875.3934420109506,
+      "pressure_std_hpa": 3.860279315731898,
+      "psd_overlap_tep": 56416.641236912226,
+      "psd_high_freq": 53007.10314456919,
+      "ratio_overlap": 1.0643222868271827
+    },
+    "7701": {
+      "pressure_mean_hpa": 979.6098805375809,
+      "pressure_std_hpa": 5.254017584872062,
+      "psd_overlap_tep": 142783.58633778745,
+      "psd_high_freq": 146616.7294484943,
+      "ratio_overlap": 0.973856031810794
+    },
+    "7810": {
+      "pressure_mean_hpa": 915.1515741662519,
+      "pressure_std_hpa": 7.40058551830783,
+      "psd_overlap_tep": 18125.073389191894,
+      "psd_high_freq": 14521.202206292473,
+      "ratio_overlap": 1.248179946240109
+    },
+    "7811": {
+      "pressure_mean_hpa": 1004.6941077650572,
+      "pressure_std_hpa": 9.14480275195478,
+      "psd_overlap_tep": 23647.43755494045,
+      "psd_high_freq": 17205.448105791667,
+      "ratio_overlap": 1.3744156740085305
+    },
+    "7817": {
+      "pressure_mean_hpa": 968.5175398208064,
+      "pressure_std_hpa": 6.294675596200796,
+      "psd_overlap_tep": 28225.19504551143,
+      "psd_high_freq": 27734.394471184467,
+      "ratio_overlap": 1.0176964589883835
+    },
+    "7819": {
+      "pressure_mean_hpa": 799.5340467894474,
+      "pressure_std_hpa": 3.1551987802289854,
+      "psd_overlap_tep": 71458.79650701485,
+      "psd_high_freq": 70439.93213722084,
+      "ratio_overlap": 1.0144643008430105
+    },
+    "7821": {
+      "pressure_mean_hpa": 987.1529990044799,
+      "pressure_std_hpa": 8.183005414652124,
+      "psd_overlap_tep": 34564.62809204284,
+      "psd_high_freq": 32767.17859243451,
+      "ratio_overlap": 1.0548551806051234
+    },
+    "7824": {
+      "pressure_mean_hpa": 1004.5869586859134,
+      "pressure_std_hpa": 6.087047375608098,
+      "psd_overlap_tep": 32511.95536842136,
+      "psd_high_freq": 32724.234718889893,
+      "ratio_overlap": 0.9935130843458352
+    },
+    "7825": {
+      "pressure_mean_hpa": 967.5466214534595,
+      "pressure_std_hpa": 6.760777564328175,
+      "psd_overlap_tep": 73901.7614150748,
+      "psd_high_freq": 77675.12680952536,
+      "ratio_overlap": 0.9514211878442942
+    },
+    "7827": {
+      "pressure_mean_hpa": 971.2158536585365,
+      "pressure_std_hpa": 8.403223638974392,
+      "psd_overlap_tep": 25208.35450911965,
+      "psd_high_freq": 19257.39030812686,
+      "ratio_overlap": 1.309022360027745
+    },
+    "7838": {
+      "pressure_mean_hpa": 1006.0753297660527,
+      "pressure_std_hpa": 6.39616827927544,
+      "psd_overlap_tep": 49229.57861683618,
+      "psd_high_freq": 49343.4542025761,
+      "ratio_overlap": 0.9976921845545631
+    },
+    "7839": {
+      "pressure_mean_hpa": 932.0164634146341,
+      "pressure_std_hpa": 7.331082034678384,
+      "psd_overlap_tep": 17117.19708047705,
+      "psd_high_freq": 13628.226723402535,
+      "ratio_overlap": 1.256010589483606
+    },
+    "7840": {
+      "pressure_mean_hpa": 1006.4984320557492,
+      "pressure_std_hpa": 10.190353412344423,
+      "psd_overlap_tep": 37766.47588987049,
+      "psd_high_freq": 29394.07341876669,
+      "ratio_overlap": 1.2848330121458575
+    },
+    "7841": {
+      "pressure_mean_hpa": 1006.9378484320557,
+      "pressure_std_hpa": 9.535890414530417,
+      "psd_overlap_tep": 29451.025410424645,
+      "psd_high_freq": 22274.868595751104,
+      "ratio_overlap": 1.3221638225979202
+    },
+    "7845": {
+      "pressure_mean_hpa": 921.8673220507715,
+      "pressure_std_hpa": 6.894341779874047,
+      "psd_overlap_tep": 13933.283453350268,
+      "psd_high_freq": 12747.283420532569,
+      "ratio_overlap": 1.093039433869287
+    },
+    "7941": {
+      "pressure_mean_hpa": 996.8950161772027,
+      "pressure_std_hpa": 6.215107533045923,
+      "psd_overlap_tep": 18703.585513924645,
+      "psd_high_freq": 17850.296171175865,
+      "ratio_overlap": 1.047802531373493
+    },
+    "8834": {
+      "pressure_mean_hpa": 971.2158536585365,
+      "pressure_std_hpa": 8.403223638974392,
+      "psd_overlap_tep": 25208.35450911965,
+      "psd_high_freq": 19257.39030812686,
+      "ratio_overlap": 1.309022360027745
+    }
+  },
+  "verdict": "TEP_SURVIVES: Pressure-residual coherence is significant at 4/34 stations (expected 1.7 by chance, binomial p=0.088). The excess is not statistically significant. Mean coherence=0.133 is at or below the Monte Carlo null. The uncorrected pressure effect (30.5 mm) is 12% of the residual RMS (257.4 mm). The 14x TEP-band concentration is not a synoptic weather artifact. Note: NCEP 6-hourly resolution only constrains the lower TEP band (10-23 uHz); the upper band (23-500 uHz) is unconstrained.",
+  "verdict_detail": {
+    "mean_coherence_native": 0.13327687370657468,
+    "pressure_effect_mm": 30.531215062845618,
+    "residual_std_mm": 257.35310416048185,
+    "pressure_fraction_of_residual": 0.1186890405611473,
+    "n_significant": 4,
+    "n_total": 34,
+    "binomial_p": 0.08812867526482387,
+    "fisher_p": 0.00035779816952974386
+  }
+}

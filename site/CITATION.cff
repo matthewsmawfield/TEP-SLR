@@ -7,9 +7,15 @@ authors:
     given-names: "Matthew Lukin"
     orcid: "https://orcid.org/0009-0003-8219-3159"
 abstract: >
-  An independent, optical-domain test of the Temporal Equivalence Principle (TEP) is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2 and Etalon-1/2). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS). Under strict 5-minute contemporaneous binning, distance-binned mean pass-correlations fluctuate with high variance. However, widening the overlap window to 15 minutes (thereby increasing multi-station overlap) reveals statistically significant, distance-structured inter-station correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.; $p=0.0040$) under a family-wise circular-shift test. This signal is driven primarily by LAGEOS-2 ($p=0.0005$), which exhibits a strong negative correlation ($r \approx -0.59$) in the 5,000–7,500 km distance bin, whereas LAGEOS-1 remains consistent with the null hypothesis ($p \approx 0.93$). Although observation counts and temporal overlap are comparable, this asymmetry likely reflects a combination of orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number statistics in the critical distance bin. To validate this finding with more robust statistics, a daily-aggregation analysis ($N=190$ station pairs) was performed. This confirmed a subtler but statistically significant negative correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting a persistent global background structure independent of the high-amplitude LAGEOS-2 events. The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
+  An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).
+
+  Frequency-domain analysis reveals a significant concentration of power within the predicted TEP band (10–500 μHz): the station-averaged TEP-band mean PSD exceeds the broadband floor (f>1 mHz) by 14.12× (95% CI: 13.55–14.67; N=46 stations), a result stable across residual thresholds (14.86× at 0.3 m; 11.91× at 1.0 m). A range-dependent lag-1 coherence diagnostic shows that longer signal paths (≳8,000 km) accumulate greater decoherence than shorter paths (≲6,500 km), with the long-minus-short contrast Δ=−0.208 (95% CI: −0.418 to 0.000) at the 0.5 m threshold.
+
+  Inter-station pass-correlation analysis under 15-minute contemporaneous binning yields a nominally significant Fisher-combined result (χ²=16.45, 4 d.o.f.; p=0.0025). However, this signal concentrates in three LAGEOS-2 station pairs at 5,000–7,500 km, one of which contributes a correlation of r=−0.910 from only three passes (p=0.273, not individually significant). When restricted to pairs with ≥10 passes, both satellites converge to near-zero mean correlation. A daily-aggregation analysis (N=190 pairs) yields p_FWER=0.020, reaching conventional significance, with the most negative correlation at 3000–5000 km baselines (r̄=−0.074). The spectral concentration, range-dependent coherence, and daily-aggregation signal provide three independent lines of evidence for a structured, low-frequency process; the pass-correlation test remains limited by network sparsity (median 7 passes per pair).
+
+  The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.
 license: CC-BY-4.0
-version: 0.3
+version: v0.4 (Mombasa)
 date-released: 2025-12-30
 keywords:
   - physics
@@ -24,7 +30,7 @@ doi: "10.5281/zenodo.18064581"
 
 preferred-citation:
   type: article
-  title: "Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging (Mombasa v0.3)"
+  title: "Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging (Mombasa v0.4)"
   authors:
     - family-names: Smawfield
       given-names: Matthew Lukin

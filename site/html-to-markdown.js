@@ -124,11 +124,31 @@ class HTMLToMarkdownConverter {
         html = html.replace(/<(?!\/?[a-zA-Z!])/g, '&lt;');
 
         // Remove remaining HTML tags
+        // Preserve sub/sup tags before generic stripping
+        const subTags = [];
+        html = html.replace(/<sub[^>]*>([\s\S]*?)<\/sub\s*>/gi, (match, inner) => {
+            subTags.push(inner.trim());
+            return `__SUB_${subTags.length - 1}__`;
+        });
+        const supTags = [];
+        html = html.replace(/<sup[^>]*>([\s\S]*?)<\/sup\s*>/gi, (match, inner) => {
+            supTags.push(inner.trim());
+            return `__SUP_${supTags.length - 1}__`;
+        });
+
         html = html.replace(/<[^>]+>/g, '');
         
         // Restore MathJax expressions
         mathExpressions.forEach((expr, index) => {
             html = html.replace(`__MATH_EXPRESSION_${index}__`, expr);
+        });
+
+        // Restore sub/sup tags
+        subTags.forEach((inner, index) => {
+            html = html.replace(`__SUB_${index}__`, `<sub>${inner}</sub>`);
+        });
+        supTags.forEach((inner, index) => {
+            html = html.replace(`__SUP_${index}__`, `<sup>${inner}</sup>`);
         });
         
         // Decode HTML entities
@@ -184,9 +204,24 @@ class HTMLToMarkdownConverter {
         rowMatches.forEach((row, index) => {
             const cells = row.match(/<t[dh][^>]*>(.*?)<\/t[dh]>/gis);
             if (cells) {
-                const cellTexts = cells.map(cell => 
-                    cell.replace(/<[^>]+>/g, '').trim()
-                );
+                const cellTexts = cells.map(cell => {
+                    // Preserve sub/sup tags before stripping other HTML
+                    const subSupPlaceholders = [];
+                    let processed = cell
+                        .replace(/<sub[^>]*>([\s\S]*?)<\/sub\s*>/gi, (m, inner) => {
+                            subSupPlaceholders.push(`<sub>${inner.trim()}</sub>`);
+                            return `__SUBSUP_${subSupPlaceholders.length - 1}__`;
+                        })
+                        .replace(/<sup[^>]*>([\s\S]*?)<\/sup\s*>/gi, (m, inner) => {
+                            subSupPlaceholders.push(`<sup>${inner.trim()}</sup>`);
+                            return `__SUBSUP_${subSupPlaceholders.length - 1}__`;
+                        });
+                    processed = processed.replace(/<[^>]+>/g, '').trim();
+                    subSupPlaceholders.forEach((tag, i) => {
+                        processed = processed.replace(`__SUBSUP_${i}__`, tag);
+                    });
+                    return processed;
+                });
                 rows.push(cellTexts);
             }
         });

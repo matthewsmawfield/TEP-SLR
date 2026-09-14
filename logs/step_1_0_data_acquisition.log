@@ -1,0 +1,15 @@
+[03:32:33] [INFO] SLR acquisition: data_type=npt, crd_version=crd_v2, source=allsat, satellite=None
+[03:32:33] [INFO] Date range: 2022-01-01 to 2025-12-31 (4 years)
+[03:32:33] [PROCESS] Listing: https://cddis.nasa.gov/archive/slr/data/npt_crd_v2/allsat/2022/
+[03:32:37] [INFO] 2022: 3585 files selected (out of 3590 listed)
+[03:32:37] [INFO] Downloading 3585 files with 10 workers...
+[03:45:13] [PROCESS] Listing: https://cddis.nasa.gov/archive/slr/data/npt_crd_v2/allsat/2023/
+[03:45:20] [INFO] 2023: 8824 files selected (out of 8829 listed)
+[03:45:20] [INFO] Downloading 8824 files with 10 workers...
+[04:17:12] [PROCESS] Listing: https://cddis.nasa.gov/archive/slr/data/npt_crd_v2/allsat/2024/
+[04:17:22] [INFO] 2024: 9134 files selected (out of 9139 listed)
+[04:17:22] [INFO] Downloading 9134 files with 10 workers...
+[04:50:59] [PROCESS] Listing: https://cddis.nasa.gov/archive/slr/data/npt_crd_v2/allsat/2025/
+[04:51:06] [INFO] 2025: 8922 files selected (out of 8927 listed)
+[04:51:06] [INFO] Downloading 8922 files with 10 workers...
+[05:23:48] [SUCCESS] Data acquisition complete. Output: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_1_0_data_acquisition.json

@@ -4,14 +4,14 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://matthewsmawfield.github.io/TEP-SLR/</loc>
-        <lastmod>2026-05-19</lastmod>
+        <loc>https://mlsmawfield.com/tep/slr/</loc>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://matthewsmawfield.github.io/TEP-SLR/public/docs/8-TEP-SLR-v0.3-Mombasa.pdf</loc>
-        <lastmod>2026-05-19</lastmod>
+        <loc>https://mlsmawfield.com/tep/slr/public/docs/8-TEP-SLR-v0.4-Mombasa.pdf</loc>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

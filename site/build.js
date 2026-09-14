@@ -2,6 +2,13 @@
 
 const fs = require('fs');
 const path = require('path');
+function processIncludes(html) {
+    return html.replace(/<!--\s*include:\s*([^\s]+)\s*-->/g, (_, relPath) => {
+        const fullPath = path.join(__dirname, '..', 'core', relPath);
+        return fs.existsSync(fullPath) ? fs.readFileSync(fullPath, 'utf8').trim() : '';
+    });
+}
+
 
 async function buildStaticSite() {
     console.log('🔨 Building static site...');
@@ -34,7 +41,7 @@ async function buildStaticSite() {
             const componentPath = path.join(__dirname, 'components', section.file);
             
             if (fs.existsSync(componentPath)) {
-                const componentHtml = fs.readFileSync(componentPath, 'utf8');
+                const componentHtml = processIncludes(fs.readFileSync(componentPath, 'utf8'));
                 
                 // Wrap component in section container (matching the dynamic loader)
                 componentsHtml += `
@@ -45,8 +52,8 @@ async function buildStaticSite() {
                 console.warn(`⚠️  Component not found: ${section.file}`);
                 componentsHtml += `
                 <section id="${section.id}" class="manuscript-section" data-section="${section.title}">
-                    <div style="background-color: rgba(45, 1, 64, 0.05); border: 1px solid #2D0140; padding: 15px; margin: 20px 0; border-radius: 5px;">
-                        <h3 style="color: #2D0140; margin-top: 0;">Missing Section: ${section.title}</h3>
+                    <div style="background-color: #ffe6e6; border: 1px solid #ff9999; padding: 15px; margin: 20px 0; border-radius: 5px;">
+                        <h3 style="color: #cc0000; margin-top: 0;">Missing Section: ${section.title}</h3>
                         <p>Component file <code>components/${section.file}</code> not found</p>
                     </div>
                 </section>`;
@@ -117,7 +124,7 @@ async function buildStaticSite() {
         }
 
         // Copy robots.txt and sitemap.xml to dist root
-        const rootFiles = ['404.html', 'robots.txt', 'sitemap.xml', 'CNAME', '29c6507763d2303d801cc8ed89d39f88.txt'];
+        const rootFiles = ['404.html', 'robots.txt', 'sitemap.xml', 'CNAME',];
         for (const file of rootFiles) {
             const src = path.join(__dirname, 'public', file);
             const dest = path.join(distDir, file);
@@ -160,7 +167,7 @@ async function buildStaticSite() {
         
         console.log('✅ Static site built successfully!');
         console.log(`📁 Output: ${outputPath}`);
-        console.log('📄 Markdown: 8-TEP-SLR-v0.3-Mombasa.md (in root)');
+        console.log('📄 Markdown: 8-TEP-SLR-v0.4-Mombasa.md (in root)');
         console.log(`📊 Generated ${manifest.sections.length} sections`);
         console.log('🚀 Ready for deployment');
         

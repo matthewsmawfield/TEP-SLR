@@ -2023,7 +2023,7 @@ def analyze_range_coherence(df: pd.DataFrame, bootstrap_n: int = DEFAULT_BOOTSTR
     results['correlation_with_range'] = {
         'pearson_r': float(r),
         'p_value': float(p),
-        'significant': p < 0.05,
+        'significant': bool(p < 0.05),
     }
     
     return results
@@ -2165,6 +2165,148 @@ def analyze_temporal_coherence(df: pd.DataFrame, bootstrap_n: int = DEFAULT_BOOT
     return results
 
 
+def _ar1_surrogate_spectral_ratio(phi: float, n_obs: int, n_surrogates: int,
+                                  fs: float, f1: float, f2: float, f_bb: float,
+                                  rng: np.random.Generator) -> np.ndarray:
+    """Generate AR(1) surrogates and return TEP-band/broadband spectral ratios.
+
+    Each surrogate preserves the station lag-1 autocorrelation (phi) and
+    record length (n_obs), so the resulting null distribution reflects the
+    red-noise expectation for that station's sampling and persistence.
+    """
+    ratios = []
+    for _ in range(n_surrogates):
+        noise = rng.standard_normal(n_obs)
+        x = np.empty(n_obs)
+        x[0] = noise[0] / np.sqrt(max(1.0 - phi * phi, 1e-12)) if abs(phi) < 1 else noise[0]
+        for t in range(1, n_obs):
+            x[t] = phi * x[t - 1] + noise[t]
+        nperseg = min(256, n_obs // 2)
+        if nperseg < 8:
+            continue
+        freqs, psd = welch(x, fs=fs, nperseg=nperseg)
+        tep_mask = (freqs >= f1) & (freqs <= f2)
+        bb_mask = freqs >= f_bb
+        if not np.any(tep_mask) or not np.any(bb_mask):
+            continue
+        tep_power = float(np.mean(psd[tep_mask]))
+        bb_power = float(np.mean(psd[bb_mask]))
+        if bb_power > 0:
+            ratios.append(tep_power / bb_power)
+    return np.asarray(ratios, dtype=float)
+
+
+def analyze_red_noise_null(df: pd.DataFrame, station_acf: Dict[str, list],
+                           station_ratios: Dict[str, Dict[str, float]],
+                           n_surrogates: int = 500,
+                           seed: int = 42) -> Dict:
+    """AR(1) red-noise null test for spectral concentration.
+
+    For each station, generates AR(1) surrogates matching the station's
+    measured lag-1 autocorrelation and observation count, then compares
+    the observed TEP-band/broadband ratio to the surrogate distribution.
+    This controls for the trivial expectation that any coloured-noise
+    process concentrates power at low frequencies.
+    """
+    logger.info("Running AR(1) red-noise null test for spectral concentration...")
+
+    rng = np.random.default_rng(seed)
+    sta_counts = df.groupby('station').size()
+
+    per_station: list = []
+    for sta_key, ratio_data in station_ratios.items():
+        sta_int = int(sta_key)
+        acf_vals = station_acf.get(sta_key, station_acf.get(str(sta_int), [0, 0.5]))
+        phi = float(acf_vals[1]) if len(acf_vals) >= 2 else 0.5
+        n_obs = int(sta_counts.get(sta_int, sta_counts.get(str(sta_int), 3000)))
+
+        surr = _ar1_surrogate_spectral_ratio(
+            phi, n_obs, n_surrogates, FS_HZ, F1_HZ, F2_HZ, BROADBAND_MIN_HZ, rng,
+        )
+        obs_ratio = float(ratio_data.get('tep_over_broadband', float('nan')))
+        if not np.isfinite(obs_ratio) or surr.size < 10:
+            continue
+
+        null_mean = float(np.mean(surr))
+        null_std = float(np.std(surr))
+        null_ci = [float(v) for v in np.percentile(surr, [2.5, 97.5])]
+        p_val = float(np.mean(surr >= obs_ratio))
+        z_score = float((obs_ratio - null_mean) / null_std) if null_std > 0 else 0.0
+
+        per_station.append({
+            'station': sta_int,
+            'n_obs': n_obs,
+            'phi': phi,
+            'obs_ratio': obs_ratio,
+            'null_mean': null_mean,
+            'null_ci95': null_ci,
+            'p_value': p_val,
+            'z_score': z_score,
+            'excess_ratio': float(obs_ratio / null_mean) if null_mean > 0 else 0.0,
+        })
+
+    if not per_station:
+        return {'method': 'AR(1) surrogate test', 'n_stations': 0, 'per_station': []}
+
+    p_vals = np.array([r['p_value'] for r in per_station])
+    z_scores = np.array([r['z_score'] for r in per_station])
+    excess = np.array([r['excess_ratio'] for r in per_station])
+    n_sig = int(np.sum(p_vals < 0.05))
+    n_sig01 = int(np.sum(p_vals < 0.01))
+
+    # Fisher combined (guard against p=0)
+    p_safe = np.where(p_vals > 0, p_vals, 1e-10)
+    chi2_stat = float(-2.0 * np.sum(np.log(p_safe)))
+    fisher_p = float(stats.chi2.sf(chi2_stat, df=2 * len(p_safe)))
+
+    # Stouffer's Z
+    stouffer_z = float(np.sum(z_scores) / np.sqrt(len(z_scores)))
+    stouffer_p = float(stats.norm.sf(stouffer_z))
+
+    # Binomial test
+    try:
+        binom_p = float(stats.binomtest(n_sig, len(p_vals), 0.05, alternative='greater').pvalue)
+    except AttributeError:
+        binom_p = float(stats.binom_test(n_sig, len(p_vals), 0.05, alternative='greater'))
+
+    return {
+        'method': 'AR(1) surrogate test with station-specific lag-1 autocorrelation and record length',
+        'description': (
+            'For each station, AR(1) surrogates are generated with the station '
+            'measured lag-1 autocorrelation and observation count. The TEP-band/'
+            'broadband spectral ratio is computed for each surrogate and compared '
+            'to the observed ratio, controlling for the trivial low-frequency '
+            'concentration expected from coloured noise.'
+        ),
+        'n_surrogates_per_station': int(n_surrogates),
+        'parameters': {
+            'fs_hz': float(FS_HZ),
+            'tep_band_hz': [float(F1_HZ), float(F2_HZ)],
+            'broadband_min_hz': float(BROADBAND_MIN_HZ),
+            'sampling_interval_s': 300,
+        },
+        'observed_mean_ratio': float(np.mean([r['obs_ratio'] for r in per_station])),
+        'ar1_null_mean_ratio': float(np.mean([r['null_mean'] for r in per_station])),
+        'aggregate': {
+            'n_stations': len(per_station),
+            'n_significant_p05': n_sig,
+            'n_significant_p01': n_sig01,
+            'fraction_significant_p05': float(n_sig / len(p_vals)),
+            'fraction_significant_p01': float(n_sig01 / len(p_vals)),
+            'expected_fraction_by_chance': 0.05,
+            'mean_z_score': float(np.mean(z_scores)),
+            'mean_excess_ratio': float(np.mean(excess)),
+            'median_p_value': float(np.median(p_vals)),
+            'fisher_combined_p': fisher_p,
+            'fisher_chi2': chi2_stat,
+            'stouffer_z': stouffer_z,
+            'stouffer_p': stouffer_p,
+            'binomial_p': binom_p,
+        },
+        'per_station': per_station,
+    }
+
+
 def compare_with_gnss(results: Dict) -> Dict:
     """
     Compare SLR MWPC results with TEP-GNSS predictions.
@@ -2239,6 +2381,8 @@ def main() -> int:
                         help="Minimum shared time bins for exploratory irregular-phase interstation analysis")
     parser.add_argument("--pass-fwer-metric", choices=["weighted", "unweighted"], default="weighted",
                         help="Correlation metric used for the pass-based FWER null test")
+    parser.add_argument("--n-surrogates", type=int, default=500,
+                        help="Number of AR(1) surrogates per station for the red-noise null test")
     args = parser.parse_args()
     PASS_TIME_BIN = str(args.pass_time_bin)
     MIN_OBS_PER_STATION_BIN = int(args.min_obs_per_station_bin)
@@ -2373,6 +2517,16 @@ def main() -> int:
     # 5. Temporal coherence
     results['temporal_coherence'] = analyze_temporal_coherence(df, bootstrap_n=int(args.bootstrap_n))
     
+    # 5a. AR(1) red-noise null test for spectral concentration
+    tc = results['temporal_coherence']
+    results['red_noise_null'] = analyze_red_noise_null(
+        df,
+        station_acf=tc.get('station_acf', {}),
+        station_ratios=(tc.get('spectral_concentration', {}) or {}).get('station_ratios', {}),
+        n_surrogates=int(getattr(args, 'n_surrogates', 500)),
+        seed=42,
+    )
+
     # 6. Daily-aggregation inter-station correlations (NEW - highest impact for sparse data)
     results['daily_aggregation_correlations'] = analyze_daily_aggregation_correlations(
         df,
@@ -2431,7 +2585,7 @@ def main() -> int:
 
         tc_y = analyze_temporal_coherence(sel, bootstrap_n=0)
         spec_sum = (tc_y.get('spectral_concentration', {}) or {}).get('summary', {})
-        spec_val = spec_sum.get('mean')
+        spec_val = (spec_sum.get('tep_over_broadband', {}) or {}).get('mean')
 
         row = {
             'year': int(y),

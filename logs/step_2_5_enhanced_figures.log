@@ -1,8 +1,8 @@
-[01:52:07] [INFO] Starting Step 2.5: Enhanced Manuscript Figures
-[01:52:07] [INFO] Generating enhanced phase alignment figure (Figure 3.1)
-[01:52:07] [INFO] Loaded 1998 station pairs
-[01:52:07] [SUCCESS] Saved /Users/matthewsmawfield/www/TEP-SLR/results/figures/slr_phase_alignment_decay.png
-[01:52:07] [INFO] Generating elevation coherence figure (Figure 3.2)
-[01:52:07] [INFO] Loaded 7 range bins from MWPC analysis
-[01:52:07] [SUCCESS] Saved /Users/matthewsmawfield/www/TEP-SLR/results/figures/slr_residual_vs_elevation_full.png
-[01:52:07] [SUCCESS] All enhanced figures generated successfully
+[11:51:55] [INFO] Starting Step 2.5: Enhanced Manuscript Figures
+[11:51:55] [INFO] Generating enhanced phase alignment figure (Figure 3.1)
+[11:51:55] [INFO] Loaded 297 station pairs
+[11:51:56] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_phase_alignment_decay.png
+[11:51:56] [INFO] Generating elevation coherence figure (Figure 3.2)
+[11:51:56] [INFO] Loaded 2 range bins from MWPC analysis
+[11:51:56] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_residual_vs_elevation_full.png
+[11:51:56] [SUCCESS] All enhanced figures generated successfully

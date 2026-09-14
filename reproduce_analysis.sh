@@ -11,22 +11,62 @@ set -e
 #      - ~/.netrc file with machine urs.earthdata.nasa.gov
 #      - OR export CDDIS_USER and CDDIS_PASS environment variables
 
+# Date range for the full 11-year analysis
+START_DATE="2015-01-01"
+END_DATE="2025-12-31"
+
 echo "============================================================"
-echo "TEP-SLR Analysis Pipeline (2015–2025)"
+echo "TEP-SLR Analysis Pipeline (${START_DATE} to ${END_DATE})"
 echo "============================================================"
 
-# Check for data
-if [ ! -d "data/slr/npt_crd_v2" ] && [ ! -d "data/slr/npt_crd" ]; then
-    echo "[!] SLR observation data not found."
-    echo "    Run Step 1 to download data (requires CDDIS credentials)."
-    echo "    Command: python scripts/steps/step_1_0_data_acquisition.py --start 2015-01-01 --end 2025-12-31"
-    read -p "    Skip download and proceed? (y/n) " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
+# Step 1.0: Data Acquisition (auto-download if missing)
+NEEDS_DOWNLOAD=false
+if [ ! -d "data/slr/npt_crd_v2/allsat" ] && [ ! -d "data/slr/npt_crd/allsat" ]; then
+    NEEDS_DOWNLOAD=true
 else
-    echo "[+] SLR observation data found."
+    # Check if we have data for the full date range (at least one file per year)
+    for year in $(seq 2015 2025); do
+        if [ ! -d "data/slr/npt_crd_v2/allsat/${year}" ] && [ ! -d "data/slr/npt_crd/allsat/${year}" ]; then
+            echo "[!] Missing data for year ${year}"
+            NEEDS_DOWNLOAD=true
+            break
+        fi
+    done
+fi
+
+if [ "$NEEDS_DOWNLOAD" = true ]; then
+    echo -e "\n[Step 1.0] Downloading SLR observation data from CDDIS..."
+    echo "    Date range: ${START_DATE} to ${END_DATE}"
+    echo "    This requires CDDIS/Earthdata credentials (~/.netrc or CDDIS_USER/CDDIS_PASS)."
+    echo "    Downloading ~91,000 NP2/NPT files (~1.4 GB per year, ~15 GB total)..."
+    echo ""
+    echo "    CDDIS uses two CRD format versions:"
+    echo "      - CRD v1 (npt_crd): 2015-2022"
+    echo "      - CRD v2 (npt_crd_v2): 2022-2025"
+    echo "    Both are downloaded; 2022 appears in both (transition year)."
+    echo ""
+
+    # Download CRD v1 data (2015-2022)
+    echo "    [1/2] Downloading CRD v1 (npt_crd) for 2015-2022..."
+    python3 scripts/steps/step_1_0_data_acquisition.py \
+        --start "2015-01-01" \
+        --end "2022-12-31" \
+        --data-type npt \
+        --crd-version crd \
+        --source allsat \
+        --workers 10
+
+    # Download CRD v2 data (2022-2025)
+    echo "    [2/2] Downloading CRD v2 (npt_crd_v2) for 2022-2025..."
+    python3 scripts/steps/step_1_0_data_acquisition.py \
+        --start "2022-01-01" \
+        --end "${END_DATE}" \
+        --data-type npt \
+        --crd-version crd_v2 \
+        --source allsat \
+        --workers 10
+else
+    echo "[+] SLR observation data found for full date range."
 fi
 
 # Step 2.1: Residual Calculation (Year-by-Year)

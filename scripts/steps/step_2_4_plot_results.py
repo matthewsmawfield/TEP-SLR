@@ -35,13 +35,15 @@ def main():
     json_path = RESULTS_DIR / "step_2_3_mwpc_analysis.json"
     if not json_path.exists():
         logger.error(f"Error: {json_path} not found")
-        return
+        return 1
 
     with open(json_path) as f:
         data = json.load(f)
 
     # 1. Plot Inter-Station Phase Alignment vs Distance
-    pairs = data['interstation_mwpc'].get('pairs', [])
+    # Use interstation_irregular_phase (has data) with fallback to interstation_mwpc
+    src = data.get('interstation_irregular_phase') or data.get('interstation_mwpc') or {}
+    pairs = src.get('pairs', [])
     if pairs:
         logger.info(f"Plotting phase alignment for {len(pairs)} station pairs")
         df_pairs = pd.DataFrame(pairs)
@@ -50,7 +52,7 @@ def main():
         plt.scatter(df_pairs['baseline_km'], df_pairs['phase_alignment'], alpha=0.7, label='Station Pairs')
         
         # Plot fit if available
-        fit = data['interstation_mwpc'].get('fit_results', {}).get('phase_alignment')
+        fit = src.get('fit_results', {}).get('phase_alignment')
         if fit:
             dist_range = np.linspace(0, 15000, 100)
             y_fit = exponential_decay(dist_range, fit['amplitude'], fit['lambda_km'], fit['offset'])
@@ -91,7 +93,7 @@ def main():
                 dists.append(mid)
                 corrs.append(v['mean_correlation'])
                 errs.append(v['std_correlation'] / np.sqrt(v['n_pairs']) if v['n_pairs'] > 0 else 0)
-            except:
+            except Exception:
                 continue
                 
         plt.figure(figsize=(10, 6))

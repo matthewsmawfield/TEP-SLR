@@ -9,8 +9,17 @@
         observed in microwave GNSS networks (Smawfield 2025b, 2025c, 2025d;
         Papers 1-3). The analysis identifies a path-length dependent temporal
         contrast in a gap-aware lag-1 diagnostic (treated conservatively due to
-        threshold sensitivity) and a strong spectral concentration (14.00×
-        enhancement in the TEP band relative to broadband, 95% CI: 13.53–14.47).
+        threshold sensitivity) and a strong spectral concentration (14.12×
+        enhancement in the TEP band relative to broadband, 95% CI: 13.55–14.67).
+        A station-specific AR(1) red-noise null test rejects the tested AR(1)
+        coloured-noise null: 35 of 46 stations individually
+        reject the red-noise null ($p<0.05$), with combined tests decisive
+        (Fisher $p\approx10^{-154}$; binomial $p\approx2\times10^{-36}$).
+        A NCEP/NCAR Reanalysis surface pressure control further confirms
+        the concentration is not a synoptic weather artefact: the
+        uncorrected pressure effect is 12% of the residual RMS, and
+        pressure-residual coherence is not significant at the majority of
+        stations (binomial $p=0.088$).
         The observation of matching low-frequency structure in a system devoid
         of active clocks and microwave transmission challenges hypotheses that
         rely on microwave-specific receiver electronics, clock steering, or
@@ -26,26 +35,33 @@
         dependent diagnostic (over a $\sim 3{,}000$ km path difference between
         the high- and low-range selections) are both consistent with the
         characteristic scale of the scalar field's continuous spatial profile
-        (Temporal Topology) at the dark energy scale ($m_\phi \approx 5 \times
-        10^{-14}\,\mathrm{eV}/c^2$). In dense environments, suppression of
+        (Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$). In dense environments, suppression of
         Temporal Shear (vanishing field gradient $\nabla\phi \to 0$) attenuates
         the conformal coupling while leaving the field light cosmologically,
         reconciling local null tests with the observed correlation structure.
     </p>
 
     <p>
-        In the inter-station domain, the sparse ILRS cadence limits synchronous
-        overlap; however, by employing daily aggregation and widened
-        contemporaneous windows, statistically significant distance-structured
-        correlations have been detected ($p=0.004$ for pass-bin analysis;
-        $p=0.017$ for daily aggregation). While the signal is complex and
-        geometry-dependent (driven by LAGEOS-2), its detection indicates that
-        the low-frequency structure observed in single-station spectra is
-        spatially coherent. Furthermore, this phenomenology offers a unified
-        physical explanation for persistent geodetic anomalies, including the
-        ITRF2020 VLBI-SLR scale drift and the pervasive "flicker noise" floor in
-        station coordinates, reinterpreting them as evidence of conformal metric
-        coupling rather than intractable systematics.
+        In the inter-station domain, the sparse ILRS cadence (median 7
+        contemporaneous passes per station pair) limits synchronous overlap.
+        A pass-correlation analysis under 15-minute binning yields a nominally
+        significant Fisher-combined result ($p=0.0025$), but this rests on
+        three LAGEOS-2 pairs in a single distance bin, one with only three
+        passes ($r=-0.910$, $p=0.273$). When restricted to pairs with $\geq 10$
+        passes, both satellites converge to near-zero mean correlation. A
+        daily-aggregation analysis ($N=190$ pairs) yields
+        $p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with the
+        most negative correlation at 3000–5000 km baselines
+        ($\bar{r}=-0.074$), providing a satellite-agnostic detection of
+        distance-structured spatial coherence. The spectral concentration,
+        range-dependent coherence, and daily-aggregation signal provide three
+        independent lines of evidence for a structured, low-frequency
+        process; the pass-correlation test remains limited by network
+        sparsity. Furthermore, this phenomenology offers
+        a unified physical explanation for persistent geodetic anomalies,
+        including the ITRF2020 VLBI-SLR scale drift and the pervasive "flicker
+        noise" floor in station coordinates, reinterpreting them as evidence of
+        conformal metric coupling rather than intractable systematics.
     </p>
 
     <p>

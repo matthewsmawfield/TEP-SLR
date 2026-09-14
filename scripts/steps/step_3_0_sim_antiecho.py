@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import json
 from pathlib import Path
 
 import numpy as np
@@ -11,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from utils.plot_style import apply_paper_style
 
-def generate_tep_field(n_stations=50, size_km=10000, correlation_length_km=3000):
+def generate_tep_field(n_stations=50, size_km=10000, correlation_length_km=4200):
     """
     Generate a spatially correlated TEP delay field (scalar field phi).
     """
@@ -70,6 +71,8 @@ def main():
     print("Running Anti-Echo Simulation...")
     apply_paper_style()
     
+    np.random.seed(42)
+    
     all_pairs = []
     
     # Monte Carlo simulation
@@ -121,10 +124,26 @@ def main():
     plt.legend()
     # plt.text(1000, -0.5, "Short-Range Anti-Correlation\n(Due to Monopole Absorption)", fontsize=12)
     
-    output_file = 'results/figures/sim_antiecho_proof.png'
+    output_file = PROJECT_ROOT / 'results' / 'figures' / 'sim_antiecho_proof.png'
     plt.tight_layout()
     plt.savefig(output_file)
     print(f"Saved proof plot to {output_file}")
+    
+    # Save simulation results as JSON for manuscript traceability
+    results = {
+        'n_monte_carlo': 100,
+        'n_stations': 50,
+        'correlation_length_km': 4200,
+        'size_km': 10000,
+        'bin_centers_km': bin_centers.tolist(),
+        'correlations_normalized': corrs_norm.tolist(),
+        'correlations_raw': corrs.tolist(),
+        'n_pairs_total': int(len(all_pairs)),
+    }
+    json_output = PROJECT_ROOT / 'results' / 'outputs' / 'step_3_0_sim_antiecho.json'
+    with open(json_output, 'w') as f:
+        json.dump(results, f, indent=2)
+    print(f"Saved simulation results to {json_output}")
 
 if __name__ == "__main__":
     main()

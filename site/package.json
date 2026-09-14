@@ -1,12 +1,12 @@
 {
   "name": "tep-slr-site",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Independent optical-domain validation of the Temporal Equivalence Principle using 11 years of Satellite Laser Ranging data from passive ILRS geodetic satellites.",
-  "comment": "Package version matches manuscript version v0.3 (Mombasa)",
+  "comment": "Package version matches manuscript version v0.4 (Mombasa)",
   "main": "index.html",
   "scripts": {
-    "dev": "node dev-server.js",
     "start": "python3 -m http.server 8000",
+    "dev": "node dev-server.js",
     "build": "node build.js",
     "build:dev": "npm run build && cd dist && python3 -m http.server 8350",
     "build:markdown": "npm run build && node html-to-markdown.js",
