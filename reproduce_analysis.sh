@@ -89,6 +89,10 @@ python3 scripts/steps/step_2_4_plot_results.py
 echo -e "\n[Step 2.5] Generating Enhanced Figures..."
 python3 scripts/steps/step_2_5_enhanced_figures.py
 
+# Step 2.7: Orbit-Error / Common-Mode Confound Controls
+echo -e "\n[Step 2.7] Running orbit-error / common-mode confound controls..."
+python3 scripts/steps/step_2_7_orbit_commonmode_control.py
+
 # Step 3.0: Simulation
 echo -e "\n[Step 3.0] Running Anti-Echo Simulation..."
 python3 scripts/steps/step_3_0_sim_antiecho.py

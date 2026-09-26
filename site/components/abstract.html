@@ -1,13 +1,14 @@
 <div class="abstract">
     <h2>Abstract</h2>
     
-    <p>An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a methodology orthogonal to the microwave measurements of active atomic clocks used in Global Navigation Satellite Systems (GNSS).</p>
+    <p>An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS), while probing, under conformal null-cone invariance, the same clock-amplitude channel through its ground-station leg.</p>
     
     <p>Frequency-domain analysis reveals a significant concentration of
     power within the predicted TEP band (10–500 $\mu$Hz): the station-averaged
     TEP-band mean PSD exceeds the broadband floor ($f>1$ mHz) by
-    $14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations), a result stable
-    across residual thresholds (14.86× at 0.3 m; 11.91× at 1.0 m). A
+    $14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations), a result that
+    persists across residual thresholds with a ~25% spread in magnitude
+    (14.86× at 0.3 m; 11.91× at 1.0 m). A
     station-specific AR(1) red-noise null test—generating 500 surrogates per
     station that preserve each station's measured lag-1 autocorrelation and
     record length—rejects the tested AR(1) coloured-noise null: 35 of 46 stations individually
@@ -28,16 +29,36 @@
     ($\chi^2=16.45$, 4 d.o.f.; $p=0.0025$). However, this signal concentrates
     in three LAGEOS-2 station pairs at 5,000–7,500 km, one of which
     contributes a correlation of $r=-0.910$ from only three passes
-    ($p=0.273$, not individually significant). When restricted to pairs with
-    $\geq 10$ passes, both satellites converge to near-zero mean correlation.
-    A daily-aggregation analysis ($N=190$ pairs) yields
-    $p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with the
-    most negative correlation at 3000–5000 km baselines
-    ($\bar{r}=-0.074$). The spectral concentration, range-dependent
-    coherence, and daily-aggregation signal provide three independent lines
-    of evidence for a structured, low-frequency process; the
-    pass-correlation test remains limited by network sparsity (median 7 passes
-    per pair).</p>
+    ($p=0.273$, not individually significant). The controlling confound for
+    any same-satellite pairing is the shared orbit arc: orbit-model error
+    enters both stations' residuals as a common mode. A dedicated control
+    (Step 2.7) therefore forms the contemporaneous pairings across
+    <em>different</em> satellites in the same window — two stations ranging
+    different targets share no orbit solution, so the channel is closed by
+    construction while the baseline structure is preserved. The
+    anticorrelation survives and strengthens: at the 5,000–7,500 km bin — the
+    first bin entirely beyond the simulated $\lambda_T$ turnover under either
+    corpus scale (4,201 km GPS-PPP; 1,862 km MGEX — the fitted scale is
+    product-dependent; turnover 3,421–3,947 km across the pair) —
+    cross-satellite pairs (dominated by the two independent LAGEOS orbit
+    solutions) return $\bar{r}=-0.23$ over 32 pairs (per-bin permutation
+    $p=5\times10^{-4}$; station-clustered bootstrap 95% CI
+    $[-0.43,-0.06]$), with every other distance bin consistent with zero;
+    the matched same-satellite pairs give a diluted $\bar{r}=-0.09$ at the
+    same bin, the direction expected when the orbit-error common mode enters
+    positively and is removed. A daily-aggregation statistic
+    ($N=190$ pairs, $p_{\mathrm{FWER}}=0.020$) does not survive the
+    per-satellite split — its driving 3,000–5,000 km bin has only four pairs
+    and reverses sign between the two LAGEOS solutions — and is retained as
+    exploratory only. The spectral concentration, range-dependent
+    coherence, and confound-controlled inter-station anticorrelation provide
+    three convergent diagnostics of a structured, low-frequency process —
+    the first two sharing the residual tropospheric-systematic channel and
+    therefore not fully independent of each other, while the inter-station
+    result is a distinct cross-station observable; the family-wise
+    minimum-bin statistic remains diluted by the smallest bins ($p=0.55$), so
+    the evidence rests on the pre-specified turnover bin rather than an
+    omnibus scan.</p>
     
-    <p>The observation of matching low-frequency structure in a system devoid of active clocks and microwave propagation challenges receiver electronics, clock steering, and ionospheric modeling errors as complete explanations. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an independent, technology-orthogonal line of evidence for TEP phenomenology.</p>
+    <p>The observation of matching low-frequency structure in a constellation carrying no onboard clocks and no microwave propagation chain challenges explanations specific to satellite atomic clocks, onboard steering electronics, and ionospheric modeling at microwave frequencies as complete accounts. Because the residual content is carried by the ground event-timer rate, the result constrains the channel's ground-station leg directly. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an instrumentally and systematically independent measurement of the same conformal clock-amplitude channel as GNSS—a systematics-level control and an estimator-geometry contrast, rather than an independent physical channel.</p>
 </div>

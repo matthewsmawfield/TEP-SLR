@@ -30,8 +30,8 @@
         specific to the microwave L-band, or pervasive "colored noise" (flicker
         noise) often treated as irreducible station systematics. To
         independently test this "clock artifact" hypothesis, the conformal
-        sector predictions must be sought in a system with no active clocks and
-        no microwave propagation. This study addresses this challenge by
+        sector predictions must be sought in a system whose space segment
+        carries no onboard clocks and no microwave propagation. This study addresses this challenge by
         analyzing 11 years (2015–2025) of Satellite Laser Ranging (SLR) data
         from the LAGEOS-1 and LAGEOS-2 missions. Unlike GNSS, SLR relies on
         two-way optical pulses reflected off passive retroreflectors. The
@@ -121,8 +121,11 @@
             conformal sector predictions only. The sparse ILRS network (46
             stations) and two-way measurement geometry do not provide the
             closed-loop time-transfer topology and dense temporal coverage
-            required to test disformal predictions (synchronization holonomy),
-            including the proposed "Anti-Echo" sign-inversion signature.
+            required to test synchronization holonomy, the genuinely
+            disformal observable. The estimator-mediated sign inversion of
+            the conformal common-mode field under dynamic orbit
+            determination—the "Anti-Echo"—is a conformal-sector signature
+            and lies within the tested scope of this work.
         </p>
     </div>
 
@@ -162,7 +165,10 @@
             matter density differences).
             <em
                 >Prediction: Range-dependent coherence structure consistent with
-                GNSS $\lambda_T \approx 4,000$ km. Observed: consistent scaling
+                the corpus's measured Temporal-Topology scales
+                ($\lambda_T = 4{,}201 \pm 1{,}967$ km GPS-PPP; $1{,}862$ km
+                MGEX — the fitted scale is product- and metric-dependent,
+                Paper 14). Observed: consistent scaling
                 (§5.1).</em
             >
         </li>
@@ -171,23 +177,35 @@
             distance-dependent spatial correlations consistent with the
             characteristic scale of the Temporal Topology, $\lambda_T$.
             <em
-                >Prediction: Negative correlations at intermediate ranges
-                (Anti-Echo mechanism) or short-range coherence. Observed:
-                A nominally significant pass-correlation result ($p=0.0025$)
+                >Prediction: anticorrelation at intermediate baselines under
+                dynamic orbit determination—the estimator-mediated
+                "Anti-Echo" signature of the conformal common mode—or
+                short-range coherence. Observed:
+                a nominally significant pass-correlation result ($p=0.0025$)
                 rests on three LAGEOS-2 pairs including one with only three
-                passes; the daily-aggregation FWER yields $p=0.020$, reaching
-                conventional significance with the most negative correlation
-                at 3000–5000 km baselines (§3.4).</em
+                passes; under the confound-controlled cross-satellite
+                pairing — stations ranging different satellites in the same
+                window, which cannot share orbit error — the anticorrelation
+                persists at the first bin beyond the $\lambda_T$ turnover
+                scale (5,000–7,500 km, $\bar{r}=-0.23$, $n=32$ pairs,
+                per-bin $p=5\times10^{-4}$, §3.4). The daily-aggregation
+                statistic ($p_{\mathrm{FWER}}=0.020$) is retained as
+                exploratory: its driving bin reverses sign between
+                independent orbit solutions.</em
             >
         </li>
     </ol>
 
     <p>
-        <strong>What This Paper Does NOT Test:</strong> The "Anti-Echo" sign
-        inversion is a disformal prediction requiring experimental
-        configurations described in Smawfield (2025a; Paper 0, §10.1):
+        <strong>What This Paper Does NOT Test:</strong> The disformal
+        sector's defining observables—synchronization holonomy $H_{\rm
+        resid}$ and one-way propagation asymmetry—require the closed-loop
+        configurations described in Smawfield (2025a; Paper 0, §10.A–D):
         closed-loop optical time transfer, interplanetary one-way asymmetry
         measurements, and triangle synchronization holonomy tests. These
-        experiments remain to be performed.
+        experiments remain to be performed. The estimator-mediated sign
+        inversion analyzed here is distinct: it is the conformal common-mode
+        field remapped by dynamic orbit determination and invokes no
+        disformal coupling.
     </p>
 </section>

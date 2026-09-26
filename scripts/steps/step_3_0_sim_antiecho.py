@@ -14,7 +14,10 @@ from utils.plot_style import apply_paper_style
 
 def generate_tep_field(n_stations=50, size_km=10000, correlation_length_km=4200):
     """
-    Generate a spatially correlated TEP delay field (scalar field phi).
+    Generate a spatially correlated conformal-sector Temporal-Topology delay
+    field: the common-mode propagation delay produced by the A(phi) coupling
+    on two-way optical transits, correlated on the Temporal Topology scale
+    lambda_T ~ 4,200 km.
     """
     # Random station locations
     x = np.random.uniform(-size_km/2, size_km/2, n_stations)
@@ -67,62 +70,101 @@ def analyze_correlations(coords, residuals):
     pairs = np.array(pairs)
     return pairs
 
+def bin_pairs(all_pairs, bins):
+    """Mean residual-product per distance bin."""
+    corrs = []
+    for k in range(len(bins)-1):
+        mask = (all_pairs[:,0] >= bins[k]) & (all_pairs[:,0] < bins[k+1])
+        corrs.append(np.mean(all_pairs[mask, 1]) if np.sum(mask) > 0 else np.nan)
+    return np.array(corrs)
+
+
+def zero_crossing(bin_centers, corrs):
+    """First distance at which the binned correlation crosses zero."""
+    for k in range(len(corrs)-1):
+        if corrs[k] > 0 and corrs[k+1] <= 0:
+            return float(bin_centers[k])
+    return None
+
+
 def main():
     print("Running Anti-Echo Simulation...")
     apply_paper_style()
     
     np.random.seed(42)
     
-    all_pairs = []
+    all_pairs_dyn = []
+    all_pairs_kin = []
     
     # Monte Carlo simulation
     for _ in range(100):
         coords, tep_true = generate_tep_field(n_stations=50)
         
-        # 1. Kinematic case (GNSS-like): Position solved epoch-by-epoch
-        # Common mode is NOT absorbed into orbit (orbit is fixed external product)
-        # Residuals ~ True TEP (plus measurement noise, ignored here)
-        # But here we focus on the SLR dynamic case.
+        # 1. Kinematic case (GNSS-like): receiver state solved epoch-by-epoch;
+        # the orbit is an external fixed product, so the common mode is NOT
+        # absorbed into a shared network constraint. The delay maps into the
+        # per-station clock solutions, so the analyzed residuals retain the
+        # field fluctuation about its ensemble (monopole) level and remain
+        # positively correlated at all baselines.
+        pairs_kin = analyze_correlations(coords, tep_true - 100.0)
+        all_pairs_kin.append(pairs_kin)
         
-        # 2. Dynamic case (SLR-like): Orbit absorbs mean
+        # 2. Dynamic case (SLR-like): the multi-arc orbit fit absorbs the
+        # common-mode monopole into the fitted orbital scale, so post-fit
+        # residuals carry the field's deviations from the absorbed mean and
+        # anticorrelate once the baseline exceeds the turnover set by the
+        # field correlation length and the network extent.
         monopole, residuals = simulate_orbit_fit(tep_true)
         
         pairs = analyze_correlations(coords, residuals)
-        all_pairs.append(pairs)
+        all_pairs_dyn.append(pairs)
         
-    all_pairs = np.vstack(all_pairs)
+    all_pairs_dyn = np.vstack(all_pairs_dyn)
+    all_pairs_kin = np.vstack(all_pairs_kin)
     
     # Binning
     bins = np.linspace(0, 10000, 20)
     bin_centers = 0.5 * (bins[1:] + bins[:-1])
-    corrs = []
-    
-    for k in range(len(bins)-1):
-        mask = (all_pairs[:,0] >= bins[k]) & (all_pairs[:,0] < bins[k+1])
-        if np.sum(mask) > 0:
-            # Pearson correlation coefficient calculation for the bin?
-            # Or just mean product?
-            # To get a proper correlation coefficient [-1, 1], we need to normalize.
-            # But the sign of the mean product tells us if it's correlated or anti-correlated.
-            
-            val = np.mean(all_pairs[mask, 1])
-            corrs.append(val)
-        else:
-            corrs.append(np.nan)
-            
-    # Normalize for plotting (max absolute value to 1)
-    corrs = np.array(corrs)
-    corrs_norm = corrs / np.max(np.abs(corrs))
+    corrs = bin_pairs(all_pairs_dyn, bins)
+    corrs_kin = bin_pairs(all_pairs_kin, bins)
+
+    # Anchor-robustness scan: the corpus carries two measured lambda_T scales —
+    # the GPS-PPP value 4,201 km and the MGEX combined-product value 1,862 km —
+    # which differ because the fitted correlation length is product- and
+    # metric-dependent (Paper 14). The SLR test is the turnover's location, so
+    # the simulation is rerun across both anchors (and beyond) to check whether
+    # the predicted turnover bin changes.
+    anchor_lambdas = [1000, 1500, 1862, 3000, 4201, 8000]
+    anchor_scan = {}
+    for lam in anchor_lambdas:
+        np.random.seed(42)
+        scan_pairs = []
+        for _ in range(100):
+            coords_s, tep_s = generate_tep_field(n_stations=50, correlation_length_km=lam)
+            _, res_s = simulate_orbit_fit(tep_s)
+            scan_pairs.append(analyze_correlations(coords_s, res_s))
+        scan_pairs = np.vstack(scan_pairs)
+        scan_corrs = bin_pairs(scan_pairs, bins)
+        anchor_scan[str(lam)] = {
+            'dynamic_zero_crossing_km': zero_crossing(bin_centers, scan_corrs),
+            'dynamic_correlations_normalized': (scan_corrs / np.nanmax(np.abs(scan_corrs))).tolist(),
+        }
+
+    # Normalize for plotting (each curve to its own max absolute value)
+    corrs_norm = corrs / np.nanmax(np.abs(corrs))
+    corrs_kin_norm = corrs_kin / np.nanmax(np.abs(corrs_kin))
+    turnover_km = zero_crossing(bin_centers, corrs)
     
     plt.figure(figsize=(10, 6))
-    plt.plot(bin_centers, corrs_norm, 'o-', linewidth=2, color="#2D0140", label='Simulated SLR Residuals')
+    plt.plot(bin_centers, corrs_norm, 'o-', linewidth=2, color="#2D0140", label='Dynamic orbit fit (SLR)')
+    plt.plot(bin_centers, corrs_kin_norm, 's--', linewidth=2, color="#495773", label='Kinematic solution (GNSS)')
     plt.axhline(0, color="#495773", linestyle='--', alpha=0.5)
+    plt.axvline(4200, color="#8a7ca8", linestyle=':', alpha=0.7, label=r'$\lambda_T \approx 4{,}200$ km')
     plt.xlabel('Distance (km)')
     plt.ylabel('Correlation (Normalized)')
-    plt.title('The Anti-Echo Effect: Simulation of Dynamic Orbit Fit')
+    plt.title('Anti-Echo: Conformal Common-Mode Field Through Two Estimators')
     plt.grid(True, alpha=0.3)
     plt.legend()
-    # plt.text(1000, -0.5, "Short-Range Anti-Correlation\n(Due to Monopole Absorption)", fontsize=12)
     
     output_file = PROJECT_ROOT / 'results' / 'figures' / 'sim_antiecho_proof.png'
     plt.tight_layout()
@@ -135,10 +177,16 @@ def main():
         'n_stations': 50,
         'correlation_length_km': 4200,
         'size_km': 10000,
+        'field_model': 'conformal Temporal-Topology common-mode delay field (no disformal term)',
         'bin_centers_km': bin_centers.tolist(),
-        'correlations_normalized': corrs_norm.tolist(),
-        'correlations_raw': corrs.tolist(),
-        'n_pairs_total': int(len(all_pairs)),
+        'dynamic_correlations_normalized': corrs_norm.tolist(),
+        'dynamic_correlations_raw': corrs.tolist(),
+        'kinematic_correlations_normalized': corrs_kin_norm.tolist(),
+        'kinematic_correlations_raw': corrs_kin.tolist(),
+        'dynamic_zero_crossing_km': turnover_km,
+        'anchor_scan_lambda_km': anchor_lambdas,
+        'anchor_scan': anchor_scan,
+        'n_pairs_total': int(len(all_pairs_dyn)),
     }
     json_output = PROJECT_ROOT / 'results' / 'outputs' / 'step_3_0_sim_antiecho.json'
     with open(json_output, 'w') as f:

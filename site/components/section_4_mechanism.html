@@ -1,7 +1,7 @@
 <section id="mechanism">
     <h2>4. Future Experimental Directions</h2>
 
-    <p>Based on the conformal-sector evidence presented, future experimental directions for testing the disformal sector are outlined below. Specifically, the "Anti-Echo" mechanism and the experimental requirements for future closed-loop time-transfer tests are described.</p>
+    <p>The estimator-mediated "Anti-Echo" signature of the conformal common-mode field is developed below, followed by the experimental requirements for confirming it at higher statistical power and for the genuinely disformal closed-loop holonomy tests that remain beyond the reach of current geodetic datasets.</p>
 
     <h3>4.1 Conformal vs. Disformal: Two Distinct Predictions</h3>
     <p>The TEP bi-metric geometry $\tilde{g}_{\mu\nu} = A^2(\phi) g_{\mu\nu} + B(\phi) \nabla_\mu\phi \nabla_\nu\phi$ contains two physically distinct coupling mechanisms:</p>
@@ -15,7 +15,7 @@
     <p>The multi-messenger constraint from GW170817 requires $|c_\gamma - c_g|/c \lesssim 10^{-15}$, forcing $B(\phi)(\partial\phi)^2 \approx 0$ today. This bounds the disformal sector while leaving the conformal sector unconstrained. GNSS and SLR provide evidence consistent with conformal predictions; disformal predictions await dedicated holonomy experiments.</p>
 
     <h3>4.2 Estimator-Dependent Sign Structure: The "Anti-Echo" Mechanism</h3>
-    <p>Within the disformal sector, TEP predicts <em>estimator dependence</em>: the same underlying common-mode propagation delay can map differently into post-fit residuals depending on whether the estimator absorbs global modes into clocks (kinematic GNSS positioning) or into orbital parameters (dynamic SLR orbit determination).</p>
+    <p>TEP predicts <em>estimator dependence</em> for the conformal common-mode propagation delay: the same spatially correlated Temporal-Topology field maps differently into post-fit residuals depending on whether the estimator absorbs global modes into per-station clock states (kinematic GNSS positioning) or into a shared orbital solution (dynamic SLR orbit determination). No disformal coupling is invoked: the delay field is the $A(\phi)$ common mode of the two-way transit—physically, the ground event-timer rate reading a conformally invariant flight time, which enters the residual stream indistinguishably from a propagation delay—and the sign structure is a property of the estimator's absorption geometry rather than of a distinct sector.</p>
 
     <p>The mechanism operates as follows:</p>
 
@@ -34,7 +34,7 @@
     </ul>
 
     <h3>4.3 Experimental Design Considerations</h3>
-    <p>Monte Carlo simulations demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.</p>
+    <p>Monte Carlo simulations demonstrate the estimator-dependent sign structure: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations exhibit sign inversion at regional baselines, with the turnover located at the scale set by the injected field's correlation length and the network extent ($\approx 4{,}000$ km for $\lambda_T = 4{,}200$ km on a global-scale network). Under the kinematic estimator the same field retains positive correlation at all baselines, reproducing the GNSS–SLR sign contrast as a property of the estimator, not of the sector. Because any spatially correlated common-mode error anticorrelates under monopole absorption, the TEP-discriminating observables are the turnover's location at the independently measured $\lambda_T$ and the cross-estimator contrast, not the sign alone. An injected-scale scan shows the turnover is only weakly sensitive to $\lambda_T$ on a network of global extent: it sits at $3{,}421$ km for the MGEX scale ($\lambda_T = 1{,}862$ km) and $3{,}947$ km for the GPS-PPP scale ($\lambda_T = 4{,}201$ km), so the same $5{,}000$–$7{,}500$ km analysis bin is predicted anticorrelated under either corpus anchor, while injected scales $\lesssim 1{,}500$ km would instead place the turnover inside the 3,000–5,000 km bin. This provides the theoretical basis for future experimental designs.</p>
 
     <figure>
         <img
@@ -44,22 +44,27 @@
         />
         <figcaption>
             <strong>Figure 4.1:</strong> Monte Carlo simulation of the
-            Anti-Echo mechanism. A spatially correlated TEP delay field
-            ($\lambda = 4{,}200$ km, 50 stations, 100 realizations) is
-            processed through a dynamic orbit-fit estimator that absorbs the
-            monopole component. The resulting post-fit residual correlations
-            exhibit sign inversion at regional baselines, consistent with the
-            predicted anti-echo signature of the disformal sector.
+            Anti-Echo mechanism. A spatially correlated conformal
+            common-mode delay field
+            ($\lambda_T = 4{,}200$ km, 50 stations, 100 realizations) is
+            processed through two estimators. The dynamic orbit fit absorbs
+            the monopole component into the orbital scale, producing
+            anticorrelated post-fit residuals beyond a turnover at
+            $\approx 4{,}000$ km; the kinematic solution maps the common
+            mode into per-station clock states, retaining positive
+            correlation at all baselines. The sign inversion is the
+            predicted estimator-mediated signature of the conformal sector,
+            and its turnover scale tracks the injected correlation length.
         </figcaption>
     </figure>
 
-    <h3>4.4 Experimental Requirements for Testing the Anti-Echo</h3>
-    <p>Detecting the "Anti-Echo" in real SLR data requires:</p>
+    <h3>4.4 Experimental Requirements for Confirming the Anti-Echo</h3>
+    <p>Establishing the "Anti-Echo" at higher statistical power in SLR data requires:</p>
     <ol>
         <li><strong>Dense Temporal Overlap:</strong> Synchronous observations from multiple stations within correlation timescales (~hours), not available in current ILRS cadence.</li>
         <li><strong>Cross-Estimator Comparison:</strong> Parallel processing with kinematic (epoch-by-epoch) and dynamic (arc-fit) estimators to isolate the sign-flip signature.</li>
         <li><strong>Alternative Orbit Solutions:</strong> Sensitivity analysis across different Analysis Center products (ASI, GFZ, CSR) to test monopole absorption consistency.</li>
     </ol>
 
-    <p>The current SLR dataset does not meet these requirements. Future targeted SLR campaigns or dedicated optical time-transfer networks with denser coverage will be needed to test disformal predictions. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.</p>
+    <p>The confound-controlled pass-bin analysis of Section 3.4 already detects the predicted anticorrelation at the $\lambda_T$-adjacent scale (cross-satellite pairing, $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km, per-bin $p=5\times10^{-4}$), but the ILRS cadence limits the precision of the turnover measurement and the cross-estimator isolation. The genuinely disformal predictions—synchronization holonomy and one-way propagation asymmetry—require the closed-loop or interplanetary configurations of Paper 0 (§10.A–D), beyond any current geodetic dataset. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.</p>
 </section>

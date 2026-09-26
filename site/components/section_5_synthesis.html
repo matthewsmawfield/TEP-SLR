@@ -29,9 +29,16 @@
             autocorrelation and record length—rejects the tested station-specific AR(1) coloured-noise null: 35 of 46 stations
             individually reject the red-noise null ($p<0.05$), and combined
             tests are decisive (Fisher $p\approx10^{-154}$; binomial
-            $p\approx2\times10^{-36}$). Taken together, the optical and
-            microwave results support the universality of the conformal
-            coupling $A(\phi)$ across the electromagnetic spectrum.
+            $p\approx2\times10^{-36}$). Achromaticity is a strict requirement
+            of conformal invariance — a conformal rescaling multiplies all
+            propagation delays uniformly, independent of photon frequency —
+            so the observed frequency independence is a necessary consistency
+            condition rather than an independent discriminant. Its positive
+            content is the exclusion of dispersive carriers, while the
+            evidence for temporal structure resides in the low-frequency
+            excess over the matched red-noise null. The optical and microwave
+            results are thereby consistent with a universal conformal
+            coupling $A(\phi)$ acting across the electromagnetic spectrum.
         </p>
 
         <h4>2. Range-Dependent Temporal-Topology Response</h4>
@@ -55,20 +62,31 @@
 
         <h4>3. Scale Consistency (The Characteristic Scale)</h4>
         <p>
-            The GNSS correlation length ($\lambda_T = 4,201 \pm 1,967$ km) and the
+            The corpus carries two measured correlation lengths —
+            $\lambda_T = 4,201 \pm 1,967$ km from GPS PPP (Papers 1–2) and
+            $1,862$ km from the MGEX combined product (Paper 14;
+            cluster-robust $\sigma = \pm 155$ km), the difference being the
+            product- and metric-dependence of the fitted scale — and the
             SLR path-length dependent contrast (over a $\sim 3{,}000$ km path
-            difference between the high- and low-range selections) are both
+            difference between the high- and low-range selections) is
             consistent with the characteristic scale of the scalar field's
             continuous spatial profile (Temporal Topology). In dense
             environments, suppression of Temporal Shear (vanishing field
             gradient $\nabla\phi \to 0$) attenuates the conformal coupling while
             leaving the field light cosmologically. The correlation length is
             identified with the geometric saturation scale $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km, representing the transition from deep suppression to the weak-field regime. While the sparse ILRS network limits direct
-            measurement of a continuous inter-station correlation length, the
+            measurement of a continuous inter-station correlation length —
+            the unanchored exponential fit diverges to the 20,000 km fitting
+            boundary, so the SLR scale is formally unconstrained — the
             range-dependent diagnostic and TEP-band spectral concentration
-            provide complementary constraints. The convergence of GNSS and SLR
+            provide complementary constraints, while the orbit-fit turnover
+            test is met under either corpus anchor (simulated zero crossing
+            3,421–3,947 km across $\lambda_T$ = 1,862–4,201 km, both leaving
+            5,000–7,500 km as the first beyond-turnover bin; §3.4).
+            The convergence of GNSS and SLR
             evidence at similar spatial scales supports the Temporal Topology
-            interpretation across two independent measurement systems.
+            interpretation across two instrumentally independent measurement
+            systems probing the same conformal clock-amplitude channel.
         </p>
 
         <h4>4. Inter-Station Correlation (Spatial Coherence)</h4>
@@ -79,35 +97,44 @@
             ($p=0.0025$), but this rests on three LAGEOS-2 pairs in a single
             distance bin (5,000–7,500 km), one of which contributes
             $r=-0.910$ from only three passes ($p=0.273$, not individually
-            significant). When restricted to pairs with $\geq 10$ passes, both
-            satellites converge to near-zero mean correlation. A
-            daily-aggregation analysis ($N=190$ pairs) yields
-            $p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with
-            the most negative correlation at 3000–5000 km baselines
-            ($\bar{r}=-0.074$). This distance-structured signal provides
-            complementary evidence for spatial coherence consistent with the
-            conformal-sector phenomenology, while the pass-correlation result
-            remains fragile due to network sparsity. The spectral
-            concentration and range-dependent coherence provide additional
-            quantitative evidence for a structured, low-frequency process.
-            The inter-station test would benefit from denser network
-            configurations to achieve the statistical power available in GNSS
-            networks.
+            significant). The confound-controlled variant — pairing stations
+            that range <em>different</em> satellites in the same window, which
+            cannot share orbit error — retains the anticorrelation at the
+            turnover bin at $\bar{r}=-0.228$ ($n=32$, per-bin
+            $p=5\times10^{-4}$; station-bootstrap 95\% CI $[-0.43,-0.06]$)
+            with all other bins null (Step 2.7). A daily-aggregation analysis
+            ($N=190$ pairs) nominally reaches $p_{\mathrm{FWER}}=0.020$, but
+            its driving 3,000–5,000 km bin has only four pairs and reverses
+            sign between the two LAGEOS orbit solutions, so it is retained as
+            exploratory rather than as a detection. This distance-structured
+            signal provides complementary evidence for spatial coherence
+            consistent with the conformal-sector phenomenology, with the
+            orbit-error common-mode channel now excluded by construction.
+            The spectral concentration and range-dependent coherence provide
+            additional quantitative evidence for a structured,
+            low-frequency process. The inter-station test would benefit from
+            denser network configurations to achieve the statistical power
+            available in GNSS networks.
         </p>
 
         <h4>5. Disformal Sector: Untested in Current Data</h4>
         <p>
-            The "Anti-Echo" sign inversion is a
-            <em>disformal prediction</em> ($B(\phi) \neq 0$) requiring
-            closed-loop time transfer to test. Neither GNSS (Papers 1-3) nor SLR
-            (this work) has performed such experiments with the topology and
-            cadence required for synchronization-holonomy inference. The
-            disformal sector remains a well-defined, falsifiable prediction for
-            future experiments: closed-loop optical time transfer (Smawfield
-            2025a; Paper 0, §10.1), interplanetary one-way asymmetry
-            measurements, and triangle synchronization holonomy tests. The
-            simulation (Figure 4.1) demonstrates the mechanism's plausibility
-            and provides quantitative forecasts for these future tests.
+            The synchronization holonomy $H_{\rm resid}$ is the defining
+            <em>disformal prediction</em> ($B(\phi) \neq 0$) and requires
+            closed-loop time transfer to test. Neither GNSS (Papers 1-3) nor
+            SLR (this work) has performed such experiments with the topology
+            and cadence required for holonomy inference. The estimator-mediated
+            sign inversion reported in §3.4 is distinct in kind: it arises
+            from the conformal common-mode field under dynamic orbit
+            determination, involves no disformal coupling, and is therefore a
+            conformal-sector result—its discriminating content being the
+            turnover at the $\lambda_T$ scale and the cross-estimator sign
+            contrast with kinematic GNSS solutions rather than the sign
+            itself. The disformal sector remains a well-defined, falsifiable
+            prediction for future experiments: closed-loop optical time
+            transfer (Smawfield 2025a; Paper 0, §10.A–D), interplanetary
+            one-way asymmetry measurements, and triangle synchronization
+            holonomy tests.
         </p>
     </div>
 
@@ -174,8 +201,9 @@
             settings to bound absorption/aliasing effects. These controls will
             determine whether the residual structure is primarily
             atmospheric/geodetic or whether a technology-orthogonal
-            propagation-linked component—arising from the continuous spatial
-            profile of the Temporal Topology—remains after state-of-the-art
+            timer-rate-linked component—arising from the continuous spatial
+            profile of the Temporal Topology as read by the station event
+            timer—remains after state-of-the-art
             corrections.
         </p>
         <p>
@@ -207,14 +235,14 @@
             geometry-dependent sensitivity (via prograde vs. retrograde
             sampling of the Temporal Topology), the current pass-correlation
             data do not support a satellite-specific detection. The
-            daily-aggregation analysis, however, does reach family-wise
-            significance ($p_{\mathrm{FWER}}=0.020$), providing a
-            satellite-independent detection of distance-structured spatial
-            coherence. Unmodelled center-of-mass (CoM) variations linked to
-            spin-axis orientation or specific retroreflector array optical
-            properties could, in principle, introduce structured range biases,
-            but the daily-aggregation signal is satellite-agnostic and
-            therefore not attributable to a single-spacecraft systematic.
+            confound-controlled cross-satellite pairing, in contrast, does
+            reach the turnover bin with $\bar{r}=-0.228$ ($n=32$, per-bin
+            $p=5\times10^{-4}$) while sharing no orbit solution — providing a
+            distance-structured spatial-coherence result that is not
+            attributable to a single-spacecraft or single-solution
+            systematic. The daily-aggregation statistic
+            ($p_{\mathrm{FWER}}=0.020$) is retained as exploratory, since its
+            driving bin reverses sign between the two LAGEOS solutions.
         </p>
 
         <h4>Geodetic Anomalies & Reinterpretation</h4>
@@ -222,8 +250,10 @@
             The geodetic literature records several persistent "anomalies" or
             unexplained systematics that align with the TEP phenomenology
             reported here. Rather than viewing these as isolated technical
-            errors, they may be reinterpreted as independent detections of the
-            same underlying conformal field structure.
+            errors, they may be reinterpreted through the same underlying
+            conformal field structure — while each is carried at the evidential
+            status its own bookkeeping supports, so that a consistency check is
+            not promoted to a detection.
         </p>
 
         <p>
@@ -231,16 +261,62 @@
             realizations of the International Terrestrial Reference Frame
             (ITRF2020) have identified an unexpected "peculiar" drift in the
             VLBI scale relative to SLR starting circa 2013, reaching magnitudes
-            of ~0.2 ppb (~1.2 mm) (Kern et al., 2024; Altamimi et al., 2023).
-            While conventionally attributed to localized station deformations
-            (e.g., at Ny-Ålesund) or "unexplained instrumental drift," the
-            global, secular nature of the divergence suggests a fundamental
-            metric phenomenon. In the TEP framework, a cosmological
-            time-evolution of the background scalar field $\phi(t)$ implies a
-            drift in the conformal factor $A(\phi)$. This acts as a dynamic
-            rescaling of proper lengths, naturally manifesting as a scale drift
-            between dynamic (SLR, governed by gravitational potential $GM$) and
-            geometric (VLBI) reference frames.
+            of ~0.2 ppb (~1.2 mm) (Kern et al., 2024; Altamimi et al., 2023;
+            Hellmers et al., 2025). The channel is derived here rather than
+            asserted, and it is carried as a bound rather than as evidence.
+            Under the corpus's relational-measurement rule, a uniform rescaling
+            of all clocks and rulers is invisible to comparisons among
+            same-sector standards; a secular scale drift can appear in the data
+            only because the two contributing techniques anchor their length
+            units in different metric sectors of the two-metric theory, and it
+            is precisely that differential anchoring which exempts the
+            observable from the common-mode invisibility.
+        </p>
+        <p>
+            The anchoring split is the following. VLBI realizes scale
+            geometrically: station positions are solved from quasar-fixed
+            directions together with group delays measured on matter clocks
+            and converted through the defined speed of light, so the realized
+            length unit is the matter-metric meter and the VLBI scale tracks
+            the ambient conformal factor, \(s_{\rm VLBI}\propto A(t)\), giving
+            \(\dot s/s=\dot A/A=H_{\rm drift}\). SLR realizes scale
+            dynamically: station coordinates are solved so that measured
+            ranges are consistent with an orbit integrated from the adopted
+            gravitational parameter \(GM\) — a fixed conventional constant of
+            the gravitational-sector solution — while the orbit's own time
+            tags are read on the same drifting matter clocks as the ranges.
+            The dynamical anchor therefore tracks part of the drift
+            internally: an orbit size inferred from the measured period
+            scales as \(a_{\rm inf}=(GM\,\tilde T^{2}/4\pi^{2})^{1/3}\propto
+            A^{2/3}\), and the station radius \(a_{\rm inf}-\tilde\rho\)
+            inherits an environment-dependent share of the ambient drift
+            rather than all or none of it.
+        </p>
+        <p>
+            The predicted inter-frame split is consequently bounded above by
+            the drift rate itself. At the corpus's drift amplitude \(H_{\rm
+            drift}\approx 2.3\times10^{-18}\,{\rm s}^{-1}\), the maximal
+            (fully \(g\)-anchored) split over the \(\sim\)12-year baseline is
+            \(\approx 0.87\) ppb (\(\approx 5.5\) mm); a Keplerian
+            period-tracking estimate for the LAGEOS geometry still yields
+            \(\approx 0.56\) ppb (\(\approx 3.6\) mm). The
+            observed \(\sim 0.2\) ppb sits below both limiting cases: the
+            ITRF2020 drift therefore constrains the locally realized share of
+            the ambient conformal drift to \(f\approx 0.2\text{--}0.35\), a
+            quantitative bound on the local drift participation rather than a
+            confirmation of the channel. This is the expected regime: the
+            realized fraction is less than unity precisely because the
+            dynamical anchor's own time tags share the drifting clocks, so
+            much of the ambient drift cancels inside each technique's anchor
+            and only the residual differential survives into the frame
+            comparison. The direction of the observed split — the geometrically
+            anchored VLBI scale drifting relative to the dynamically anchored
+            SLR scale — is likewise the direction predicted when the
+            matter-metric chain carries more of the ambient drift. The datum
+            is thus carried in this paper as a bound-setting consistency check
+            on the conformal-drift channel, localized in exactly the sector
+            where such a drift can be visible at all, not as an independent
+            line of evidence.
         </p>
 
         <p>
@@ -258,10 +334,10 @@
             near-zero correlation when restricted to $\geq 10$ passes) means
             that a TEP interpretation of the LAGEOS-2 signature effects remains
             conjectural pending denser network configurations. The
-            daily-aggregation analysis ($p_{\mathrm{FWER}}=0.020$) provides a
-            satellite-agnostic detection of distance-structured coherence that
-            is not subject to the small-sample fragility of the pass-correlation
-            method. The TEP framework provides a candidate physical mechanism for these
+            cross-satellite control (Step 2.7) provides the more robust
+            detection channel: $\bar{r}=-0.228$ at the turnover bin across
+            32 pairs built from independent orbit solutions, with the
+            orbit-error common mode excluded by construction. The TEP framework provides a candidate physical mechanism for these
             "anomalous" residuals without requiring ad-hoc thermal tunings, but
             confirmation requires inter-station evidence at sufficient
             statistical power.
@@ -299,16 +375,26 @@
 
         <h4>Orbit Modeling Dependencies</h4>
         <p>
-            The estimator-dependent sign-inversion hypothesis ("Anti-Echo")
-            relies on the specific behavior of the least-squares orbit
-            determination filter. While the simulation (Section 4.3)
-            demonstrates the plausibility of sign flipping under monopole
-            absorption, empirical testing requires: (1) denser overlap epochs
+            The estimator-mediated sign inversion ("Anti-Echo") relies on the
+            monopole-absorbing behavior of the least-squares orbit
+            determination filter and is therefore generic to any spatially
+            correlated common-mode error; the TEP-discriminating content is
+            the turnover's location at the independently measured $\lambda_T$
+            and the sign contrast against kinematic estimators, not the sign
+            alone. The simulation (Section 4.3) demonstrates both: the dynamic
+            orbit fit anticorrelates the injected $\lambda_T = 4{,}200$ km
+            field beyond $\approx 4{,}000$ km while the kinematic control
+            retains positive correlation at all baselines; an injected-scale
+            scan places the turnover at 3,421 km for the MGEX anchor
+            ($1{,}862$ km) and 3,947 km for the GPS-PPP anchor
+            ($4{,}201$ km), so the observed onset bin is consistent under
+            either corpus scale. Confirming the
+            mechanism empirically requires: (1) denser overlap epochs
             enabling synchronous multi-station observations, (2) parallel
             processing with kinematic and dynamic estimators to isolate the
             sign-flip signature, and (3) cross-Analysis-Center orbit comparisons
             (ASI vs. GFZ vs. CSR) to test monopole absorption consistency. These
-            requirements are not met by current ILRS operations and represent a
+            requirements exceed current ILRS operations and represent a
             roadmap for future targeted SLR campaigns.
         </p>
     </div>

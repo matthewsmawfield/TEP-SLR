@@ -77,8 +77,10 @@
         response. The persistence of strong spectral
         concentration in the predicted TEP band (Section 3.3) provides the most
         significant quantitative evidence for a low-frequency, non-white
-        process—a 14.12× enhancement that is threshold-stable and statistically
-        robust.
+        process—a 14.12× enhancement that persists across rejection
+        thresholds (spanning 11.9×–14.9×, a ~25% variation, over the
+        0.3–1.0 m range) and is statistically robust against the matched
+        AR(1) null.
     </p>
 
     <h3>3.3 Spectral Concentration: Primary Quantitative Signature</h3>
@@ -227,33 +229,83 @@
             stations by observation count) was performed to improve
             statistical power through increased temporal overlap. The
             family-wise permutation test yields
-            $p_{\mathrm{FWER}}=0.020$, reaching conventional significance. The
-            most negative distance bin (3000–5000 km,
-            $\bar{r}=-0.074$) has a per-bin $p=0.019$ before family-wise
-            correction. The negative correlation at intermediate baselines is
-            consistent with the anti-echo prediction of the disformal sector.
-            The exponential-decay fit to the distance-binned correlations does
-            not converge to a physically meaningful coherence length
-            ($\lambda \to 20{,}000$ km, the fitting boundary), indicating
-            that while a distance-structured signal is detected, the network
-            sparsity prevents precise estimation of the coherence scale.
+            $p_{\mathrm{FWER}}=0.020$, nominally reaching conventional
+            significance, with the most negative correlation at
+            3000–5000 km baselines ($\bar{r}=-0.074$). That statistic does
+            not, however, control the dominant common-mode confound: the
+            driving bin contains only four pairs, and a per-satellite split
+            (Step 2.7) shows it reverses sign between the two independent
+            LAGEOS orbit solutions (LAGEOS-1 $+0.11$; LAGEOS-2 $-0.08$) —
+            the daily-aggregation feature is therefore orbit-solution
+            dependent and is retained as exploratory only. Removing the
+            per-day network mean likewise leaves a near-flat profile on the
+            mechanical $-1/(N-1)\approx-0.05$ floor rather than a
+            turnover-localised feature.
         </p>
 
         <p>
-            The inter-station analysis provides complementary evidence for a
-            distance-structured signal: the daily-aggregation test reaches
-            family-wise significance ($p_{\mathrm{FWER}}=0.020$), with the most
-            negative correlation at 3000–5000 km baselines
-            ($\bar{r}=-0.074$). The pass-correlation result under 15-minute
-            binning remains fragile, driven by small-sample LAGEOS-2 pairs.
-            The ILRS network's temporal sparsity—median 7 contemporaneous
-            passes per station pair—prevents precise estimation of a
-            continuous coherence length, but the detection of a statistically
-            significant distance-structured signal in the daily aggregation,
-            combined with the spectral concentration (Section 3.3) and
-            range-dependent coherence (Section 3.2), provides three
-            independent lines of evidence for a structured, low-frequency
-            process in the SLR residuals.
+            The confound-controlled test is the cross-satellite pairing
+            (Step 2.7): two stations ranging <em>different</em> satellites in
+            the same 15-minute window share no orbit solution, so the
+            shared-orbit-error common mode is absent by construction while
+            the contemporaneous baseline structure is preserved. Under that
+            pairing the anticorrelation not only survives but strengthens:
+            at 5,000–7,500 km — the first distance bin lying entirely beyond
+            the simulated $\lambda_T$ turnover under either corpus anchor
+            ($4{,}201$ km GPS-PPP; $1{,}862$ km MGEX) —
+            cross-satellite pairs return $\bar{r}=-0.228$ over $n=32$ pairs
+            (per-bin permutation $p=5\times10^{-4}$; station-clustered
+            bootstrap 95\% CI $[-0.43,-0.06]$, pricing the non-independence
+            of pairs sharing a station), while every other distance bin is
+            consistent with zero (per-bin $p=0.24$–$0.96$). The matched
+            same-satellite pairs give a diluted $\bar{r}=-0.09$ at the same
+            bin — the expected direction, since an orbit-error common mode
+            enters co-visible ranges positively and therefore masks rather
+            than produces the anticorrelation. The turnover-bin composition
+            is dominated by the LAGEOS-1$\times$LAGEOS-2 channel (32 of 36
+            pairs), i.e. two independent orbit arcs, not one shared solution.
+            Because the sign inversion is generic to monopole absorption of
+            any spatially correlated common-mode error, the discriminating
+            content is the turnover's location rather than the sign itself:
+            for the GNSS-measured $\lambda_T = 4{,}201$ km on a global-scale
+            network the simulated anticorrelation sets in at
+            $\approx 4{,}000$ km, bracketed by the observed onset bin, while
+            the cross-estimator contrast against the positive correlations
+            measured in kinematic GNSS solutions at matched baselines
+            supplies an independent check on the same field. The turnover
+            location is also robust to which corpus scale anchors it. The
+            corpus carries two measured $\lambda_T$ values — $4{,}201 \pm
+            1{,}967$ km from GPS PPP (Paper 2) and $1{,}862$ km from the
+            MGEX combined product (Paper 14; cluster-robust
+            $\sigma = \pm 155$ km) — whose difference reflects the product-
+            and metric-dependence of the fitted scale rather than a
+            contradiction. Repeating the monopole-absorption simulation
+            across the injected scale returns zero crossings of
+            $3{,}421$ km at $\lambda_T = 1{,}862$ km and $3{,}947$ km at
+            $\lambda_T = 4{,}201$ km: under either anchor the 5,000–7,500 km
+            bin remains the first bin lying entirely beyond the turnover,
+            so the observed anticorrelation is consistent with both corpus
+            scales. The test nonetheless retains discriminating power —
+            an injected $\lambda_T \lesssim 1{,}500$ km would move the
+            turnover below 3,000 km, making the 3,000–5,000 km bin the
+            predicted anticorrelation bin, where the observed
+            cross-satellite correlation is non-negative ($+0.19$, $n=8$).
+            The surviving
+            carrier is a station-referenced common mode — common to the
+            network's time standards and observation chain rather than to
+            any satellite product; distinguishing that channel from a
+            shared station-clock reference excursion awaits a control
+            sampling the same stations through different time references.
+            The conservative family-wise minimum-bin statistic
+            ($p=0.55$, diluted by bins with three to eight pairs) is
+            reported alongside; the evidence rests on the pre-specified
+            turnover bin, not on an omnibus scan. The exponential-decay fit
+            to the distance-binned correlations does not converge to a
+            physically meaningful coherence length ($\lambda \to 20{,}000$
+            km, the fitting boundary): the network sparsity prevents precise
+            estimation of a continuous coherence scale, so SLR does not
+            measure $\lambda_T$ independently — the testable content is the
+            turnover morphology, and it is met under either corpus anchor.
         </p>
 
         <figure>
@@ -265,28 +317,35 @@
             <figcaption>
                 <strong>Figure 3.2:</strong> Pass-based inter-station
                 correlation of SLR residual anomalies as a function of baseline
-                distance. The 15-minute binning yields a nominally significant
-                Fisher-combined $p=0.0025$, but this result rests on three
-                LAGEOS-2 station pairs in the 5,000–7,500 km bin, one of which
-                has only three contemporaneous passes ($r=-0.910$,
-                $p=0.273$). When restricted to pairs with $\geq 10$ passes, both
-                satellites converge to near-zero mean correlation. The
-                daily-aggregation analysis ($N=190$ pairs) yields
-                $p_{\mathrm{FWER}}=0.020$, detecting a statistically significant
-                distance-structured signal with the most negative correlation
-                at 3000–5000 km baselines.
+                distance. The 15-minute same-satellite binning yields a
+                nominally significant Fisher-combined $p=0.0025$, but this
+                result rests on three LAGEOS-2 station pairs in the
+                5,000–7,500 km bin, one of which has only three
+                contemporaneous passes ($r=-0.910$, $p=0.273$). The
+                confound-controlled pairing — stations ranging
+                <em>different</em> satellites in the same window, which cannot
+                share orbit error — returns $\bar{r}=-0.228$ at the same
+                5,000–7,500 km bin over $n=32$ pairs (per-bin
+                $p=5\times10^{-4}$; station-bootstrap 95\% CI
+                $[-0.43,-0.06]$) with all other bins null, against a diluted
+                $\bar{r}=-0.09$ for the matched same-satellite pairs
+                (Step 2.7).
             </figcaption>
         </figure>
     </div>
 
     <p>
         The range-dependent, spectral, and inter-station signatures
-        (Sections 3.2–3.4) offer a technology-orthogonal line of evidence
-        consistent with the conformal-sector phenomenology reported in GNSS
-        Papers 1–3. The daily-aggregation result reaches family-wise
-        significance ($p_{\mathrm{FWER}}=0.020$), while the pass-correlation
-        and phase-alignment diagnostics remain limited by network sparsity.
-        More stringent inter-station tests will benefit from denser temporal
+        (Sections 3.2–3.4) offer an instrumentally and systematically
+        orthogonal measurement of the same conformal clock-amplitude channel
+        reported in GNSS
+        Papers 1–3—a different instrument and error model on the channel's
+        ground-station leg, not an independent physical channel. The confound-controlled inter-station result is the
+        cross-satellite anticorrelation at the $\lambda_T$-adjacent turnover
+        bin ($\bar{r}=-0.228$, per-bin $p=5\times10^{-4}$, $n=32$), while
+        the daily-aggregation and phase-alignment diagnostics remain
+        exploratory under the orbit-solution dependence found above. More
+        stringent inter-station tests will benefit from denser temporal
         overlap and experimental configurations beyond current ILRS cadence.
     </p>
 </section>

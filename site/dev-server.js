@@ -28,7 +28,7 @@ class DevServer {
         this.liveServerProcess = spawn('npx', [
             'live-server',
             'dist',
-            '--port=8352',
+            '--port=55508',
             '--host=localhost',
             '--no-browser',
             '--wait=500'
@@ -183,7 +183,7 @@ class DevServer {
         console.log('   • figures/*.png');
         console.log('   • data/*.json');
         console.log('   • public/*');
-        console.log('\n🌐 Server running at: http://localhost:8352');
+        console.log('\n🌐 Server running at: http://localhost:55508');
         console.log('📱 The page will auto-reload when you make changes!');
         console.log('📝 Markdown will be auto-generated after each build!');
         console.log('💡 If auto-reload doesn\'t work, run: npm run build');

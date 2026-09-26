@@ -1,0 +1,461 @@
+{
+ "step": "step_2_7_orbit_commonmode_control",
+ "analysis_timestamp": "2026-09-26T07:02:50.052614+00:00",
+ "purpose": "Confound controls for the pass-bin inter-station correlation: (A) cross-satellite contemporaneous pairing removes the shared orbit-error channel by construction; (B) per-day network common-mode subtraction; (C) per-satellite daily aggregation tests orbit-solution dependence.",
+ "parameters": {
+  "residual_threshold_m": 0.5,
+  "pass_time_bin": "15min",
+  "min_passes_per_pair": 3,
+  "distance_bins_km": [
+   0,
+   500,
+   1000,
+   2000,
+   3000,
+   5000,
+   7500,
+   10000,
+   15000
+  ],
+  "turnover_bin_km": [
+   5000.0,
+   7500.0
+  ],
+  "turnover_bin_rationale": "First distance bin entirely beyond the simulated lambda_T turnover under either corpus anchor (GNSS PPP 4201 km gives a 3,947 km zero crossing; MGEX 1862 km gives 3,421 km \u2014 step_3_0 anchor scan) \u2014 pre-specified by the Section 4.2 monopole-absorption turnover prediction, not selected on the data.",
+  "n_permutations": 2000,
+  "top_stations": 20
+ },
+ "n_cell_records": 58578,
+ "control_A_cross_satellite_pairing": {
+  "n_bin_records_same": 7711,
+  "n_bin_records_cross": 2408,
+  "n_station_pairs_same": 262,
+  "n_station_pairs_cross": 244,
+  "same_satellite": {
+   "distance_binned": {
+    "0-500km": {
+     "n_pairs": 16,
+     "mean_correlation": -0.004954624227735006,
+     "median_correlation": -0.030058013143708914,
+     "std_correlation": 0.1527884317531764
+    },
+    "500-1000km": {
+     "n_pairs": 39,
+     "mean_correlation": 0.0375620881621476,
+     "median_correlation": -0.0013970612656228035,
+     "std_correlation": 0.25108947824491507
+    },
+    "1000-2000km": {
+     "n_pairs": 92,
+     "mean_correlation": 0.03659106340952317,
+     "median_correlation": 0.04625413484156633,
+     "std_correlation": 0.3087092972851169
+    },
+    "2000-3000km": {
+     "n_pairs": 58,
+     "mean_correlation": 0.07275788251865264,
+     "median_correlation": 0.06605826423905742,
+     "std_correlation": 0.37105742648368084
+    },
+    "3000-5000km": {
+     "n_pairs": 33,
+     "mean_correlation": 0.026197278315564607,
+     "median_correlation": -0.028682517156439113,
+     "std_correlation": 0.47370071586569185
+    },
+    "5000-7500km": {
+     "n_pairs": 18,
+     "mean_correlation": -0.08622453633911675,
+     "median_correlation": -0.037279795880818055,
+     "std_correlation": 0.5908833653338893
+    },
+    "7500-10000km": {
+     "n_pairs": 6,
+     "mean_correlation": -0.13281205885116146,
+     "median_correlation": -0.27203526018276064,
+     "std_correlation": 0.6123004529434417
+    }
+   },
+   "null_tests": {
+    "method": "min_mean_over_bins_fwer_circular_shift",
+    "n_permutations": 2000,
+    "observed_bin_means": {
+     "0-500km": -0.004954624227735006,
+     "500-1000km": 0.0375620881621476,
+     "1000-2000km": 0.03659106340952317,
+     "2000-3000km": 0.07275788251865264,
+     "3000-5000km": 0.026197278315564607,
+     "5000-7500km": -0.08622453633911675,
+     "7500-10000km": -0.13281205885116146
+    },
+    "observed_min_bin": -0.13281205885116146,
+    "p_fwer_min_bin": 0.34382808595702147,
+    "p_values_one_sided_le_by_bin": {
+     "0-500km": 0.43728135932033985,
+     "500-1000km": 0.8530734632683659,
+     "1000-2000km": 0.9080459770114943,
+     "2000-3000km": 0.9850074962518741,
+     "3000-5000km": 0.6591704147926037,
+     "5000-7500km": 0.24887556221889057,
+     "7500-10000km": 0.1634182908545727
+    }
+   },
+   "turnover_bin_station_bootstrap": {
+    "n_bootstrap_used": 1929,
+    "ci95": [
+     -0.4647862999090514,
+     0.18909396121319602
+    ],
+    "fraction_below_zero": 0.7164333851736651
+   }
+  },
+  "cross_satellite": {
+   "distance_binned": {
+    "0-500km": {
+     "n_pairs": 6,
+     "mean_correlation": -0.0015082255146323016,
+     "median_correlation": 0.1666726033235415,
+     "std_correlation": 0.566484530048998
+    },
+    "500-1000km": {
+     "n_pairs": 13,
+     "mean_correlation": -0.07393492595500348,
+     "median_correlation": -0.11256117543663756,
+     "std_correlation": 0.4687469821294851
+    },
+    "1000-2000km": {
+     "n_pairs": 10,
+     "mean_correlation": 0.08698622575368602,
+     "median_correlation": 0.05024893817042441,
+     "std_correlation": 0.5237564744149424
+    },
+    "2000-3000km": {
+     "n_pairs": 3,
+     "mean_correlation": -0.08007803118453927,
+     "median_correlation": 0.2371974702261083,
+     "std_correlation": 0.7793888259309538
+    },
+    "3000-5000km": {
+     "n_pairs": 8,
+     "mean_correlation": 0.18932457896167737,
+     "median_correlation": 0.07403699673967636,
+     "std_correlation": 0.5065251026757469
+    },
+    "5000-7500km": {
+     "n_pairs": 32,
+     "mean_correlation": -0.2275062670570105,
+     "median_correlation": -0.2666946238948469,
+     "std_correlation": 0.45677471230184763
+    },
+    "7500-10000km": {
+     "n_pairs": 83,
+     "mean_correlation": -0.011957111218799344,
+     "median_correlation": 0.04745067325914978,
+     "std_correlation": 0.583800624708076
+    },
+    "10000-15000km": {
+     "n_pairs": 65,
+     "mean_correlation": -0.010269569313323304,
+     "median_correlation": 0.024484176661194196,
+     "std_correlation": 0.5564907058355444
+    }
+   },
+   "turnover_bin_channel_composition": {
+    "lageos1|lageos2": 32,
+    "lageos2|lares": 2,
+    "lageos1|lares": 1,
+    "etalon1|lageos1": 1
+   },
+   "turnover_bin_station_participation": {
+    "7105": 15,
+    "7090": 6,
+    "7810": 5,
+    "1891": 4,
+    "7840": 4,
+    "7845": 3,
+    "7941": 3,
+    "7821": 2,
+    "7827": 2,
+    "7839": 2,
+    "7838": 2,
+    "8834": 2,
+    "1890": 2,
+    "7501": 2,
+    "7841": 2,
+    "7237": 1,
+    "7811": 1,
+    "1889": 1,
+    "7819": 1,
+    "7503": 1,
+    "7396": 1,
+    "7110": 1,
+    "7403": 1
+   },
+   "null_tests": {
+    "method": "min_mean_over_bins_fwer_circular_shift",
+    "n_permutations": 2000,
+    "observed_bin_means": {
+     "0-500km": -0.0015082255146323016,
+     "500-1000km": -0.07393492595500348,
+     "1000-2000km": 0.08698622575368602,
+     "2000-3000km": -0.08007803118453927,
+     "3000-5000km": 0.18932457896167737,
+     "5000-7500km": -0.2275062670570105,
+     "7500-10000km": -0.011957111218799344,
+     "10000-15000km": -0.010269569313323304
+    },
+    "observed_min_bin": -0.2275062670570105,
+    "p_fwer_min_bin": 0.5517241379310345,
+    "p_values_one_sided_le_by_bin": {
+     "0-500km": 0.3888055972013993,
+     "500-1000km": 0.2433783108445777,
+     "1000-2000km": 0.7466266866566716,
+     "2000-3000km": 0.41679160419790107,
+     "3000-5000km": 0.9550224887556222,
+     "5000-7500km": 0.0004997501249375312,
+     "7500-10000km": 0.4642678660669665,
+     "10000-15000km": 0.5087456271864068
+    }
+   },
+   "turnover_bin_station_bootstrap": {
+    "n_bootstrap_used": 1966,
+    "ci95": [
+     -0.43413799190357993,
+     -0.05883637025682781
+    ],
+    "fraction_below_zero": 0.9923702950152594
+   }
+  }
+ },
+ "controls_BC_daily_aggregation": {
+  "pooled": {
+   "n_pairs": 190,
+   "distance_binned": {
+    "0-500km": {
+     "n_pairs": 11,
+     "mean_correlation": 0.008345224995893045,
+     "median_correlation": -0.016616324577782227,
+     "std_correlation": 0.06944484627784019
+    },
+    "500-1000km": {
+     "n_pairs": 18,
+     "mean_correlation": -0.008145377142910883,
+     "median_correlation": 0.0004031605669226777,
+     "std_correlation": 0.06032322580603546
+    },
+    "1000-2000km": {
+     "n_pairs": 17,
+     "mean_correlation": 0.01735774669274605,
+     "median_correlation": -0.006362533580963391,
+     "std_correlation": 0.06751780329889863
+    },
+    "2000-3000km": {
+     "n_pairs": 11,
+     "mean_correlation": -0.016103599383170727,
+     "median_correlation": -0.009315521066514402,
+     "std_correlation": 0.05678470511773372
+    },
+    "3000-5000km": {
+     "n_pairs": 4,
+     "mean_correlation": -0.07399481670890068,
+     "median_correlation": -0.062259346011873745,
+     "std_correlation": 0.06564031497885822
+    },
+    "5000-7500km": {
+     "n_pairs": 17,
+     "mean_correlation": 0.005870146829818096,
+     "median_correlation": 0.018054809701956952,
+     "std_correlation": 0.06482299461694174
+    },
+    "7500-10000km": {
+     "n_pairs": 60,
+     "mean_correlation": -0.0019945520536135404,
+     "median_correlation": -0.007335674819585747,
+     "std_correlation": 0.07419267501657008
+    },
+    "10000-15000km": {
+     "n_pairs": 38,
+     "mean_correlation": 0.0010647586868005588,
+     "median_correlation": 0.015512850362374967,
+     "std_correlation": 0.07664654075013645
+    }
+   }
+  },
+  "network_common_mode_removed": {
+   "n_pairs": 190,
+   "distance_binned": {
+    "0-500km": {
+     "n_pairs": 11,
+     "mean_correlation": -0.10436954101147979,
+     "median_correlation": -0.09030116236176311,
+     "std_correlation": 0.08468323229635114
+    },
+    "500-1000km": {
+     "n_pairs": 18,
+     "mean_correlation": -0.11636825992635573,
+     "median_correlation": -0.11046328118978602,
+     "std_correlation": 0.06862826118704156
+    },
+    "1000-2000km": {
+     "n_pairs": 17,
+     "mean_correlation": -0.0861939742445963,
+     "median_correlation": -0.10640702795754396,
+     "std_correlation": 0.07659660730529715
+    },
+    "2000-3000km": {
+     "n_pairs": 11,
+     "mean_correlation": -0.11513519485028684,
+     "median_correlation": -0.10491129195341438,
+     "std_correlation": 0.056436377138726804
+    },
+    "3000-5000km": {
+     "n_pairs": 4,
+     "mean_correlation": -0.19127818983235276,
+     "median_correlation": -0.18875052775147666,
+     "std_correlation": 0.058985377525523464
+    },
+    "5000-7500km": {
+     "n_pairs": 17,
+     "mean_correlation": -0.10327511267720609,
+     "median_correlation": -0.09642228558632297,
+     "std_correlation": 0.057033600239330275
+    },
+    "7500-10000km": {
+     "n_pairs": 60,
+     "mean_correlation": -0.10134397639653908,
+     "median_correlation": -0.11031028753150274,
+     "std_correlation": 0.07761473671009442
+    },
+    "10000-15000km": {
+     "n_pairs": 38,
+     "mean_correlation": -0.10504943236658644,
+     "median_correlation": -0.11384229576835247,
+     "std_correlation": 0.062130357135928446
+    }
+   },
+   "mechanical_bias_note": "Removing the per-day network mean over N stations induces a mechanical pairwise bias ~ -1/(N-1) = -0.053; read bin means relative to that floor, not zero.",
+   "expected_mechanical_bias": -0.05263157894736842
+  },
+  "per_satellite": {
+   "etalon1": {
+    "n_pairs": 0,
+    "distance_binned": {}
+   },
+   "etalon2": {
+    "n_pairs": 0,
+    "distance_binned": {}
+   },
+   "lageos1": {
+    "n_pairs": 190,
+    "distance_binned": {
+     "0-500km": {
+      "n_pairs": 11,
+      "mean_correlation": -0.01528855714005894,
+      "median_correlation": -0.017756321963425834,
+      "std_correlation": 0.08234869430690893
+     },
+     "500-1000km": {
+      "n_pairs": 18,
+      "mean_correlation": 0.00989463117686731,
+      "median_correlation": -0.0024914762054053276,
+      "std_correlation": 0.10012127184959531
+     },
+     "1000-2000km": {
+      "n_pairs": 17,
+      "mean_correlation": 0.04130924088231634,
+      "median_correlation": 0.018632067764615897,
+      "std_correlation": 0.10035947411183267
+     },
+     "2000-3000km": {
+      "n_pairs": 11,
+      "mean_correlation": -0.006929413374259538,
+      "median_correlation": -0.034692630905078466,
+      "std_correlation": 0.09316058938147684
+     },
+     "3000-5000km": {
+      "n_pairs": 4,
+      "mean_correlation": 0.11010518985559996,
+      "median_correlation": 0.040345216187535046,
+      "std_correlation": 0.17894150871335612
+     },
+     "5000-7500km": {
+      "n_pairs": 17,
+      "mean_correlation": 0.05194209657959915,
+      "median_correlation": 0.05607347898270246,
+      "std_correlation": 0.1445443274937548
+     },
+     "7500-10000km": {
+      "n_pairs": 60,
+      "mean_correlation": -0.025949470865277383,
+      "median_correlation": -0.01647642687331656,
+      "std_correlation": 0.14368766210263967
+     },
+     "10000-15000km": {
+      "n_pairs": 38,
+      "mean_correlation": -0.0025699792564759186,
+      "median_correlation": 0.008568641235455712,
+      "std_correlation": 0.16390577147525487
+     }
+    }
+   },
+   "lageos2": {
+    "n_pairs": 190,
+    "distance_binned": {
+     "0-500km": {
+      "n_pairs": 11,
+      "mean_correlation": 0.008432579222737217,
+      "median_correlation": 0.034743809109424206,
+      "std_correlation": 0.08541738209890531
+     },
+     "500-1000km": {
+      "n_pairs": 18,
+      "mean_correlation": -0.020579878803455617,
+      "median_correlation": -0.011715761919041064,
+      "std_correlation": 0.08996997361968692
+     },
+     "1000-2000km": {
+      "n_pairs": 17,
+      "mean_correlation": -0.007591622671607497,
+      "median_correlation": -0.009748092090244737,
+      "std_correlation": 0.12178769036058847
+     },
+     "2000-3000km": {
+      "n_pairs": 11,
+      "mean_correlation": 0.03155212908074759,
+      "median_correlation": 0.02168074610181981,
+      "std_correlation": 0.1580464862678475
+     },
+     "3000-5000km": {
+      "n_pairs": 4,
+      "mean_correlation": -0.08148802158666905,
+      "median_correlation": -0.07416660781369981,
+      "std_correlation": 0.0400932102532427
+     },
+     "5000-7500km": {
+      "n_pairs": 17,
+      "mean_correlation": -0.017638448640898495,
+      "median_correlation": -0.005606295040879121,
+      "std_correlation": 0.15253934445008147
+     },
+     "7500-10000km": {
+      "n_pairs": 60,
+      "mean_correlation": -0.003407772788891094,
+      "median_correlation": -0.004773029707215667,
+      "std_correlation": 0.13616525410687816
+     },
+     "10000-15000km": {
+      "n_pairs": 38,
+      "mean_correlation": -0.014366415753515193,
+      "median_correlation": 0.0020756776127942578,
+      "std_correlation": 0.11871219463811387
+     }
+    }
+   },
+   "lares": {
+    "n_pairs": 0,
+    "distance_binned": {}
+   }
+  }
+ },
+ "input_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/outputs/step_2_1_slr_residuals.csv"
+}

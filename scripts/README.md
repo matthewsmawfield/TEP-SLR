@@ -91,6 +91,27 @@ python3 scripts/steps/step_2_4_plot_results.py
 python3 scripts/steps/step_2_5_enhanced_figures.py
 ```
 
+### Step 2.7: Orbit-Error / Common-Mode Confound Controls
+
+```bash
+python3 scripts/steps/step_2_7_orbit_commonmode_control.py
+```
+
+Controls the dominant common-mode confound in the pass-bin inter-station
+statistic (two stations ranging the *same* satellite share that satellite's
+orbit-model error):
+
+- **Cross-satellite pairing**: correlates residuals of stations ranging
+  *different* satellites in the same 15-min window — shared orbit error is
+  absent by construction, so surviving correlation is station-referenced
+  (spatial field) rather than product-referenced.
+- **Network common-mode subtraction**: removes the per-day network mean from
+  the daily-aggregation series (with the mechanical −1/(N−1) bias disclosed).
+- **Per-satellite daily aggregation**: LAGEOS-1 vs LAGEOS-2 splits test
+  orbit-solution dependence of the daily-aggregation feature.
+
+Output: `results/outputs/step_2_7_orbit_commonmode_control.json`.
+
 ### Step 3.0: Anti-Echo Simulation
 
 ```bash

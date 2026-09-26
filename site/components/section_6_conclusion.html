@@ -20,22 +20,31 @@
         uncorrected pressure effect is 12% of the residual RMS, and
         pressure-residual coherence is not significant at the majority of
         stations (binomial $p=0.088$).
-        The observation of matching low-frequency structure in a system devoid
-        of active clocks and microwave transmission challenges hypotheses that
-        rely on microwave-specific receiver electronics, clock steering, or
-        ionospheric modeling.
+        The observation of matching low-frequency structure in a constellation
+        carrying no onboard clocks and no microwave transmission challenges
+        hypotheses that rely on satellite atomic clocks, onboard steering
+        electronics, or ionospheric modeling at microwave frequencies.
     </p>
 
     <p>
         Taken together with the GNSS results, the SLR evidence is consistent
         with the conformal-sector interpretation across five orders of magnitude
-        in frequency (microwave to optical) and across two independent
-        measurement technologies (GNSS and SLR). The observed correlation length
-        in GNSS ($\lambda_T = 4,201 \pm 1,967$ km) and the SLR path-length
+        in frequency (microwave to optical) and across two instrumentally
+        independent measurement technologies (GNSS and SLR) probing the same
+        clock-amplitude channel through different hardware, calibration chains,
+        and estimator geometries. Because achromaticity is
+        required by conformal invariance, this frequency independence is a
+        necessary consistency check rather than an independent discriminant:
+        it excludes dispersive carriers, while the positive evidence for
+        temporal structure resides in the low-frequency excess over the
+        matched red-noise null. The observed correlation length
+        in GNSS ($\lambda_T = 4,201 \pm 1,967$ km GPS-PPP; $1,862$ km MGEX,
+        cluster-robust $\sigma = \pm 155$ km — the fitted scale is
+        product-dependent) and the SLR path-length
         dependent diagnostic (over a $\sim 3{,}000$ km path difference between
         the high- and low-range selections) are both consistent with the
         characteristic scale of the scalar field's continuous spatial profile
-        (Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$). In dense environments, suppression of
+        (Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$, the formal scaling constant of the $R_T(M)$ law rather than a literal interior density — no terrestrial material reaches that value). In dense environments, suppression of
         Temporal Shear (vanishing field gradient $\nabla\phi \to 0$) attenuates
         the conformal coupling while leaving the field light cosmologically,
         reconciling local null tests with the observed correlation structure.
@@ -48,25 +57,39 @@
         significant Fisher-combined result ($p=0.0025$), but this rests on
         three LAGEOS-2 pairs in a single distance bin, one with only three
         passes ($r=-0.910$, $p=0.273$). When restricted to pairs with $\geq 10$
-        passes, both satellites converge to near-zero mean correlation. A
-        daily-aggregation analysis ($N=190$ pairs) yields
-        $p_{\mathrm{FWER}}=0.020$, reaching conventional significance, with the
-        most negative correlation at 3000–5000 km baselines
-        ($\bar{r}=-0.074$), providing a satellite-agnostic detection of
-        distance-structured spatial coherence. The spectral concentration,
-        range-dependent coherence, and daily-aggregation signal provide three
-        independent lines of evidence for a structured, low-frequency
-        process; the pass-correlation test remains limited by network
-        sparsity. Furthermore, this phenomenology offers
+        passes, both satellites converge to near-zero mean correlation. The
+        confound-controlled pairing of stations ranging different satellites
+        in the same window — which cannot share orbit error — retains the
+        anticorrelation at the $\lambda_T$-adjacent turnover bin:
+        $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km (per-bin
+        $p=5\times10^{-4}$; station-clustered bootstrap 95\% CI
+        $[-0.43,-0.06]$), with all other bins null and the matched
+        same-satellite pairs diluted to $-0.09$ as expected when the
+        orbit-error common mode enters positively and is removed
+        (Step 2.7). A daily-aggregation analysis ($N=190$ pairs) nominally
+        reaches $p_{\mathrm{FWER}}=0.020$, but its driving bin reverses sign
+        between the two LAGEOS orbit solutions and is retained as
+        exploratory. The spectral concentration, range-dependent coherence,
+        and confound-controlled inter-station anticorrelation provide three
+        convergent diagnostics of a structured, low-frequency
+        process: the spectral and range-dependent results share the residual
+        tropospheric-systematic channel and are not fully independent of each
+        other, while the inter-station result is a distinct cross-station
+        observable; the pass-correlation test remains limited
+        by network sparsity. Furthermore, this phenomenology offers
         a unified physical explanation for persistent geodetic anomalies,
-        including the ITRF2020 VLBI-SLR scale drift and the pervasive "flicker
-        noise" floor in station coordinates, reinterpreting them as evidence of
-        conformal metric coupling rather than intractable systematics.
+        including the ITRF2020 VLBI-SLR scale drift — derived here as the
+        differentially anchored conformal-drift channel and carried as a
+        \(\sim 0.2\) ppb bound on the local drift participation — and the
+        pervasive "flicker
+        noise" floor in station coordinates, reinterpreting them through the
+        same conformal metric coupling rather than as intractable systematics.
     </p>
 
     <p>
         The evidence presented here is consistent with a conformal-sector signal
-        across two independent measurement systems, multiple processing centers,
+        across two instrumentally independent measurement systems sharing the
+        clock-amplitude channel, multiple processing centers,
         long-term GNSS stability, raw observational data, and the full
         electromagnetic spectrum. The "Time Echo" is not readily explained as a
         single-technology artifact; it appears as a reproducible low-frequency
