@@ -757,18 +757,41 @@ def evaluate_tep_eft_sector(alpha_A):
     Returns the exact dimensionless Bellini-Sawicki parameters and
     stability discriminants in the pure conformal limit (beta_A = -1.0).
 
-    Mapping from TEP bi-metric action to Jordan-frame EFT:
-      alpha_M = d ln M_*^2 / d ln a = -2 alpha_A
+    Canonical derivation (Jordan/matter frame). The Weyl transform
+    g_tilde = A^2(phi) g of the canonical Einstein-frame scalar sector
+    maps to the scalar-tensor action
+
+        F(phi) R_tilde/2 + W(phi) X_tilde - U(phi),
+        F = M_Pl^2 A^-2,
+        W = A^-2 (1 - 6 M_Pl^2 A_,phi^2/A^2)  [= A^-2(1 - 6 beta_A^2)
+            for A = exp(beta_A phi/M_Pl)],
+        U = A^-4 V,
+
+    with X_tilde = -(1/2) g_tilde^{mn} phi_,m phi_,n.  The standard
+    Horndeski map (identical to the hi_class brans_dicke model:
+    alpha_B = -alpha_M, alpha_K = 2X G2_X/(H^2 M_*^2)) then gives:
+
+      alpha_M = d ln F / d ln a = -2 alpha_A
       alpha_B = -alpha_M = 2 alpha_A
-      alpha_K = -5 alpha_A^2   (conformal anomaly from kinetic mixing)
       alpha_T = 0
+      alpha_K = (W/F) (d phi/d ln a)^2
+              = (1 - 6 beta_A^2)/beta_A^2 * alpha_A^2
+              = -5 alpha_A^2   (beta_A = -1)
 
     Physical no-ghost discriminant:
       D = alpha_K + (3/2) alpha_B^2
         = -5 alpha_A^2 + (3/2)(4 alpha_A^2)
         = alpha_A^2  >= 0  (strictly, for all z)
 
-    Sound speed: c_s^2 = 1 exactly (conformal isomorphism to FLRW).
+    Equivalently the Jordan ghost-free combination is
+    2WF + 3F_,phi^2 = 2 M_Pl^2 A^-4 > 0: the beta_A^2 pieces of the
+    explicit kineticity (negative for |beta_A| > 1/sqrt(6)) and the
+    braiding-generated kineticity cancel, which is the discriminant
+    signature of a canonical Einstein-frame scalar.  The boundary
+    W = 0 at beta_A^2 = 1/6 is the f(R) limit, where the entire
+    scalar kineticity resides in the braiding.
+
+    Sound speed: c_s^2 = 1 exactly (Jordan G2 linear in X_tilde).
     """
     alpha_A = np.atleast_1d(alpha_A)
 
@@ -819,9 +842,12 @@ def tep_alpha_B(z, epsilon_T=0.1, z_T=3.0, n_T=1.0):
 
 def tep_alpha_K(z, epsilon_T=0.1, z_T=3.0, n_T=1.0):
     """
-    Kineticity alpha_K = -5 alpha_A^2.
-    The apparent negative value is balanced by the full no-ghost
-    discriminant D = alpha_K + (3/2) alpha_B^2 = +alpha_A^2.
+    Kineticity alpha_K = (1 - 6 beta_A^2)/beta_A^2 * alpha_A^2 = -5 alpha_A^2
+    (beta_A = -1), from the canonical Jordan-frame Weyl derivation in
+    evaluate_tep_eft_sector. The negative explicit kineticity is the
+    required Jordan-frame signature of a canonical Einstein-frame scalar
+    at |beta_A| > 1/sqrt(6); the no-ghost discriminant
+    D = alpha_K + (3/2) alpha_B^2 = +alpha_A^2 remains positive.
     """
     alpha_A = alpha_A_native(z, epsilon_T, z_T, n_T)
     return -5.0 * (alpha_A ** 2)
