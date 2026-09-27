@@ -1,7 +1,7 @@
 # Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging
 **Matthew Lukin Smawfield**
-v0.4 (Mombasa)
-First published: 30 December 2025 · Last updated: 14 September 2026
+v0.5 (Mombasa)
+First published: 30 December 2025 · Last updated: 27 September 2026
 DOI: 10.5281/zenodo.18064581
 
 ---
@@ -14,7 +14,7 @@ Frequency-domain analysis is carried out under sampling-matched
 control. On 5-minute resampled station series the TEP-band (10–500
 $\mu$Hz) mean PSD exceeds the broadband floor ($f>1$ mHz) by
 $14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations); however, with the
-ILRS observing duty cycle below one percent, this diagnostic is dominated
+ILRS observing duty cycle below one percent, the diagnostic is dominated
 by the resampling kernel rather than by the data. Surrogate processes
 generated on each station's actual observing grid and passed through the
 identical resample–interpolate–concatenate pipeline show that white
@@ -25,61 +25,61 @@ through the same sampling (masked AR(1): $16.95$; flicker $1/f$:
 $26.98$; random walk: $257$). A real-epoch Lomb–Scargle estimator on
 the unbinned observation times returns a flat in-band spectrum (ratio
 $1.04$ vs white null $1.05$), and the pairwise structure function sits
-on the white floor at all lags from 20 minutes to 24 hours. The
-conformal timer channel is therefore bounded rather than detected in the
+on the white floor at all lags from 20 minutes to 24 hours. This
+sampling-matched construction corrects a concentration reported in
+earlier versions of this work as in-band structure, and applies to
+spectral diagnostics on any duty-cycle-limited geodetic series. The
+conformal timer channel is bounded rather than detected in the
 spectral domain: under the timer-rate map $\delta R = R\,\delta A$,
 in-band coherent excursions are limited to $\delta A \lesssim
 2\times10^{-8}$ (~decimetre equivalent at the mean slant range), while a
 landscape excursion of order the surface conformal depth ($u_\oplus
 \approx 7\times10^{-10}$) predicts coherent wander of only
-$\sim 5$ mm — below the noise floor — so the conformal signature must be
-read in the network-coherent spatial channel measured below. An
+$\sim 5$ mm — below the noise floor — so the remaining
+discriminating test is the inter-station channel measured below. An
 NCEP/NCAR Reanalysis surface
 pressure control bounds the synoptic-weather channel at its native
 6-hourly resolution (4/34 significant, binomial $p=0.088$; uncorrected
 pressure effect 12% of the residual RMS). A
-diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
+range-dependent lag-1 coherence diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
 accumulate greater decoherence than shorter paths
 ($\lesssim 6{,}500$ km), with the long-minus-short contrast
 $\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because light propagation is null-invariant in the conformal sector, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control, rather than a TEP signature.
 
 Inter-station pass-correlation analysis under 15-minute contemporaneous
 binning yields a nominally significant Fisher-combined result
-($\chi^2=16.45$, 4 d.o.f.; $p=0.0025$). However, this signal concentrates
-in three LAGEOS-2 station pairs at 5,000–7,500 km, one of which
-contributes a correlation of $r=-0.910$ from only three passes
-($p=0.273$, not individually significant). The controlling confound for
-any same-satellite pairing is the shared orbit arc: orbit-model error
-enters both stations' residuals as a common mode. A dedicated control
-(Step 2.7) therefore forms the contemporaneous pairings across
+($\chi^2=16.45$, 4 d.o.f.; $p=0.0025$) that concentrates in three
+same-satellite LAGEOS-2 pairs sharing an orbit arc — orbit-model error
+enters both stations' residuals as a common mode, and is the
+controlling confound for any same-satellite pairing. A dedicated
+control therefore forms the contemporaneous pairings across
 *different* satellites in the same window — two stations ranging
 different targets share no orbit solution, so the channel is closed by
-construction while the baseline structure is preserved. The
-anticorrelation survives and strengthens: at the 5,000–7,500 km bin — the
-first bin entirely beyond the simulated $\lambda_T$ turnover under either
-corpus scale (4,201 km GPS-PPP; 1,862 km MGEX — the fitted scale is
-product-dependent; turnover 3,421–3,947 km across the pair) —
-cross-satellite pairs (dominated by the two independent LAGEOS orbit
-solutions) return $\bar{r}=-0.23$ over 32 pairs (per-bin permutation
-$p=5\times10^{-4}$; station-clustered bootstrap 95% CI
-$[-0.43,-0.06]$), with every other distance bin consistent with zero;
-the matched same-satellite pairs give a diluted $\bar{r}=-0.09$ at the
-same bin, the direction expected when the orbit-error common mode enters
-positively and is removed. A daily-aggregation statistic
-($N=190$ pairs, $p_{\mathrm{FWER}}=0.020$) does not survive the
-per-satellite split — its driving 3,000–5,000 km bin has only four pairs
-and reverses sign between the two LAGEOS solutions — and is retained as
-exploratory only. The confound-controlled inter-station anticorrelation
-is the positive evidence for a structured, low-frequency process: the
-spectral channel is carried as a bound (§3.3.1), so the surviving
-discriminating content is the distance-structured cross-station
-observable, which shares none of the residual tropospheric-systematic
-channels; the family-wise
-minimum-bin statistic remains diluted by the smallest bins ($p=0.55$), so
-the evidence rests on the pre-specified turnover bin rather than an
-omnibus scan.
+construction while the baseline structure is preserved. At the
+5,000–7,500 km bin — pre-specified as the first bin entirely beyond
+the simulated $\lambda_T$ turnover under either corpus scale (4,201 km
+GPS-PPP; 1,862 km MGEX) — cross-satellite pairs return
+$\bar{r}=-0.23$ over 32 baselines (epoch-preserving label-swap null
+$p=0.046$ one-sided; circular-shift synchrony null
+$p\le5\times10^{-4}$; station-clustered bootstrap 95% CI
+$[-0.43,-0.06]$) — though the feature appears in only one of nine
+threshold/bin-width configurations, falls to $\bar{r}=-0.054$ when
+restricted to pairs sharing five or more bins, and alternates sign year
+to year, so it is reported as a tail event rather than a detection.
+A daily-aggregation statistic ($N=190$ pairs, $p_{\mathrm{FWER}}=0.020$)
+reverses sign between the two LAGEOS orbit solutions and is retained
+as exploratory only.
 
-The observation of matching low-frequency structure in a constellation carrying no onboard clocks and no microwave propagation chain challenges explanations specific to satellite atomic clocks, onboard steering electronics, and ionospheric modeling at microwave frequencies as complete accounts. Because the residual content is carried by the ground event-timer rate, the result constrains the channel's ground-station leg directly. While current network sparsity limits testing to the conformal sector, this work demonstrates SLR as an instrumentally and systematically independent measurement of the same conformal clock-amplitude channel as GNSS—a systematics-level control and an estimator-geometry contrast, rather than an independent physical channel.
+Taken together — a spectral bound, an amplitude budget sitting
+seven or more orders of magnitude above the $10^{-15}$–$10^{-18}$
+fractional stabilities of GNSS clock comparisons, and a nominal
+turnover-bin candidate short of detection strength — the absence of
+detectable in-band structure in a constellation carrying no onboard
+clocks and no microwave propagation chain constrains artifact
+explanations specific to satellite atomic clocks, onboard steering
+electronics, and ionospheric modeling at microwave frequencies, and
+demonstrates SLR as an instrumentally and systematically independent
+measurement of the same conformal clock-amplitude channel as GNSS.
 
 ## 1. Introduction
 
@@ -102,16 +102,16 @@ observations, these findings relied on a single geodetic technique:
 one-way microwave transmission to active ground clocks.
 
 Screening in TEP is represented at the theory level by the environmental operator
-*S*<sub>&Sigma;</sub>(*&Epsilon;*).
+$S_\Sigma(\mathcal{E})$.
 Quantities such as
-&rho;<sub>T</sub>,
-*R*<sub>T</sub>(*M*),
-*S*<sub>&oplus;</sub>(*r*),
-compactness &Phi;/*c*<sup>2</sup>,
+$\rho_T$,
+$R_T(M)$,
+$S_\oplus(r)$,
+compactness $\Phi/c^2$,
 local stellar density,
 geometric coherence length,
 and channel-specific response coefficients
-are domain-specific projections of *&Epsilon;*,
+are domain-specific projections of $\mathcal{E}$,
 not independent screening mechanisms
 and not interchangeable universal thresholds.
 Each is an observational transfer model
@@ -222,7 +222,7 @@ scales ($v_{\rm orb}/f \approx 30\,{\rm km\,s^{-1}}/f$), and the
 landscape's own temporal evolution.
 Observed: an apparent $14.12\times$ band/broadband
 concentration on resampled station series (§3.3), shown by
-sampling-matched nulls (Step 2.8) to be a property of the
+sampling-matched nulls to be a property of the
 sparse-sampling kernel — white noise through the identical
 pipeline returns $13.97$ — with the real-epoch spectrum flat;
 the channel is carried as a bound on in-band conformal
@@ -257,7 +257,8 @@ pairing — stations ranging different satellites in the same
 window, which cannot share orbit error — the anticorrelation
 persists at the first bin beyond the $\lambda_T$ turnover
 scale (5,000–7,500 km, $\bar{r}=-0.23$, $n=32$ pairs,
-per-bin $p=5\times10^{-4}$, §3.4). The daily-aggregation
+epoch-preserving-null $p=0.046$ one-sided, §3.4). The
+daily-aggregation
 statistic ($p_{\mathrm{FWER}}=0.020$) is retained as
 exploratory: its driving bin reverses sign between
 independent orbit solutions.
@@ -297,7 +298,7 @@ Residuals were computed relative to high-precision SP3 orbits (ASI/GFZ). For the
 
 For sparse SLR networks, continuous, regularly sampled inter-station time series are generally unavailable. Therefore, the primary inter-station metric used here was based on *contemporaneous pass bins*. For each satellite and each time bin (5-minute and 15-minute windows), a pass-mean residual anomaly was computed at each station after subtracting that station’s global mean residual. Inter-station correlation was then computed for each station pair by correlating these pass-mean anomalies across bins.
 
-Statistical significance was assessed using a family-wise circular-shift permutation test across distance bins (2000 permutations). Two confound controls were applied to the pass-bin statistic (Step 2.7): a cross-satellite pairing — correlating residuals of stations ranging *different* satellites within the same time bin, which removes the shared-orbit-error common mode by construction while preserving baseline structure — and a per-satellite split of the daily-aggregation test. Additionally, a daily-aggregation analysis was performed where residuals were averaged daily per station to maximize temporal overlap ($N=190$ station pairs), providing a check against short-term pass-geometry artifacts; its outcome is interpreted jointly with the orbit-solution split (Section 3.4).
+Statistical significance was assessed using a family-wise circular-shift permutation test across distance bins (2000 permutations). Two confound controls were applied to the pass-bin statistic (Step 2.7): a cross-satellite pairing — correlating residuals of stations ranging *different* satellites within the same time bin, which removes the shared-orbit-error common mode by construction while preserving baseline structure — and a per-satellite split of the daily-aggregation test. Because the circular-shift null destroys bin synchrony but does not price the mechanical anticorrelation floor induced by station-level debiasing within each epoch's pairing geometry, significance is additionally evaluated against an epoch-preserving label-swap null (2000 permutations) that permutes residuals across the cells within each time bin; the label-swap statistic is the primary confound-controlled inference and the circular-shift value is reported as the synchrony-only comparison. Additionally, a daily-aggregation analysis was performed where residuals were averaged daily per station to maximize temporal overlap ($N=190$ station pairs), providing a check against short-term pass-geometry artifacts; its outcome is interpreted jointly with the orbit-solution split (Section 3.4).
 
 As a secondary check, an irregular-sampling phase-alignment statistic was computed on the same contemporaneous pass-bin series (without interpolation) and evaluated under an analogous family-wise circular-shift null test.
 
@@ -341,20 +342,18 @@ $\approx -0.063$ (95% CI: −0.167 to 0.011).
 **Longer path ($\gtrsim 8{,}000$ km):** mean lag-1
 $\approx -0.271$ (95% CI: −0.500 to −0.045).
 
-![Residual Coherence vs Path Length](results/figures/slr_residual_vs_elevation_full.png)
-
-**Figure 3.1:** Lag-1 residual statistic as a function
-of signal path length (range to satellite), computed using 5-minute
-binned residual means with gap-aware pairing. Under a strict
-$|\Delta\rho|<0.5$ m filter, the long-minus-short contrast is
-$\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap CI:
-−0.418 to 0.000). The corresponding low/high ratio is 4.30 (95%
+Under a strict $|\Delta\rho|<0.5$ m filter, the long-minus-short
+contrast is $\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap
+CI: −0.418 to 0.000). The corresponding low/high ratio is 4.30 (95%
 bootstrap CI: −21.42 to 48.11), but is ill-conditioned because the
 short-path mean is near zero. Under a looser $|\Delta\rho|<1.0$ m
 filter, the contrast becomes
 $\Delta(\mathrm{low}-\mathrm{high})=-0.086$ (95% CI: −0.248 to
 0.069) and the corresponding ratio becomes −8.68 (95% CI: −56.90 to
-63.51). This threshold sensitivity, combined with the null-invariance of light propagation in the conformal sector, means the path-length diagnostic operates as a monitor for airmass-correlated systematics (e.g., unmodeled tropospheric delay) rather than a TEP signature.
+63.51). This threshold sensitivity, combined with the null-invariance
+of light propagation in the conformal sector, means the path-length
+diagnostic operates as a monitor for airmass-correlated systematics
+(e.g., unmodeled tropospheric delay) rather than a TEP signature.
 
 Because TEP's conformal sector preserves null cones, light propagation is null-invariant and path length plays no physical role in the conformal signature. The observed path dependence — where lower elevations (longer paths) decorrelate more — is the expected signature of ordinary tropospheric delay mismodeling, as the Marini–Murray standard-atmosphere correction leaves synoptic pressure and wet-path fluctuations uncorrected, which grow with airmass. The path-length diagnostic is therefore retained as a systematic check awaiting high-resolution reanalysis controls (e.g. ERA5). The resampled-series spectral diagnostic (Section 3.3) returns an apparent
 14.12× TEP-band enhancement that persists across rejection
@@ -414,22 +413,22 @@ The observed $14.12\times$ ratio is reproduced almost exactly by
 white noise alone: the sampling-matched white null mean is $13.97$,
 the median station percentile of the observed ratio inside its own
 null is 0.58, and only two of 46 stations exceed $p<0.05$ — the
-chance rate. A marginal systematic excess of $\sim 1\%$ over the
-white null does remain (Fisher combined $p = 7.7\times10^{-4}$),
-consistent with a weak coherent component at the percent level —
-but the claimed fourteen-fold enhancement belongs to the sampling
-kernel, not to this residue. Every coloured alternative returns a larger
+chance rate. The residual $\sim 1\%$ offset of the observed mean
+above the white-null mean lies inside the null dispersion (Fisher
+combined $p = 0.20$), so no coherent excess is supported: the
+claimed fourteen-fold enhancement belongs to the sampling
+kernel. Every coloured alternative returns a larger
 concentration through the same sampling — masked AR(1) $16.95$,
 flicker $26.98$, power-law $\alpha = 1.5$ $91.1$, random walk $257$ —
 so the residuals are less red than any conventional coloured-noise
-model seen through the observing grid. This inverts the conclusion of
-an unmasked comparison, in which the observed ratio is evaluated
-against surrogates that were never subjected to the sampling kernel:
-such a test (the earlier AR(1)-only diagnostic of Step 2.3) finds $35/46$
-stations individually above its null, but the excess is in the
-estimator's response to the observing pattern, not in the data. The
-apparent concentration is therefore a property of the resampling
-pipeline, not of the residuals.
+model seen through the observing grid. This corrects the conclusion
+reported in earlier versions of this work under an unmasked
+comparison, in which the observed ratio was evaluated against
+surrogates never subjected to the sampling kernel. The earlier
+AR(1)-only diagnostic of Step 2.3 found $35/46$ stations individually
+above its null, but the excess lay in the estimator's response to the
+observing pattern, not in the data. The apparent concentration is
+therefore a property of the resampling pipeline, not of the residuals.
 
 Two estimator-independent checks close the question. A Lomb–Scargle
 analysis on the actual 5-minute observation epochs — no
@@ -463,8 +462,12 @@ at a landscape excursion of order the surface conformal depth itself
 the channel predicts coherent wander of only $\sim 5$ mm — an order
 of magnitude below the detection floor. Per-station spectral tests
 are therefore blind to the channel at its natural amplitude at this
-observing cadence; the conformal signature must be read in the
-network-coherent spatial channel, which is what §3.4 measures.
+observing cadence. The spectral null is therefore the outcome
+expected at the surface conformal depth rather than a failed
+prediction, and the remaining discriminating test is the
+network-coherent spatial channel measured in §3.4 — the observable
+class the corpus's measurement taxonomy (Smawfield 2025; Paper 9)
+assigns to the conformal sector under two-way measurement.
 
 ### 3.3.2 NWM Spectral Control: Surface Pressure Coherence
 
@@ -580,15 +583,29 @@ at 5,000–7,500 km — the first distance bin lying entirely beyond
 the simulated $\lambda_T$ turnover under either corpus anchor
 ($4{,}201$ km GPS-PPP; $1{,}862$ km MGEX) —
 cross-satellite pairs return $\bar{r}=-0.228$ over $n=32$ pairs
-(per-bin permutation $p=5\times10^{-4}$; station-clustered
-bootstrap 95\% CI $[-0.43,-0.06]$, pricing the non-independence
-of pairs sharing a station), while every other distance bin is
-consistent with zero (per-bin $p=0.24$–$0.96$). The matched
+(station-clustered bootstrap 95% CI $[-0.43,-0.06]$, pricing
+the non-independence of pairs sharing a station). Significance is
+quoted against two nulls. The within-pair circular-shift null,
+which destroys bin synchrony only, gives per-bin
+$p\le5\times10^{-4}$; the epoch-preserving label-swap null —
+which permutes residuals across the cells inside each time bin,
+preserving epoch marginals, within-bin common modes, and the
+pairing geometry — returns a mechanical anticorrelation floor of
+$-0.122\pm0.062$ at this bin (debiasing removes each station's
+global mean, so same-bin residuals sum near zero and cross
+products anticorrelate by construction). Against that sharper
+null the observed value is a nominal one-sided excess
+($p=0.046$, uncorrected across the eight bins), i.e.
+$\approx-0.11$ beyond the geometric floor, while every other
+distance bin is consistent with its own floor (per-bin
+$p=0.25$–$0.93$). The matched
 same-satellite pairs give a diluted $\bar{r}=-0.09$ at the same
-bin — the expected direction, since an orbit-error common mode
+bin — actually above the corresponding same-satellite
+label-swap floor of $-0.144$ ($p=0.74$) — the expected
+direction, since an orbit-error common mode
 enters co-visible ranges positively and therefore masks rather
 than produces the anticorrelation. The turnover-bin composition
-is dominated by the LAGEOS-1$\times$LAGEOS-2 channel (32 of 36
+is dominated by the LAGEOS-1$\times$LAGEOS-2 channel (all 32
 pairs), i.e. two independent orbit arcs, not one shared solution.
 Because the sign inversion is generic to monopole absorption of
 any spatially correlated common-mode error, the discriminating
@@ -625,7 +642,14 @@ sampling the same stations through different time references.
 The conservative family-wise minimum-bin statistic
 ($p=0.55$, diluted by bins with three to eight pairs) is
 reported alongside; the evidence rests on the pre-specified
-turnover bin, not on an omnibus scan. The exponential-decay fit
+turnover bin, not on an omnibus scan. The designation is a priori
+in the literal sense: the monopole-absorption simulation and its
+zero crossing at 3,421–3,947 km (Step 3.0) were committed in the
+initial version of this analysis (v0.1, December 2025), and the
+distance-bin grid is the fixed binning of Step 2.3, both predating
+the cross-satellite statistic (Step 2.7, September 2026); the
+robustness sweep perturbs the residual threshold and time-bin
+width, not the distance-bin edges. The exponential-decay fit
 to the distance-binned correlations does not converge to a
 physically meaningful coherence length ($\lambda \to 20{,}000$
 km, the fitting boundary): the network sparsity prevents precise
@@ -633,9 +657,30 @@ estimation of a continuous coherence scale, so SLR does not
 measure $\lambda_T$ independently — the testable content is the
 turnover morphology, and it is met under either corpus anchor.
 
+Three diagnostics characterise how the statistic is powered.
+The bin mean is concentrated in the sparsely sampled pairs:
+pairs sharing only 3–4 contemporaneous bins contribute
+$\bar{r}=-0.481$ (13 pairs), those sharing 5–8 contribute
+$+0.015$ (10 pairs), and those sharing 9–16 contribute $-0.130$
+(9 pairs); the record-weighted mean is $-0.162$. A
+configuration sweep over residual threshold (0.3, 0.5, 1.0 m)
+and bin width (10, 15, 30 min) returns turnover-bin means
+between $-0.09$ and $+0.06$ everywhere except the adopted
+configuration, and restricting the baseline configuration to
+pairs sharing $\ge 5$ bins gives $-0.054$. The per-year mean
+residual product alternates in sign ($+0.033$ mm$^2$ in 2019,
+$-0.067$ in 2020, $+0.010$ in 2023, $-0.021$ in 2024), so the
+feature is not a coherent multi-year excursion. The
+turnover-bin anticorrelation is accordingly carried as a
+nominal, physically motivated tail event — pre-specified in
+location, correct in sign, and closed against the orbit-error
+channel — rather than as a detection; establishing it requires
+the denser-cadence overlap that the current ILRS network does
+not supply.
+
 ![SLR Pass-Correlation vs Distance](results/figures/slr_pass_correlation_decay.png)
 
-**Figure 3.2:** Pass-based inter-station
+**Figure 3.1:** Pass-based inter-station
 correlation of SLR residual anomalies as a function of baseline
 distance. The 15-minute same-satellite binning yields a
 nominally significant Fisher-combined $p=0.0025$, but this
@@ -645,9 +690,11 @@ contemporaneous passes ($r=-0.910$, $p=0.273$). The
 confound-controlled pairing — stations ranging
 *different* satellites in the same window, which cannot
 share orbit error — returns $\bar{r}=-0.228$ at the same
-5,000–7,500 km bin over $n=32$ pairs (per-bin
-$p=5\times10^{-4}$; station-bootstrap 95\% CI
-$[-0.43,-0.06]$) with all other bins null, against a diluted
+5,000–7,500 km bin over $n=32$ pairs (epoch-preserving
+label-swap $p=0.046$; circular-shift null
+$p\le5\times10^{-4}$; station-bootstrap 95% CI
+$[-0.43,-0.06]$) with all other bins at their respective
+floors, against a diluted
 $\bar{r}=-0.09$ for the matched same-satellite pairs
 (Step 2.7).
 
@@ -658,7 +705,9 @@ reported in GNSS
 Papers 1–3—a different instrument and error model on the channel's
 ground-station leg, not an independent physical channel. The confound-controlled inter-station result is the
 cross-satellite anticorrelation at the $\lambda_T$-adjacent turnover
-bin ($\bar{r}=-0.228$, per-bin $p=5\times10^{-4}$, $n=32$), while
+bin ($\bar{r}=-0.228$, epoch-preserving-null $p=0.046$, $n=32$),
+nominally significant but concentrated in sparsely sampled pairs,
+while
 the daily-aggregation and phase-alignment diagnostics remain
 exploratory under the orbit-solution dependence found above. More
 stringent inter-station tests will benefit from denser temporal
@@ -696,7 +745,7 @@ The mechanism operates as follows:
 
 ### 4.3 Experimental Design Considerations
 
-Monte Carlo simulations demonstrate the estimator-dependent sign structure: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations exhibit sign inversion at regional baselines, with the turnover located at the scale set by the injected field's correlation length and the network extent ($\approx 4{,}000$ km for $\lambda_T = 4{,}200$ km on a global-scale network). Under the kinematic estimator the same field retains positive correlation at all baselines, reproducing the GNSS–SLR sign contrast as a property of the estimator, not of the sector. Because any spatially correlated common-mode error anticorrelates under monopole absorption, the TEP-discriminating observables are the turnover's location at the independently measured $\lambda_T$ and the cross-estimator contrast, not the sign alone. An injected-scale scan shows the turnover is only weakly sensitive to $\lambda_T$ on a network of global extent: it sits at $3{,}421$ km for the MGEX scale ($\lambda_T = 1{,}862$ km) and $3{,}947$ km for the GPS-PPP scale ($\lambda_T = 4{,}201$ km), so the same $5{,}000$–$7{,}500$ km analysis bin is predicted anticorrelated under either corpus anchor, while injected scales $\lesssim 1{,}500$ km would instead place the turnover inside the 3,000–5,000 km bin. This provides the theoretical basis for future experimental designs.
+Monte Carlo simulations demonstrate the estimator-dependent sign structure: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations exhibit sign inversion at regional baselines, with the turnover located at the scale set by the injected field's correlation length and the network extent ($\approx 4{,}000$ km for $\lambda_T = 4{,}200$ km on a global-scale network). Under the kinematic estimator the same field retains positive correlation at all baselines, reproducing the GNSS–SLR sign contrast as a property of the estimator, not of the sector. Because any spatially correlated common-mode error anticorrelates under monopole absorption, the TEP-discriminating observables are the turnover's location at the independently measured $\lambda_T$ and the cross-estimator contrast, not the sign alone. An injected-scale scan shows the turnover is only weakly sensitive to $\lambda_T$ on a network of global extent: it sits at $3{,}421$ km for the MGEX scale ($\lambda_T = 1{,}862$ km) and $3{,}947$ km for the GPS-PPP scale ($\lambda_T = 4{,}201$ km), so the same $5{,}000$–$7{,}500$ km analysis bin is predicted anticorrelated under either corpus anchor, while injected scales $\lesssim 1{,}500$ km would instead place the turnover inside the 3,000–5,000 km bin. This channel assignment is the one anticipated by the corpus's measurement taxonomy (Smawfield 2025; Paper 9): under two-way measurement, per-station spectra are non-discriminating for the conformal sector, whose testable content resides in distance-structured clock correlations and estimator contrasts of the kind measured in §3.4. This provides the theoretical basis for future experimental designs.
 
 ![Anti-Echo Simulation: Sign Inversion in Dynamic Orbit Fit Residuals](results/figures/sim_antiecho_proof.png)
 
@@ -723,7 +772,7 @@ Establishing the "Anti-Echo" at higher statistical power in SLR data requires:
 
 - **Alternative Orbit Solutions:** Sensitivity analysis across different Analysis Center products (ASI, GFZ, CSR) to test monopole absorption consistency.
 
-The confound-controlled pass-bin analysis of Section 3.4 already detects the predicted anticorrelation at the $\lambda_T$-adjacent scale (cross-satellite pairing, $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km, per-bin $p=5\times10^{-4}$), but the ILRS cadence limits the precision of the turnover measurement and the cross-estimator isolation. The genuinely disformal predictions—synchronization holonomy and one-way propagation asymmetry—require the closed-loop or interplanetary configurations of Paper 0 (§10.A–D), beyond any current geodetic dataset. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.
+The confound-controlled pass-bin analysis of Section 3.4 recovers a nominally significant anticorrelation at the $\lambda_T$-adjacent scale (cross-satellite pairing, $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km; epoch-preserving label-swap null $p=0.046$, an excess over the $-0.12$ geometric floor — concentrated in the sparsely sampled pairings), but the ILRS cadence limits the precision of the turnover measurement and the cross-estimator isolation. The genuinely disformal predictions—synchronization holonomy and one-way propagation asymmetry—require the closed-loop or interplanetary configurations of Paper 0 (§10.A–D), beyond any current geodetic dataset. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.
 
 ## 5. Synthesis & Critical Analysis
 
@@ -813,21 +862,22 @@ $r=-0.910$ from only three passes ($p=0.273$, not individually
 significant). The confound-controlled variant — pairing stations
 that range *different* satellites in the same window, which
 cannot share orbit error — retains the anticorrelation at the
-turnover bin at $\bar{r}=-0.228$ ($n=32$, per-bin
-$p=5\times10^{-4}$; station-bootstrap 95\% CI $[-0.43,-0.06]$)
-with all other bins null (Step 2.7). A daily-aggregation analysis
+turnover bin at $\bar{r}=-0.228$ ($n=32$; epoch-preserving
+label-swap $p=0.046$ one-sided, circular-shift null
+$p\le5\times10^{-4}$; station-bootstrap 95% CI $[-0.43,-0.06]$)
+with all other bins at their respective null floors (Step 2.7). A daily-aggregation analysis
 ($N=190$ pairs) nominally reaches $p_{\mathrm{FWER}}=0.020$, but
 its driving 3,000–5,000 km bin has only four pairs and reverses
 sign between the two LAGEOS orbit solutions, so it is retained as
-exploratory rather than as a detection. This distance-structured
-signal provides complementary evidence for spatial coherence
-consistent with the conformal-sector phenomenology, with the
-orbit-error common-mode channel now excluded by construction.
-The spectral channel is bounded rather than detected (§3.3.1),
-so this distance-structured result carries the positive evidence
-for a low-frequency process. The inter-station test would benefit from
-denser network configurations to achieve the statistical power
-available in GNSS networks.
+exploratory rather than as a detection. The spectral channel is
+bounded rather than detected (§3.3.1), so this distance-structured
+feature carries the corpus's candidate positive content — a
+nominal signal at the predicted turnover location under the
+epoch-preserving null, reported as a candidate rather than a
+detection because it is concentrated in the sparsely sampled
+pairings (§3.4). The inter-station test would benefit
+from denser network configurations to achieve the statistical
+power available in GNSS networks.
 
 #### 5. Disformal Sector: Untested in Current Data
 
@@ -939,9 +989,10 @@ geometry-dependent sensitivity (via prograde vs. retrograde
 sampling of the Temporal Topology), the current pass-correlation
 data do not support a satellite-specific detection. The
 confound-controlled cross-satellite pairing, in contrast, does
-reach the turnover bin with $\bar{r}=-0.228$ ($n=32$, per-bin
-$p=5\times10^{-4}$) while sharing no orbit solution — providing a
-distance-structured spatial-coherence result that is not
+reach the turnover bin with $\bar{r}=-0.228$ ($n=32$;
+epoch-preserving-null $p=0.046$ one-sided) while sharing no orbit
+solution — providing a distance-structured spatial-coherence
+candidate that is not
 attributable to a single-spacecraft or single-solution
 systematic. The daily-aggregation statistic
 ($p_{\mathrm{FWER}}=0.020$) is retained as exploratory, since its
@@ -1026,14 +1077,16 @@ finding—that the nominal LAGEOS-2 pass-correlation result
 ($p=0.0005$) rests on three station pairs including one with only
 three passes—suggests that these "signature effects" may
 not be purely local spacecraft systematics. However, the fragility
-of the pass-correlation detection (both satellites converge to
+of the nominal pass-correlation result (both satellites converge to
 near-zero correlation when restricted to $\geq 10$ passes) means
 that a TEP interpretation of the LAGEOS-2 signature effects remains
 conjectural pending denser network configurations. The
-cross-satellite control (Step 2.7) provides the more robust
-detection channel: $\bar{r}=-0.228$ at the turnover bin across
+cross-satellite control (Step 2.7) provides the cleaner confound
+channel: $\bar{r}=-0.228$ at the turnover bin across
 32 pairs built from independent orbit solutions, with the
-orbit-error common mode excluded by construction. The TEP framework provides a candidate physical mechanism for these
+orbit-error common mode excluded by construction — nominal at
+$p=0.046$ under the epoch-preserving null and concentrated in
+the sparsely sampled pairings. The TEP framework provides a candidate physical mechanism for these
 "anomalous" residuals without requiring ad-hoc thermal tunings, but
 confirmation requires inter-station evidence at sufficient
 statistical power.
@@ -1100,11 +1153,12 @@ roadmap for future targeted SLR campaigns.
 ## 6. Conclusion
 
 This study presents an optical-domain consistency test of the Temporal
-Equivalence Principle's conformal sector using Satellite Laser Ranging.
-By analyzing 11 years of LAGEOS data, a spatially coherent residual
-structure has been isolated that mirrors the conformal signatures
-observed in microwave GNSS networks (Smawfield 2025b, 2025c, 2025d;
-Papers 1-3). The spectral channel was audited under sampling-matched
+Equivalence Principle's conformal sector using Satellite Laser Ranging —
+a measurement chain orthogonal in hardware and systematic-error class
+to the microwave networks in which the conformal signatures were first
+reported (Smawfield 2025b, 2025c, 2025d; Papers 1-3). The principal
+results are an instrumentally independent bound and the correction of
+a corpus diagnostic. The spectral channel was audited under sampling-matched
 nulls (Step 2.8): the apparent 14.12× TEP-band concentration on
 resampled station series is reproduced by white noise passed through
 the identical sparse-sampling pipeline (sampling-matched null 13.97;
@@ -1112,12 +1166,15 @@ the identical sparse-sampling pipeline (sampling-matched null 13.97;
 model returns a larger concentration through the same sampling, the
 real-epoch Lomb–Scargle spectrum is flat (ratio 1.04 vs white null
 1.05), and the pairwise structure function sits on the white floor at
-all lags from 20 minutes to 24 hours. The channel is therefore
+all lags from 20 minutes to 24 hours. The fourteen-fold concentration
+reported in earlier versions of this work as in-band evidence is thus
+corrected to a measured property of the resampling kernel. The channel is
 carried as a bound on in-band conformal excursions —
-$\delta A \lesssim 2\times10^{-8}$ under $\delta R = R\,\delta A$,
-against which a landscape excursion of order the surface conformal
-depth predicts coherent wander of only ~5 mm — directing the
-conformal signature to the network-coherent spatial channel. The
+$\delta A \lesssim 2\times10^{-8}$ under $\delta R = R\,\delta A$ —
+while at a landscape excursion of order the surface conformal depth
+the predicted coherent wander of ~5 mm lies below the noise floor:
+the ILRS observing cadence is intrinsically blind to the predicted
+spectral signature, and no spectral detection is claimed. The
 analysis also establishes range-dependent decoherence as a critical
 monitor for airmass-correlated tropospheric systematics awaiting
 high-resolution reanalysis.
@@ -1126,22 +1183,34 @@ synoptic-weather channel at its native 6-hourly resolution: the
 uncorrected pressure effect is 12% of the residual RMS, and
 pressure-residual coherence is not significant at the majority of
 stations (binomial $p=0.088$).
-The observation of matching low-frequency structure in a constellation
-carrying no onboard clocks and no microwave transmission challenges
-hypotheses that rely on satellite atomic clocks, onboard steering
-electronics, or ionospheric modeling at microwave frequencies.
+The constellation carries no onboard clocks and no microwave
+transmission: the bound therefore constrains, at optical cadence and
+through the ground-station leg, the same clock-amplitude channel that
+satellite atomic clocks, onboard steering electronics, or ionospheric
+modeling at microwave frequencies would otherwise be invoked to
+explain.
 
-Taken together with the GNSS results, the SLR evidence is consistent
-with the conformal-sector interpretation across five orders of magnitude
-in frequency (microwave to optical) and across two instrumentally
-independent measurement technologies (GNSS and SLR) probing the same
-clock-amplitude channel through different hardware, calibration chains,
-and estimator geometries. Because achromaticity is
-required by conformal invariance, this frequency independence is a
-necessary consistency check rather than an independent discriminant:
-it excludes dispersive carriers, while the positive evidence for
-temporal structure resides in the distance-structured inter-station
-coherence of §3.4. The observed correlation length
+Taken together with the GNSS results, the SLR bound is consistent with
+— though not probative of — the conformal-sector interpretation across
+two instrumentally independent measurement technologies probing the
+same clock-amplitude channel through different hardware, calibration
+chains, and estimator geometries: a landscape excursion of order the
+surface conformal depth is predicted to fall below this cadence's
+reach, so the optical-domain null neither confirms nor excludes the
+microwave-network signatures. Quantitatively, the bound lies seven
+or more orders of magnitude above the fractional stabilities
+($10^{-15}$–$10^{-18}$) reached by microwave clock comparisons: it
+excludes large conformal excursions — a real if modest constraint —
+while remaining uninformative about an excursion of the
+GNSS-implied amplitude. Because achromaticity is
+required by conformal invariance, this consistency is a
+necessary check rather than an independent discriminant:
+it excludes dispersive carriers, while the candidate positive
+feature — the distance-structured inter-station anticorrelation
+of §3.4 — is nominal and does not survive its own robustness
+diagnostics, so no detection is claimed; it remains the channel in
+which a conformal signature is accessible at this cadence. The
+observed correlation length
 in GNSS ($\lambda_T = 4,201 \pm 1,967$ km GPS-PPP; $1,862$ km MGEX,
 cluster-robust $\sigma = \pm 155$ km — the fitted scale is
 product-dependent) is consistent with the
@@ -1161,22 +1230,30 @@ passes, both satellites converge to near-zero mean correlation. The
 confound-controlled pairing of stations ranging different satellites
 in the same window — which cannot share orbit error — retains the
 anticorrelation at the $\lambda_T$-adjacent turnover bin:
-$\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km (per-bin
-$p=5\times10^{-4}$; station-clustered bootstrap 95\% CI
+$\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km
+(epoch-preserving label-swap null $p=0.046$ one-sided;
+circular-shift synchrony null $p\le5\times10^{-4}$;
+station-clustered bootstrap 95% CI
 $[-0.43,-0.06]$), with all other bins null and the matched
 same-satellite pairs diluted to $-0.09$ as expected when the
 orbit-error common mode enters positively and is removed
 (Step 2.7). A daily-aggregation analysis ($N=190$ pairs) nominally
 reaches $p_{\mathrm{FWER}}=0.020$, but its driving bin reverses sign
 between the two LAGEOS orbit solutions and is retained as
-exploratory. The confound-controlled inter-station anticorrelation
-is the positive evidence for a structured, low-frequency
-process: the spectral channel is carried as a bound (§3.3.1), while
-the inter-station result is a distinct cross-station
-observable that shares none of the residual
-tropospheric-systematic channels; the pass-correlation test remains limited
-by network sparsity. Furthermore, this phenomenology offers
-a unified physical explanation for persistent geodetic anomalies,
+exploratory. The confound-controlled inter-station anticorrelation is
+accordingly carried as a candidate tail event rather than a detection:
+the turnover bin is pre-specified by the corpus simulation (Step 3.0,
+committed nine months before the pairing statistic of Step 2.7) and the
+feature is concentrated in the least-sampled pairs — those sharing
+3–4 bins contribute $\bar{r}=-0.481$ while those sharing 5–8 contribute
+$+0.015$ — drops to $-0.054$ under a $\ge 5$-bin restriction, appears
+in one cell of the nine-configuration threshold/bin-width sweep, and
+alternates sign between years. Its location, sign, and survival of the
+orbit-error closure keep it the leading candidate for the predicted
+turnover morphology, but establishing it requires the denser-cadence
+overlap the current ILRS network does not supply. This phenomenology
+also motivates a unified physical interpretation of persistent
+geodetic anomalies,
 including the ITRF2020 VLBI-SLR scale drift — derived here as the
 differentially anchored conformal-drift channel and carried as a
 \(\sim 0.2\) ppb bound on the local drift participation — and the
@@ -1184,18 +1261,21 @@ pervasive "flicker
 noise" floor in station coordinates, reinterpreting them through the
 same conformal metric coupling rather than as intractable systematics.
 
-The evidence presented here is consistent with a conformal-sector signal
-across two instrumentally independent measurement systems sharing the
-clock-amplitude channel, multiple processing centers,
-long-term GNSS stability, raw observational data, and the full
-electromagnetic spectrum. The "Time Echo" is not readily explained as a
-single-technology artifact; it appears as a reproducible low-frequency
-structure in geodetic residuals consistent with universal conformal
-coupling to a dynamical time field. Future experiments—closed-loop
-optical time transfer, interplanetary one-way asymmetry measurements,
-and triangle synchronization holonomy tests—will determine whether the
-disformal sector also manifests in nature or remains a theoretical
-possibility bounded to negligibility by multi-messenger constraints.
+Within the SLR corpus, then, the result is a bound rather than a
+detection: a measured sampling-kernel artefact where a fourteen-fold
+concentration was previously claimed, an amplitude bound of
+$\delta A \lesssim 2\times10^{-8}$ on the conformal channel, and a
+single fragile, pre-specified-location tail event in the spatial
+statistic. The corpus-level case for the conformal sector continues
+to rest on the GNSS detections; SLR contributes the orthogonal-hardware
+bound that an artifact explanation must also respect, and the
+correction of a diagnostic artefact that can arise in any sparse,
+resampled network. Whether the predicted optical-domain structure
+exists below this cadence's reach — and whether the disformal sector
+manifests in nature — will be determined by closed-loop optical time
+transfer, interplanetary one-way asymmetry measurements, and triangle
+synchronization holonomy tests, rather than by multi-messenger bounds
+alone.
 
 ## References
 
@@ -1217,7 +1297,7 @@ Smawfield, M. L. (2025). *Temporal Topology Saturation Scale: Cross-Scale Consis
 
 Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.4 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.4 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
+Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.5 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
 
 Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.7 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
 
@@ -1228,6 +1308,8 @@ Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Prepr
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.7 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
 
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.6 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
+
+Smawfield, M. L. (2026). *Global Time Echoes: MGEX Multi-GNSS Clock Replication, 2025–2026*. Preprint v0.2 (Suva). Zenodo. DOI: [10.5281/zenodo.20572726](https://doi.org/10.5281/zenodo.20572726) (Paper 14)
 
 ### SLR & Geodesy References
 
@@ -1344,7 +1426,7 @@ npm run build
 
 #### Pipeline Overview
 
-The analysis consists of 8 deterministic steps:
+The analysis consists of 10 deterministic steps:
 
 - **Step 1.0:** Data acquisition from ILRS/CDDIS archives (NPT CRD files)
 
@@ -1355,6 +1437,8 @@ The analysis consists of 8 deterministic steps:
 - **Step 2.4:** Generate standard figures (residual distributions, correlation decay)
 
 - **Step 2.5:** Enhanced figures with phase alignment analysis
+
+- **Step 2.6:** NWM spectral control — NCEP/NCAR surface-pressure coherence at native 6-hourly resolution (Section 3.3.2)
 
 - **Step 2.7:** Orbit-error / common-mode confound controls — cross-satellite contemporaneous pairing (closes the shared-orbit-error channel by construction), network common-mode subtraction, and per-satellite orbit-solution splits (Section 3.4)
 
@@ -1376,7 +1460,7 @@ The analysis consists of 8 deterministic steps:
 
 - `results/outputs/step_5_2_vlbi_slr_scale_drift.json` — Scale-drift anchoring split and participation bound
 
-- `results/figures/slr_pass_correlation_decay.png` — Figure 1: Correlation decay analysis
+- `results/figures/slr_pass_correlation_decay.png` — Figure 3.1: Pass-correlation decay analysis
 
 - `results/figures/slr_phase_alignment_decay.png` — Phase alignment signatures
 

@@ -2254,8 +2254,9 @@ def analyze_red_noise_null(df: pd.DataFrame, station_acf: Dict[str, list],
     n_sig = int(np.sum(p_vals < 0.05))
     n_sig01 = int(np.sum(p_vals < 0.01))
 
-    # Fisher combined (guard against p=0)
-    p_safe = np.where(p_vals > 0, p_vals, 1e-10)
+    # Fisher combined (guard against p=0; smallest attainable empirical
+    # p-value is 1/(n_surrogates+1))
+    p_safe = np.where(p_vals > 0, p_vals, 1.0 / (n_surrogates + 1))
     chi2_stat = float(-2.0 * np.sum(np.log(p_safe)))
     fisher_p = float(stats.chi2.sf(chi2_stat, df=2 * len(p_safe)))
 

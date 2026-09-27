@@ -7,8 +7,8 @@ published TEP-band concentration (mean PSD in 10-500 uHz / mean PSD above
 1 mHz) is evaluated on a stitched series — the 5-minute resampled record
 after linear interpolation (limit=2) and gap removal. The stitched vector is
 treated by Welch's method as uniformly sampled even though the observing
-duty cycle is only ~1-4%, so the estimator mixes the data's spectrum with
-the sampling kernel.
+duty cycle is well under one percent, so the estimator mixes the data's
+spectrum with the sampling kernel.
 
 This step supplies the missing controls:
 
@@ -314,7 +314,7 @@ def analyze_station(task: dict) -> dict:
     return res
 
 
-def _aggregate(per_station: list, key: str) -> dict:
+def _aggregate(per_station: list, key: str, n_surr: int) -> dict:
     """Aggregate one null family across stations (same summary as step_2_3)."""
     rows = []
     for r in per_station:
@@ -331,7 +331,7 @@ def _aggregate(per_station: list, key: str) -> dict:
     z = np.array([(r['obs'] - r['null_mean']) for r in rows])
     n = len(rows)
     n05 = int(np.sum(p < 0.05)); n01 = int(np.sum(p < 0.01))
-    p_safe = np.where(p > 0, p, 1e-10)
+    p_safe = np.where(p > 0, p, 1.0 / (n_surr + 1))
     chi2 = float(-2 * np.sum(np.log(p_safe)))
     return {
         'n_stations': n,
@@ -463,9 +463,9 @@ def main() -> int:
             'station_seed_rule': 'seed = base_seed + station_id',
         },
         'per_station': per_station,
-        'aggregate_stitch': {fam: _aggregate(per_station, f'stitch_null_{fam}')
+        'aggregate_stitch': {fam: _aggregate(per_station, f'stitch_null_{fam}', int(args.n_surrogates))
                              for fam in ['white', 'pl05', 'flicker', 'pl15', 'rw', 'ar1', 'pl_matched']},
-        'aggregate_ls': {fam: _aggregate(per_station, f'ls_null_{fam}')
+        'aggregate_ls': {fam: _aggregate(per_station, f'ls_null_{fam}', int(args.n_surrogates))
                          for fam in ['white', 'pl05', 'flicker', 'pl15', 'rw', 'ar1', 'pl_matched']},
         'amplitude_map': amplitude,
     }

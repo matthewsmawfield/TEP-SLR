@@ -1,6 +1,5 @@
-[11:51:52] [INFO] Starting Step 2.4: Plotting Results
-[11:51:52] [INFO] Plotting phase alignment for 297 station pairs
-[11:51:52] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_phase_alignment_decay.png
-[11:51:52] [INFO] Plotting pass-based correlations
-[11:51:53] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_pass_correlation_decay.png
-[11:51:53] [SUCCESS] Plotting complete
+[23:21:04] [INFO] Starting Step 2.4: Plotting Results
+[23:21:04] [INFO] Plotting phase alignment for 297 station pairs
+[23:21:05] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_phase_alignment_decay.png
+[23:21:05] [SUCCESS] Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-SLR/results/figures/slr_pass_correlation_decay.png (confound-controlled split)
+[23:21:05] [SUCCESS] Plotting complete

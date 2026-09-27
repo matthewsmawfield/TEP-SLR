@@ -1,3 +1,14 @@
+v0.5 (Mombasa) — 27 September 2026 — Sampling-matched null audit; spectral channel bounded; spatial feature downgraded to tail event
+
+- Corrected the v0.4 spectral claim: the 35/46-station unmasked AR(1) result and the 14.12× TEP-band concentration are reproduced by white noise passed through the identical sparse-sampling kernel (Step 2.8, sampling-matched null 13.97); the spectral channel is now carried as a bound, not a detection
+- Added real-epoch Lomb–Scargle and structure-function diagnostics on the unbinned observation times: flat in-band spectrum (1.04 vs white null 1.05), white-floor SF at all lags
+- Fixed finite-surrogate Fisher floor (smallest attainable empirical p is 1/(N+1)); corrected combined p-values
+- Added Step 2.7 epoch-preserving label-swap null alongside the circular-shift null; cross-satellite turnover-bin (5,000–7,500 km) anticorrelation r̄=−0.228 is a nominal one-sided excess over the mechanical within-bin floor (p=0.046; circular-shift p≤5×10⁻⁴)
+- Added turnover-bin robustness diagnostics — the feature fails them: carried by pairs with 3–4 shared bins (r̄=−0.481 vs +0.015 at 5–8), falls to r̄=−0.054 restricted to ≥5 shared bins, appears in only one of nine threshold/bin-width configurations, and alternates sign year to year; reported as a tail event, not a detection
+- Dismantled the 15-minute same-satellite result: driven by one LAGEOS-2 pair at three passes (r=−0.910, p=0.273), converging to ~0 at ≥10 passes; daily aggregation reverses sign between LAGEOS solutions and is retained as exploratory
+- Added conformal amplitude budget: in-band coherent excursions bounded at δA ≲ 2×10⁻⁸; reproducing the residual RMS would require δA ≈ 4.2×10⁻⁸ (~60× the surface conformal depth), and at the natural amplitude the predicted ~5 mm wander is below the noise floor — seven-plus orders less sensitive than the 10⁻¹⁵–10⁻¹⁸ GNSS clock-comparison channel
+- Conclusion, abstract, and all metadata rewritten to match the audited results; Paper 9 measurement taxonomy linked to the inter-station observable class
+
 v0.4 (Mombasa) — 14 September 2026 — Frequency-domain analysis, AR(1) null test, and pressure control
 
 - Added LARES satellite to analysis catalog (LAGEOS-1/2, Etalon-1/2, and LARES)

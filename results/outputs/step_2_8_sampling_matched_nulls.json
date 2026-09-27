@@ -1,6 +1,6 @@
 {
   "step": "step_2_8_sampling_matched_nulls",
-  "analysis_timestamp": "2026-09-26T21:18:49.346299+00:00",
+  "analysis_timestamp": "2026-09-27T20:59:41.765032+00:00",
   "description": "Sampling-matched coloured-noise null tests for the TEP-band spectral concentration. Surrogates are generated as continuous processes on each station full 5-min grid and passed through the identical resample/interpolate/stitch/detrend/Welch chain (stitch channel), and evaluated at the real observation epochs under a Lomb-Scargle estimator (real-epoch channel). Families: white, AR(1) with station phi, flicker 1/f, power-law grid, matched power-law, random-walk. Amplitude map converts residual wander to the required conformal excursion delta-A via the timer-rate channel delta-R = R * delta-A.",
   "parameters": {
     "residual_threshold_m": 0.5,
@@ -11400,7 +11400,7 @@
       "mean_obs_minus_null": 0.1501406242470488,
       "mean_excess_ratio": 1.009466717839114,
       "median_obs_percentile_in_null": 0.5833333333333334,
-      "fisher_combined_p": 0.0007653035077519282,
+      "fisher_combined_p": 0.1987810441737765,
       "binomial_p_excess": 0.6768191647919501
     },
     "pl05": {
@@ -11493,7 +11493,7 @@
       "mean_obs_minus_null": -0.01392843334026998,
       "mean_excess_ratio": 0.9868052573410552,
       "median_obs_percentile_in_null": 0.4,
-      "fisher_combined_p": 5.355166921111875e-06,
+      "fisher_combined_p": 0.5782172148584592,
       "binomial_p_excess": 0.4059753069455268
     },
     "pl05": {

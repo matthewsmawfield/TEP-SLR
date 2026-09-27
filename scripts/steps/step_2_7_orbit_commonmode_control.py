@@ -113,12 +113,13 @@ def pearson(x: np.ndarray, y: np.ndarray) -> float:
     return float((xm * ym).sum() / den)
 
 
-def build_cells(df: pd.DataFrame, subtract_station_bias: bool = True) -> pd.DataFrame:
+def build_cells(df: pd.DataFrame, subtract_station_bias: bool = True,
+                time_bin: str = PASS_TIME_BIN) -> pd.DataFrame:
     """Per-(time_bin, satellite, station) mean residual, debiased by the
     station's global mean (matching Step 2.3's convention)."""
     df = df.copy()
     df["epoch"] = pd.to_datetime(df["epoch_utc"], format="mixed")
-    df["time_bin"] = df["epoch"].dt.floor(PASS_TIME_BIN)
+    df["time_bin"] = df["epoch"].dt.floor(time_bin)
     if subtract_station_bias:
         bias = df.groupby("station")["residual_m"].mean()
         df["res"] = df["residual_m"] - df["station"].map(bias)
@@ -141,7 +142,11 @@ def collect_pair_records(cell: pd.DataFrame, mode: str,
     mode='cross': pairs of stations observing different satellites in the bin.
     """
     recs: List[tuple] = []
-    for tb, g in cell.groupby("time_bin"):
+    for tb_i, (tb, g) in enumerate(cell.groupby("time_bin")):
+        # cell row index keyed by (station, satellite): a station can occupy
+        # several cells in one bin when it ranges multiple satellites
+        pos = {(int(st), str(sat)): i for st, sat, i in
+               zip(g["station"].tolist(), g["satellite"].tolist(), g.index.tolist())}
         sats = g["satellite"].unique()
         if mode == "same":
             for s in sats:
@@ -158,7 +163,7 @@ def collect_pair_records(cell: pd.DataFrame, mode: str,
                         float(gs.loc[gs["station"] == b, "mean"].iloc[0]),
                         haversine_km(coords[a]["lat"], coords[a]["lon"],
                                      coords[b]["lat"], coords[b]["lon"]),
-                        str(s),
+                        str(s), tb_i, pos[(int(a), str(s))], pos[(int(b), str(s))],
                     ))
         else:
             if len(sats) < 2:
@@ -176,9 +181,10 @@ def collect_pair_records(cell: pd.DataFrame, mode: str,
                             float(gb.loc[gb["station"] == b, "mean"].iloc[0]),
                             haversine_km(coords[a]["lat"], coords[a]["lon"],
                                          coords[b]["lat"], coords[b]["lon"]),
-                            f"{sa}|{sb}",
+                            f"{sa}|{sb}", tb_i, pos[(int(a), str(sa))], pos[(int(b), str(sb))],
                         ))
-    return pd.DataFrame(recs, columns=["s1", "s2", "m1", "m2", "km", "chan"])
+    return pd.DataFrame(recs, columns=["s1", "s2", "m1", "m2", "km", "chan",
+                                       "tb_i", "i1", "i2"])
 
 
 def pair_correlations(recs: pd.DataFrame) -> pd.DataFrame:
@@ -285,6 +291,185 @@ def permutation_null(recs: pd.DataFrame, pc: pd.DataFrame,
     }
 
 
+def label_swap_null(cell: pd.DataFrame, recs: pd.DataFrame, pc: pd.DataFrame,
+                    n_perm: int, seed: int = 1) -> Dict:
+    """Epoch-preserving station-label permutation null.
+
+    Within each time bin the observed bin-mean residuals are permuted
+    across the (station, satellite) cells present in that bin. Epoch
+    marginals, any within-bin common-mode offset, and the pairing
+    geometry (which baselines are active at which epochs) are all
+    preserved; only the residual-to-location assignment is destroyed.
+    This is the sharper null for a *spatially structured* station-side
+    field: the circular-shift null (synchrony only) does not price
+    within-epoch common modes and overstates significance.
+    """
+    means = cell["mean"].to_numpy()
+    bin_ids = pd.factorize(cell["time_bin"])[0]
+    order_bin = np.argsort(bin_ids, kind="stable")
+    rng = np.random.default_rng(seed)
+
+    pc_key = set(zip(pc["s1"], pc["s2"]))
+    mask = [(a, b) in pc_key for a, b in zip(recs["s1"], recs["s2"])]
+    sub = recs[np.asarray(mask, dtype=bool)]
+    pair_code: Dict[tuple, int] = {}
+    codes = np.empty(len(sub), dtype=int)
+    for j, (a, b) in enumerate(zip(sub["s1"], sub["s2"])):
+        key = (a, b)
+        if key not in pair_code:
+            pair_code[key] = len(pair_code)
+        codes[j] = pair_code[key]
+    i1 = sub["i1"].to_numpy()
+    i2 = sub["i2"].to_numpy()
+    n_pairs = len(pair_code)
+    km_of = {k: float(v) for k, v in
+             pc.set_index(["s1", "s2"])["km"].items()}
+    pair_km = np.array([km_of[k] for k in
+                        sorted(pair_code, key=pair_code.get)])
+
+    def pair_r(m1: np.ndarray, m2: np.ndarray) -> np.ndarray:
+        n = np.bincount(codes, minlength=n_pairs)
+        s1_ = np.bincount(codes, weights=m1, minlength=n_pairs)
+        s2_ = np.bincount(codes, weights=m2, minlength=n_pairs)
+        s11 = np.bincount(codes, weights=m1 * m1, minlength=n_pairs)
+        s22 = np.bincount(codes, weights=m2 * m2, minlength=n_pairs)
+        s12 = np.bincount(codes, weights=m1 * m2, minlength=n_pairs)
+        with np.errstate(invalid="ignore", divide="ignore"):
+            mu1, mu2 = s1_ / n, s2_ / n
+            num = s12 - n * mu1 * mu2
+            den = np.sqrt((s11 - n * mu1 * mu1) * (s22 - n * mu2 * mu2))
+            return np.where(den > 0, num / den, np.nan)
+
+    r_obs = pair_r(means[i1], means[i2])
+    obs_means = bin_stats(pc)
+    bin_edges = {k: (DISTANCE_BINS_KM[i], DISTANCE_BINS_KM[i + 1])
+                 for i, k in enumerate(obs_means)}
+    bin_of_pair = np.full(n_pairs, -1)
+    for k, (lo, hi) in bin_edges.items():
+        m = (pair_km >= lo) & (pair_km < hi)
+        for j in np.flatnonzero(m):
+            bin_of_pair[j] = list(obs_means).index(k)
+
+    def bin_means(r: np.ndarray) -> Dict[str, float]:
+        out = {}
+        for bi, k in enumerate(obs_means):
+            sel = (bin_of_pair == bi) & np.isfinite(r)
+            out[k] = float(np.mean(r[sel])) if np.any(sel) else np.nan
+        return out
+
+    obs_bin_means = bin_means(r_obs)
+    null_bin_vals: Dict[str, List[float]] = {k: [] for k in obs_means}
+    for _ in range(int(n_perm)):
+        rand = rng.random(len(cell))
+        order_perm = np.lexsort((rand, bin_ids))
+        pm = np.empty_like(means)
+        pm[order_perm] = means[order_bin]
+        for k, v in bin_means(pair_r(pm[i1], pm[i2])).items():
+            null_bin_vals[k].append(v)
+
+    per_bin_p = {}
+    for k, om in obs_bin_means.items():
+        arr = np.asarray([v for v in null_bin_vals[k]
+                          if np.isfinite(v)])
+        per_bin_p[k] = (
+            float((np.sum(arr <= om) + 1) / (arr.size + 1))
+            if arr.size else None)
+    return {
+        "method": "within_time_bin_station_label_swap",
+        "description": (
+            "Within each 15-minute bin the observed bin-mean residuals are "
+            "permuted across the (station, satellite) cells present in that "
+            "bin, preserving epoch marginals, within-bin common modes, and "
+            "the pairing geometry; only the residual-to-location assignment "
+            "is destroyed. Prices the distance-localisation claim directly."
+        ),
+        "n_permutations": int(n_perm),
+        "observed_bin_means": obs_bin_means,
+        "null_bin_means": {k: float(np.nanmean(v)) for k, v in
+                           null_bin_vals.items()},
+        "null_bin_stds": {k: float(np.nanstd(v)) for k, v in
+                          null_bin_vals.items()},
+        "p_values_one_sided_le_by_bin": per_bin_p,
+    }
+
+
+def turnover_bin_diagnostics(recs: pd.DataFrame, pc: pd.DataFrame,
+                             cell: pd.DataFrame) -> Dict:
+    """Robustness diagnostics for the cross-satellite turnover bin.
+
+    The per-pair Pearson statistic on n = 3–16 contemporaneous bins has a
+    highly discrete, U-shaped null at the smallest n; a bin mean carried by
+    minimally-sampled pairs is not equivalent to a coherent field. Reported:
+    mean r stratified by per-pair record count, the record-count-weighted
+    mean, and the per-year mean residual product (a real spatial field
+    keeps a coherent sign; sign flips indicate epoch systematics).
+    """
+    sel = pc[(pc["km"] >= TURNOVER_BIN_LO_KM) &
+             (pc["km"] < TURNOVER_BIN_HI_KM)]
+    out: Dict[str, object] = {
+        "n_pairs": int(len(sel)),
+        "mean_correlation": float(sel["r"].mean()) if len(sel) else None,
+    }
+    if len(sel) < MIN_PAIRS_PER_DISTANCE_BIN:
+        return out
+    out["record_weighted_mean_r"] = float(
+        np.average(sel["r"], weights=sel["n"]))
+    strata = {"n_3_4": (3, 4), "n_5_8": (5, 8), "n_9_16": (9, 16),
+              "n_17_plus": (17, 10 ** 9)}
+    out["mean_r_by_pair_record_count"] = {
+        k: {"n_pairs": int(len(s)),
+            "mean_r": float(s["r"].mean()) if len(s) else None}
+        for k, (a, b) in strata.items()
+        for s in [sel[(sel["n"] >= a) & (sel["n"] <= b)]]
+    }
+    pc_key = set(zip(sel["s1"], sel["s2"]))
+    mask = [(a, b) in pc_key for a, b in zip(recs["s1"], recs["s2"])]
+    sub = recs[np.asarray(mask, dtype=bool)]
+    years = pd.DatetimeIndex(
+        cell["time_bin"].to_numpy()[sub["i1"].to_numpy()]).year
+    prod = (sub["m1"].to_numpy() * sub["m2"].to_numpy())
+    out["per_year_mean_product_mm2"] = {
+        int(y): float(p.mean()) for y, p in
+        pd.DataFrame({"y": years, "p": prod}).groupby("y")["p"]
+    }
+    return out
+
+
+def configuration_sensitivity(df_all: pd.DataFrame,
+                              coords: Dict[int, Dict]) -> Dict:
+    """Cross-satellite turnover-bin statistic under alternative pipeline
+    configurations (residual threshold x time-bin width), plus a
+    min-passes >= 5 variant at the baseline configuration. A robust
+    physical feature should persist across these choices."""
+    out: Dict[str, object] = {}
+    for thr in (0.3, 0.5, 1.0):
+        for tb in ("10min", "15min", "30min"):
+            tag = f"thr{thr}_bin{tb}"
+            d = df_all[df_all["residual_m"].abs() < thr]
+            if not len(d):
+                out[tag] = {"mean_r": None, "n_pairs": 0}
+                continue
+            c = build_cells(d, time_bin=tb).reset_index(drop=True)
+            pc = pair_correlations(collect_pair_records(c, "cross", coords))
+            sel = pc[(pc["km"] >= TURNOVER_BIN_LO_KM) &
+                     (pc["km"] < TURNOVER_BIN_HI_KM)]
+            out[tag] = {
+                "n_pairs": int(len(sel)),
+                "mean_r": float(sel["r"].mean()) if len(sel) else None,
+            }
+    # denser-sampling variant on the baseline configuration
+    d = df_all[df_all["residual_m"].abs() < RESIDUAL_THRESHOLD_M]
+    c = build_cells(d).reset_index(drop=True)
+    pc = pair_correlations(collect_pair_records(c, "cross", coords))
+    sel = pc[(pc["km"] >= TURNOVER_BIN_LO_KM) &
+             (pc["km"] < TURNOVER_BIN_HI_KM) & (pc["n"] >= 5)]
+    out["baseline_minpass5"] = {
+        "n_pairs": int(len(sel)),
+        "mean_r": float(sel["r"].mean()) if len(sel) else None,
+    }
+    return out
+
+
 def station_cluster_bootstrap(pc: pd.DataFrame, lo: float, hi: float,
                               n_boot: int = 2000, seed: int = 0) -> Dict:
     """Resample stations (not pairs); keep pairs with both endpoints drawn.
@@ -350,7 +535,10 @@ def daily_pair_correlations(daily: Dict[int, pd.Series],
     return pd.DataFrame(rows, columns=["s1", "s2", "km", "r", "n"])
 
 
-def run(df: pd.DataFrame, coords: Dict[int, Dict], n_perm: int = 2000) -> Dict:
+def run(df: pd.DataFrame, coords: Dict[int, Dict], n_perm: int = 2000,
+        df_unfiltered: Optional[pd.DataFrame] = None) -> Dict:
+    if df_unfiltered is None:
+        df_unfiltered = df
     results: Dict[str, object] = {
         "step": "step_2_7_orbit_commonmode_control",
         "analysis_timestamp": datetime.now(timezone.utc).isoformat(),
@@ -381,7 +569,7 @@ def run(df: pd.DataFrame, coords: Dict[int, Dict], n_perm: int = 2000) -> Dict:
     }
 
     logger.info("Building (time_bin, satellite, station) cells...")
-    cell = build_cells(df)
+    cell = build_cells(df).reset_index(drop=True)
     results["n_cell_records"] = int(len(cell))
 
     # ---- Control A: cross-satellite pairing ----
@@ -421,9 +609,17 @@ def run(df: pd.DataFrame, coords: Dict[int, Dict], n_perm: int = 2000) -> Dict:
                              ("cross_satellite", rec_cross, pc_cross)]:
         logger.info(f"  permutation null ({mode}, n={n_perm})...")
         block[mode]["null_tests"] = permutation_null(recs_, pc_, n_perm)  # type: ignore[index]
+        logger.info(f"  label-swap null ({mode}, n={n_perm})...")
+        block[mode]["label_swap_null"] = label_swap_null(  # type: ignore[index]
+            cell, recs_, pc_, n_perm)
         boot = station_cluster_bootstrap(pc_, TURNOVER_BIN_LO_KM, TURNOVER_BIN_HI_KM)
         if boot:
             block[mode]["turnover_bin_station_bootstrap"] = boot  # type: ignore[index]
+    block["cross_satellite"]["turnover_bin_diagnostics"] = (  # type: ignore[index]
+        turnover_bin_diagnostics(rec_cross, pc_cross, cell))
+    logger.info("  configuration sensitivity (cross-satellite)...")
+    block["cross_satellite"]["configuration_sensitivity"] = (  # type: ignore[index]
+        configuration_sensitivity(df_unfiltered, coords))
     results["control_A_cross_satellite_pairing"] = block
 
     # ---- Controls B & C: daily aggregation variants ----
@@ -476,15 +672,16 @@ def main() -> int:
     ap.add_argument("--output", default=str(RESULTS_DIR / "step_2_7_orbit_commonmode_control.json"))
     args = ap.parse_args()
 
-    df = pd.read_csv(args.input)
-    n0 = len(df)
-    df = df[df["residual_m"].abs() < RESIDUAL_THRESHOLD_M].copy()
+    df_raw = pd.read_csv(args.input)
+    n0 = len(df_raw)
+    df = df_raw[df_raw["residual_m"].abs() < RESIDUAL_THRESHOLD_M].copy()
     logger.info(f"Loaded {n0} residuals; {len(df)} after |residual| < {RESIDUAL_THRESHOLD_M} m")
 
     coords = {int(k): v for k, v in json.load(open(args.coords)).items()}
     logger.info(f"Station coordinates: {len(coords)}")
 
-    results = run(df, coords, n_perm=int(args.n_permutations))
+    results = run(df, coords, n_perm=int(args.n_permutations),
+                  df_unfiltered=df_raw)
     results["input_file"] = str(args.input)
 
     with open(args.output, "w") as f:

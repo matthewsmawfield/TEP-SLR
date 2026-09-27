@@ -89,7 +89,7 @@ async function buildStaticSite() {
         fs.writeFileSync(outputPath, staticContent, 'utf8');
         
         // Copy necessary static assets to dist
-        const assetDirs = ['public', 'figures', 'data'];
+        const assetDirs = ['public', 'data'];
         for (const assetDir of assetDirs) {
             const srcPath = path.join(__dirname, assetDir);
             const destPath = path.join(distDir, assetDir);
@@ -100,12 +100,39 @@ async function buildStaticSite() {
             }
         }
         
-        // Copy figures from results/figures/ to dist/figures/ (main figure source)
-        const resultsFiguresPath = path.join(__dirname, '..', 'results', 'figures');
+        // Copy only figures actually referenced by the built HTML
+        // (src="figures/NAME" / href="figures/NAME"), resolved against
+        // results/figures/ first, then site/figures/. Unreferenced pipeline
+        // artifacts stay in results/figures/ and do not ship.
         const distFiguresPath = path.join(distDir, 'figures');
-        if (fs.existsSync(resultsFiguresPath)) {
-            console.log('📁 Copying results/figures/ → dist/figures/');
-            copyRecursiveSync(resultsFiguresPath, distFiguresPath);
+        const referencedFigures = new Set();
+        const figRefRe = /(?:src|href)=["']figures\/([^"']+)["']/g;
+        for (const match of staticContent.matchAll(figRefRe)) {
+            referencedFigures.add(match[1]);
+        }
+        if (referencedFigures.size > 0) {
+            if (!fs.existsSync(distFiguresPath)) {
+                fs.mkdirSync(distFiguresPath, { recursive: true });
+            }
+            const figureSources = [
+                path.join(__dirname, '..', 'results', 'figures'),
+                path.join(__dirname, 'figures'),
+            ];
+            for (const name of referencedFigures) {
+                let copied = false;
+                for (const srcDir of figureSources) {
+                    const src = path.join(srcDir, name);
+                    if (fs.existsSync(src)) {
+                        fs.copyFileSync(src, path.join(distFiguresPath, name));
+                        copied = true;
+                        break;
+                    }
+                }
+                if (!copied) {
+                    console.warn(`⚠️  Referenced figure not found: figures/${name}`);
+                }
+            }
+            console.log(`📁 Copied ${referencedFigures.size} referenced figure(s) → dist/figures/`);
         }
         
         // Copy manifest.json for reference
@@ -167,7 +194,7 @@ async function buildStaticSite() {
         
         console.log('✅ Static site built successfully!');
         console.log(`📁 Output: ${outputPath}`);
-        console.log('📄 Markdown: 8-TEP-SLR-v0.4-Mombasa.md (in root)');
+        console.log('📄 Markdown: 8-TEP-SLR-v0.5-Mombasa.md (in root)');
         console.log(`📊 Generated ${manifest.sections.length} sections`);
         console.log('🚀 Ready for deployment');
         

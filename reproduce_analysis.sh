@@ -95,7 +95,7 @@ python3 scripts/steps/step_2_7_orbit_commonmode_control.py
 
 # Step 2.8: Sampling-Matched Coloured-Noise Nulls
 echo -e "\n[Step 2.8] Running sampling-matched coloured-noise nulls..."
-python3 scripts/steps/step_2_8_sampling_matched_nulls.py
+python3 scripts/steps/step_2_8_sampling_matched_nulls.py --n-surrogates 60
 
 # Step 3.0: Simulation
 echo -e "\n[Step 3.0] Running Anti-Echo Simulation..."

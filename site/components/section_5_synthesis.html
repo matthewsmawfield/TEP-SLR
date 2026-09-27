@@ -90,21 +90,22 @@
             significant). The confound-controlled variant — pairing stations
             that range <em>different</em> satellites in the same window, which
             cannot share orbit error — retains the anticorrelation at the
-            turnover bin at $\bar{r}=-0.228$ ($n=32$, per-bin
-            $p=5\times10^{-4}$; station-bootstrap 95\% CI $[-0.43,-0.06]$)
-            with all other bins null (Step 2.7). A daily-aggregation analysis
+            turnover bin at $\bar{r}=-0.228$ ($n=32$; epoch-preserving
+            label-swap $p=0.046$ one-sided, circular-shift null
+            $p\le5\times10^{-4}$; station-bootstrap 95% CI $[-0.43,-0.06]$)
+            with all other bins at their respective null floors (Step 2.7). A daily-aggregation analysis
             ($N=190$ pairs) nominally reaches $p_{\mathrm{FWER}}=0.020$, but
             its driving 3,000–5,000 km bin has only four pairs and reverses
             sign between the two LAGEOS orbit solutions, so it is retained as
-            exploratory rather than as a detection. This distance-structured
-            signal provides complementary evidence for spatial coherence
-            consistent with the conformal-sector phenomenology, with the
-            orbit-error common-mode channel now excluded by construction.
-            The spectral channel is bounded rather than detected (§3.3.1),
-            so this distance-structured result carries the positive evidence
-            for a low-frequency process. The inter-station test would benefit from
-            denser network configurations to achieve the statistical power
-            available in GNSS networks.
+            exploratory rather than as a detection. The spectral channel is
+            bounded rather than detected (§3.3.1), so this distance-structured
+            feature carries the corpus's candidate positive content — a
+            nominal signal at the predicted turnover location under the
+            epoch-preserving null, reported as a candidate rather than a
+            detection because it is concentrated in the sparsely sampled
+            pairings (§3.4). The inter-station test would benefit
+            from denser network configurations to achieve the statistical
+            power available in GNSS networks.
         </p>
 
         <h4>5. Disformal Sector: Untested in Current Data</h4>
@@ -226,9 +227,10 @@
             sampling of the Temporal Topology), the current pass-correlation
             data do not support a satellite-specific detection. The
             confound-controlled cross-satellite pairing, in contrast, does
-            reach the turnover bin with $\bar{r}=-0.228$ ($n=32$, per-bin
-            $p=5\times10^{-4}$) while sharing no orbit solution — providing a
-            distance-structured spatial-coherence result that is not
+            reach the turnover bin with $\bar{r}=-0.228$ ($n=32$;
+            epoch-preserving-null $p=0.046$ one-sided) while sharing no orbit
+            solution — providing a distance-structured spatial-coherence
+            candidate that is not
             attributable to a single-spacecraft or single-solution
             systematic. The daily-aggregation statistic
             ($p_{\mathrm{FWER}}=0.020$) is retained as exploratory, since its
@@ -320,14 +322,16 @@
             ($p=0.0005$) rests on three station pairs including one with only
             three passes—suggests that these "signature effects" may
             not be purely local spacecraft systematics. However, the fragility
-            of the pass-correlation detection (both satellites converge to
+            of the nominal pass-correlation result (both satellites converge to
             near-zero correlation when restricted to $\geq 10$ passes) means
             that a TEP interpretation of the LAGEOS-2 signature effects remains
             conjectural pending denser network configurations. The
-            cross-satellite control (Step 2.7) provides the more robust
-            detection channel: $\bar{r}=-0.228$ at the turnover bin across
+            cross-satellite control (Step 2.7) provides the cleaner confound
+            channel: $\bar{r}=-0.228$ at the turnover bin across
             32 pairs built from independent orbit solutions, with the
-            orbit-error common mode excluded by construction. The TEP framework provides a candidate physical mechanism for these
+            orbit-error common mode excluded by construction — nominal at
+            $p=0.046$ under the epoch-preserving null and concentrated in
+            the sparsely sampled pairings. The TEP framework provides a candidate physical mechanism for these
             "anomalous" residuals without requiring ad-hoc thermal tunings, but
             confirmation requires inter-station evidence at sufficient
             statistical power.
