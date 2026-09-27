@@ -21,27 +21,25 @@
             frequency difference (factor of $\sim 10^5$) provides a strong
             argument against dispersive propagation effects, such as ionospheric
             delay or plasma dispersion, which scale with frequency ($1/f^2$).
-            Furthermore, the spectral power concentration (14.12× enhancement in
-            the TEP band relative to broadband, 95% CI: 13.55–14.67) is
-            consistent with an achromatic, temporally structured anomaly. A
-            station-specific AR(1) red-noise null test—generating 500
-            surrogates per station that preserve each station's measured lag-1
-            autocorrelation and record length—rejects the tested station-specific AR(1) coloured-noise null: 35 of 46 stations
-            individually reject the red-noise null ($p<0.05$), and combined
-            tests are decisive (Fisher $p\approx10^{-154}$; binomial
-            $p\approx2\times10^{-36}$). Achromaticity is a strict requirement
+            The spectral channel was audited under sampling-matched nulls
+            (§3.3.1): the apparent 14.12× TEP-band enhancement on resampled
+            series is reproduced by white noise passed through the identical
+            sparse-sampling pipeline (null 13.97), and the real-epoch
+            Lomb–Scargle spectrum is flat — so the channel is carried as a
+            bound on in-band conformal excursions
+            ($\delta A \lesssim 2\times10^{-8}$), not a detection. Achromaticity is a strict requirement
             of conformal invariance — a conformal rescaling multiplies all
             propagation delays uniformly, independent of photon frequency —
             so the observed frequency independence is a necessary consistency
             condition rather than an independent discriminant. Its positive
             content is the exclusion of dispersive carriers, while the
-            evidence for temporal structure resides in the low-frequency
-            excess over the matched red-noise null. The optical and microwave
+            evidence for temporal structure resides in the distance-structured
+            inter-station coherence of §3.4. The optical and microwave
             results are thereby consistent with a universal conformal
             coupling $A(\phi)$ acting across the electromagnetic spectrum.
         </p>
 
-        <h4>2. Range-Dependent Temporal-Topology Response</h4>
+        <h4>2. Range-Dependent Diagnostic: Systematics Monitor</h4>
         <p>
             The residuals exhibit a path-length dependent temporal contrast in a
             gap-aware lag-1 diagnostic. In the primary $|\Delta\rho|<0.5$ m
@@ -51,13 +49,7 @@
             therefore ratio-based summaries are ill-conditioned. This contrast
             is threshold-sensitive (e.g.,
             $\Delta(\mathrm{low}-\mathrm{high})=-0.086$, 95% CI: −0.248 to 0.069
-            at $|\Delta\rho|<1.0$ m), and is therefore treated as qualitative
-            support for a range-dependent Temporal-Topology response rather than a precisely
-            estimated amplitude. Standard tropospheric corrections
-            (Marini-Murray) were applied prior to this analysis; the structure
-            persists in the <em>post-correction</em> residuals, motivating
-            deeper atmospheric-systematics testing rather than serving as a
-            refutation of the baseline refraction model.
+            at $|\Delta\rho|<1.0$ m). Because conformal rescaling preserves null cones, light propagation is null-invariant in this sector and path length cannot carry a physical TEP signal. Instead, the observed contrast — longer paths (lower elevations) decorrelating more — is the expected signature of unmodeled tropospheric wet-path and synoptic pressure delays that grow with airmass. The diagnostic is therefore carried as a systematic monitor awaiting high-resolution hourly reanalysis (e.g. ERA5) rather than as qualitative support for a Temporal-Topology response.
         </p>
 
         <h4>3. Scale Consistency (The Characteristic Scale)</h4>
@@ -76,11 +68,9 @@
             leaving the field light cosmologically. The correlation length is
             identified with the geometric saturation scale $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km, representing the transition from deep suppression to the weak-field regime. While the sparse ILRS network limits direct
             measurement of a continuous inter-station correlation length —
-            the unanchored exponential fit diverges to the 20,000 km fitting
-            boundary, so the SLR scale is formally unconstrained — the
-            range-dependent diagnostic and TEP-band spectral concentration
-            provide complementary constraints, while the orbit-fit turnover
-            test is met under either corpus anchor (simulated zero crossing
+            the SLR scale is formally unconstrained — the
+            orbit-fit turnover test provides the primary constraint and is
+            met under either corpus anchor (simulated zero crossing
             3,421–3,947 km across $\lambda_T$ = 1,862–4,201 km, both leaving
             5,000–7,500 km as the first beyond-turnover bin; §3.4).
             The convergence of GNSS and SLR
@@ -110,9 +100,9 @@
             signal provides complementary evidence for spatial coherence
             consistent with the conformal-sector phenomenology, with the
             orbit-error common-mode channel now excluded by construction.
-            The spectral concentration and range-dependent coherence provide
-            additional quantitative evidence for a structured,
-            low-frequency process. The inter-station test would benefit from
+            The spectral channel is bounded rather than detected (§3.3.1),
+            so this distance-structured result carries the positive evidence
+            for a low-frequency process. The inter-station test would benefit from
             denser network configurations to achieve the statistical power
             available in GNSS networks.
         </p>
@@ -214,8 +204,8 @@
             (10–23 $\mu$Hz) is not significant at the majority of stations
             (4/34 significant, binomial $p=0.088$), and the estimated
             uncorrected pressure effect ($30.5$ mm) is $12\%$ of the
-            residual RMS ($257.4$ mm). The $14.12\times$ concentration is
-            therefore not attributable to synoptic weather. This control
+            residual RMS ($257.4$ mm). The residual stream's low-frequency
+            structure is therefore not attributable to synoptic weather. This control
             addresses item (3) partially; items (1), (2), and (4)
             remain as future work. A limitation is that 6-hourly NCEP
             resolution constrains only the lower third of the TEP band;
@@ -352,15 +342,23 @@
             Principal Component Analysis (PCA) without a confirmed physical
             source. The TEP analysis demonstrates that such spatially coherent,
             colored noise is a <em>prediction</em> of the theory ($\lambda_T
-            \approx 4,000$ km), not merely atmospheric residue. Critically, the
-            station-specific AR(1) red-noise null test (§3.3.1) shows the
-            observed spectral concentration exceeds what an AR(1) process with
-            the measured lag-1 autocorrelation ($\bar{\phi}=0.66$) would
-            produce: 35 of 46 stations reject the red-noise null
-            ($p<0.05$), with combined tests decisive (Fisher
-            $p\approx10^{-154}$). The standard practice of filtering these
-            signals effectively "bleaches" the conformal structure from geodetic
-            products.
+            \approx 4,000$ km), not merely atmospheric residue. The
+            sampling-matched audit of §3.3.1 qualifies where that evidence
+            lives: the apparent $14.12\times$ TEP-band concentration on
+            resampled series is quantitatively a property of the
+            sparse-sampling kernel — white noise through the identical
+            pipeline reproduces it (null $13.97$) — and the real-epoch
+            Lomb–Scargle spectrum is flat, so per-station spectral power is
+            not the carrier of the conformal signal. The signal instead lives
+            in the network-coherent channel that the CME literature itself
+            describes: the confound-controlled cross-satellite anticorrelation
+            at the turnover bin (§3.4) and the timer-channel amplitude budget
+            ($\delta A \lesssim 2\times10^{-8}$) are consistent with a common
+            conformal excursion of order $u_\oplus$ reading as millimetre-level
+            coherent wander — below the per-station noise floor but
+            extractable through inter-station correlation. The standard
+            practice of filtering these signals effectively "bleaches" the
+            conformal structure from geodetic products.
         </p>
 
         <h4>Network Sparsity</h4>

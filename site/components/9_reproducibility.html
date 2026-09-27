@@ -31,7 +31,7 @@
 │   ├── helpers/               # Processing utilities
 │   │   ├── generate_full_summary.py
 │   │   └── process_residuals_yearly.py
-│   ├── steps/                 # Analysis pipeline (9 steps)
+│   ├── steps/                 # Analysis pipeline (10 steps)
 │   │   ├── step_1_0_data_acquisition.py
 │   │   ├── step_2_1_slr_residuals.py
 │   │   ├── step_2_3_mwpc_analysis.py
@@ -39,6 +39,7 @@
 │   │   ├── step_2_5_enhanced_figures.py
 │   │   ├── step_2_6_nwm_spectral_control.py
 │   │   ├── step_2_7_orbit_commonmode_control.py
+│   │   ├── step_2_8_sampling_matched_nulls.py
 │   │   ├── step_3_0_sim_antiecho.py
 │   │   └── step_5_2_vlbi_slr_scale_drift.py
 │   └── utils/                 # Shared utilities
@@ -101,7 +102,7 @@ npm run build</code></pre>
     </ul>
 
     <h4>Pipeline Overview</h4>
-    <p>The analysis consists of 7 deterministic steps:</p>
+    <p>The analysis consists of 8 deterministic steps:</p>
     <ol>
         <li><strong>Step 1.0:</strong> Data acquisition from ILRS/CDDIS archives (NPT CRD files)</li>
         <li><strong>Step 2.1:</strong> Residual calculation and quality filtering (year-by-year processing)</li>
@@ -109,6 +110,7 @@ npm run build</code></pre>
         <li><strong>Step 2.4:</strong> Generate standard figures (residual distributions, correlation decay)</li>
         <li><strong>Step 2.5:</strong> Enhanced figures with phase alignment analysis</li>
         <li><strong>Step 2.7:</strong> Orbit-error / common-mode confound controls — cross-satellite contemporaneous pairing (closes the shared-orbit-error channel by construction), network common-mode subtraction, and per-satellite orbit-solution splits (Section 3.4)</li>
+        <li><strong>Step 2.8:</strong> Sampling-matched coloured-noise nulls — continuous surrogate families (white, station-matched AR(1), flicker 1/f, power-law grid, matched power law, random walk) passed through the identical resample–interpolate–concatenate–Welch pipeline and evaluated at real epochs under a Lomb–Scargle estimator, plus the pairwise structure function and the δA→residual amplitude map (Section 3.3.1)</li>
         <li><strong>Step 3.0:</strong> Anti-echo simulation — estimator-mediated sign inversion of the conformal common-mode field under dynamic orbit determination, including the injected-scale anchor scan (λ_T = 1,000–8,000 km) that records the turnover crossing under both corpus scales (3,421 km at 1,862 km; 3,947 km at 4,201 km)</li>
         <li><strong>Step 5.2:</strong> VLBI–SLR scale-drift channel — anchoring-split bookkeeping and the local drift-participation bound (Section 5.2)</li>
     </ol>
@@ -118,6 +120,7 @@ npm run build</code></pre>
         <li><code>results/outputs/step_2_1_slr_residuals_summary.json</code> — Residual statistics by station</li>
         <li><code>results/outputs/step_2_3_mwpc_analysis.json</code> — MWPC correlation results</li>
         <li><code>results/outputs/step_2_7_orbit_commonmode_control.json</code> — Orbit-error / common-mode confound-control results</li>
+        <li><code>results/outputs/step_2_8_sampling_matched_nulls.json</code> — Sampling-matched coloured-noise nulls, real-epoch Lomb–Scargle ratios, structure function, and the δA amplitude map</li>
         <li><code>results/outputs/step_5_2_vlbi_slr_scale_drift.json</code> — Scale-drift anchoring split and participation bound</li>
         <li><code>results/figures/slr_pass_correlation_decay.png</code> — Figure 1: Correlation decay analysis</li>
         <li><code>results/figures/slr_phase_alignment_decay.png</code> — Phase alignment signatures</li>

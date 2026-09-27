@@ -3,26 +3,38 @@
     
     <p>An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS), while probing, under conformal null-cone invariance, the same clock-amplitude channel through its ground-station leg.</p>
     
-    <p>Frequency-domain analysis reveals a significant concentration of
-    power within the predicted TEP band (10–500 $\mu$Hz): the station-averaged
-    TEP-band mean PSD exceeds the broadband floor ($f>1$ mHz) by
-    $14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations), a result that
-    persists across residual thresholds with a ~25% spread in magnitude
-    (14.86× at 0.3 m; 11.91× at 1.0 m). A
-    station-specific AR(1) red-noise null test—generating 500 surrogates per
-    station that preserve each station's measured lag-1 autocorrelation and
-    record length—rejects the tested AR(1) coloured-noise null: 35 of 46 stations individually
-    reject the red-noise null ($p<0.05$), and combined tests are decisive (Fisher $p\approx10^{-154}$;
-    binomial $p\approx2\times10^{-36}$). A NCEP/NCAR Reanalysis surface
-    pressure control confirms the concentration is not a synoptic weather
-    artefact: pressure-residual coherence is not significant at the
-    majority of stations (4/34 significant, binomial $p=0.088$), and the
-    uncorrected pressure effect is 12% of the residual RMS. A
-    range-dependent lag-1 coherence
+    <p>Frequency-domain analysis is carried out under sampling-matched
+    control. On 5-minute resampled station series the TEP-band (10–500
+    $\mu$Hz) mean PSD exceeds the broadband floor ($f>1$ mHz) by
+    $14.12\times$ (95% CI: 13.55–14.67; $N=46$ stations); however, with the
+    ILRS observing duty cycle below one percent, this diagnostic is dominated
+    by the resampling kernel rather than by the data. Surrogate processes
+    generated on each station's actual observing grid and passed through the
+    identical resample–interpolate–concatenate pipeline show that white
+    noise alone reproduces the measured ratio (sampling-matched null
+    $13.97$ vs observed $14.12$; two of 46 stations above $p<0.05$), while
+    every conventional coloured-noise model returns a larger concentration
+    through the same sampling (masked AR(1): $16.95$; flicker $1/f$:
+    $26.98$; random walk: $257$). A real-epoch Lomb–Scargle estimator on
+    the unbinned observation times returns a flat in-band spectrum (ratio
+    $1.04$ vs white null $1.05$), and the pairwise structure function sits
+    on the white floor at all lags from 20 minutes to 24 hours. The
+    conformal timer channel is therefore bounded rather than detected in the
+    spectral domain: under the timer-rate map $\delta R = R\,\delta A$,
+    in-band coherent excursions are limited to $\delta A \lesssim
+    2\times10^{-8}$ (~decimetre equivalent at the mean slant range), while a
+    landscape excursion of order the surface conformal depth ($u_\oplus
+    \approx 7\times10^{-10}$) predicts coherent wander of only
+    $\sim 5$ mm — below the noise floor — so the conformal signature must be
+    read in the network-coherent spatial channel measured below. An
+    NCEP/NCAR Reanalysis surface
+    pressure control bounds the synoptic-weather channel at its native
+    6-hourly resolution (4/34 significant, binomial $p=0.088$; uncorrected
+    pressure effect 12% of the residual RMS). A
     diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
     accumulate greater decoherence than shorter paths
     ($\lesssim 6{,}500$ km), with the long-minus-short contrast
-    $\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold.</p>
+    $\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because light propagation is null-invariant in the conformal sector, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control, rather than a TEP signature.</p>
     
     <p>Inter-station pass-correlation analysis under 15-minute contemporaneous
     binning yields a nominally significant Fisher-combined result
@@ -50,12 +62,12 @@
     ($N=190$ pairs, $p_{\mathrm{FWER}}=0.020$) does not survive the
     per-satellite split — its driving 3,000–5,000 km bin has only four pairs
     and reverses sign between the two LAGEOS solutions — and is retained as
-    exploratory only. The spectral concentration, range-dependent
-    coherence, and confound-controlled inter-station anticorrelation provide
-    three convergent diagnostics of a structured, low-frequency process —
-    the first two sharing the residual tropospheric-systematic channel and
-    therefore not fully independent of each other, while the inter-station
-    result is a distinct cross-station observable; the family-wise
+    exploratory only. The confound-controlled inter-station anticorrelation
+    is the positive evidence for a structured, low-frequency process: the
+    spectral channel is carried as a bound (§3.3.1), so the surviving
+    discriminating content is the distance-structured cross-station
+    observable, which shares none of the residual tropospheric-systematic
+    channels; the family-wise
     minimum-bin statistic remains diluted by the smallest bins ($p=0.55$), so
     the evidence rests on the pre-specified turnover bin rather than an
     omnibus scan.</p>

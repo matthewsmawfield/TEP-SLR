@@ -112,6 +112,39 @@ orbit-model error):
 
 Output: `results/outputs/step_2_7_orbit_commonmode_control.json`.
 
+### Step 2.8: Sampling-Matched Coloured-Noise Nulls
+
+```bash
+python3 scripts/steps/step_2_8_sampling_matched_nulls.py \
+    --n-surrogates 60 --workers 8
+```
+
+Supplies the missing controls for the Step 2.3 TEP-band spectral
+diagnostic. The published band/broadband ratio is evaluated on a stitched
+series (5-minute resample, interpolation limit=2, gaps dropped); with a
+sub-percent observing duty cycle the estimator mixes the data's spectrum
+with the sampling kernel. The step builds surrogate families — white
+noise, station-matched AR(1), canonical flicker 1/f, a power-law grid, a
+station-matched power law, and random walk — as continuous processes on
+each station's full observing grid, samples them at the actual observation
+bins, and passes them through the identical pipeline, so each null prices
+the resampling channel exactly.
+
+A second channel evaluates the same families under a real-epoch
+Lomb–Scargle estimator (no interpolation or stitching) at the actual
+5-minute observation bins, plus the pairwise structure function
+SF(tau) over lags spanning 20 minutes to 24 hours, and computes the
+delta-A -> residual amplitude map under the timer-rate channel
+(delta-R = R * delta-A) against Earth's surface conformal depth
+u_earth ~ 6.95e-10.
+
+Result: the observed 14.12x ratio is reproduced by white noise through the
+same sampling (null 13.97), every coloured alternative returns a larger
+concentration, the real-epoch spectrum is flat (ratio 1.04 vs white null
+1.05), and the conformal in-band excursion is bounded at delta-A <~ 2e-8.
+
+Output: `results/outputs/step_2_8_sampling_matched_nulls.json`.
+
 ### Step 3.0: Anti-Echo Simulation
 
 ```bash

@@ -93,6 +93,10 @@ python3 scripts/steps/step_2_5_enhanced_figures.py
 echo -e "\n[Step 2.7] Running orbit-error / common-mode confound controls..."
 python3 scripts/steps/step_2_7_orbit_commonmode_control.py
 
+# Step 2.8: Sampling-Matched Coloured-Noise Nulls
+echo -e "\n[Step 2.8] Running sampling-matched coloured-noise nulls..."
+python3 scripts/steps/step_2_8_sampling_matched_nulls.py
+
 # Step 3.0: Simulation
 echo -e "\n[Step 3.0] Running Anti-Echo Simulation..."
 python3 scripts/steps/step_3_0_sim_antiecho.py
