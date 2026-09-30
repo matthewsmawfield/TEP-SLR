@@ -9,10 +9,17 @@
     }
   ],
   "issued": {
-    "date-parts": [[2025, 12, 30]]
+    "date-parts": [
+      [
+        2025,
+        12,
+        30
+      ]
+    ]
   },
   "DOI": "10.5281/zenodo.18064581",
   "URL": "https://mlsmawfield.com/tep/slr/",
   "publisher": "Preprint",
-  "note": "Preprint, Version 0.5 (Mombasa), DOI: 10.5281/zenodo.18064581"
+  "note": "Preprint, Version 0.6 (Mombasa), DOI: 10.5281/zenodo.18064581",
+  "abstract": "An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains \"clock-artifact\" explanations by employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS), while probing, under conformal null-cone invariance, the same clock-amplitude channel through its ground-station leg. Frequency-domain analysis is carried out under sampling-matched control. On 5-minute resampled station series the TEP-band (10–500 μHz) mean PSD exceeds the broadband floor (f>1 mHz) by 14.12 ×  (95% CI: 13.55–14.67; N=46 stations); however, with the ILRS observing duty cycle below one percent, the diagnostic is dominated by the resampling kernel rather than by the data. Surrogate processes generated on each station's actual observing grid and passed through the identical resample–interpolate–concatenate pipeline show that white noise alone reproduces the measured ratio (sampling-matched null 13.97 vs observed 14.12; two of 46 stations above p Inter-station pass-correlation analysis under 15-minute contemporaneous binning yields a nominally significant Fisher-combined result (χ²=16.45, 4 d.o.f.; p=0.0025) that concentrates in three same-satellite LAGEOS-2 pairs sharing an orbit arc — orbit-model error enters both stations' residuals as a common mode, and is the controlling confound for any same-satellite pairing. A dedicated control therefore forms the contemporaneous pairings across different satellites in the same window — two stations ranging different targets share no orbit solution, so the channel is closed by construction while the baseline structure is preserved. At the 5,000–7,500 km bin — pre-specified as the first bin entirely beyond the simulated λ_T turnover under either corpus scale (4,201 km GPS-PPP; 1,862 km MGEX) — cross-satellite pairs return r̄=-0.23 over 32 baselines (epoch-preserving label-swap null p=0.046 one-sided; circular-shift synchrony null p ≤ 5 × 10⁻⁴; station-clustered bootstrap 95% CI [-0.43,-0.06]) — though the feature appears in only one of nine threshold/bin-width configurations, falls to r̄=-0.054 when restricted to pairs sharing five or more bins, and alternates sign year to year, so it is reported as a tail event rather than a detection. A daily-aggregation statistic (N=190 pairs, p_FWER=0.020) reverses sign between the two LAGEOS orbit solutions and is retained as exploratory only. Taken together — a spectral bound, an amplitude budget sitting seven or more orders of magnitude above the 10⁻¹⁵–10⁻¹⁸ fractional stabilities of GNSS clock comparisons, and a nominal turnover-bin candidate short of detection strength — the absence of detectable in-band structure in a constellation carrying no onboard clocks and no microwave propagation chain constrains artifact explanations specific to satellite atomic clocks, onboard steering electronics, and ionospheric modeling at microwave frequencies, and demonstrates SLR as an instrumentally and systematically independent measurement of the same conformal clock-amplitude channel as GNSS."
 }

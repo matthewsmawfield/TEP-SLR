@@ -38,13 +38,13 @@ class HTMLToMarkdownConverter {
         html = html.replace(/<div[^>]*class=["'][^"']*manuscript-section[^"']*["'][^>]*data-section=["']([^"']*)["'][^>]*>/gi, '\n\n## $1\n\n');
         
         // Convert headers
-        html = html.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '\n# $1\n\n');
-        html = html.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '\n## $1\n\n');
-        html = html.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '\n### $1\n\n');
-        html = html.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '\n#### $1\n\n');
+        html = html.replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (match, level, content) => {
+            const heading = content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+            return `\n${'#'.repeat(Number(level))} ${heading}\n\n`;
+        });
         
         // Convert paragraphs
-        html = html.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
+        html = html.replace(/<p\b[^>]*>(.*?)<\/p>/gi, '$1\n\n');
         
         // Convert strong/bold
         html = html.replace(/<(strong|b)[^>]*>(.*?)<\/(strong|b)>/gi, '**$2**');
@@ -93,7 +93,8 @@ class HTMLToMarkdownConverter {
         html = html.replace(/<blockquote[^>]*>(.*?)<\/blockquote>/gi, '\n> $1\n\n');
         
         // Convert code blocks
-        html = html.replace(/<pre[^>]*><code[^>]*>(.*?)<\/code><\/pre>/gi, '\n```\n$1\n```\n\n');
+        html = html.replace(/<pre[^>]*>\s*<code[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/gi, '\n```\n$1\n```\n\n');
+        html = html.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi, '\n```\n$1\n```\n\n');
         html = html.replace(/<code[^>]*>(.*?)<\/code>/gi, '`$1`');
         
         // Convert line breaks
@@ -140,15 +141,15 @@ class HTMLToMarkdownConverter {
         
         // Restore MathJax expressions
         mathExpressions.forEach((expr, index) => {
-            html = html.replace(`__MATH_EXPRESSION_${index}__`, expr);
+            html = html.replace(`__MATH_EXPRESSION_${index}__`, () => expr);
         });
 
         // Restore sub/sup tags
         subTags.forEach((inner, index) => {
-            html = html.replace(`__SUB_${index}__`, `<sub>${inner}</sub>`);
+            html = html.replace(`__SUB_${index}__`, () => `<sub>${inner}</sub>`);
         });
         supTags.forEach((inner, index) => {
-            html = html.replace(`__SUP_${index}__`, `<sup>${inner}</sup>`);
+            html = html.replace(`__SUP_${index}__`, () => `<sup>${inner}</sup>`);
         });
         
         // Decode HTML entities
@@ -218,7 +219,7 @@ class HTMLToMarkdownConverter {
                         });
                     processed = processed.replace(/<[^>]+>/g, '').trim();
                     subSupPlaceholders.forEach((tag, i) => {
-                        processed = processed.replace(`__SUBSUP_${i}__`, tag);
+                        processed = processed.replace(`__SUBSUP_${i}__`, () => tag);
                     });
                     return processed;
                 });
@@ -256,7 +257,7 @@ class HTMLToMarkdownConverter {
         const version = versionMatch ? versionMatch[1]
             .replace(/<[^>]+>/g, '')
             .replace(/^Version:\s*/i, '')
-            .trim() : 'v0.2 (Mombasa)';
+            .trim() : 'v0.6 (Mombasa)';
         
         const dateMatch = html.match(/<div[^>]*class=["'][^"']*date[^"']*["'][^>]*>(.*?)<\/div>/i);
         const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : 'First published: 30 December 2025';
@@ -320,9 +321,9 @@ class HTMLToMarkdownConverter {
             // Build the complete markdown document
             const markdown = this.buildMarkdownDocument(metadata, markdownContent);
             
-            // Generate versioned filename: 8-TEP-SLR-v0.2-Mombasa.md
+            // Generate versioned filename: 8-TEP-SLR-v0.6-Mombasa.md
             const versionMatch = metadata.version.match(/v([\d.]+)\s*\(([^)]+)\)/);
-            const versionSlug = versionMatch ? `v${versionMatch[1]}-${versionMatch[2]}` : 'v0.2-Mombasa';
+            const versionSlug = versionMatch ? `v${versionMatch[1]}-${versionMatch[2]}` : 'v0.6-Mombasa';
             const outputFileName = `8-TEP-SLR-${versionSlug}.md`;
             const outputPath = path.join(__dirname, '..', outputFileName);
             fs.writeFileSync(outputPath, markdown, 'utf8');
@@ -368,8 +369,8 @@ class HTMLToMarkdownConverter {
         
         return `# ${cleanTitle}
 **${metadata.author}**
-${metadata.version}
-${metadata.date}
+**Version:** ${metadata.version}
+**Date:** ${metadata.date}
 DOI: ${metadata.doi}
 
 ---

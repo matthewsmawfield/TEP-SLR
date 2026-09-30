@@ -1,7 +1,7 @@
 # Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging
 **Matthew Lukin Smawfield**
-v0.5 (Mombasa)
-First published: 30 December 2025 · Last updated: 27 September 2026
+**Version:** v0.6 (Mombasa)
+**Date:** First published: 30 December 2025 · Last updated: 30 September 2026
 DOI: 10.5281/zenodo.18064581
 
 ---
@@ -160,7 +160,8 @@ set by the scale of the scalar field's continuous spatial profile
 **GNSS Evidence (Smawfield 2025b,c,d; Papers 1-3):**
 Supported by distance-structured correlations ($\lambda_T = 4,201 \pm
 1,967$ km), orbital velocity coupling ($r = -0.888$, 5.1$\sigma$),
-and CMB frame alignment (18.2° from dipole).
+and an annual-phase direction near Earth's aphelion velocity tangent;
+the directed CMB-apex template is anti-phase rather than a detected rest frame.
 
 #### Disformal Sector (Synchronization Holonomy)
 
@@ -532,8 +533,7 @@ across bins.
 
 **Key Finding:**
 
-Inter-Station Pass Correlations: Network Sparsity and Statistical
-Power
+#### Inter-Station Pass Correlations: Network Sparsity and Statistical Power
 
 Distance-binned mean pass-correlation estimates fluctuate with large
 variance under a strict 5-minute contemporaneous binning. When the
@@ -1215,7 +1215,7 @@ in GNSS ($\lambda_T = 4,201 \pm 1,967$ km GPS-PPP; $1,862$ km MGEX,
 cluster-robust $\sigma = \pm 155$ km — the fitted scale is
 product-dependent) is consistent with the
 characteristic scale of the scalar field's continuous spatial profile
-(Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$, the formal scaling constant of the $R_T(M)$ law rather than a literal interior density — no terrestrial material reaches that value). In dense environments, suppression of
+(Temporal Topology), with saturation radius $R_T = (3M/4\pi\rho_T)^{1/3} \approx 4{,}150$ km for Earth ($\rho_T \approx 20$ g/cm$^3$, the formal scaling constant of the $R_T(M)$ law rather than a literal interior density — no terrestrial material reaches that value). Where the ambient landscape is steep, suppression of
 Temporal Shear (vanishing field gradient $\nabla\phi \to 0$) attenuates
 the conformal coupling while leaving the field light cosmologically,
 reconciling local null tests with the observed correlation structure.
@@ -1281,25 +1281,25 @@ alone.
 
 ### TEP Research Program
 
-Smawfield, M. L. (2025a). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.14 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
+Smawfield, M. L. (2025a). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.15 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
 
 Smawfield, M. L. (2025b). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.27 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
 
 Smawfield, M. L. (2025c). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.20 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
 
-Smawfield, M. L. (2025d). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.6 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
+Smawfield, M. L. (2025d). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.8 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
 
 Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.8 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.6 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
+Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.7 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
 
 Smawfield, M. L. (2025). *Temporal Topology Saturation Scale: Cross-Scale Consistency of ρ_T*. Preprint v0.8 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
 
 Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.4 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.5 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
+Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.6 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
 
-Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.7 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
+Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.8 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
 
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.9 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
 
@@ -1309,7 +1309,7 @@ Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution t
 
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.6 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
 
-Smawfield, M. L. (2026). *Global Time Echoes: MGEX Multi-GNSS Clock Replication, 2025–2026*. Preprint v0.2 (Suva). Zenodo. DOI: [10.5281/zenodo.20572726](https://doi.org/10.5281/zenodo.20572726) (Paper 14)
+Smawfield, M. L. (2026). *Global Time Echoes: MGEX Multi-GNSS Clock Replication, 2025–2026*. Preprint v0.3 (Suva). Zenodo. DOI: [10.5281/zenodo.20572726](https://doi.org/10.5281/zenodo.20572726) (Paper 14)
 
 ### SLR & Geodesy References
 
@@ -1355,6 +1355,7 @@ ground stations to search for conformal-sector TEP signatures.
 
 #### Repository Structure
 
+```
 TEP-SLR/
 ├── data/
 │   └── slr/                    # ILRS NPT CRD range residual files
@@ -1383,6 +1384,7 @@ TEP-SLR/
 │       └── plot_style.py
 ├── site/                      # Manuscript website source
 └── requirements.txt           # Python dependencies
+```
 
 ### Data Provenance
 
@@ -1394,6 +1396,8 @@ TEP-SLR/
 ### Reproduction Instructions
 
 #### Quick Start (Full Reproduction)
+
+```
 
 # 1. Clone repository
 
@@ -1413,6 +1417,7 @@ bash reproduce_analysis.sh
 cd site
 npm install
 npm run build
+```
 
 #### System Requirements
 

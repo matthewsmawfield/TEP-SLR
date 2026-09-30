@@ -66,7 +66,7 @@ async function buildStaticSite() {
             // Replace the loading div and manuscript-content div with the built content
             .replace(
                 /<div id="loading".*?<\/div>\s*<div id="manuscript-content".*?<\/div>/s,
-                `<div id="manuscript-content">${componentsHtml}</div>`
+                () => `<div id="manuscript-content">${componentsHtml}</div>`
             )
             // Remove the component loading script (keep other scripts)
             .replace(
@@ -194,7 +194,7 @@ async function buildStaticSite() {
         
         console.log('✅ Static site built successfully!');
         console.log(`📁 Output: ${outputPath}`);
-        console.log('📄 Markdown: 8-TEP-SLR-v0.5-Mombasa.md (in root)');
+        console.log('📄 Markdown: 8-TEP-SLR-v0.6-Mombasa.md (in root)');
         console.log(`📊 Generated ${manifest.sections.length} sections`);
         console.log('🚀 Ready for deployment');
         
@@ -215,6 +215,7 @@ function copyRecursiveSync(src, dest) {
             fs.mkdirSync(dest, { recursive: true });
         }
         fs.readdirSync(src).forEach(childItemName => {
+            if (childItemName === '.DS_Store') return;
             copyRecursiveSync(
                 path.join(src, childItemName),
                 path.join(dest, childItemName)

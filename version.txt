@@ -1,3 +1,8 @@
+v0.6 (Mombasa) — 30 September 2026 — GNSS cross-reference reinterpreted: annual-phase direction, not a CMB rest-frame alignment
+
+- Section 1 GNSS-evidence summary corrected: the clock channel's recovered direction is an annual-phase readout near Earth's aphelion-velocity tangent; the directed CMB-apex template is anti-phase rather than a detected rest frame (Papers 2 v0.20 / 3 v0.8 reinterpretation), replacing the earlier "CMB frame alignment (18.2° from dipole)" statement
+- TEP-series citations updated (Papers 0, 3, 5, 14) and self-citation raised to v0.6
+
 v0.5 (Mombasa) — 27 September 2026 — Sampling-matched null audit; spectral channel bounded; spatial feature downgraded to tail event
 
 - Corrected the v0.4 spectral claim: the 35/46-station unmasked AR(1) result and the 14.12× TEP-band concentration are reproduced by white noise passed through the identical sparse-sampling kernel (Step 2.8, sampling-matched null 13.97); the spectral channel is now carried as a bound, not a detection

@@ -164,4 +164,4 @@ Builds the static publication site and generates the markdown manuscript.
 - `results/outputs/` — JSON analysis outputs
 - `results/figures/` — PNG figures
 - `site/dist/` — Built static site
-- `8-TEP-SLR-v0.5-Mombasa.md` — Generated markdown manuscript
+- `8-TEP-SLR-v0.6-Mombasa.md` — Generated markdown manuscript

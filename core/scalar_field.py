@@ -19,7 +19,7 @@ convention).  The scalar sector is:
     (quartic approximation u_min ~ (rho/(lambda M_Pl^4))^{1/3}).
   * Kinetic: P(X, phi) = X - V + X|X|/Lambda^4, Lambda^4 = M_Pl^2 H0^2,
     giving the screening operators
-        S_Sigma(g) = [1 + (g/g_t)^2]^-1 ,  g_t = c H0 / (2 beta_A^2)
+        S_Sigma(g) = [1 + (g/g_t)^2]^-1 ,  g_t = c H0 / (2 |beta_A|)
         S_eff(s)   = [1 + (R_s/s)^4]^-1 ,  R_s = sqrt(G M / g_t)
     and the flux-conserving profile y(1 + y^2 (g/g_t)^2) = 1.
   * Amplitude sector: S_A = min[1, (rho_bar/rho_T)^{1/3}].
@@ -126,7 +126,7 @@ def equilibrium_u(rho_g_cm3, lam=None):
     u_min = (rho/(lam M_Pl^4))^{1/3}).
     """
     if lam is None:
-        lam = tep_const.LAMBDA_QUARTIC_REF
+        lam = tep_const.LAMBDA_QUARTIC_CASSINI
     rho = np.asarray(rho_g_cm3, dtype=float)
     rho_gev4 = rho * tep_const.G_CM3_TO_GEV4
     rhs = rho_gev4 / (lam * tep_const.M_PL_REDUCED_GEV**4)
@@ -149,7 +149,7 @@ def m_eff2_quartic(u, rho_g_cm3, lam=None):
     with rho converted to GeV^4.
     """
     if lam is None:
-        lam = tep_const.LAMBDA_QUARTIC_REF
+        lam = tep_const.LAMBDA_QUARTIC_CASSINI
     u = np.asarray(u, dtype=float)
     rho_gev4 = np.asarray(rho_g_cm3, dtype=float) * tep_const.G_CM3_TO_GEV4
     Mpl = tep_const.M_PL_REDUCED_GEV
@@ -184,7 +184,7 @@ def master_potential(u, lam=None, u_s=None, V0=None):
     screening densities.
     """
     if lam is None:
-        lam = tep_const.LAMBDA_QUARTIC_REF
+        lam = tep_const.LAMBDA_QUARTIC_CASSINI
     if u_s is None:
         u_s = tep_const.U_S_TRANSITION
     if V0 is None:
