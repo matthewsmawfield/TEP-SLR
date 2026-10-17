@@ -1,14 +1,14 @@
 # Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging
 **Matthew Lukin Smawfield**
-**Version:** v0.6 (Mombasa)
-**Date:** First published: 30 December 2025 · Last updated: 30 September 2026
+**Version:** v0.7 (Mombasa)
+**Date:** First published: 30 December 2025 · Last updated: 17 October 2026
 DOI: 10.5281/zenodo.18064581
 
 ---
 
 ## Abstract
 
-An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS), while probing, under conformal null-cone invariance, the same clock-amplitude channel through its ground-station leg.
+An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). By employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS)—this analysis probes the terrestrial clock-amplitude channel through its ground-station event timer and bounded slant-path propagation.
 
 Frequency-domain analysis is carried out under sampling-matched
 control. On 5-minute resampled station series the TEP-band (10–500
@@ -44,7 +44,7 @@ pressure effect 12% of the residual RMS). A
 range-dependent lag-1 coherence diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
 accumulate greater decoherence than shorter paths
 ($\lesssim 6{,}500$ km), with the long-minus-short contrast
-$\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because light propagation is null-invariant in the conformal sector, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control, rather than a TEP signature.
+$\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because isotropic conformal rescaling preserves null cones and the unstretched-space radial gradient is kinetically screened at $y_{\rm tb}\sim 10^{-7}$ at LAGEOS altitude, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control.
 
 Inter-station pass-correlation analysis under 15-minute contemporaneous
 binning yields a nominally significant Fisher-combined result
@@ -62,7 +62,10 @@ GPS-PPP; 1,862 km MGEX) — cross-satellite pairs return
 $\bar{r}=-0.23$ over 32 baselines (epoch-preserving label-swap null
 $p=0.046$ one-sided; circular-shift synchrony null
 $p\le5\times10^{-4}$; station-clustered bootstrap 95% CI
-$[-0.43,-0.06]$) — though the feature appears in only one of nine
+$[-0.43,-0.06]$), and it persists essentially unchanged
+($\bar{r}=-0.22$, $n=30$) when every model range is recomputed under
+an independent analysis centre's orbit product (ESA/ESOC) — though the
+feature appears in only one of nine
 threshold/bin-width configurations, falls to $\bar{r}=-0.054$ when
 restricted to pairs sharing five or more bins, and alternates sign year
 to year, so it is reported as a tail event rather than a detection.
@@ -73,13 +76,12 @@ as exploratory only.
 Taken together — a spectral bound, an amplitude budget sitting
 seven or more orders of magnitude above the $10^{-15}$–$10^{-18}$
 fractional stabilities of GNSS clock comparisons, and a nominal
-turnover-bin candidate short of detection strength — the absence of
-detectable in-band structure in a constellation carrying no onboard
-clocks and no microwave propagation chain constrains artifact
-explanations specific to satellite atomic clocks, onboard steering
-electronics, and ionospheric modeling at microwave frequencies, and
-demonstrates SLR as an instrumentally and systematically independent
-measurement of the same conformal clock-amplitude channel as GNSS.
+turnover-bin candidate short of detection strength — this analysis
+establishes an instrumentally independent optical bound on conformal
+timing excursions in a constellation carrying no onboard clocks and
+no microwave propagation chain, while remaining insufficiently
+sensitive to discriminate the reported GNSS-scale signal from
+GNSS-specific instrumental effects.
 
 ## 1. Introduction
 
@@ -279,13 +281,13 @@ disformal coupling.
 
 ### 2.1 The Target: LAGEOS
 
-The Laser Geodynamics Satellites (LAGEOS-1 and LAGEOS-2) represent excellent test masses for this investigation. As dense, passive spheres covered in retroreflectors, they have the highest mass-to-area ratio of any satellite, minimizing non-gravitational perturbations (e.g., drag, radiation pressure). They carry no active electronics and no clocks in the space segment. The "time" measurement is performed entirely by the ground segment's event timer — an active clock in the ground chain — which reads the round-trip flight time of a photon against its own reference. Because conformal rescaling preserves null cones, the two-way optical path carries no conformal propagation content: the measured interval is the event timer's proper-time reading of a conformally invariant flight time, so the conformal signal enters through the ground timer's rate. SLR thereby isolates the ground-station leg of the clock-amplitude channel — the same conformal channel probed by GNSS — while removing onboard-clock, steering-electronics, microwave-propagation, and ionospheric-modeling systematics by construction. What is orthogonal is the instrument, calibration chain, and systematic-error class, not the physical channel; the genuinely channel-orthogonal probe, the satellite's orbital response to Temporal Shear along its g̃ geodesic, is screened deep in the Earth environment under the corpus's terrestrial evaluation (Section 4) and is not what the residual spectra analyzed here measure.
+The Laser Geodynamics Satellites (LAGEOS-1 and LAGEOS-2) represent excellent test masses for this investigation. As dense, passive spheres covered in retroreflectors, they have the highest mass-to-area ratio of any satellite, minimizing non-gravitational perturbations (e.g., drag, radiation pressure). They carry no active electronics and no clocks in the space segment. The "time" measurement is performed by the ground segment's event timer — an active clock in the ground chain — which reads the round-trip flight time of a photon against its own reference. Under isotropic conformal rescaling $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}$, null cones are preserved identically so the two-way optical path carries no conformal propagation content; under the unstretched-space temporal metric $\tilde g_{\mu\nu}=-A_{\rm loc}^2(u_{\rm grav}(\mathbf x))U_\mu U_\nu+A_{\rm sp}^2(u_{\rm drift}(t,\mathbf x))\Pi_{\mu\nu}$ ($U_\mu\equiv-\nabla_\mu\bar\phi/\sqrt{2\bar X}$, rescaling the $(3+1)$ ADM spacetime lapse $N_{\rm TEP}=A(\phi)N_{\rm GR}$ at fixed spatial 3-metric $\gamma_{ij}$), the static terrestrial radial gradient across the LAGEOS altitude ($r\approx 12{,}270$ km) is kinetically screened by $y_{\rm tb}(g_\oplus)\sim 10^{-7}$ on the selected two-branch action (Paper 0, §7; Paper 15, Step 045), so the ground timer's rate remains the dominant terrestrial observable while time-dependent slant-path fluctuations are subdominant to tropospheric airmass delays. SLR thereby isolates the ground-station leg of the clock-amplitude channel — the same terrestrial channel probed by GNSS — while removing onboard-clock, steering-electronics, microwave-propagation, and ionospheric-modeling systematics by construction. What is orthogonal is the instrument, calibration chain, and systematic-error class, not the physical channel; the satellite's orbital response to Temporal Shear along its $\tilde g$ geodesic is screened deep in the Earth environment under the corpus's terrestrial evaluation (Section 4) and is not what the residual spectra analyzed here measure.
 
 ### 2.2 Dataset & Processing
 
 The complete International Laser Ranging Service (ILRS) dataset for passive geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES) was analyzed over an 11-year period (Mar 2015 – Dec 2025), comprising 4,647,088 Normal Point observations from 46 global stations. Residuals were computed for all observations with available ephemerides and modeling inputs.
 
-Residuals were computed relative to high-precision SP3 orbits (ASI/GFZ). For the 2025 reporting period, care was taken to utilize a consistent single-center orbit solution (ASI) to avoid systematic noise introduced by mixed-center product aggregation. The reduction strategy proceeded in two stages:
+Residuals were computed relative to the ILRS combined SP3 orbit products (ILRSA/ILRSB, preferred where available over single-analysis-center files). A consistent orbit-product family was retained throughout to avoid systematic noise introduced by mixed-center product aggregation. The reduction strategy proceeded in two stages:
 
 - **Geodetic Validation:** A broad 5-meter outlier rejection window retained $\approx 1.83$ million "valid" geodetic observations. The initial RMS ($\approx 2.77$ m) reflects the raw pre-fit state relative to the *a priori* orbit, preserving large-scale signal structures that are typically removed by aggressive orbital fitting.
 
@@ -293,7 +295,7 @@ Residuals were computed relative to high-precision SP3 orbits (ASI/GFZ). For the
 
 - **Corrections:** Standard Marini-Murray troposphere model, Shapiro delay, and Sagnac corrections were applied. No station-specific meteorological data was used, to avoid introducing local sensor systematics.
 
-- **Parameter Estimation Strategy:** This analysis avoids the standard practice of estimating frequent empirical accelerations or "geographically correlated" parameters, which are often used in precise orbit determination (POD) to whiten residuals. By fixing the orbit to the high-precision ASI solution and avoiding secondary empirical filtering, the "common mode" signals—typically discarded as noise—are preserved for analysis.
+- **Parameter Estimation Strategy:** This analysis avoids the standard practice of estimating frequent empirical accelerations or "geographically correlated" parameters, which are often used in precise orbit determination (POD) to whiten residuals. By fixing the orbit to the ILRS combined solution and avoiding secondary empirical filtering, the "common mode" signals—typically discarded as noise—are preserved for analysis.
 
 ### 2.3 Inter-Station Metric: Contemporaneous Pass-Bin & Daily Aggregation
 
@@ -309,9 +311,12 @@ In addition to the pass-bin spatial test, the residuals were examined in the fre
 
 ## 3. Conformal Sector Assessment
 
-The analysis of the 11-year LAGEOS dataset reveals four distinct
-signatures consistent with TEP's conformal sector phenomenology in the
-optical domain, challenging clock-artifact explanations.
+Four conformal-sector diagnostics are evaluated across the 11-year LAGEOS
+dataset below: characterizing the residual noise floor (§3.1), monitoring
+path-length-dependent tropospheric decoherence as a propagation systematic
+control (§3.2), establishing a sampling-matched spectral bound on in-band
+ground-timer excursions (§3.3), and testing confound-controlled
+cross-satellite inter-station correlations (§3.4).
 
 ### 3.1 Data Characterization: The Noise Floor
 
@@ -356,7 +361,7 @@ of light propagation in the conformal sector, means the path-length
 diagnostic operates as a monitor for airmass-correlated systematics
 (e.g., unmodeled tropospheric delay) rather than a TEP signature.
 
-Because TEP's conformal sector preserves null cones, light propagation is null-invariant and path length plays no physical role in the conformal signature. The observed path dependence — where lower elevations (longer paths) decorrelate more — is the expected signature of ordinary tropospheric delay mismodeling, as the Marini–Murray standard-atmosphere correction leaves synoptic pressure and wet-path fluctuations uncorrected, which grow with airmass. The path-length diagnostic is therefore retained as a systematic check awaiting high-resolution reanalysis controls (e.g. ERA5). The resampled-series spectral diagnostic (Section 3.3) returns an apparent
+Under isotropic conformal rescaling, light propagation is null-invariant, while under the unstretched-space temporal metric the static terrestrial radial gradient at LAGEOS altitude is kinetically screened ($y_{\rm tb}\sim 10^{-7}$). The observed path dependence — where lower elevations (longer paths) decorrelate more — is dominated by ordinary tropospheric delay mismodeling, as the Marini–Murray standard-atmosphere correction leaves synoptic pressure and wet-path fluctuations uncorrected, which grow with airmass. The path-length diagnostic is therefore retained as a systematic check awaiting high-resolution reanalysis controls (e.g. ERA5). The resampled-series spectral diagnostic (Section 3.3) returns an apparent
 14.12× TEP-band enhancement that persists across rejection
 thresholds (spanning 11.9×–14.9×, a ~25% variation, over the
 0.3–1.0 m range); its interpretation is fixed by the sampling-matched
@@ -607,6 +612,19 @@ enters co-visible ranges positively and therefore masks rather
 than produces the anticorrelation. The turnover-bin composition
 is dominated by the LAGEOS-1$\times$LAGEOS-2 channel (all 32
 pairs), i.e. two independent orbit arcs, not one shared solution.
+A centre-level variant of the same confound — a shared
+orbit-model or Earth-gravity-model imprint entering both
+LAGEOS solutions through the common analysis-centre product —
+is bounded directly (Step 2.9): recomputing every model range
+under an independent centre's SP3 solution (ESA/ESOC) on the
+identical filtered epoch set returns $\bar{r}=-0.217$ over
+$n=30$ LAGEOS-1$\times$LAGEOS-2 pairs at the same bin
+(circular-shift null $p\le5\times10^{-4}$), matching the
+ILRSB reference value $\bar{r}=-0.228$. The residual caveat is
+that both products are determined against largely the same
+geodesy data, so errors common to geodetic modelling itself —
+rather than to a particular centre's solution — are not
+excluded by this swap alone.
 Because the sign inversion is generic to monopole absorption of
 any spatially correlated common-mode error, the discriminating
 content is the turnover's location rather than the sign itself:
@@ -729,7 +747,9 @@ The multi-messenger constraint from GW170817 requires $|c_\gamma - c_g|/c \lesss
 
 ### 4.2 Estimator-Dependent Sign Structure: The "Anti-Echo" Mechanism
 
-TEP predicts *estimator dependence* for the conformal common-mode propagation delay: the same spatially correlated Temporal-Topology field maps differently into post-fit residuals depending on whether the estimator absorbs global modes into per-station clock states (kinematic GNSS positioning) or into a shared orbital solution (dynamic SLR orbit determination). No disformal coupling is invoked: the delay field is the $A(\phi)$ common mode of the two-way transit—physically, the ground event-timer rate reading a conformally invariant flight time, which enters the residual stream indistinguishably from a propagation delay—and the sign structure is a property of the estimator's absorption geometry rather than of a distinct sector.
+TEP predicts *estimator dependence* for the conformal clock/timer contribution to the range residual: the same spatially correlated Temporal-Topology field maps differently into post-fit residuals depending on whether the estimator absorbs global modes into per-station clock states (kinematic GNSS positioning) or into a shared orbital solution (dynamic SLR orbit determination). No disformal coupling is invoked: the proposed clock contribution is the $A(\phi)$ endpoint-timer response to the two-way transit—physically, the ground event-timer rate reading a conformally invariant flight time, which enters the residual stream indistinguishably from a propagation delay—and the sign structure is a property of the estimator's absorption geometry rather than of a distinct sector.
+
+Theorem 2 of Paper 0 gives an exact direct conformal propagation null at fixed Einstein-frame metric: the factor $A^2$ cancels from the photon null condition. A station event timer can still accumulate a different proper interval, $\Delta\tau_R=\int A(\phi_R)\,d\tau_{g,R}$, and the range estimator uses $c\Delta\tau_R/2$. The anti-echo simulation below injects a prescribed correlated range-residual field to test estimator absorption; its 100 mm mean and 50 mm fluctuation are illustrative inputs, not predictions of the selected kinetic action. A physical amplitude calculation must supply the station-field response and the same clock calibration used by the range reduction.
 
 The mechanism operates as follows:
 
@@ -750,8 +770,8 @@ Monte Carlo simulations demonstrate the estimator-dependent sign structure: when
 ![Anti-Echo Simulation: Sign Inversion in Dynamic Orbit Fit Residuals](results/figures/sim_antiecho_proof.png)
 
 **Figure 4.1:** Monte Carlo simulation of the
-Anti-Echo mechanism. A spatially correlated conformal
-common-mode delay field
+Anti-Echo mechanism. A spatially correlated prescribed correlated
+range-residual field
 ($\lambda_T = 4{,}200$ km, 50 stations, 100 realizations) is
 processed through two estimators. The dynamic orbit fit absorbs
 the monopole component into the orbital scale, producing
@@ -770,7 +790,7 @@ Establishing the "Anti-Echo" at higher statistical power in SLR data requires:
 
 - **Cross-Estimator Comparison:** Parallel processing with kinematic (epoch-by-epoch) and dynamic (arc-fit) estimators to isolate the sign-flip signature.
 
-- **Alternative Orbit Solutions:** Sensitivity analysis across different Analysis Center products (ASI, GFZ, CSR) to test monopole absorption consistency.
+- **Alternative Orbit Solutions:** A cross-Analysis-Center sensitivity test has been performed (Step 2.9): recomputing all model ranges under ESA/ESOC's independent SP3 product leaves the turnover-bin anticorrelation essentially unchanged ($\bar{r}=-0.217$ vs $-0.228$ under the ILRS combination, $n=30$ pairs), bounding centre-specific orbit/EGM imprints. What remains open is a synthetic injection test of modelling errors common to all centres fitted to the same geodesy data.
 
 The confound-controlled pass-bin analysis of Section 3.4 recovers a nominally significant anticorrelation at the $\lambda_T$-adjacent scale (cross-satellite pairing, $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km; epoch-preserving label-swap null $p=0.046$, an excess over the $-0.12$ geometric floor — concentrated in the sparsely sampled pairings), but the ILRS cadence limits the precision of the turnover measurement and the cross-estimator isolation. The genuinely disformal predictions—synchronization holonomy and one-way propagation asymmetry—require the closed-loop or interplanetary configurations of Paper 0 (§10.A–D), beyond any current geodetic dataset. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.
 
@@ -823,7 +843,7 @@ $\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap CI:
 therefore ratio-based summaries are ill-conditioned. This contrast
 is threshold-sensitive (e.g.,
 $\Delta(\mathrm{low}-\mathrm{high})=-0.086$, 95% CI: −0.248 to 0.069
-at $|\Delta\rho|<1.0$ m). Because conformal rescaling preserves null cones, light propagation is null-invariant in this sector and path length cannot carry a physical TEP signal. Instead, the observed contrast — longer paths (lower elevations) decorrelating more — is the expected signature of unmodeled tropospheric wet-path and synoptic pressure delays that grow with airmass. The diagnostic is therefore carried as a systematic monitor awaiting high-resolution hourly reanalysis (e.g. ERA5) rather than as qualitative support for a Temporal-Topology response.
+at $|\Delta\rho|<1.0$ m). Because isotropic conformal rescaling preserves null cones and the unstretched-space radial gradient is kinetically screened at $y_{\rm tb}\sim 10^{-7}$ at LAGEOS altitude, the observed contrast — longer paths (lower elevations) decorrelating more — is dominated by unmodeled tropospheric wet-path and synoptic pressure delays that grow with airmass. The diagnostic is therefore carried as a systematic monitor awaiting high-resolution hourly reanalysis (e.g. ERA5).
 
 #### 3. Scale Consistency (The Characteristic Scale)
 
@@ -1086,7 +1106,14 @@ channel: $\bar{r}=-0.228$ at the turnover bin across
 32 pairs built from independent orbit solutions, with the
 orbit-error common mode excluded by construction — nominal at
 $p=0.046$ under the epoch-preserving null and concentrated in
-the sparsely sampled pairings. The TEP framework provides a candidate physical mechanism for these
+the sparsely sampled pairings. The analysis-centre level of the
+same confound is bounded by a full orbit-product swap
+(Step 2.9): under ESA/ESOC's independent SP3 solution the
+turnover-bin anticorrelation persists at $\bar{r}=-0.217$
+($n=30$; circular-shift null $p\le5\times10^{-4}$), so a
+centre-specific orbit- or gravity-model imprint is excluded,
+while errors common to all products fitted to the same geodesy
+data remain open to a synthetic-injection control. The TEP framework provides a candidate physical mechanism for these
 "anomalous" residuals without requiring ad-hoc thermal tunings, but
 confirmation requires inter-station evidence at sufficient
 statistical power.
@@ -1145,8 +1172,13 @@ either corpus scale. Confirming the
 mechanism empirically requires: (1) denser overlap epochs
 enabling synchronous multi-station observations, (2) parallel
 processing with kinematic and dynamic estimators to isolate the
-sign-flip signature, and (3) cross-Analysis-Center orbit comparisons
-(ASI vs. GFZ vs. CSR) to test monopole absorption consistency. These
+sign-flip signature, and (3) synthetic injection of a
+geopotential-model error common to all analysis centres, since
+the cross-centre orbit-product swap has already been performed
+(Step 2.9: the turnover-bin anticorrelation persists at
+$\bar{r}=-0.217$ under ESA/ESOC orbits vs $-0.228$ under the
+ILRS combination) and only the shared-geodesy-data floor remains
+untested. These
 requirements exceed current ILRS operations and represent a
 roadmap for future targeted SLR campaigns.
 
@@ -1237,7 +1269,11 @@ station-clustered bootstrap 95% CI
 $[-0.43,-0.06]$), with all other bins null and the matched
 same-satellite pairs diluted to $-0.09$ as expected when the
 orbit-error common mode enters positively and is removed
-(Step 2.7). A daily-aggregation analysis ($N=190$ pairs) nominally
+(Step 2.7). The anticorrelation is also stable under a full
+orbit-product swap to an independent analysis centre
+(ESA/ESOC; Step 2.9: $\bar{r}=-0.217$, $n=30$), bounding
+centre-specific orbit- and gravity-model imprints. A
+daily-aggregation analysis ($N=190$ pairs) nominally
 reaches $p_{\mathrm{FWER}}=0.020$, but its driving bin reverses sign
 between the two LAGEOS orbit solutions and is retained as
 exploratory. The confound-controlled inter-station anticorrelation is
@@ -1281,35 +1317,35 @@ alone.
 
 ### TEP Research Program
 
-Smawfield, M. L. (2025a). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.15 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
+Smawfield, M. L. (2025a). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.16 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
 
-Smawfield, M. L. (2025b). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.27 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
+Smawfield, M. L. (2025b). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.28 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
 
-Smawfield, M. L. (2025c). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.20 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
+Smawfield, M. L. (2025c). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.21 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
 
-Smawfield, M. L. (2025d). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.8 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
+Smawfield, M. L. (2025d). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.9 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
 
-Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.8 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
+Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.9 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.7 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
+Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.8 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
 
-Smawfield, M. L. (2025). *Temporal Topology Saturation Scale: Cross-Scale Consistency of ρ_T*. Preprint v0.8 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
+Smawfield, M. L. (2025). *Temporal Topology Saturation Scale: Cross-Scale Consistency of ρ_T*. Preprint v0.9 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
 
-Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.4 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
+Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.5 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
 
-Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.6 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
+Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.7 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
 
-Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.8 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
+Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.9 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.9 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.10 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
 
-Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Preprint v0.10 (Kingston upon Hull). Zenodo. DOI: [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) (Paper 11)
+Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Preprint v0.12 (Kingston upon Hull). Zenodo. DOI: [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) (Paper 11)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.7 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.8 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
 
-Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.6 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
+Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.7 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
 
-Smawfield, M. L. (2026). *Global Time Echoes: MGEX Multi-GNSS Clock Replication, 2025–2026*. Preprint v0.3 (Suva). Zenodo. DOI: [10.5281/zenodo.20572726](https://doi.org/10.5281/zenodo.20572726) (Paper 14)
+Smawfield, M. L. (2026). *Global Time Echoes: MGEX Multi-GNSS Clock Replication, 2025–2026*. Preprint v0.4 (Suva). Zenodo. DOI: [10.5281/zenodo.20572726](https://doi.org/10.5281/zenodo.20572726) (Paper 14)
 
 ### SLR & Geodesy References
 
@@ -1376,6 +1412,7 @@ TEP-SLR/
 │   │   ├── step_2_6_nwm_spectral_control.py
 │   │   ├── step_2_7_orbit_commonmode_control.py
 │   │   ├── step_2_8_sampling_matched_nulls.py
+│   │   ├── step_2_9_egm_orbit_control.py
 │   │   ├── step_3_0_sim_antiecho.py
 │   │   └── step_5_2_vlbi_slr_scale_drift.py
 │   └── utils/                 # Shared utilities
@@ -1449,6 +1486,8 @@ The analysis consists of 10 deterministic steps:
 
 - **Step 2.8:** Sampling-matched coloured-noise nulls — continuous surrogate families (white, station-matched AR(1), flicker 1/f, power-law grid, matched power law, random walk) passed through the identical resample–interpolate–concatenate–Welch pipeline and evaluated at real epochs under a Lomb–Scargle estimator, plus the pairwise structure function and the δA→residual amplitude map (Section 3.3.1)
 
+- **Step 2.9:** Orbit-product common-mode control — model ranges recomputed under an independent analysis centre's SP3 solution (ESA/ESOC) on the identical filtered epoch set, then re-run through the Step 2.7 cross-satellite pairing (Section 3.4)
+
 - **Step 3.0:** Anti-echo simulation — estimator-mediated sign inversion of the conformal common-mode field under dynamic orbit determination, including the injected-scale anchor scan (λ_T = 1,000–8,000 km) that records the turnover crossing under both corpus scales (3,421 km at 1,862 km; 3,947 km at 4,201 km)
 
 - **Step 5.2:** VLBI–SLR scale-drift channel — anchoring-split bookkeeping and the local drift-participation bound (Section 5.2)
@@ -1462,6 +1501,8 @@ The analysis consists of 10 deterministic steps:
 - `results/outputs/step_2_7_orbit_commonmode_control.json` — Orbit-error / common-mode confound-control results
 
 - `results/outputs/step_2_8_sampling_matched_nulls.json` — Sampling-matched coloured-noise nulls, real-epoch Lomb–Scargle ratios, structure function, and the δA amplitude map
+
+- `results/outputs/step_2_9_egm_orbit_control.json` — Independent orbit-product (ESA/ESOC) control results
 
 - `results/outputs/step_5_2_vlbi_slr_scale_drift.json` — Scale-drift anchoring split and participation bound
 

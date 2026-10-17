@@ -3,7 +3,9 @@
   "n_stations": 50,
   "correlation_length_km": 4200,
   "size_km": 10000,
-  "field_model": "conformal Temporal-Topology common-mode delay field (no disformal term)",
+  "field_model": "prescribed correlated range-residual surrogate for estimator absorption (no derived propagation delay)",
+  "physical_amplitude_derived": false,
+  "direct_conformal_propagation_delay": false,
   "bin_centers_km": [
     263.1578947368421,
     789.4736842105262,

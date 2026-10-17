@@ -1,0 +1,85 @@
+{
+ "step": "step_2_9_egm_orbit_control",
+ "analysis_timestamp": "2026-10-01T01:29:59.785496+00:00",
+ "purpose": "Orbit-product common-mode control: recompute LAGEOS-1/2 model ranges under an independent analysis centre's SP3 solution and re-run the Step 2.7 cross-satellite pairing. Bounds the shared Earth-gravity-model/orbit-model imprint on the 5000-7500 km turnover-bin anticorrelation.",
+ "alt_center": "esa",
+ "reference_product": "ilrsb (ILRS combination, Step 2.1)",
+ "design_note": "Restricted to epochs that passed the Step 2.1 ilrsb |residual| < 0.5 m filter (same-observation controlled comparison), then re-filtered under the alternative orbit.",
+ "n_rows_lageos_filtered_reference": 199950,
+ "n_missing_weeks": {
+  "lageos1": 7,
+  "lageos2": 7
+ },
+ "orbit_shift_mm": {
+  "median": 0.008372589945793152,
+  "std": 13040652528.030209,
+  "p95_abs": 21.963087702169997,
+  "n": 199950
+ },
+ "n_pairs": 236,
+ "distance_binned": {
+  "0-500km": {
+   "n_pairs": 6,
+   "mean_correlation": 0.07803331523845639,
+   "median_correlation": 0.22150135423560038,
+   "std_correlation": 0.5508581047199448
+  },
+  "500-1000km": {
+   "n_pairs": 13,
+   "mean_correlation": -0.031093290935828268,
+   "median_correlation": -0.11834603552271215,
+   "std_correlation": 0.5223559370424611
+  },
+  "1000-2000km": {
+   "n_pairs": 10,
+   "mean_correlation": 0.08280920551819798,
+   "median_correlation": 0.02914376993184592,
+   "std_correlation": 0.490585379502499
+  },
+  "2000-3000km": {
+   "n_pairs": 3,
+   "mean_correlation": 0.20189290727198084,
+   "median_correlation": 0.6861062066357667,
+   "std_correlation": 1.0207402969876864
+  },
+  "3000-5000km": {
+   "n_pairs": 8,
+   "mean_correlation": 0.2958557464167497,
+   "median_correlation": 0.23088125850672914,
+   "std_correlation": 0.5470384807179193
+  },
+  "5000-7500km": {
+   "n_pairs": 30,
+   "mean_correlation": -0.21713085858163267,
+   "median_correlation": -0.2426240245442723,
+   "std_correlation": 0.48589272744501194
+  },
+  "7500-10000km": {
+   "n_pairs": 80,
+   "mean_correlation": -0.010756459000184664,
+   "median_correlation": 0.044661370801928536,
+   "std_correlation": 0.5873926321977101
+  },
+  "10000-15000km": {
+   "n_pairs": 63,
+   "mean_correlation": 0.0023569706893112508,
+   "median_correlation": 0.03237033359668596,
+   "std_correlation": 0.5750527452691354
+  }
+ },
+ "turnover_bin_channel_composition": {
+  "lageos1|lageos2": 30
+ },
+ "turnover_bin": {
+  "n_pairs": 30,
+  "mean_r": -0.21713085858163267,
+  "median_r": -0.2426240245442723,
+  "p_one_sided_le": 0.0004997501249375312,
+  "p_fwer_min_bin": 0.6286856571714143
+ },
+ "comparison_reference_step_2_7": {
+  "turnover_bin_mean_r": -0.2275062670570105,
+  "p_one_sided_le": 0.0004997501249375312,
+  "note": "ilrsb product, identical estimator"
+ }
+}

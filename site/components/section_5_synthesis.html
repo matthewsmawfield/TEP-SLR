@@ -42,14 +42,14 @@
         <h4>2. Range-Dependent Diagnostic: Systematics Monitor</h4>
         <p>
             The residuals exhibit a path-length dependent temporal contrast in a
-            gap-aware lag-1 diagnostic. In the primary $|\Delta\rho|<0.5$ m
+            gap-aware lag-1 diagnostic. In the primary $|\Delta\rho|&lt;0.5$ m
             analysis, the long-minus-short contrast is
             $\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap CI:
             −0.418 to 0.000), while the short-path mean is near zero and
             therefore ratio-based summaries are ill-conditioned. This contrast
             is threshold-sensitive (e.g.,
             $\Delta(\mathrm{low}-\mathrm{high})=-0.086$, 95% CI: −0.248 to 0.069
-            at $|\Delta\rho|<1.0$ m). Because conformal rescaling preserves null cones, light propagation is null-invariant in this sector and path length cannot carry a physical TEP signal. Instead, the observed contrast — longer paths (lower elevations) decorrelating more — is the expected signature of unmodeled tropospheric wet-path and synoptic pressure delays that grow with airmass. The diagnostic is therefore carried as a systematic monitor awaiting high-resolution hourly reanalysis (e.g. ERA5) rather than as qualitative support for a Temporal-Topology response.
+            at $|\Delta\rho|&lt;1.0$ m). Because isotropic conformal rescaling preserves null cones and the unstretched-space radial gradient is kinetically screened at $y_{\rm tb}\sim 10^{-7}$ at LAGEOS altitude, the observed contrast — longer paths (lower elevations) decorrelating more — is dominated by unmodeled tropospheric wet-path and synoptic pressure delays that grow with airmass. The diagnostic is therefore carried as a systematic monitor awaiting high-resolution hourly reanalysis (e.g. ERA5).
         </p>
 
         <h4>3. Scale Consistency (The Characteristic Scale)</h4>
@@ -331,7 +331,14 @@
             32 pairs built from independent orbit solutions, with the
             orbit-error common mode excluded by construction — nominal at
             $p=0.046$ under the epoch-preserving null and concentrated in
-            the sparsely sampled pairings. The TEP framework provides a candidate physical mechanism for these
+            the sparsely sampled pairings. The analysis-centre level of the
+            same confound is bounded by a full orbit-product swap
+            (Step 2.9): under ESA/ESOC's independent SP3 solution the
+            turnover-bin anticorrelation persists at $\bar{r}=-0.217$
+            ($n=30$; circular-shift null $p\le5\times10^{-4}$), so a
+            centre-specific orbit- or gravity-model imprint is excluded,
+            while errors common to all products fitted to the same geodesy
+            data remain open to a synthetic-injection control. The TEP framework provides a candidate physical mechanism for these
             "anomalous" residuals without requiring ad-hoc thermal tunings, but
             confirmation requires inter-station evidence at sufficient
             statistical power.
@@ -394,8 +401,13 @@
             mechanism empirically requires: (1) denser overlap epochs
             enabling synchronous multi-station observations, (2) parallel
             processing with kinematic and dynamic estimators to isolate the
-            sign-flip signature, and (3) cross-Analysis-Center orbit comparisons
-            (ASI vs. GFZ vs. CSR) to test monopole absorption consistency. These
+            sign-flip signature, and (3) synthetic injection of a
+            geopotential-model error common to all analysis centres, since
+            the cross-centre orbit-product swap has already been performed
+            (Step 2.9: the turnover-bin anticorrelation persists at
+            $\bar{r}=-0.217$ under ESA/ESOC orbits vs $-0.228$ under the
+            ILRS combination) and only the shared-geodesy-data floor remains
+            untested. These
             requirements exceed current ILRS operations and represent a
             roadmap for future targeted SLR campaigns.
         </p>

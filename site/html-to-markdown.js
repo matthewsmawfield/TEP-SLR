@@ -257,7 +257,7 @@ class HTMLToMarkdownConverter {
         const version = versionMatch ? versionMatch[1]
             .replace(/<[^>]+>/g, '')
             .replace(/^Version:\s*/i, '')
-            .trim() : 'v0.6 (Mombasa)';
+            .trim() : 'v0.7 (Mombasa)';
         
         const dateMatch = html.match(/<div[^>]*class=["'][^"']*date[^"']*["'][^>]*>(.*?)<\/div>/i);
         const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : 'First published: 30 December 2025';
@@ -321,10 +321,10 @@ class HTMLToMarkdownConverter {
             // Build the complete markdown document
             const markdown = this.buildMarkdownDocument(metadata, markdownContent);
             
-            // Generate versioned filename: 8-TEP-SLR-v0.6-Mombasa.md
+            // Generate versioned filename: C8-TEP-SLR-v0.7-Mombasa.md
             const versionMatch = metadata.version.match(/v([\d.]+)\s*\(([^)]+)\)/);
-            const versionSlug = versionMatch ? `v${versionMatch[1]}-${versionMatch[2]}` : 'v0.6-Mombasa';
-            const outputFileName = `8-TEP-SLR-${versionSlug}.md`;
+            const versionSlug = versionMatch ? `v${versionMatch[1]}-${versionMatch[2]}` : 'v0.7-Mombasa';
+            const outputFileName = `C8-TEP-SLR-${versionSlug}.md`;
             const outputPath = path.join(__dirname, '..', outputFileName);
             fs.writeFileSync(outputPath, markdown, 'utf8');
 

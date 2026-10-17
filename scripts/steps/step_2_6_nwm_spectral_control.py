@@ -493,7 +493,7 @@ def run_nwm_spectral_control(
             null_cohs.append(float(np.mean(rc[tep_native_mask])))
         null_cohs = np.array(null_cohs)
 
-        p_value = float(np.mean(null_cohs >= obs_coh))
+        p_value = float((np.sum(null_cohs >= obs_coh) + 1) / (len(null_cohs) + 1))
 
         coherence_native[sta] = {
             "mean_coherence": obs_coh,

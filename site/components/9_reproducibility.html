@@ -1,4 +1,3 @@
-<section id="reproducibility">
     <h2>Data Availability & Reproducibility</h2>
     
     <div class="reproducibility-box" style="background: #f5f5f5; padding: 1.5em; margin: 1em 0; border-left: 4px solid #2c5aa0;">
@@ -40,6 +39,7 @@
 │   │   ├── step_2_6_nwm_spectral_control.py
 │   │   ├── step_2_7_orbit_commonmode_control.py
 │   │   ├── step_2_8_sampling_matched_nulls.py
+│   │   ├── step_2_9_egm_orbit_control.py
 │   │   ├── step_3_0_sim_antiecho.py
 │   │   └── step_5_2_vlbi_slr_scale_drift.py
 │   └── utils/                 # Shared utilities
@@ -112,6 +112,7 @@ npm run build</code></pre>
         <li><strong>Step 2.6:</strong> NWM spectral control — NCEP/NCAR surface-pressure coherence at native 6-hourly resolution (Section 3.3.2)</li>
         <li><strong>Step 2.7:</strong> Orbit-error / common-mode confound controls — cross-satellite contemporaneous pairing (closes the shared-orbit-error channel by construction), network common-mode subtraction, and per-satellite orbit-solution splits (Section 3.4)</li>
         <li><strong>Step 2.8:</strong> Sampling-matched coloured-noise nulls — continuous surrogate families (white, station-matched AR(1), flicker 1/f, power-law grid, matched power law, random walk) passed through the identical resample–interpolate–concatenate–Welch pipeline and evaluated at real epochs under a Lomb–Scargle estimator, plus the pairwise structure function and the δA→residual amplitude map (Section 3.3.1)</li>
+        <li><strong>Step 2.9:</strong> Orbit-product common-mode control — model ranges recomputed under an independent analysis centre's SP3 solution (ESA/ESOC) on the identical filtered epoch set, then re-run through the Step 2.7 cross-satellite pairing (Section 3.4)</li>
         <li><strong>Step 3.0:</strong> Anti-echo simulation — estimator-mediated sign inversion of the conformal common-mode field under dynamic orbit determination, including the injected-scale anchor scan (λ_T = 1,000–8,000 km) that records the turnover crossing under both corpus scales (3,421 km at 1,862 km; 3,947 km at 4,201 km)</li>
         <li><strong>Step 5.2:</strong> VLBI–SLR scale-drift channel — anchoring-split bookkeeping and the local drift-participation bound (Section 5.2)</li>
     </ol>
@@ -122,6 +123,7 @@ npm run build</code></pre>
         <li><code>results/outputs/step_2_3_mwpc_analysis.json</code> — MWPC correlation results</li>
         <li><code>results/outputs/step_2_7_orbit_commonmode_control.json</code> — Orbit-error / common-mode confound-control results</li>
         <li><code>results/outputs/step_2_8_sampling_matched_nulls.json</code> — Sampling-matched coloured-noise nulls, real-epoch Lomb–Scargle ratios, structure function, and the δA amplitude map</li>
+        <li><code>results/outputs/step_2_9_egm_orbit_control.json</code> — Independent orbit-product (ESA/ESOC) control results</li>
         <li><code>results/outputs/step_5_2_vlbi_slr_scale_drift.json</code> — Scale-drift anchoring split and participation bound</li>
         <li><code>results/figures/slr_pass_correlation_decay.png</code> — Figure 3.1: Pass-correlation decay analysis</li>
         <li><code>results/figures/slr_phase_alignment_decay.png</code> — Phase alignment signatures</li>
@@ -149,4 +151,3 @@ npm run build</code></pre>
         <li><strong>Matplotlib</strong> 3.7+</li>
         <li><strong>NetworkX</strong> (for station network analysis)</li>
     </ul>
-</section>

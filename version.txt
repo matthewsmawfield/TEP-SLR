@@ -1,26 +1,5 @@
-v0.6 (Mombasa) — 30 September 2026 — GNSS cross-reference reinterpreted: annual-phase direction, not a CMB rest-frame alignment
+v0.7 (Mombasa) — 17 October 2026 — Independent ESA/ESOC orbit-product control, two-branch LAGEOS altitude screening, and corpus resync
 
-- Section 1 GNSS-evidence summary corrected: the clock channel's recovered direction is an annual-phase readout near Earth's aphelion-velocity tangent; the directed CMB-apex template is anti-phase rather than a detected rest frame (Papers 2 v0.20 / 3 v0.8 reinterpretation), replacing the earlier "CMB frame alignment (18.2° from dipole)" statement
-- TEP-series citations updated (Papers 0, 3, 5, 14) and self-citation raised to v0.6
-
-v0.5 (Mombasa) — 27 September 2026 — Sampling-matched null audit; spectral channel bounded; spatial feature downgraded to tail event
-
-- Corrected the v0.4 spectral claim: the 35/46-station unmasked AR(1) result and the 14.12× TEP-band concentration are reproduced by white noise passed through the identical sparse-sampling kernel (Step 2.8, sampling-matched null 13.97); the spectral channel is now carried as a bound, not a detection
-- Added real-epoch Lomb–Scargle and structure-function diagnostics on the unbinned observation times: flat in-band spectrum (1.04 vs white null 1.05), white-floor SF at all lags
-- Fixed finite-surrogate Fisher floor (smallest attainable empirical p is 1/(N+1)); corrected combined p-values
-- Added Step 2.7 epoch-preserving label-swap null alongside the circular-shift null; cross-satellite turnover-bin (5,000–7,500 km) anticorrelation r̄=−0.228 is a nominal one-sided excess over the mechanical within-bin floor (p=0.046; circular-shift p≤5×10⁻⁴)
-- Added turnover-bin robustness diagnostics — the feature fails them: carried by pairs with 3–4 shared bins (r̄=−0.481 vs +0.015 at 5–8), falls to r̄=−0.054 restricted to ≥5 shared bins, appears in only one of nine threshold/bin-width configurations, and alternates sign year to year; reported as a tail event, not a detection
-- Dismantled the 15-minute same-satellite result: driven by one LAGEOS-2 pair at three passes (r=−0.910, p=0.273), converging to ~0 at ≥10 passes; daily aggregation reverses sign between LAGEOS solutions and is retained as exploratory
-- Added conformal amplitude budget: in-band coherent excursions bounded at δA ≲ 2×10⁻⁸; reproducing the residual RMS would require δA ≈ 4.2×10⁻⁸ (~60× the surface conformal depth), and at the natural amplitude the predicted ~5 mm wander is below the noise floor — seven-plus orders less sensitive than the 10⁻¹⁵–10⁻¹⁸ GNSS clock-comparison channel
-- Conclusion, abstract, and all metadata rewritten to match the audited results; Paper 9 measurement taxonomy linked to the inter-station observable class
-
-v0.4 (Mombasa) — 14 September 2026 — Frequency-domain analysis, AR(1) null test, and pressure control
-
-- Added LARES satellite to analysis catalog (LAGEOS-1/2, Etalon-1/2, and LARES)
-- Added frequency-domain analysis: TEP-band mean PSD exceeds broadband floor by 14.12× (95% CI: 13.55–14.67; N=46 stations)
-- Added station-specific AR(1) red-noise null test: 500 surrogates per station, 35/46 reject null (Fisher p≈10⁻¹⁵⁴, binomial p≈2×10⁻³⁶)
-- Added NCEP/NCAR Reanalysis surface pressure control: 4/34 significant (binomial p=0.088), pressure effect 12% of residual RMS
-- Added range-dependent lag-1 coherence diagnostic: longer paths (≳8,000 km) show greater decoherence than shorter paths (≲6,500 km)
-- Updated pass-correlation analysis: Fisher χ²=16.45 (p=0.0025), signal concentrates in three LAGEOS-2 pairs
-- Added daily-aggregation analysis: N=190 pairs, p_FWER=0.020, most negative correlation at 3000–5000 km baselines
-- Updated runtime estimate to 2–4 hours (including data download)
+- Added the Step 2.9 independent orbit-product common-mode control, recomputing all model ranges under the ESA/ESOC SP3 orbit solution on the identical filtered epoch set (confirming persistence of the anti-echo correlation r_bar = -0.22, n = 30)
+- Evaluated two-branch kinetic screening at LAGEOS altitude (y_tb ~ 10^-7), framing the slant-path range residual (Delta = -0.208 m at the 0.5 m threshold) as a tropospheric airmass systematic monitor and establishing an instrumentally independent optical bound on conformal clock excursions
+- Synchronized cross-paper references and the shared core library across the corpus

@@ -1,9 +1,9 @@
 {
-  "version": "0.6",
+  "version": "0.7",
   "codename": "Mombasa",
   "description": "Paper 8: Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging",
-  "date": "2026-09-30",
+  "date": "2026-10-17",
   "paper": "8",
   "doi": "10.5281/zenodo.18064581",
-  "previous_version": "0.5"
+  "previous_version": "0.6"
 }

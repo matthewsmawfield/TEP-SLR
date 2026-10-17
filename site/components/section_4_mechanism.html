@@ -15,7 +15,9 @@
     <p>The multi-messenger constraint from GW170817 requires $|c_\gamma - c_g|/c \lesssim 10^{-15}$, forcing $B(\phi)(\partial\phi)^2 \approx 0$ today. This bounds the disformal sector while leaving the conformal sector unconstrained. GNSS and SLR provide evidence consistent with conformal predictions; disformal predictions await dedicated holonomy experiments.</p>
 
     <h3>4.2 Estimator-Dependent Sign Structure: The "Anti-Echo" Mechanism</h3>
-    <p>TEP predicts <em>estimator dependence</em> for the conformal common-mode propagation delay: the same spatially correlated Temporal-Topology field maps differently into post-fit residuals depending on whether the estimator absorbs global modes into per-station clock states (kinematic GNSS positioning) or into a shared orbital solution (dynamic SLR orbit determination). No disformal coupling is invoked: the delay field is the $A(\phi)$ common mode of the two-way transit—physically, the ground event-timer rate reading a conformally invariant flight time, which enters the residual stream indistinguishably from a propagation delay—and the sign structure is a property of the estimator's absorption geometry rather than of a distinct sector.</p>
+    <p>TEP predicts <em>estimator dependence</em> for the conformal clock/timer contribution to the range residual: the same spatially correlated Temporal-Topology field maps differently into post-fit residuals depending on whether the estimator absorbs global modes into per-station clock states (kinematic GNSS positioning) or into a shared orbital solution (dynamic SLR orbit determination). No disformal coupling is invoked: the proposed clock contribution is the $A(\phi)$ endpoint-timer response to the two-way transit—physically, the ground event-timer rate reading a conformally invariant flight time, which enters the residual stream indistinguishably from a propagation delay—and the sign structure is a property of the estimator's absorption geometry rather than of a distinct sector.</p>
+
+    <p>Theorem 2 of Paper 0 gives an exact direct conformal propagation null at fixed Einstein-frame metric: the factor $A^2$ cancels from the photon null condition. A station event timer can still accumulate a different proper interval, $\Delta\tau_R=\int A(\phi_R)\,d\tau_{g,R}$, and the range estimator uses $c\Delta\tau_R/2$. The anti-echo simulation below injects a prescribed correlated range-residual field to test estimator absorption; its 100 mm mean and 50 mm fluctuation are illustrative inputs, not predictions of the selected kinetic action. A physical amplitude calculation must supply the station-field response and the same clock calibration used by the range reduction.</p>
 
     <p>The mechanism operates as follows:</p>
 
@@ -23,14 +25,14 @@
         <p><strong>Schematic:</strong></p>
         <ul style="list-style: none; padding-left: 0; font-family: 'Courier New', monospace; font-size: 14px;">
             <li>GNSS (Kinematic PPP):  τ<sub>TEP</sub> → δt<sub>receiver</sub> → r > 0</li>
-            <li>SLR (Dynamic OD):      τ<sub>TEP</sub> → δa<sub>orbit</sub>   → r < 0 (Predicted)</li>
+            <li>SLR (Dynamic OD):      τ<sub>TEP</sub> → δa<sub>orbit</sub>   → r &lt; 0 (Predicted)</li>
         </ul>
     </div>
 
     <ul>
         <li><strong>GNSS (Kinematic PPP):</strong> In Precise Point Positioning, the receiver coordinates and clock bias are solved epoch-by-epoch. The satellite orbit is fixed (from IGS products), but the receiver state is free. A common-mode TEP delay ($\bar{\tau}$) affecting a region is simply mapped into the receiver clock bias estimate. Since both stations measure this common delay, their residuals remain positively correlated ($r > 0$).</li>
         
-        <li><strong>SLR (Dynamic Orbit Determination):</strong> In SLR, a single orbital arc is fitted to observations from stations worldwide over several days. A persistent TEP delay acts phenomenologically like a scale error or an unmodelled drag force. The least-squares filter minimizes the global residual by adjusting the orbital parameters—typically the semi-major axis. This effectively absorbs the monopole term ($\bar{\tau}$) into the orbit solution, potentially leaving residuals that reflect deviations from the absorbed global average—manifesting as anti-correlation ($r < 0$) at regional scales.</li>
+        <li><strong>SLR (Dynamic Orbit Determination):</strong> In SLR, a single orbital arc is fitted to observations from stations worldwide over several days. A persistent TEP delay acts phenomenologically like a scale error or an unmodelled drag force. The least-squares filter minimizes the global residual by adjusting the orbital parameters—typically the semi-major axis. This effectively absorbs the monopole term ($\bar{\tau}$) into the orbit solution, potentially leaving residuals that reflect deviations from the absorbed global average—manifesting as anti-correlation ($r &lt; 0$) at regional scales.</li>
     </ul>
 
     <h3>4.3 Experimental Design Considerations</h3>
@@ -44,8 +46,8 @@
         />
         <figcaption>
             <strong>Figure 4.1:</strong> Monte Carlo simulation of the
-            Anti-Echo mechanism. A spatially correlated conformal
-            common-mode delay field
+            Anti-Echo mechanism. A spatially correlated prescribed correlated
+            range-residual field
             ($\lambda_T = 4{,}200$ km, 50 stations, 100 realizations) is
             processed through two estimators. The dynamic orbit fit absorbs
             the monopole component into the orbital scale, producing
@@ -63,7 +65,7 @@
     <ol>
         <li><strong>Dense Temporal Overlap:</strong> Synchronous observations from multiple stations within correlation timescales (~hours), not available in current ILRS cadence.</li>
         <li><strong>Cross-Estimator Comparison:</strong> Parallel processing with kinematic (epoch-by-epoch) and dynamic (arc-fit) estimators to isolate the sign-flip signature.</li>
-        <li><strong>Alternative Orbit Solutions:</strong> Sensitivity analysis across different Analysis Center products (ASI, GFZ, CSR) to test monopole absorption consistency.</li>
+        <li><strong>Alternative Orbit Solutions:</strong> A cross-Analysis-Center sensitivity test has been performed (Step 2.9): recomputing all model ranges under ESA/ESOC's independent SP3 product leaves the turnover-bin anticorrelation essentially unchanged ($\bar{r}=-0.217$ vs $-0.228$ under the ILRS combination, $n=30$ pairs), bounding centre-specific orbit/EGM imprints. What remains open is a synthetic injection test of modelling errors common to all centres fitted to the same geodesy data.</li>
     </ol>
 
     <p>The confound-controlled pass-bin analysis of Section 3.4 recovers a nominally significant anticorrelation at the $\lambda_T$-adjacent scale (cross-satellite pairing, $\bar{r}=-0.228$ over $n=32$ pairs at 5,000–7,500 km; epoch-preserving label-swap null $p=0.046$, an excess over the $-0.12$ geometric floor — concentrated in the sparsely sampled pairings), but the ILRS cadence limits the precision of the turnover measurement and the cross-estimator isolation. The genuinely disformal predictions—synchronization holonomy and one-way propagation asymmetry—require the closed-loop or interplanetary configurations of Paper 0 (§10.A–D), beyond any current geodetic dataset. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.</p>

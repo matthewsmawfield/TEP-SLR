@@ -2,15 +2,18 @@
     <h2>3. Conformal Sector Assessment</h2>
 
     <p>
-        The analysis of the 11-year LAGEOS dataset reveals four distinct
-        signatures consistent with TEP's conformal sector phenomenology in the
-        optical domain, challenging clock-artifact explanations.
+        Four conformal-sector diagnostics are evaluated across the 11-year LAGEOS
+        dataset below: characterizing the residual noise floor (§3.1), monitoring
+        path-length-dependent tropospheric decoherence as a propagation systematic
+        control (§3.2), establishing a sampling-matched spectral bound on in-band
+        ground-timer excursions (§3.3), and testing confound-controlled
+        cross-satellite inter-station correlations (§3.4).
     </p>
 
     <h3>3.1 Data Characterization: The Noise Floor</h3>
     <p>
         The raw SLR residuals exhibit a broad distribution. Within the strictly
-        filtered subset ($N=201,503$, $|\Delta\rho|<0.5$ m), the RMS is 0.29 m
+        filtered subset ($N=201,503$, $|\Delta\rho|&lt;0.5$ m), the RMS is 0.29 m
         (288 mm). The central question is whether there exists reproducible
         structure in this noise floor consistent with the Temporal-Topology
         response. In standard geodetic analysis, this floor is often
@@ -43,11 +46,11 @@
     </ul>
 
     <p>
-        Under a strict $|\Delta\rho|<0.5$ m filter, the long-minus-short
+        Under a strict $|\Delta\rho|&lt;0.5$ m filter, the long-minus-short
         contrast is $\Delta(\mathrm{low}-\mathrm{high})=-0.208$ (95% bootstrap
         CI: −0.418 to 0.000). The corresponding low/high ratio is 4.30 (95%
         bootstrap CI: −21.42 to 48.11), but is ill-conditioned because the
-        short-path mean is near zero. Under a looser $|\Delta\rho|<1.0$ m
+        short-path mean is near zero. Under a looser $|\Delta\rho|&lt;1.0$ m
         filter, the contrast becomes
         $\Delta(\mathrm{low}-\mathrm{high})=-0.086$ (95% CI: −0.248 to
         0.069) and the corresponding ratio becomes −8.68 (95% CI: −56.90 to
@@ -58,7 +61,7 @@
     </p>
 
     <p>
-        Because TEP's conformal sector preserves null cones, light propagation is null-invariant and path length plays no physical role in the conformal signature. The observed path dependence — where lower elevations (longer paths) decorrelate more — is the expected signature of ordinary tropospheric delay mismodeling, as the Marini–Murray standard-atmosphere correction leaves synoptic pressure and wet-path fluctuations uncorrected, which grow with airmass. The path-length diagnostic is therefore retained as a systematic check awaiting high-resolution reanalysis controls (e.g. ERA5). The resampled-series spectral diagnostic (Section 3.3) returns an apparent
+        Under isotropic conformal rescaling, light propagation is null-invariant, while under the unstretched-space temporal metric the static terrestrial radial gradient at LAGEOS altitude is kinetically screened ($y_{\rm tb}\sim 10^{-7}$). The observed path dependence — where lower elevations (longer paths) decorrelate more — is dominated by ordinary tropospheric delay mismodeling, as the Marini–Murray standard-atmosphere correction leaves synoptic pressure and wet-path fluctuations uncorrected, which grow with airmass. The path-length diagnostic is therefore retained as a systematic check awaiting high-resolution reanalysis controls (e.g. ERA5). The resampled-series spectral diagnostic (Section 3.3) returns an apparent
         14.12× TEP-band enhancement that persists across rejection
         thresholds (spanning 11.9×–14.9×, a ~25% variation, over the
         0.3–1.0 m range); its interpretation is fixed by the sampling-matched
@@ -118,7 +121,7 @@
         The observed $14.12\times$ ratio is reproduced almost exactly by
         white noise alone: the sampling-matched white null mean is $13.97$,
         the median station percentile of the observed ratio inside its own
-        null is 0.58, and only two of 46 stations exceed $p<0.05$ — the
+        null is 0.58, and only two of 46 stations exceed $p&lt;0.05$ — the
         chance rate. The residual $\sim 1\%$ offset of the observed mean
         above the white-null mean lies inside the null dispersion (Fisher
         combined $p = 0.20$), so no coherent excess is supported: the
@@ -210,7 +213,7 @@
         The mean pressure-residual coherence in the 10–23 $\mu$Hz band is
         $0.133$ (95% CI: 0.101–0.170) across 34 stations with sufficient
         overlap. Four of 34 stations individually reject the null at
-        $p<0.05$, against 1.7 expected by chance (binomial
+        $p&lt;0.05$, against 1.7 expected by chance (binomial
         $p=0.088$); the excess is not statistically significant. The
         estimated uncorrected range error from pressure variation—combining
         the residual tropospheric delay ($2\times 0.002277\,\sigma_P/f_{\mathrm{lat}}$)
@@ -261,7 +264,7 @@
             (5,000–7,500 km) containing only three station pairs. One of these
             pairs (7124–7825) contributes a correlation of $r=-0.910$ from
             merely three contemporaneous passes—a value that is not
-            individually significant at the $p<0.05$ level ($p=0.273$ for
+            individually significant at the $p&lt;0.05$ level ($p=0.273$ for
             $n=3$). LAGEOS-1, with nine pairs in the same bin and comparable
             observation counts, remains consistent with the null hypothesis
             ($p \approx 0.54$). When station pairs are restricted to those with
@@ -326,6 +329,19 @@
             than produces the anticorrelation. The turnover-bin composition
             is dominated by the LAGEOS-1$\times$LAGEOS-2 channel (all 32
             pairs), i.e. two independent orbit arcs, not one shared solution.
+            A centre-level variant of the same confound — a shared
+            orbit-model or Earth-gravity-model imprint entering both
+            LAGEOS solutions through the common analysis-centre product —
+            is bounded directly (Step 2.9): recomputing every model range
+            under an independent centre's SP3 solution (ESA/ESOC) on the
+            identical filtered epoch set returns $\bar{r}=-0.217$ over
+            $n=30$ LAGEOS-1$\times$LAGEOS-2 pairs at the same bin
+            (circular-shift null $p\le5\times10^{-4}$), matching the
+            ILRSB reference value $\bar{r}=-0.228$. The residual caveat is
+            that both products are determined against largely the same
+            geodesy data, so errors common to geodetic modelling itself —
+            rather than to a particular centre's solution — are not
+            excluded by this swap alone.
             Because the sign inversion is generic to monopole absorption of
             any spatially correlated common-mode error, the discriminating
             content is the turnover's location rather than the sign itself:

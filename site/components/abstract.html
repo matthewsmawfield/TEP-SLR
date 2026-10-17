@@ -1,7 +1,7 @@
 <div class="abstract">
     <h2>Abstract</h2>
     
-    <p>An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). This analysis constrains "clock-artifact" explanations by employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS), while probing, under conformal null-cone invariance, the same clock-amplitude channel through its ground-station leg.</p>
+    <p>An optical-domain consistency test of TEP is presented using 11 years (2015–2025) of Satellite Laser Ranging (SLR) data from passive ILRS geodetic satellites (LAGEOS-1/2, Etalon-1/2, and LARES). By employing two-way optical ranging to passive retroreflectors—a measurement chain orthogonal in hardware and systematic-error class to the microwave atomic-clock chain used in Global Navigation Satellite Systems (GNSS)—this analysis probes the terrestrial clock-amplitude channel through its ground-station event timer and bounded slant-path propagation.</p>
     
     <p>Frequency-domain analysis is carried out under sampling-matched
     control. On 5-minute resampled station series the TEP-band (10–500
@@ -12,7 +12,7 @@
     generated on each station's actual observing grid and passed through the
     identical resample–interpolate–concatenate pipeline show that white
     noise alone reproduces the measured ratio (sampling-matched null
-    $13.97$ vs observed $14.12$; two of 46 stations above $p<0.05$), while
+    $13.97$ vs observed $14.12$; two of 46 stations above $p&lt;0.05$), while
     every conventional coloured-noise model returns a larger concentration
     through the same sampling (masked AR(1): $16.95$; flicker $1/f$:
     $26.98$; random walk: $257$). A real-epoch Lomb–Scargle estimator on
@@ -37,7 +37,7 @@
     range-dependent lag-1 coherence diagnostic shows that longer signal paths ($\gtrsim 8{,}000$ km)
     accumulate greater decoherence than shorter paths
     ($\lesssim 6{,}500$ km), with the long-minus-short contrast
-    $\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because light propagation is null-invariant in the conformal sector, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control, rather than a TEP signature.</p>
+    $\Delta=-0.208$ (95% CI: −0.418 to 0.000) at the 0.5 m threshold. Because isotropic conformal rescaling preserves null cones and the unstretched-space radial gradient is kinetically screened at $y_{\rm tb}\sim 10^{-7}$ at LAGEOS altitude, this path-length dependence operates as a systematic monitor for airmass-correlated tropospheric effects awaiting hourly reanalysis control.</p>
     
     <p>Inter-station pass-correlation analysis under 15-minute contemporaneous
     binning yields a nominally significant Fisher-combined result
@@ -55,7 +55,10 @@
     $\bar{r}=-0.23$ over 32 baselines (epoch-preserving label-swap null
     $p=0.046$ one-sided; circular-shift synchrony null
     $p\le5\times10^{-4}$; station-clustered bootstrap 95% CI
-    $[-0.43,-0.06]$) — though the feature appears in only one of nine
+    $[-0.43,-0.06]$), and it persists essentially unchanged
+    ($\bar{r}=-0.22$, $n=30$) when every model range is recomputed under
+    an independent analysis centre's orbit product (ESA/ESOC) — though the
+    feature appears in only one of nine
     threshold/bin-width configurations, falls to $\bar{r}=-0.054$ when
     restricted to pairs sharing five or more bins, and alternates sign year
     to year, so it is reported as a tail event rather than a detection.
@@ -66,11 +69,10 @@
     <p>Taken together — a spectral bound, an amplitude budget sitting
     seven or more orders of magnitude above the $10^{-15}$–$10^{-18}$
     fractional stabilities of GNSS clock comparisons, and a nominal
-    turnover-bin candidate short of detection strength — the absence of
-    detectable in-band structure in a constellation carrying no onboard
-    clocks and no microwave propagation chain constrains artifact
-    explanations specific to satellite atomic clocks, onboard steering
-    electronics, and ionospheric modeling at microwave frequencies, and
-    demonstrates SLR as an instrumentally and systematically independent
-    measurement of the same conformal clock-amplitude channel as GNSS.</p>
+    turnover-bin candidate short of detection strength — this analysis
+    establishes an instrumentally independent optical bound on conformal
+    timing excursions in a constellation carrying no onboard clocks and
+    no microwave propagation chain, while remaining insufficiently
+    sensitive to discriminate the reported GNSS-scale signal from
+    GNSS-specific instrumental effects.</p>
 </div>

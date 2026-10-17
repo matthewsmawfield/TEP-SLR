@@ -194,7 +194,7 @@ async function buildStaticSite() {
         
         console.log('✅ Static site built successfully!');
         console.log(`📁 Output: ${outputPath}`);
-        console.log('📄 Markdown: 8-TEP-SLR-v0.6-Mombasa.md (in root)');
+        console.log('📄 Markdown: C8-TEP-SLR-v0.7-Mombasa.md (in root)');
         console.log(`📊 Generated ${manifest.sections.length} sections`);
         console.log('🚀 Ready for deployment');
         

@@ -76,3 +76,6 @@ scripts/archive/
 .devin
 
 manuscripts/
+
+# Editor workspace state
+*.code-workspace

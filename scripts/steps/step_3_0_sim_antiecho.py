@@ -14,10 +14,12 @@ from utils.plot_style import apply_paper_style
 
 def generate_tep_field(n_stations=50, size_km=10000, correlation_length_km=4200):
     """
-    Generate a spatially correlated conformal-sector Temporal-Topology delay
-    field: the common-mode propagation delay produced by the A(phi) coupling
-    on two-way optical transits, correlated on the Temporal Topology scale
-    lambda_T ~ 4,200 km.
+    Generate an illustrative spatially correlated range-residual field
+    for the estimator-absorption experiment, correlated on 4,200 km.
+    Its amplitude is prescribed, not derived from the scalar action.
+    Pure conformal rescaling at fixed metric leaves photon flight time
+    unchanged; a physical conformal range effect requires the station
+    timer or another explicitly modelled endpoint/history contribution.
     """
     # Random station locations
     x = np.random.uniform(-size_km/2, size_km/2, n_stations)
@@ -162,7 +164,7 @@ def main():
     plt.axvline(4200, color="#8a7ca8", linestyle=':', alpha=0.7, label=r'$\lambda_T \approx 4{,}200$ km')
     plt.xlabel('Distance (km)')
     plt.ylabel('Correlation (Normalized)')
-    plt.title('Anti-Echo: Conformal Common-Mode Field Through Two Estimators')
+    plt.title('Anti-Echo: Correlated Range Surrogate Through Two Estimators')
     plt.grid(True, alpha=0.3)
     plt.legend()
     
@@ -177,7 +179,9 @@ def main():
         'n_stations': 50,
         'correlation_length_km': 4200,
         'size_km': 10000,
-        'field_model': 'conformal Temporal-Topology common-mode delay field (no disformal term)',
+        'field_model': 'prescribed correlated range-residual surrogate for estimator absorption (no derived propagation delay)',
+        'physical_amplitude_derived': False,
+        'direct_conformal_propagation_delay': False,
         'bin_centers_km': bin_centers.tolist(),
         'dynamic_correlations_normalized': corrs_norm.tolist(),
         'dynamic_correlations_raw': corrs.tolist(),
